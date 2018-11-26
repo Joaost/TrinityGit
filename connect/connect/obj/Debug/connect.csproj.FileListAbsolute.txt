@@ -1,0 +1,18 @@
+c:\users\joakim.koch\source\repos\connect\connect\bin\Debug\connect.exe.config
+c:\users\joakim.koch\source\repos\connect\connect\bin\Debug\connect.exe
+c:\users\joakim.koch\source\repos\connect\connect\bin\Debug\connect.pdb
+c:\users\joakim.koch\source\repos\connect\connect\obj\Debug\connect.csprojResolveAssemblyReference.cache
+c:\users\joakim.koch\source\repos\connect\connect\obj\Debug\Interop.Connect.dll
+c:\users\joakim.koch\source\repos\connect\connect\obj\Debug\connect.csproj.ResolveComReference.cache
+c:\users\joakim.koch\source\repos\connect\connect\obj\Debug\connect.csproj.CoreCompileInputs.cache
+c:\users\joakim.koch\source\repos\connect\connect\obj\Debug\connect.exe
+c:\users\joakim.koch\source\repos\connect\connect\obj\Debug\connect.pdb
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\bin\Debug\connect.exe.config
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\bin\Debug\connect.exe
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\bin\Debug\connect.pdb
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\connect.csprojResolveAssemblyReference.cache
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\Interop.Connect.dll
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\connect.csproj.ResolveComReference.cache
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\connect.csproj.CoreCompileInputs.cache
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\connect.exe
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\connect.pdb
