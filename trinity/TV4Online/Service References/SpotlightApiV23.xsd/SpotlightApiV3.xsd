@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Campaign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgencyCampaignRefNo" nillable="true" type="xs:string" />
+      <xs:element name="AgencyContactName" nillable="true" type="xs:string" />
+      <xs:element name="Bookings" nillable="true" type="tns:ArrayOfBooking" />
+      <xs:element minOccurs="0" name="ChannelCampaignRefNo" nillable="true" type="xs:string" />
+      <xs:element name="ChannelContactName" nillable="true" type="xs:string" />
+      <xs:element name="Client" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="System" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Campaign" nillable="true" type="tns:Campaign" />
+  <xs:complexType name="ArrayOfBooking">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Booking" nillable="true" type="tns:Booking" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBooking" nillable="true" type="tns:ArrayOfBooking" />
+  <xs:complexType name="Booking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgencyBookingRefNo" nillable="true" type="xs:string" />
+      <xs:element name="Channel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChannelBookingRefNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MaxBudget" type="xs:double" />
+      <xs:element minOccurs="0" name="RbsPeriods" nillable="true" type="tns:ArrayOfRbsPeriod" />
+      <xs:element minOccurs="0" name="SpecificsSpots" nillable="true" type="tns:ArrayOfSpecificSpot" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element name="Target" nillable="true" type="xs:string" />
+      <xs:element name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UniverseSize" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Booking" nillable="true" type="tns:Booking" />
+  <xs:complexType name="ArrayOfRbsPeriod">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RbsPeriod" nillable="true" type="tns:RbsPeriod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRbsPeriod" nillable="true" type="tns:ArrayOfRbsPeriod" />
+  <xs:complexType name="RbsPeriod">
+    <xs:sequence>
+      <xs:element name="EndDate" type="xs:dateTime" />
+      <xs:element name="RbsDayparts" nillable="true" type="tns:ArrayOfRbsDaypart" />
+      <xs:element name="StartDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RbsPeriod" nillable="true" type="tns:RbsPeriod" />
+  <xs:complexType name="ArrayOfRbsDaypart">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RbsDaypart" nillable="true" type="tns:RbsDaypart" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRbsDaypart" nillable="true" type="tns:ArrayOfRbsDaypart" />
+  <xs:complexType name="RbsDaypart">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrossCPP30" type="xs:double" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NegotiatedDiscount" type="xs:double" />
+      <xs:element name="RbsFilms" nillable="true" type="tns:ArrayOfRbsFilm" />
+      <xs:element minOccurs="0" name="TimeSpans" nillable="true" type="tns:ArrayOfTimeSpan" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RbsDaypart" nillable="true" type="tns:RbsDaypart" />
+  <xs:complexType name="ArrayOfRbsFilm">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RbsFilm" nillable="true" type="tns:RbsFilm" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRbsFilm" nillable="true" type="tns:ArrayOfRbsFilm" />
+  <xs:complexType name="RbsFilm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilmCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilmIndex" type="xs:double" />
+      <xs:element name="FilmLength" type="xs:int" />
+      <xs:element minOccurs="0" name="Indices" nillable="true" type="tns:ArrayOfIndex" />
+      <xs:element name="NetBudget" type="xs:double" />
+      <xs:element minOccurs="0" name="Surcharges" nillable="true" type="tns:ArrayOfSurcharge" />
+      <xs:element minOccurs="0" name="TRP" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RbsFilm" nillable="true" type="tns:RbsFilm" />
+  <xs:complexType name="ArrayOfIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Index" nillable="true" type="tns:Index" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIndex" nillable="true" type="tns:ArrayOfIndex" />
+  <xs:complexType name="Index">
+    <xs:sequence>
+      <xs:element name="Modifier" type="xs:double" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Index" nillable="true" type="tns:Index" />
+  <xs:complexType name="ArrayOfSurcharge">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Surcharge" nillable="true" type="tns:Surcharge" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSurcharge" nillable="true" type="tns:ArrayOfSurcharge" />
+  <xs:complexType name="Surcharge">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Modifier" type="xs:double" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="NetCost" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Surcharge" nillable="true" type="tns:Surcharge" />
+  <xs:complexType name="ArrayOfTimeSpan">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TimeSpan" nillable="true" type="tns:TimeSpan" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimeSpan" nillable="true" type="tns:ArrayOfTimeSpan" />
+  <xs:complexType name="TimeSpan">
+    <xs:sequence>
+      <xs:element name="End" nillable="true" type="xs:string" />
+      <xs:element name="Start" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeSpan" nillable="true" type="tns:TimeSpan" />
+  <xs:complexType name="ArrayOfSpecificSpot">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecificSpot" nillable="true" type="tns:SpecificSpot" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecificSpot" nillable="true" type="tns:ArrayOfSpecificSpot" />
+  <xs:complexType name="SpecificSpot">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bid" type="xs:double" />
+      <xs:element minOccurs="0" name="BreakID" nillable="true" type="xs:string" />
+      <xs:element name="BroadcastDate" type="xs:dateTime" />
+      <xs:element name="BroadcastTime" type="xs:int" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstimatedTRP" type="xs:double" />
+      <xs:element minOccurs="0" name="FilmCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilmIndex" type="xs:double" />
+      <xs:element name="FilmLength" type="xs:int" />
+      <xs:element minOccurs="0" name="GrossPrice30" type="xs:double" />
+      <xs:element minOccurs="0" name="Indices" nillable="true" type="tns:ArrayOfIndex" />
+      <xs:element minOccurs="0" name="NegotiatedDiscount" type="xs:double" />
+      <xs:element name="NetPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="ProgramID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProgramName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surcharges" nillable="true" type="tns:ArrayOfSurcharge" />
+      <xs:element minOccurs="0" name="Target" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpecificSpot" nillable="true" type="tns:SpecificSpot" />
+  <xs:complexType name="CreateBookingResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceResponse">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ReturnValues" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateBookingResponse" nillable="true" type="tns:CreateBookingResponse" />
+  <xs:complexType name="ServiceResponse">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ErrorMessages" nillable="true" type="q2:ArrayOfKeyValueOfintstring" />
+      <xs:element minOccurs="0" name="Status" type="tns:StatusType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceResponse" nillable="true" type="tns:ServiceResponse" />
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Warning" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatusType" nillable="true" type="tns:StatusType" />
+  <xs:complexType name="GetConfirmationsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Confirmations" nillable="true" type="tns:ArrayOfConfirmation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetConfirmationsResponse" nillable="true" type="tns:GetConfirmationsResponse" />
+  <xs:complexType name="ArrayOfConfirmation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Confirmation" nillable="true" type="tns:Confirmation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConfirmation" nillable="true" type="tns:ArrayOfConfirmation" />
+  <xs:complexType name="Confirmation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgencyRefNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookedBudget" type="xs:double" />
+      <xs:element minOccurs="0" name="BookingId" type="ser:guid" />
+      <xs:element minOccurs="0" name="CampaignEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CampaignRefNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CampaignStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChangedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Versions" nillable="true" type="tns:ArrayOfConfirmationVersion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Confirmation" nillable="true" type="tns:Confirmation" />
+  <xs:complexType name="ArrayOfConfirmationVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConfirmationVersion" nillable="true" type="tns:ConfirmationVersion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConfirmationVersion" nillable="true" type="tns:ArrayOfConfirmationVersion" />
+  <xs:complexType name="ConfirmationVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ClientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Discounts" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrossPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="MinimumTRP" type="xs:double" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NetPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RbsSpots" nillable="true" type="tns:ArrayOfConfirmationRbsSpot" />
+      <xs:element minOccurs="0" name="SpecificSpots" nillable="true" type="tns:ArrayOfConfirmationSpecificSpot" />
+      <xs:element minOccurs="0" name="Target" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VersionNo" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfirmationVersion" nillable="true" type="tns:ConfirmationVersion" />
+  <xs:complexType name="ArrayOfConfirmationRbsSpot">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConfirmationRbsSpot" nillable="true" type="tns:ConfirmationRbsSpot" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConfirmationRbsSpot" nillable="true" type="tns:ArrayOfConfirmationRbsSpot" />
+  <xs:complexType name="ConfirmationRbsSpot">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualTRP" type="xs:double" />
+      <xs:element minOccurs="0" name="BreakId" type="xs:int" />
+      <xs:element minOccurs="0" name="BroadcastDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BroadcastTime" type="xs:int" />
+      <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilmCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilmLength" type="xs:int" />
+      <xs:element minOccurs="0" name="ProgramName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpotId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfirmationRbsSpot" nillable="true" type="tns:ConfirmationRbsSpot" />
+  <xs:complexType name="ArrayOfConfirmationSpecificSpot">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConfirmationSpecificSpot" nillable="true" type="tns:ConfirmationSpecificSpot" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConfirmationSpecificSpot" nillable="true" type="tns:ArrayOfConfirmationSpecificSpot" />
+  <xs:complexType name="ConfirmationSpecificSpot">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualTRP" type="xs:double" />
+      <xs:element minOccurs="0" name="ActualTargetTRP" type="xs:double" />
+      <xs:element minOccurs="0" name="BreakId" type="xs:int" />
+      <xs:element minOccurs="0" name="BroadcastDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BroadcastTime" type="xs:int" />
+      <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstimatedTRP" type="xs:double" />
+      <xs:element minOccurs="0" name="FilmCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilmLength" type="xs:int" />
+      <xs:element minOccurs="0" name="GrossPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="IndexedCPP" type="xs:double" />
+      <xs:element minOccurs="0" name="IndexedGrossCPP" type="xs:double" />
+      <xs:element minOccurs="0" name="NetPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="Placement" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlacementSurcharge" type="xs:double" />
+      <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrioritySurcharge" type="xs:double" />
+      <xs:element minOccurs="0" name="ProgramName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpotId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfirmationSpecificSpot" nillable="true" type="tns:ConfirmationSpecificSpot" />
+  <xs:complexType name="PricesAndScheduleResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProgramDetails" nillable="true" type="tns:ProgramDetails" />
+          <xs:element minOccurs="0" name="ScheduleEvents" nillable="true" type="tns:ArrayOfScheduleEvent" />
+          <xs:element minOccurs="0" name="SpotPrices" nillable="true" type="tns:ArrayOfSpotPrice" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PricesAndScheduleResponse" nillable="true" type="tns:PricesAndScheduleResponse" />
+  <xs:complexType name="ProgramDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrandDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EpisodeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Episodenumber" type="xs:int" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ImageUrls" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="NumberOfEpisodes" type="xs:int" />
+      <xs:element minOccurs="0" name="ProgramDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProgramId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeasonDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProgramDetails" nillable="true" type="tns:ProgramDetails" />
+  <xs:complexType name="ArrayOfScheduleEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScheduleEvent" nillable="true" type="tns:ScheduleEvent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScheduleEvent" nillable="true" type="tns:ArrayOfScheduleEvent" />
+  <xs:complexType name="ScheduleEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BroadcastDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BroadcastTimeEnd" type="xs:int" />
+      <xs:element minOccurs="0" name="BroadcastTimeStart" type="xs:int" />
+      <xs:element minOccurs="0" name="EpisodeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HasLocalBreaks" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ProgramAndSeasonDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProgramId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProgramName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Resolution" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduleEvent" nillable="true" type="tns:ScheduleEvent" />
+  <xs:complexType name="ArrayOfSpotPrice">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpotPrice" nillable="true" type="tns:SpotPrice" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpotPrice" nillable="true" type="tns:ArrayOfSpotPrice" />
+  <xs:complexType name="SpotPrice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BreakId" type="xs:int" />
+      <xs:element minOccurs="0" name="BroadcastDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BroadcastTime" type="xs:int" />
+      <xs:element minOccurs="0" name="Daypart" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstimatedTRP" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossCPP" type="xs:int" />
+      <xs:element minOccurs="0" name="GrossPrice30" type="xs:int" />
+      <xs:element minOccurs="0" name="LocalTvAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ProgramId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProgramName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpotPrice" nillable="true" type="tns:SpotPrice" />
+</xs:schema>

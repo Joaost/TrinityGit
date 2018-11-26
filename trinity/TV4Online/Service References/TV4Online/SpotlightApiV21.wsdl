@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="urn:se.tv4.online" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SpotlightApiV2" targetNamespace="urn:se.tv4.online" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:se.tv4.online/Imports">
+      <xsd:import schemaLocation="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd0" namespace="urn:se.tv4.online" />
+      <xsd:import schemaLocation="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" />
+      <xsd:import schemaLocation="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TV4.Online.Services.Internal.Contracts" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISpotlightApiV2_CreateBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBooking" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_CreateBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_CreateBookingForOrganization_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBookingForOrganization" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_CreateBookingForOrganization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBookingForOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetUserOrganizations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserOrganizations" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetUserOrganizations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserOrganizationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetReleasePeriods_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReleasePeriods" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetReleasePeriods_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReleasePeriodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetBookingTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingTypes" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetBookingTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetChannels_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChannels" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetChannels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChannelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetTargets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTargets" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetTargets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTargetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetTargetsForChannel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTargetsForChannel" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetTargetsForChannel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTargetsForChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetDaypartNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDaypartNames" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetDaypartNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDaypartNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetSurchargeNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSurchargeNames" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetSurchargeNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSurchargeNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetIndexNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndexNames" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetIndexNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndexNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetConfirmationForBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfirmationForBooking" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetConfirmationForBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfirmationForBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetConfirmationsForAgencyRefNo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfirmationsForAgencyRefNo" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetConfirmationsForAgencyRefNo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfirmationsForAgencyRefNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetConfirmationsByChangedDateTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfirmationsByChangedDateTime" />
+  </wsdl:message>
+  <wsdl:message name="ISpotlightApiV2_GetConfirmationsByChangedDateTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfirmationsByChangedDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISpotlightApiV2">
+    <wsdl:operation name="CreateBooking">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/CreateBooking" message="tns:ISpotlightApiV2_CreateBooking_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/CreateBookingResponse" message="tns:ISpotlightApiV2_CreateBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBookingForOrganization">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/CreateBookingForOrganization" message="tns:ISpotlightApiV2_CreateBookingForOrganization_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/CreateBookingForOrganizationResponse" message="tns:ISpotlightApiV2_CreateBookingForOrganization_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOrganizations">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetUserOrganizations" message="tns:ISpotlightApiV2_GetUserOrganizations_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetUserOrganizationsResponse" message="tns:ISpotlightApiV2_GetUserOrganizations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReleasePeriods">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetReleasePeriods" message="tns:ISpotlightApiV2_GetReleasePeriods_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetReleasePeriodsResponse" message="tns:ISpotlightApiV2_GetReleasePeriods_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingTypes">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetBookingTypes" message="tns:ISpotlightApiV2_GetBookingTypes_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetBookingTypesResponse" message="tns:ISpotlightApiV2_GetBookingTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChannels">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetChannels" message="tns:ISpotlightApiV2_GetChannels_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetChannelsResponse" message="tns:ISpotlightApiV2_GetChannels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTargets">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetTargets" message="tns:ISpotlightApiV2_GetTargets_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetTargetsResponse" message="tns:ISpotlightApiV2_GetTargets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTargetsForChannel">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetTargetsForChannel" message="tns:ISpotlightApiV2_GetTargetsForChannel_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetTargetsForChannelResponse" message="tns:ISpotlightApiV2_GetTargetsForChannel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDaypartNames">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetDaypartNames" message="tns:ISpotlightApiV2_GetDaypartNames_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetDaypartNamesResponse" message="tns:ISpotlightApiV2_GetDaypartNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSurchargeNames">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetSurchargeNames" message="tns:ISpotlightApiV2_GetSurchargeNames_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetSurchargeNamesResponse" message="tns:ISpotlightApiV2_GetSurchargeNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIndexNames">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetIndexNames" message="tns:ISpotlightApiV2_GetIndexNames_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetIndexNamesResponse" message="tns:ISpotlightApiV2_GetIndexNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfirmationForBooking">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetConfirmationForBooking" message="tns:ISpotlightApiV2_GetConfirmationForBooking_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetConfirmationForBookingResponse" message="tns:ISpotlightApiV2_GetConfirmationForBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfirmationsForAgencyRefNo">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetConfirmationsForAgencyRefNo" message="tns:ISpotlightApiV2_GetConfirmationsForAgencyRefNo_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetConfirmationsForAgencyRefNoResponse" message="tns:ISpotlightApiV2_GetConfirmationsForAgencyRefNo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfirmationsByChangedDateTime">
+      <wsdl:input wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetConfirmationsByChangedDateTime" message="tns:ISpotlightApiV2_GetConfirmationsByChangedDateTime_InputMessage" />
+      <wsdl:output wsaw:Action="urn:se.tv4.online/ISpotlightApiV2/GetConfirmationsByChangedDateTimeResponse" message="tns:ISpotlightApiV2_GetConfirmationsByChangedDateTime_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="SpotlightApiV2">
+    <wsdl:port name="SpotlightApiV2" binding="i0:SpotlightApiV2">
+      <soap12:address location="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

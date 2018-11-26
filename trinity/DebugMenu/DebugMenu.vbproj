@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{AA26CF3C-BCF7-4D9C-AF7F-1622024CEBE9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DebugMenu</RootNamespace>
+    <AssemblyName>DebugMenu</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>DebugMenu.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>DebugMenu.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>F:\Software Developer\Referenser\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>F:\Software Developer\Referenser\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>F:\Software Developer\Referenser\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="DebugMenu" />
+    <Import Include="DebugMenu.ExcelReadTemplates" />
+    <Import Include="DebugMenu.ScheduleTemplates" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\clTrinity.dev\Class Library\clsIni.vb">
+      <Link>Classes\clsIni.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cColumnHeadline.vb">
+      <Link>Classes\cColumnHeadline.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cMutableRuleList.vb">
+      <Link>Classes\cMutableRuleList.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cRule.vb">
+      <Link>Classes\cRule.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cRuleList.vb">
+      <Link>Classes\cRuleList.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cSchedule.vb">
+      <Link>Classes\cSchedule.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cSearch.vb">
+      <Link>Classes\cSearch.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cSearchResult.vb">
+      <Link>Classes\cSearchResult.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cTemplateSheet.vb">
+      <Link>Classes\cTemplateSheet.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\cTranslation.vb">
+      <Link>Classes\cTranslation.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ExcelReadTemplates\ITemplate.vb">
+      <Link>Classes\ITemplate.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Application.vb">
+      <Link>Classes\Application.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Border.vb">
+      <Link>Classes\Border.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Font.vb">
+      <Link>Classes\Font.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Interior.vb">
+      <Link>Classes\Interior.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\PageSetup.vb">
+      <Link>Classes\PageSetup.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Range.vb">
+      <Link>Classes\Range.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Shape.vb">
+      <Link>Classes\Shape.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Window.vb">
+      <Link>Classes\Window.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Workbook.vb">
+      <Link>Classes\Workbook.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\Worksheet.vb">
+      <Link>Classes\Worksheet.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\Excel\WorksheetCollection.vb">
+      <Link>Classes\WorksheetCollection.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ScheduleTemplates\cChunkInfo.vb">
+      <Link>Classes\cChunkInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ScheduleTemplates\cScheduleSpot.vb">
+      <Link>Classes\cScheduleSpot.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ScheduleTemplates\cScheduleTemplate.vb">
+      <Link>Classes\cScheduleTemplate.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity.dev\Class Library\ScheduleTemplates\cSpotlistRules.vb">
+      <Link>Classes\cSpotlistRules.vb</Link>
+    </Compile>
+    <Compile Include="DebugMenu.vb" />
+    <Compile Include="frmDLL.Designer.vb">
+      <DependentUpon>frmDLL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDLL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditor.Designer.vb">
+      <DependentUpon>frmEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewMessage.Designer.vb">
+      <DependentUpon>frmNewMessage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewMessage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmDLL.resx">
+      <DependentUpon>frmDLL.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditor.resx">
+      <DependentUpon>frmEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewMessage.resx">
+      <DependentUpon>frmNewMessage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrinityPlugin\TrinityPlugin.vbproj">
+      <Project>{DE60607A-5167-4AFA-A64F-89BD8C4DBEC1}</Project>
+      <Name>TrinityPlugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk_blue.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media_beginning.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_up.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "C:\Users\joho.AD\Documents\Visual Studio 2010\clTrinity.dev\bin\Debug\Plugins\"
+copy "$(TargetDir)DebugMenu.pdb" "C:\Users\joho.AD\Documents\Visual Studio 2010\clTrinity.dev\bin\Debug\Plugins\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

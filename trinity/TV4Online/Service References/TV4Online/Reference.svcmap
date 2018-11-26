@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bd0eba41-9a4d-48c3-b877-9d27c81836be" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://spotlightbookings.tv4.se/webservices/SpotlightApiV2.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SpotlightApiV2.xsd" MetadataType="Schema" ID="b8aed0a3-0cb4-48a6-808f-6ecd996587b7" SourceId="1" SourceUrl="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd0" />
+    <MetadataFile FileName="SpotlightApiV21.xsd" MetadataType="Schema" ID="6b98e347-c0ce-4129-9fc0-d82a94e2142d" SourceId="1" SourceUrl="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd3" />
+    <MetadataFile FileName="SpotlightApiV2.wsdl" MetadataType="Wsdl" ID="235dfc46-d709-4d1c-94ed-ee5d7f959075" SourceId="1" SourceUrl="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="SpotlightApiV2.disco" MetadataType="Disco" ID="3285ecf4-3bb4-4b21-8d98-36ce80c6e60e" SourceId="1" SourceUrl="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?disco" />
+    <MetadataFile FileName="SpotlightApiV22.xsd" MetadataType="Schema" ID="b7a69500-bd30-4526-be91-42b7d3bea609" SourceId="1" SourceUrl="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd1" />
+    <MetadataFile FileName="SpotlightApiV23.xsd" MetadataType="Schema" ID="abf46c21-0aaf-4646-9cca-d43aeb8d6ba3" SourceId="1" SourceUrl="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd4" />
+    <MetadataFile FileName="SpotlightApiV21.wsdl" MetadataType="Wsdl" ID="ea703a25-76d5-44af-aae3-e1c5b39c6e93" SourceId="1" SourceUrl="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?wsdl" />
+    <MetadataFile FileName="SpotlightApiV24.xsd" MetadataType="Schema" ID="737320bf-5f2f-4924-9a98-9b2b303b7288" SourceId="1" SourceUrl="https://spotlightbookings.tv4.se/WebServices/SpotlightApiV2.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

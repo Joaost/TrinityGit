@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{38B7199C-F8D4-427F-B91B-B78793EC80A5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>trinityAdmin.My.MyApplication</StartupObject>
+    <RootNamespace>trinityAdmin</RootNamespace>
+    <AssemblyName>trinityAdmin</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>trinityAdmin.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>trinityAdmin.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ConnectWrapper">
+      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Interop.Connect, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ConnectWrapper\bin\Debug\Interop.Connect.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Domino">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.Domino.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.HelpServiceTypeLib">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.HelpServiceTypeLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.0.0, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\clTrinity\Class Library\cActualSpot.vb">
+      <Link>Class Library\cActualSpot.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cActualSpots.vb">
+      <Link>Class Library\cActualSpots.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cAddedValue.vb">
+      <Link>Class Library\cAddedValue.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cAddedValues.vb">
+      <Link>Class Library\cAddedValues.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cAdtoox.vb">
+      <Link>Class Library\cAdtoox.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cAggregate.vb">
+      <Link>Class Library\cAggregate.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cBookedSpot.vb">
+      <Link>Class Library\cBookedSpot.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cBookedSpots.vb">
+      <Link>Class Library\cBookedSpots.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cBookingType.vb">
+      <Link>Class Library\cBookingType.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cBookingTypes.vb">
+      <Link>Class Library\cBookingTypes.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cBreak.vb">
+      <Link>Class Library\cBreak.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cChannel.vb">
+      <Link>Class Library\cChannel.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cChannelBundles.vb">
+      <Link>cChannelBundles.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cChannels.vb">
+      <Link>Class Library\cChannels.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cColorscheme.vb">
+      <Link>cColorscheme.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cColorSchemes.vb">
+      <Link>cColorSchemes.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cCombination.vb">
+      <Link>Class Library\cCombination.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cCombinationChannel.vb">
+      <Link>cCombinationChannel.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cCombinationChannels.vb">
+      <Link>cCombinationChannels.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cCombinations.vb">
+      <Link>Class Library\cCombinations.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cCompensation.vb">
+      <Link>Class Library\cCompensation.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cCompensations.vb">
+      <Link>Class Library\cCompensations.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cContract.vb">
+      <Link>Class Library\cContract.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cContractBookingtype.vb">
+      <Link>Class Library\cContractBookingtype.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cContractBookingtypes.vb">
+      <Link>Class Library\cContractBookingtypes.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cContractChannel.vb">
+      <Link>Class Library\cContractChannel.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cContractChannels.vb">
+      <Link>Class Library\cContractChannels.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cContractTarget.vb">
+      <Link>Class Library\cContractTarget.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cContractTargets.vb">
+      <Link>Class Library\cContractTargets.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cCost.vb">
+      <Link>Class Library\cCost.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cCosts.vb">
+      <Link>Class Library\cCosts.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cDaypart.vb">
+      <Link>Class Library\cDaypart.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cDayparts.vb">
+      <Link>Class Library\cDayparts.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cDBReader.vb">
+      <Link>Class Library\cDBReader.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cDBReaderAccess.vb">
+      <Link>Class Library\cDBReaderAccess.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cDBReaderSQL.vb">
+      <Link>Class Library\cDBReaderSQL.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cEnhancement.vb">
+      <Link>Class Library\cEnhancement.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cEnhancements.vb">
+      <Link>Class Library\cEnhancements.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cErrorCollection.vb">
+      <Link>Class Library\cErrorCollection.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cExtendedInfo.vb">
+      <Link>Class Library\cExtendedInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cFilm.vb">
+      <Link>Class Library\cFilm.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cFilms.vb">
+      <Link>Class Library\cFilms.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cFilter.vb">
+      <Link>Class Library\cFilter.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cHive.vb">
+      <Link>Class Library\cHive.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cIndex.vb">
+      <Link>Class Library\cIndex.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cIndexes.vb">
+      <Link>Class Library\cIndexes.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cKampanj.vb">
+      <Link>Class Library\cKampanj.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cLinkedCampaign.vb">
+      <Link>Class Library\cLinkedCampaign.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\clsIni.vb">
+      <Link>Class Library\clsIni.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cNode.vb">
+      <Link>Class Library\cNode.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPeriod.vb">
+      <Link>Class Library\cPeriod.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPerson.vb">
+      <Link>cPerson.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPlannedSpot.vb">
+      <Link>Class Library\cPlannedSpot.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPlannedSpots.vb">
+      <Link>Class Library\cPlannedSpots.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPriceList.vb">
+      <Link>Class Library\cPriceList.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPricelistPeriod.vb">
+      <Link>Class Library\cPricelistPeriod.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPricelistPeriods.vb">
+      <Link>Class Library\cPricelistPeriods.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPriceListTarget.vb">
+      <Link>Class Library\cPriceListTarget.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cPriceListTargets.vb">
+      <Link>Class Library\cPriceListTargets.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cProblem.vb">
+      <Link>cProblem.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cReachGuide.vb">
+      <Link>Class Library\cReachGuide.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cReferencePeriod.vb">
+      <Link>Class Library\cReferencePeriod.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cReferencePeriods.vb">
+      <Link>Class Library\cReferencePeriods.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cRemoteAssistance.vb">
+      <Link>cRemoteAssistance.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cSettings.vb">
+      <Link>Class Library\cSettings.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cSpot.vb">
+      <Link>Class Library\cSpot.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cSpots.vb">
+      <Link>Class Library\cSpots.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cTarget.vb">
+      <Link>Class Library\cTarget.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cWeek.vb">
+      <Link>Class Library\cWeek.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cWeeks.vb">
+      <Link>Class Library\cWeeks.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\cWrapper.vb">
+      <Link>Class Library\cWrapper.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\DebugStack.vb">
+      <Link>DebugStack.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\Extensions\ColorExtensions.vb">
+      <Link>ColorExtensions.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\Helper.vb">
+      <Link>Class Library\Helper.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\IDetectsProblems.vb">
+      <Link>IDetectsProblems.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\Notes\cIni.vb">
+      <Link>cIni.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\Notes\cNotes.vb">
+      <Link>cNotes.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\Notes\cNotesDocument.vb">
+      <Link>cNotesDocument.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\Notes\cNotesInbox.vb">
+      <Link>cNotesInbox.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\Class Library\Notes\cNotesView.vb">
+      <Link>cNotesView.vb</Link>
+    </Compile>
+    <Compile Include="..\clTrinity\frmFindTarget.designer.vb">
+      <Link>frmFindTarget.designer.vb</Link>
+      <DependentUpon>frmFindTarget.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\clTrinity\frmFindTarget.vb">
+      <Link>frmFindTarget.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\clTrinity\frmNotes.Designer.vb">
+      <Link>Class Library\frmNotes.Designer.vb</Link>
+      <DependentUpon>frmNotes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\clTrinity\frmNotes.vb">
+      <Link>Class Library\frmNotes.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\clTrinity\frmNotesPassword.Designer.vb">
+      <Link>Class Library\frmNotesPassword.Designer.vb</Link>
+      <DependentUpon>frmNotesPassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\clTrinity\frmNotesPassword.vb">
+      <Link>Class Library\frmNotesPassword.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\clTrinity\frmRAProgress.designer.vb">
+      <Link>frmRAProgress.designer.vb</Link>
+      <DependentUpon>frmRAProgress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\clTrinity\frmRAProgress.vb">
+      <Link>frmRAProgress.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cCampaignEssentials.vb" />
+    <Compile Include="cFTP.vb" />
+    <Compile Include="Declarations.vb" />
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompany.Designer.vb">
+      <DependentUpon>frmCompany.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompany.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPremiums.Designer.vb">
+      <DependentUpon>frmPremiums.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPremiums.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpotControl.Designer.vb">
+      <DependentUpon>frmSpotControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpotControl.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpotControlMatch.Designer.vb">
+      <DependentUpon>frmSpotControlMatch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpotControlMatch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXMLChannel.Designer.vb">
+      <DependentUpon>frmXMLChannel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmXMLChannel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExport.Designer.vb">
+      <DependentUpon>frmExport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFile.Designer.vb">
+      <DependentUpon>frmFile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImport.Designer.vb">
+      <DependentUpon>frmImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmINI.Designer.vb">
+      <DependentUpon>frmINI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmINI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInput.Designer.vb">
+      <DependentUpon>frmInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInput.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXMLPricelist.Designer.vb">
+      <DependentUpon>frmXMLPricelist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmXMLPricelist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXML.Designer.vb">
+      <DependentUpon>frmXML.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmXML.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Search.vb" />
+    <Compile Include="XtraForm1.Designer.vb">
+      <DependentUpon>XtraForm1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="XtraForm1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\clTrinity\frmFindTarget.resx">
+      <Link>frmFindTarget.resx</Link>
+      <DependentUpon>frmFindTarget.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\clTrinity\frmNotes.resx">
+      <Link>Class Library\frmNotes.resx</Link>
+      <DependentUpon>frmNotes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\clTrinity\frmNotesPassword.resx">
+      <Link>Class Library\frmNotesPassword.resx</Link>
+      <DependentUpon>frmNotesPassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\clTrinity\frmRAProgress.resx">
+      <Link>frmRAProgress.resx</Link>
+      <DependentUpon>frmRAProgress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCompany.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCompany.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmExport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFile.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmINI.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmINI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInput.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmInput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPremiums.resx">
+      <DependentUpon>frmPremiums.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpotControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSpotControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpotControlMatch.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSpotControlMatch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXML.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmXML.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXMLChannel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmXMLChannel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXMLPricelist.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmXMLPricelist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraForm1.resx">
+      <DependentUpon>XtraForm1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{00000205-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MSComctlLib">
+      <Guid>{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\DataSources\EnhancementSpot.datasource" />
+    <None Include="My Project\DataSources\frmPremiums.datasource" />
+    <None Include="Resources\delete2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

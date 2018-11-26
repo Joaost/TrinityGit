@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7AD8EFF7-6E51-43FF-A738-C408495D891F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TrinityViewer</RootNamespace>
+    <AssemblyName>TrinityViewer</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>TrinityViewer.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>TrinityViewer.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Connect, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ConnectWrapper\bin\Debug\Interop.Connect.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="campaign.aspx" />
+    <Content Include="default_old.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="authorize.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="campaign.aspx.designer.vb">
+      <DependentUpon>campaign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="campaign.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>campaign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Class library\cActualSpotInfo.vb" />
+    <Compile Include="Class library\cActualSpotsInfo.vb" />
+    <Compile Include="Class library\cBookedSpotInfo.vb" />
+    <Compile Include="Class library\cBookedSpotsInfo.vb" />
+    <Compile Include="Class library\cBookingTypeInfo.vb" />
+    <Compile Include="Class library\cBookingTypeInfos.vb" />
+    <Compile Include="Class library\cChannelInfo.vb" />
+    <Compile Include="Class library\cChannelInfos.vb" />
+    <Compile Include="Class library\cDBReader.vb" />
+    <Compile Include="Class library\cFilmInfo.vb" />
+    <Compile Include="Class library\cFilmsInfo.vb" />
+    <Compile Include="Class library\Charts.vb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Class library\cKampanjInfo.vb" />
+    <Compile Include="Class library\cPlannedSpotInfo.vb" />
+    <Compile Include="Class library\cPlannedSpotsInfo.vb" />
+    <Compile Include="Class library\cSettings.vb" />
+    <Compile Include="Class library\cTargetInfo.vb" />
+    <Compile Include="Class library\cWeekInfo.vb" />
+    <Compile Include="Class library\cWeekInfos.vb" />
+    <Compile Include="Class library\cWeekInfoSums.vb" />
+    <Compile Include="Class library\Helper.vb">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.vb">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="default.aspx.vb">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="default_old.aspx.designer.vb">
+      <DependentUpon>default_old.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="default_old.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>default_old.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="docs.aspx.designer.vb">
+      <DependentUpon>docs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="docs.aspx.vb">
+      <DependentUpon>docs.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="GeneralDeclarations.vb" />
+    <Compile Include="login.aspx.designer.vb">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.vb">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="authorize.aspx.designer.vb">
+      <DependentUpon>authorize.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="authorize.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>authorize.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Trinity.Master.designer.vb">
+      <DependentUpon>Trinity.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Trinity.Master.vb">
+      <DependentUpon>Trinity.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="default.aspx" />
+    <Content Include="docs.aspx" />
+    <Content Include="login.aspx" />
+    <Content Include="Pics\exceldoc.gif" />
+    <Content Include="Pics\logo.bmp" />
+    <Content Include="Pics\logo.jpg" />
+    <Content Include="Pics\pdfdoc.gif" />
+    <Content Include="Pics\ppdoc.gif" />
+    <Content Include="Pics\unknowndoc.gif" />
+    <Content Include="Pics\worddoc.gif" />
+    <Content Include="trinity.css" />
+    <Content Include="Trinity.Master" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+<<<<<<< .mine
+<<<<<<< .mine
+          <DevelopmentServerPort>2726</DevelopmentServerPort>
+=======
+          <DevelopmentServerPort>4469</DevelopmentServerPort>
+=======
+          <DevelopmentServerPort>3535</DevelopmentServerPort>
+>>>>>>> .r256
+>>>>>>> .r244
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

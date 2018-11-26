@@ -1,0 +1,32 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Trinity.master.vb" Inherits="TrinityViewer.Trinity" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>Campaign Extranet</title>
+    <link href="trinity.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="font-family:Arial ">
+<form id="Form1" runat="server">
+    <div style="width: 100%;height:64px; position:relative " id="containerdiv">
+        <div style="position:absolute;right: 6px;top: 6px;">
+            <p><img src='Pics/logo.bmp' alt='Logo' /></p>
+        </div>
+        <div style="position:absolute;left: 6px;bottom: 6px; font-size: 10px">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx" ForeColor="#009999">Hem</asp:HyperLink>&nbsp;<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/userinfo.aspx" ForeColor="#009999">Inställningar</asp:HyperLink>&nbsp;<asp:LoginStatus LogoutText="Logga ut" LoginText="" LogoutAction="RedirectToLoginPage" runat="server" ID="lgnLoggedIn"  ForeColor="#009999" />  
+        </div>
+        </div>
+    <div style="width:100%; position:relative;">
+        
+        <hr style="color: #FF6600; " />
+        <div style="position:relative; width:auto;">
+            <div>
+                <asp:ContentPlaceHolder ID="Main" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div> 
+    </div>
+</form>
+</body>
+</html>

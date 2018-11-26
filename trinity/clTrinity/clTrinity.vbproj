@@ -1,0 +1,2023 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71EAF926-F2D5-467A-A8BC-5DC512352B94}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>clTrinity</RootNamespace>
+    <AssemblyName>Trinity</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <OptionStrict>Off</OptionStrict>
+    <StartupObject>clTrinity.My.MyApplication</StartupObject>
+    <ManifestCertificateThumbprint>EA137D2E8E0E7E5087EF93E808C823FAFE78B09F</ManifestCertificateThumbprint>
+    <ManifestKeyFile>clTrinity_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>trinity_new.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetZone>LocalIntranet</TargetZone>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>ftp://ftp.idrottsgatansbk.com/trinity/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <WebPage>publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>4.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Trinity.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsContainerAnalysis>False</CodeContractsContainerAnalysis>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly>
+    </CodeContractsCustomRewriterAssembly>
+    <CodeContractsCustomRewriterClass>
+    </CodeContractsCustomRewriterClass>
+    <CodeContractsLibPaths>
+    </CodeContractsLibPaths>
+    <CodeContractsExtraRewriteOptions>
+    </CodeContractsExtraRewriteOptions>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile>
+    </CodeContractsBaseLineFile>
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Trinity.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsContainerAnalysis>False</CodeContractsContainerAnalysis>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly>
+    </CodeContractsCustomRewriterAssembly>
+    <CodeContractsCustomRewriterClass>
+    </CodeContractsCustomRewriterClass>
+    <CodeContractsLibPaths>
+    </CodeContractsLibPaths>
+    <CodeContractsExtraRewriteOptions>
+    </CodeContractsExtraRewriteOptions>
+    <CodeContractsExtraAnalysisOptions>
+    </CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile>
+    </CodeContractsBaseLineFile>
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Text</OptionCompare>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.OWC11">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\AxInterop.OWC11.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.ShockwaveFlashObjects">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\AxInterop.ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="BalloonToolTip, Version=2005.4.17.4617, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\BalloonToolTip.dll</HintPath>
+    </Reference>
+    <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.AgData.v9.2">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.Data.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.Utils.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraEditors.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v9.2.Core, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v9.2.Design">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Domino, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.Domino.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.HelpServiceTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.HelpServiceTypeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Matrix40, Version=1.0.0.0, Culture=neutral, PublicKeyToken=493336f937f312e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Matrix40.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Owc11, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Microsoft.Office.Interop.Owc11.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="mscomctl, Version=10.0.4504.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\mscomctl.dll</HintPath>
+    </Reference>
+    <Reference Include="msdatasrc, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\referenser\msdatasrc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Design">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\System.Windows.Forms.DataVisualization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TrinityPlugin">
+      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\TrinityPlugin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="clTrinity.CultureSafeExcel" />
+    <Import Include="clTrinity" />
+    <Import Include="clTrinity.ExcelReadTemplates" />
+    <Import Include="clTrinity.PricelistTemplates" />
+    <Import Include="Connect" />
+    <Import Include="Microsoft.Office.Interop" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel" />
+    <Import Include="System.ComponentModel.Design" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class Library\Analysis\cPreAnalysisExcelCustomSheet.vb" />
+    <Compile Include="Class Library\ApplicationExport.vb" />
+    <Compile Include="Class Library\cExportDatoramaFile.vb" />
+    <Compile Include="Class Library\cExportFileToMediatool.vb" />
+    <Compile Include="Class Library\cExportUnicornFile NewNorway.vb" />
+    <Compile Include="Class Library\cExportUnicornFile New.vb" />
+    <Compile Include="Class Library\cExportXmlToUnicorn.vb" />
+    <Compile Include="Class Library\EventArgs\PriceListEventArgs.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cColumnHeadline.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cMutableRuleList.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cRule.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cRuleList.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cSchedule.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cSearch.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cSearchResult.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cTemplateSheet.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\cTranslation.vb" />
+    <Compile Include="Class Library\ExcelReadTemplates\ITemplate.vb" />
+    <Compile Include="Class Library\Excel\Application.vb" />
+    <Compile Include="Class Library\Excel\Border.vb" />
+    <Compile Include="Class Library\Excel\Font.vb" />
+    <Compile Include="Class Library\Excel\Interior.vb" />
+    <Compile Include="Class Library\Excel\PageSetup.vb" />
+    <Compile Include="Class Library\Excel\Range.vb" />
+    <Compile Include="Class Library\Excel\Shape.vb" />
+    <Compile Include="Class Library\Excel\Window.vb" />
+    <Compile Include="Class Library\Excel\Workbook.vb" />
+    <Compile Include="Class Library\Excel\Worksheet.vb" />
+    <Compile Include="Class Library\Excel\WorksheetCollection.vb" />
+    <Compile Include="Class Library\cExportUnicornFile.vb" />
+    <Compile Include="Class Library\Movie API\MovieSearch.vb" />
+    <Compile Include="Class Library\Movie API\Movie.vb" />
+    <Compile Include="Class Library\Movie API\TMDB\ImageInfo.vb" />
+    <Compile Include="Class Library\Movie API\TMDB\Movie.vb" />
+    <Compile Include="Class Library\Movie API\TMDB\Image.vb" />
+    <Compile Include="Class Library\Movie API\TMDB\Search.vb" />
+    <Compile Include="Class Library\PricelistTemplates\cPrice.vb" />
+    <Compile Include="Class Library\PricelistTemplates\cPricelistTemplate.vb" />
+    <Compile Include="Class Library\PricelistTemplates\cTargetlistRules.vb" />
+    <Compile Include="Class Library\Movie API\RottenTomatoes.com\Movie.vb" />
+    <Compile Include="Class Library\Movie API\RottenTomatoes.com\Rating.vb" />
+    <Compile Include="Class Library\Movie API\RottenTomatoes.com\Search.vb" />
+    <Compile Include="Class Library\Movie API\RottenTomatoes.com\SearchResult.vb" />
+    <Compile Include="Class Library\ScheduleTemplates\cChunkInfo.vb" />
+    <Compile Include="Class Library\ScheduleTemplates\cSchedule.vb" />
+    <Compile Include="Class Library\ScheduleTemplates\cScheduleSheet.vb" />
+    <Compile Include="Class Library\ScheduleTemplates\cScheduleSpot.vb" />
+    <Compile Include="Class Library\ScheduleTemplates\cScheduleTemplate.vb" />
+    <Compile Include="Class Library\ScheduleTemplates\cSpotlistRules.vb" />
+    <Compile Include="Class Library\cPrintBookings.vb" />
+    <Compile Include="Class Library\DebugStack.vb" />
+    <Compile Include="Class Library\EventArgs\Analysis\TemplateErrorArgs.vb" />
+    <Compile Include="Class Library\EventArgs\Films\FilmChangedArgs.vb" />
+    <Compile Include="Class Library\EventArgs\Films\FilmFilmcodeChangedArgs.vb" />
+    <Compile Include="Class Library\EventArgs\WeekEventArgs.vb" />
+    <Compile Include="Class Library\Extensions\CalendarColumn\CalendarEditingControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class Library\Extensions\CalendarColumn\CalendarCell.vb" />
+    <Compile Include="Class Library\Extensions\CalendarColumn\CalendarColumn.vb" />
+    <Compile Include="Class Library\Extensions\AdTooxColumn\AdTooxCell.vb" />
+    <Compile Include="Class Library\Extensions\AdTooxColumn\AdTooxColumn.vb" />
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Class Library\AllocateFunctions.vb" />
+    <Compile Include="Class Library\Analysis\cAdvancedPostAnalysisExcel.vb" />
+    <Compile Include="Class Library\Analysis\cAnalysis.vb" />
+    <Compile Include="Class Library\Analysis\cExcelAnalysis.vb" />
+    <Compile Include="Class Library\Analysis\cPostAnalysisExcel.vb" />
+    <Compile Include="Class Library\Analysis\cPreAnalysisExcel.vb" />
+    <Compile Include="Class Library\cAdtoox.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class Library\cBlockIniReader.vb" />
+    <Compile Include="Class Library\cChannelBundles.vb" />
+    <Compile Include="Class Library\cColorscheme.vb" />
+    <Compile Include="Class Library\cColorSchemes.vb" />
+    <Compile Include="Class Library\cCombinationChannel.vb" />
+    <Compile Include="Class Library\cCombinationChannels.vb" />
+    <Compile Include="Class Library\cContractChannels.vb" />
+    <Compile Include="Class Library\cActualSpot.vb" />
+    <Compile Include="Class Library\cActualSpots.vb" />
+    <Compile Include="Class Library\cAddedValue.vb" />
+    <Compile Include="Class Library\cAddedValues.vb" />
+    <Compile Include="Class Library\cAggregate.vb" />
+    <Compile Include="Class Library\cBookedSpot.vb" />
+    <Compile Include="Class Library\cBookedSpots.vb" />
+    <Compile Include="Class Library\cBookingType.vb" />
+    <Compile Include="Class Library\cBookingTypes.vb" />
+    <Compile Include="Class Library\cBreak.vb" />
+    <Compile Include="Class Library\cChannel.vb" />
+    <Compile Include="Class Library\cChannels.vb" />
+    <Compile Include="Class Library\cCombination.vb" />
+    <Compile Include="Class Library\cCombinations.vb" />
+    <Compile Include="Class Library\cCompensation.vb" />
+    <Compile Include="Class Library\cCompensations.vb" />
+    <Compile Include="Class Library\cContract.vb" />
+    <Compile Include="Class Library\cContractBookingtype.vb" />
+    <Compile Include="Class Library\cContractBookingtypes.vb" />
+    <Compile Include="Class Library\cContractChannel.vb" />
+    <Compile Include="Class Library\cContractTarget.vb" />
+    <Compile Include="Class Library\cContractTargets.vb" />
+    <Compile Include="Class Library\cCost.vb" />
+    <Compile Include="Class Library\cCosts.vb" />
+    <Compile Include="Class Library\cDaypart.vb" />
+    <Compile Include="Class Library\cDayparts.vb" />
+    <Compile Include="Class Library\cDBReader.vb" />
+    <Compile Include="Class Library\cDBReaderSQL.vb" />
+    <Compile Include="Class Library\Extensions\DataGridViewExtension.vb" />
+    <Compile Include="Class Library\Extensions\XElementExtension.vb" />
+    <Compile Include="Class Library\IDetectsProblems.vb" />
+    <Compile Include="Class Library\cEnhancement.vb" />
+    <Compile Include="Class Library\cEnhancements.vb" />
+    <Compile Include="Class Library\cErrorCollection.vb" />
+    <Compile Include="Class Library\cExtendedInfo.vb" />
+    <Compile Include="Class Library\cFilm.vb" />
+    <Compile Include="Class Library\cFilms.vb" />
+    <Compile Include="Class Library\cFilter.vb" />
+    <Compile Include="Class Library\cHive.vb" />
+    <Compile Include="Class Library\cHTMLTable.vb" />
+    <Compile Include="Class Library\cIndex.vb" />
+    <Compile Include="Class Library\cIndexes.vb" />
+    <Compile Include="Class Library\cKampanj.vb" />
+    <Compile Include="Class Library\cPerson.vb" />
+    <Compile Include="Class Library\cProblem.vb" />
+    <Compile Include="Class Library\cLinkedCampaign.vb" />
+    <Compile Include="Class Library\clsIni.vb" />
+    <Compile Include="Class Library\cNode.vb" />
+    <Compile Include="Class Library\cPerformanceTest.vb" />
+    <Compile Include="Class Library\cPeriod.vb" />
+    <Compile Include="Class Library\cPlannedSpot.vb" />
+    <Compile Include="Class Library\cPlannedSpots.vb" />
+    <Compile Include="Class Library\cPriceList.vb" />
+    <Compile Include="Class Library\cPricelistCheck.vb" />
+    <Compile Include="Class Library\cPricelistPeriod.vb" />
+    <Compile Include="Class Library\cPricelistPeriods.vb" />
+    <Compile Include="Class Library\cPriceListTarget.vb" />
+    <Compile Include="Class Library\cPriceListTargets.vb" />
+    <Compile Include="Class Library\cReachGuide.vb" />
+    <Compile Include="Class Library\cReferencePeriod.vb" />
+    <Compile Include="Class Library\cReferencePeriods.vb" />
+    <Compile Include="Class Library\cRemoteAssistance.vb" />
+    <Compile Include="Class Library\cSettings.vb" />
+    <Compile Include="Class Library\cSpot.vb" />
+    <Compile Include="Class Library\cSpots.vb" />
+    <Compile Include="Class Library\cTarget.vb" />
+    <Compile Include="Class Library\cVersionCheck.vb" />
+    <Compile Include="Class Library\cWeek.vb" />
+    <Compile Include="Class Library\cWeeks.vb" />
+    <Compile Include="Class Library\cWrapper.vb" />
+    <Compile Include="Class Library\cDBReaderAccess.vb" />
+    <Compile Include="Class Library\frmPerformance.Designer.vb">
+      <DependentUpon>frmPerformance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class Library\frmPerformance.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class Library\Linq Karma\cKarma.vb" />
+    <Compile Include="Class Library\Linq Karma\cKarmaCampaign.vb" />
+    <Compile Include="Class Library\Linq Karma\cKarmaCampaigns.vb" />
+    <Compile Include="Class Library\Linq Karma\cKarmaSpot.vb" />
+    <Compile Include="Class Library\Marathon\cMarathon.vb" />
+    <Compile Include="Class Library\Marathon\cMarathonActivity.vb" />
+    <Compile Include="Class Library\Marathon\cMarathonInsertion.vb" />
+    <Compile Include="Class Library\Marathon\cMarathonOrder.vb" />
+    <Compile Include="Class Library\Marathon\cMarathonPlan.vb" />
+    <Compile Include="Class Library\Marathon\cMarathonPricerow.vb" />
+    <Compile Include="Class Library\Marathon\cMarathonProject.vb" />
+    <Compile Include="Class Library\Marathon\cMarathonClient.vb" />
+    <Compile Include="Class Library\Marathon\cMarathonTimeEntry.vb" />
+    <Compile Include="Class Library\Notes\cIni.vb" />
+    <Compile Include="Class Library\Notes\cNotes.vb" />
+    <Compile Include="Class Library\Notes\cNotesDocument.vb" />
+    <Compile Include="Class Library\Notes\cNotesInbox.vb" />
+    <Compile Include="Class Library\Notes\cNotesView.vb" />
+    <Compile Include="Class Library\Extensions\ExtendedComboboxColumnWrite\ExtendedComboboxColumnWrite.vb" />
+    <Compile Include="Class Library\Extensions\ExtendedComboboxColumnWrite\ExtendedComboBoxCellWrite.vb" />
+    <Compile Include="Class Library\Extensions\ExtendedComboboxColumnWrite\ComboboxEditingControlWrite.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class Library\Extensions\ColorExtensions.vb" />
+    <Compile Include="Class Library\Extensions\ExtendedTabControl\ExtendedTabControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class Library\Extensions\ExtendedDateTimePicker.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class Library\Extensions\ExtendedComboboxColumn\ComboboxEditingControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class Library\Extensions\ExtendedComboboxColumn\ExtendedComboBoxCell.vb" />
+    <Compile Include="Class Library\Extensions\ExtendedComboboxColumn\ExtendedComboboxColumn.vb" />
+    <Compile Include="Class Library\OtherMedia\cOtherMediaProducts.vb" />
+    <Compile Include="Class Library\OtherMedia\cOtherMedia.vb" />
+    <Compile Include="Class Library\OtherMedia\cOtherMediaProduct.vb" />
+    <Compile Include="Class Library\OtherMedia\cOtherMedias.vb" />
+    <Compile Include="Class Library\OtherMedia\cOtherMediaType.vb" />
+    <Compile Include="Class Library\OtherMedia\cOtherMediaWeek.vb" />
+    <Compile Include="Class Library\OtherMedia\cOtherMediaWeeks.vb" />
+    <Compile Include="Class Library\Screenshot\Screenshot.vb" />
+    <Compile Include="Class Library\cOutlook.vb" />
+    <Compile Include="Class Library\WebFileDownloader.vb" />
+    <Compile Include="frmAddChannelWizard.Designer.vb">
+      <DependentUpon>frmAddChannelWizard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddChannelWizard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnectContract.Designer.vb">
+      <DependentUpon>frmConnectContract.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConnectContract.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportCampaignToDatoramaExport.Designer.vb">
+      <DependentUpon>frmExportCampaignToDatoramaExport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportCampaignToDatoramaExport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportCampaignUnicornNorway.Designer.vb">
+      <DependentUpon>frmExportCampaignUnicornNorway.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportCampaignUnicornNorway.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportCampaignUnicorn_new.Designer.vb">
+      <DependentUpon>frmExportCampaignUnicorn_new.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportCampaignUnicorn_new.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFirstUse.Designer.vb">
+      <DependentUpon>frmFirstUse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFirstUse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportCampaigns.Designer.vb">
+      <DependentUpon>frmImportCampaigns.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportCampaigns.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActualSpotFilmNotFound.Designer.vb">
+      <DependentUpon>frmActualSpotFilmNotFound.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmActualSpotFilmNotFound.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdtooxFilmLibrary.Designer.vb">
+      <DependentUpon>frmAdtooxFilmLibrary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdtooxFilmLibrary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdtooxWindow.Designer.vb">
+      <DependentUpon>frmAdtooxWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdtooxWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChooseMTVNickComedy.Designer.vb">
+      <DependentUpon>frmChooseMTVNickComedy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmChooseMTVNickComedy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContractTarget.Designer.vb">
+      <DependentUpon>frmContractTarget.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmContractTarget.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateCampaign.Designer.vb">
+      <DependentUpon>frmCreateCampaign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateCampaign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateSpotlist.Designer.vb">
+      <DependentUpon>frmCreateSpotlist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateSpotlist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditCampaignName.Designer.vb">
+      <DependentUpon>frmEditCampaignName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditCampaignName.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmErrorReport.Designer.vb">
+      <DependentUpon>frmErrorReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmErrorReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEvaluateRBS.Designer.vb">
+      <DependentUpon>frmEvaluateRBS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEvaluateRBS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExtranet.Designer.vb">
+      <DependentUpon>frmExtranet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExtranet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFlashPlayer.Designer.vb">
+      <DependentUpon>frmFlashPlayer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFlashPlayer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHelp.Designer.vb">
+      <DependentUpon>frmHelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHelp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputDialog.Designer.vb">
+      <DependentUpon>frmInputDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInputDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinkCampaign.Designer.vb">
+      <DependentUpon>frmLinkCampaign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinkCampaign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLockedCampaign.Designer.vb">
+      <DependentUpon>frmLockedCampaign.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLockedCampaign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManualImport.Designer.vb">
+      <DependentUpon>frmManualImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmManualImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMultiChangeCampaigns.Designer.vb">
+      <DependentUpon>frmMultiChangeCampaigns.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMultiChangeCampaigns.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMultipleChoice.Designer.vb">
+      <DependentUpon>frmMultipleChoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMultipleChoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMultistart.Designer.vb">
+      <DependentUpon>frmMultistart.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMultistart.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewContractName.Designer.vb">
+      <DependentUpon>frmNewContractName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewContractName.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotesPassword.Designer.vb">
+      <DependentUpon>frmNotesPassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotesPassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOpenFromDB.Designer.vb">
+      <DependentUpon>frmOpenFromDB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOpenFromDB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOtherMediaperiod.Designer.vb">
+      <DependentUpon>frmOtherMediaperiod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOtherMediaperiod.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeople.Designer.vb">
+      <DependentUpon>frmPeople.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPeople.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPickBrands.Designer.vb">
+      <DependentUpon>frmPickBrands.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPickBrands.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPickExcelColumnHeader.Designer.vb">
+      <DependentUpon>frmPickExcelColumnHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPickExcelColumnHeader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPickSpecificsColumns.Designer.vb">
+      <DependentUpon>frmPickSpecificsColumns.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPickSpecificsColumns.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPivotDefinition.Designer.vb">
+      <DependentUpon>frmPivotDefinition.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPivotDefinition.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPivotTableDevEx.Designer.vb">
+      <DependentUpon>frmPivotTableDevEx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPivotTableDevEx.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlugins.Designer.vb">
+      <DependentUpon>frmPlugins.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlugins.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProblems.Designer.vb">
+      <DependentUpon>frmProblems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProblems.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuickCopy.Designer.vb">
+      <DependentUpon>frmQuickCopy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuickCopy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRAProgress.Designer.vb">
+      <DependentUpon>frmRAProgress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRAProgress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReadChannelSplit.Designer.vb">
+      <DependentUpon>frmReadChannelSplit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReadChannelSplit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRemoveSpotts.Designer.vb">
+      <DependentUpon>frmRemoveSpotts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRemoveSpotts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRFEstimationBreaks.Designer.vb">
+      <DependentUpon>frmRFEstimationBreaks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRFEstimationBreaks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectContract.Designer.vb">
+      <DependentUpon>frmSelectContract.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectContract.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowMarathonInsertions.Designer.vb">
+      <DependentUpon>frmShowMarathonInsertions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmShowMarathonInsertions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowMessage.Designer.vb">
+      <DependentUpon>frmShowMessage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmShowMessage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpecSpons.Designer.vb">
+      <DependentUpon>frmSpecSpons.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpecSpons.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpotControlImport.Designer.vb">
+      <DependentUpon>frmSpotControlImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpotControlImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAskForDate.Designer.vb">
+      <DependentUpon>frmAskForDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAskForDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDates.Designer.vb">
+      <DependentUpon>frmDates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDates.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDefineDayparts.Designer.vb">
+      <DependentUpon>frmDefineDayparts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDefineDayparts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDelivery.Designer.vb">
+      <DependentUpon>frmDelivery.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDelivery.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetailsWide.Designer.vb">
+      <DependentUpon>frmDetailsWide.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetailsWide.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnhancements.designer.vb">
+      <DependentUpon>frmEnhancements.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnhancements.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class Library\Helper.vb" />
+    <Compile Include="frmAddChannel.Designer.vb">
+      <DependentUpon>frmAddChannel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddChannel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChartLayout.Designer.vb">
+      <DependentUpon>frmChartLayout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmChartLayout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChooseAddedValue.Designer.vb">
+      <DependentUpon>frmChooseAddedValue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmChooseAddedValue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateRBS.Designer.vb">
+      <DependentUpon>frmCreateRBS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateRBS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditMarathon.Designer.vb">
+      <DependentUpon>frmEditMarathon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditMarathon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEstimation.Designer.vb">
+      <DependentUpon>frmEstimation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEstimation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExplain.Designer.vb">
+      <DependentUpon>frmExplain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExplain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltered.Designer.vb">
+      <DependentUpon>frmFiltered.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFiltered.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindTarget.Designer.vb">
+      <DependentUpon>frmFindTarget.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindTarget.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatrixExport.Designer.vb">
+      <DependentUpon>frmMatrixExport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMatrixExport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatrixLogin.Designer.vb">
+      <DependentUpon>frmMatrixLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMatrixLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMtrlSpec.Designer.vb">
+      <DependentUpon>frmMtrlSpec.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMtrlSpec.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDefine.Designer.vb">
+      <DependentUpon>frmDefine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDefine.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDefineChannels.Designer.vb">
+      <DependentUpon>frmDefineChannels.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDefineChannels.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEvaluateSpecifics.Designer.vb">
+      <DependentUpon>frmEvaluateSpecifics.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEvaluateSpecifics.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindFilmInLibrary.Designer.vb">
+      <DependentUpon>frmFindFilmInLibrary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFindFilmInLibrary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMarathon.Designer.vb">
+      <DependentUpon>frmMarathon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMarathon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewUser.Designer.vb">
+      <DependentUpon>frmNewUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPivottable.Designer.vb">
+      <DependentUpon>frmPivottable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPivottable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPostCampaignAnalysis.Designer.vb">
+      <DependentUpon>frmPostCampaignAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPostCampaignAnalysis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPricelist.Designer.vb">
+      <DependentUpon>frmPricelist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPricelist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintInvoice.Designer.vb">
+      <DependentUpon>frmPrintInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProgress.Designer.vb">
+      <DependentUpon>frmProgress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProgress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplashscreen.Designer.vb">
+      <DependentUpon>frmSplashscreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplashscreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreCampaignAnalysis.Designer.vb">
+      <DependentUpon>frmPreCampaignAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreCampaignAnalysis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreferences.Designer.vb">
+      <DependentUpon>frmPreferences.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreferences.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBudget.Designer.vb">
+      <DependentUpon>frmBudget.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBudget.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilmNotFound.Designer.vb">
+      <DependentUpon>frmFilmNotFound.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFilmNotFound.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExportSpotlist.Designer.vb">
+      <DependentUpon>frmExportSpotlist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportSpotlist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBooking.Designer.vb">
+      <DependentUpon>frmBooking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBooking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmColumns.Designer.vb">
+      <DependentUpon>frmColumns.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmColumns.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetails.Designer.vb">
+      <DependentUpon>frmDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImport.Designer.vb">
+      <DependentUpon>frmImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInfo.Designer.vb">
+      <DependentUpon>frmInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLab.Designer.vb">
+      <DependentUpon>frmLab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLab.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMonitor.Designer.vb">
+      <DependentUpon>frmMonitor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMonitor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotes.Designer.vb">
+      <DependentUpon>frmNotes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddProduct.Designer.vb">
+      <DependentUpon>frmAddProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddClient.Designer.vb">
+      <DependentUpon>frmAddClient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddClient.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAllocate.Designer.vb">
+      <DependentUpon>frmAllocate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAllocate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContract.Designer.vb">
+      <DependentUpon>frmContract.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmContract.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPeriod.Designer.vb">
+      <DependentUpon>frmPeriod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPeriod.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintBooking.Designer.vb">
+      <DependentUpon>frmPrintBooking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintBooking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRFEst.Designer.vb">
+      <DependentUpon>frmRFEst.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRFEst.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetup.Designer.vb">
+      <DependentUpon>frmSetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpotControl.Designer.vb">
+      <DependentUpon>frmSpotControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpotControl.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpotControlMatch.Designer.vb">
+      <DependentUpon>frmSpotControlMatch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpotControlMatch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpots.Designer.vb">
+      <DependentUpon>frmSpots.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpots.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSync.Designer.vb">
+      <DependentUpon>frmSync.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSync.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThreeChoices.Designer.vb">
+      <DependentUpon>frmThreeChoices.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmThreeChoices.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTweak.Designer.vb">
+      <DependentUpon>frmTweak.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTweak.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUncaughtException.Designer.vb">
+      <DependentUpon>frmUncaughtException.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUncaughtException.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUploadSchedule.Designer.vb">
+      <DependentUpon>frmUploadSchedule.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUploadSchedule.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GfxSchedule.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="gfxSchedule2.Designer.vb">
+      <DependentUpon>gfxSchedule2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gfxSchedule2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImportSchedule.vb" />
+    <Compile Include="Charts.vb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="OptionsPicker.Designer.vb">
+      <DependentUpon>OptionsPicker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsPicker.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pivot.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmManageBundles.Designer.vb">
+      <DependentUpon>frmManageBundles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageBundles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class Library\Extensions\ExtendedTabControl\TabSelectionChangingArgs.vb" />
+    <Compile Include="Class Library\Extensions\StylableCombobox\StyleableCombobox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class Library\Extensions\StylableCombobox\StyleableComboboxStyle.vb" />
+    <Compile Include="Statistics.vb" />
+    <Compile Include="Trinity.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Class Library\frmPerformance.resx">
+      <DependentUpon>frmPerformance.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddChannelWizard.resx">
+      <DependentUpon>frmAddChannelWizard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConnectContract.resx">
+      <DependentUpon>frmConnectContract.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportCampaignToDatoramaExport.resx">
+      <DependentUpon>frmExportCampaignToDatoramaExport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportCampaignUnicornNorway.resx">
+      <DependentUpon>frmExportCampaignUnicornNorway.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportCampaignUnicorn_new.resx">
+      <DependentUpon>frmExportCampaignUnicorn_new.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFirstUse.resx">
+      <DependentUpon>frmFirstUse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportCampaigns.resx">
+      <DependentUpon>frmImportCampaigns.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmActualSpotFilmNotFound.resx">
+      <DependentUpon>frmActualSpotFilmNotFound.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdtooxFilmLibrary.resx">
+      <DependentUpon>frmAdtooxFilmLibrary.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdtooxWindow.resx">
+      <DependentUpon>frmAdtooxWindow.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChooseMTVNickComedy.resx">
+      <DependentUpon>frmChooseMTVNickComedy.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContractTarget.resx">
+      <DependentUpon>frmContractTarget.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateCampaign.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCreateCampaign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateSpotlist.resx">
+      <DependentUpon>frmCreateSpotlist.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditCampaignName.resx">
+      <DependentUpon>frmEditCampaignName.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmErrorReport.resx">
+      <DependentUpon>frmErrorReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEvaluateRBS.resx">
+      <DependentUpon>frmEvaluateRBS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExtranet.resx">
+      <DependentUpon>frmExtranet.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFlashPlayer.resx">
+      <DependentUpon>frmFlashPlayer.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHelp.resx">
+      <DependentUpon>frmHelp.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputDialog.resx">
+      <DependentUpon>frmInputDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinkCampaign.resx">
+      <DependentUpon>frmLinkCampaign.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLockedCampaign.resx">
+      <DependentUpon>frmLockedCampaign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManualImport.resx">
+      <DependentUpon>frmManualImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMultiChangeCampaigns.resx">
+      <DependentUpon>frmMultiChangeCampaigns.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMultipleChoice.resx">
+      <DependentUpon>frmMultipleChoice.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMultistart.resx">
+      <DependentUpon>frmMultistart.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewContractName.resx">
+      <DependentUpon>frmNewContractName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotesPassword.resx">
+      <DependentUpon>frmNotesPassword.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOpenFromDB.resx">
+      <DependentUpon>frmOpenFromDB.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOtherMediaperiod.resx">
+      <DependentUpon>frmOtherMediaperiod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeople.resx">
+      <DependentUpon>frmPeople.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPickBrands.resx">
+      <DependentUpon>frmPickBrands.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPickExcelColumnHeader.resx">
+      <DependentUpon>frmPickExcelColumnHeader.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPickSpecificsColumns.resx">
+      <DependentUpon>frmPickSpecificsColumns.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPivotDefinition.resx">
+      <DependentUpon>frmPivotDefinition.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPivotTableDevEx.resx">
+      <DependentUpon>frmPivotTableDevEx.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlugins.resx">
+      <DependentUpon>frmPlugins.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProblems.resx">
+      <DependentUpon>frmProblems.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuickCopy.resx">
+      <DependentUpon>frmQuickCopy.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRAProgress.resx">
+      <DependentUpon>frmRAProgress.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReadChannelSplit.resx">
+      <DependentUpon>frmReadChannelSplit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRemoveSpotts.resx">
+      <DependentUpon>frmRemoveSpotts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRFEstimationBreaks.resx">
+      <DependentUpon>frmRFEstimationBreaks.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectContract.resx">
+      <DependentUpon>frmSelectContract.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowMarathonInsertions.resx">
+      <DependentUpon>frmShowMarathonInsertions.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowMessage.resx">
+      <DependentUpon>frmShowMessage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpecSpons.resx">
+      <DependentUpon>frmSpecSpons.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpotControlImport.resx">
+      <DependentUpon>frmSpotControlImport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAskForDate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAskForDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDates.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDefineDayparts.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDefineDayparts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDelivery.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDelivery.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetailsWide.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDetailsWide.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnhancements.resx">
+      <DependentUpon>frmEnhancements.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddChannel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAddChannel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChartLayout.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmChartLayout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChooseAddedValue.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmChooseAddedValue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateRBS.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCreateRBS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditMarathon.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEditMarathon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEstimation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEstimation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExplain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmExplain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFiltered.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFiltered.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFindTarget.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFindTarget.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMatrixExport.resx">
+      <DependentUpon>frmMatrixExport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMatrixLogin.resx">
+      <DependentUpon>frmMatrixLogin.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMtrlSpec.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMtrlSpec.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDefine.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDefine.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDefineChannels.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDefineChannels.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEvaluateSpecifics.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEvaluateSpecifics.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFindFilmInLibrary.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFindFilmInLibrary.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMarathon.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMarathon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewUser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmNewUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPivottable.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPivottable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPostCampaignAnalysis.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPostCampaignAnalysis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreCampaignAnalysis.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPreCampaignAnalysis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreferences.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPreferences.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBudget.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmBudget.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFilmNotFound.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFilmNotFound.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExportSpotlist.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmExportSpotlist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddClient.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAddClient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddProduct.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAddProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAllocate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAllocate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBooking.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmBooking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmColumns.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmColumns.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContract.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmContract.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetails.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLab.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLab.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMonitor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMonitor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotes.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmNotes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPeriod.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPeriod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPricelist.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPricelist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintBooking.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPrintBooking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintInvoice.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPrintInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProgress.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmProgress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRFEst.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRFEst.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetup.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSetup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplashscreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSplashscreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpotControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSpotControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpotControlMatch.resx">
+      <DependentUpon>frmSpotControlMatch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpots.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSpots.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSync.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSync.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThreeChoices.resx">
+      <DependentUpon>frmThreeChoices.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTweak.resx">
+      <DependentUpon>frmTweak.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUncaughtException.resx">
+      <DependentUpon>frmUncaughtException.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUploadSchedule.resx">
+      <DependentUpon>frmUploadSchedule.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gfxSchedule2.resx">
+      <DependentUpon>gfxSchedule2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsPicker.resx">
+      <DependentUpon>OptionsPicker.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageBundles.resx">
+      <DependentUpon>frmManageBundles.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\flag_sweden.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\flag_denmark.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\flag_norway.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\add2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\edit.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\businessman.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\businessman2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\businessmen.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\users_family.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\money2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\delete2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\document.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\folder.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\calendar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\redo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Class Diagrams\PriceList.cd" />
+    <None Include="clTrinity_TemporaryKey.pfx" />
+    <None Include="Icons\flash.gif" />
+    <None Include="Class Diagrams\SpotsDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{00000205-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Connect">
+      <Guid>{B220DF47-1F54-4D7C-A042-EED01A7CE585}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Outlook">
+      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="MSHTML">
+      <Guid>{3050F1C5-98B5-11CF-BB82-00AA00BDCE0B}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.gif" />
+    <None Include="Resources\arrow_right_green.gif" />
+    <None Include="Resources\marathon.jpg" />
+    <None Include="Resources\marathon1.jpg" />
+    <None Include="Resources\laptop2.gif" />
+    <None Include="Resources\laptop.gif" />
+    <None Include="Resources\radio.gif" />
+    <None Include="Resources\movie.gif" />
+    <None Include="Resources\warning1.gif" />
+    <None Include="Resources\copy.gif" />
+    <None Include="Resources\arrow_right_green1.gif" />
+    <None Include="Resources\arrow_left_green.gif" />
+    <None Include="Resources\import1.gif" />
+    <None Include="Resources\calculator.gif" />
+    <None Include="Resources\box_into.gif" />
+    <None Include="Resources\clock_reset.gif" />
+    <None Include="Resources\imdb16x16.png" />
+    <None Include="Resources\star_grey.gif" />
+    <None Include="Resources\star_yellow.gif" />
+    <None Include="Resources\info_2.png" />
+    <None Include="Resources\lab_2.png" />
+    <None Include="Resources\monitor_2.png" />
+    <None Include="Resources\new_document_2.png" />
+    <None Include="Resources\notes_2.png" />
+    <None Include="Resources\open_2.png" />
+    <None Include="Resources\pivot_2.png" />
+    <None Include="Resources\reports_2.png" />
+    <None Include="Resources\setup_2.png" />
+    <None Include="Resources\target_group_2.png" />
+    <None Include="Resources\unlock_2.png" />
+    <None Include="Resources\1472739636_files-folders-15.png" />
+    <None Include="Resources\1472739668_download.png" />
+    <None Include="Resources\add_2.png" />
+    <None Include="Resources\allocate_2.png" />
+    <None Include="Resources\attention_2.png" />
+    <None Include="Resources\book_2.png" />
+    <None Include="Resources\budget_2.png" />
+    <None Include="Resources\delete_2.png" />
+    <None Include="Resources\delivery_2.png" />
+    <None Include="Resources\history_2.png" />
+    <None Include="Resources\question_2.png" />
+    <None Include="Resources\excel_2.png" />
+    <None Include="Resources\connect_2.png" />
+    <None Include="Resources\edit_note_2.png" />
+    <None Include="Resources\pin_2.png" />
+    <None Include="Resources\calculator_2.png" />
+    <None Include="Resources\handshake_2.png" />
+    <None Include="Resources\planner_buyer_2_2.png" />
+    <None Include="Resources\planner_buyer_2.png" />
+    <None Include="Resources\calender_2.png" />
+    <None Include="Resources\edit_note_3.png" />
+    <None Include="Resources\delete_3.png" />
+    <None Include="Resources\money_bag_2.png" />
+    <None Include="Resources\monitor_3.png" />
+    <None Include="Resources\quick_add_2.png" />
+    <None Include="Resources\flash_2.png" />
+    <None Include="Resources\add_3.png" />
+    <None Include="Resources\add_2_small.png" />
+    <None Include="Resources\add_more_2_small.png" />
+    <None Include="Resources\delete_2_small.png" />
+    <None Include="Resources\calculator_2_small.png" />
+    <None Include="Resources\flash_2_small.png" />
+    <None Include="Resources\add_more_2_small_org.png" />
+    <None Include="Resources\people_2.png" />
+    <None Include="Resources\save_2_small.png" />
+    <None Include="Resources\film_2_small.png" />
+    <None Include="Resources\play_2_small.png" />
+    <None Include="Resources\find_2_small.png" />
+    <None Include="Resources\copy_2_small.png" />
+    <None Include="Resources\edit_note_2_small.png" />
+    <None Include="Resources\lock_2_small.png" />
+    <None Include="Resources\sync_2_small.png" />
+    <None Include="Resources\calender_2_small.png" />
+    <None Include="Resources\lab_2_small.png" />
+    <None Include="Resources\apply_2_small.png" />
+    <None Include="Resources\film_3_small.png" />
+    <None Include="Resources\film_3_24x24.png" />
+    <None Include="Resources\arrow_down_2_20x20.png" />
+    <None Include="Resources\notes_small_16x16.png" />
+    <None Include="Resources\search_2_16x16.png" />
+    <None Include="Resources\db_2_16x16.png" />
+    <None Include="Resources\copy_3_16x16.png" />
+    <None Include="Resources\db_2_18x24.png" />
+    <None Include="Resources\calculator_2_32x32.png" />
+    <None Include="Resources\bank_2_24x24.png" />
+    <None Include="Resources\bank_2_32x32.png" />
+    <None Include="Resources\sync_2_24x23.png" />
+    <None Include="Resources\compress_2_24x32.png" />
+    <None Include="Resources\arrow_down_20x20.png" />
+    <None Include="Resources\arrow_up_20x20.png" />
+    <None Include="Resources\info_2_20x20.png" />
+    <None Include="Resources\magic_wand_2_16.x16.png" />
+    <None Include="Resources\export_budget_2_16x16.png" />
+    <None Include="Resources\lock_2_16x16.png" />
+    <None Include="Resources\miscellaneous_2_16x16.png" />
+    <None Include="Resources\columns_2_16x16.png" />
+    <None Include="Resources\light_bulb_2_12x20.png" />
+    <None Include="Resources\transfer_2_16x16.png" />
+    <None Include="Resources\change_film_2_20x20.png" />
+    <None Include="Resources\add_added_values_2_16x16.png" />
+    <None Include="Resources\chart_2_24x24.png" />
+    <None Include="Resources\added_value_3_15x16.png" />
+    <None Include="Resources\added_value_3_30x32.png" />
+    <None Include="Resources\columns_2_32x32.png" />
+    <None Include="Resources\cash_machine_2_16x16.png" />
+    <None Include="Resources\clock_2_24x24.png" />
+    <None Include="Resources\clock_2_16x16.png" />
+    <None Include="Resources\magic_wand_2_24x24.png" />
+    <None Include="Resources\new_document_3_16x16.png" />
+    <None Include="Resources\settings_2_20x20.png" />
+    <None Include="Resources\help_2_16x16.png" />
+    <None Include="Resources\help_2_20x20.png" />
+    <None Include="Resources\check_2_16x16.png" />
+    <None Include="Resources\display_2_20x20.png" />
+    <None Include="Resources\world_2_24x24.png" />
+    <None Include="Resources\world_2_16x16.png" />
+    <None Include="Resources\right_arrow_64x64.png" />
+    <None Include="Resources\db_2_24x32.png" />
+    <None Include="Resources\conect_2_29x32.png" />
+    <None Include="Resources\lock_2_24x24.png" />
+    <None Include="Resources\image_2_16x16.png" />
+    <None Include="Resources\image_2_24x24.png" />
+    <None Include="Resources\frequncy_2_16x16.png" />
+    <None Include="Resources\broadcast_2.png" />
+    <None Include="Resources\save_2.png" />
+    <None Include="Resources\calender_2_32x32.png" />
+    <None Include="Resources\restore_2_16x16.png" />
+    <None Include="Resources\jump_forward_2_24x24.png" />
+    <None Include="Resources\move_to_next_2_16x16.png" />
+    <None Include="Resources\arrow_left_2_16x16.png" />
+    <None Include="Resources\arrow_right_2_16x16.png" />
+    <None Include="Resources\arrow_left_3_16x16.png" />
+    <None Include="Resources\arrow_right_3_16x16.png" />
+    <None Include="Resources\arrow_up_2_20x20.png" />
+    <None Include="Resources\arrow_dowm_2_20x20.png" />
+    <None Include="Resources\upload_2_32x32.png" />
+    <None Include="Resources\upload_2_16x16.png" />
+    <None Include="Resources\search_2_20x20.png" />
+    <None Include="Resources\preview_2_24x24.png" />
+    <None Include="Resources\new_file_4_16x16.png" />
+    <None Include="Resources\split_2_20x20.png" />
+    <None Include="Resources\import_schedule_2_16x16.png" />
+    <None Include="Resources\delete_3_16x16.png" />
+    <None Include="Resources\gear_2_24x24.png" />
+    <None Include="Resources\automatch_2_20x20.png" />
+    <None Include="Resources\split_3_20x20.png" />
+    <None Include="Resources\analysis_2_30x30.png" />
+    <Content Include="trinity_new.ico" />
+    <None Include="Resources\disk_blue2.gif" />
+    <Content Include="tv4.gif" />
+    <None Include="bin\Debug\autosave.cmp" />
+    <None Include="bin\Debug\Trinity.vshost.exe.manifest" />
+    <None Include="Icons\magic-wand.gif" />
+    <None Include="Icons\32x32\gear_delete.gif" />
+    <None Include="Icons\32x32\gear_delete2.gif" />
+    <None Include="My Project\app.manifest" />
+    <None Include="Resources\excel.gif" />
+    <None Include="Resources\about.gif" />
+    <None Include="Resources\flag_red.gif" />
+    <None Include="Resources\notebook.gif" />
+    <None Include="Resources\excel1.gif" />
+    <None Include="Resources\environment.gif" />
+    <None Include="Resources\navigate_right.gif" />
+    <None Include="Resources\navigate_left.gif" />
+    <None Include="Resources\navigate_up.gif" />
+    <None Include="Resources\navigate_down.gif" />
+    <None Include="Resources\navigate_up1.gif" />
+    <None Include="Resources\navigate_down1.gif" />
+    <None Include="Resources\refresh.gif" />
+    <None Include="Resources\Adtoox_16x16.png" />
+    <None Include="Resources\Adtoox_32x32_play.png" />
+    <None Include="Resources\media_play_green.gif" />
+    <None Include="Resources\add.gif" />
+    <None Include="Resources\link.gif" />
+    <None Include="Resources\link1.gif" />
+    <None Include="Resources\calendar.gif" />
+    <Content Include="bin\Debug\AxInterop.OWC11.dll" />
+    <Content Include="bin\Debug\Microsoft.Office.Interop.Owc11.dll" />
+    <Content Include="bin\Debug\Trinity.vshost.exe" />
+    <Content Include="bin\Debug\Trinity.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\Debug\version.xml" />
+    <Content Include="bin\Debug\versions.xml" />
+    <None Include="Resources\checkmark.png" />
+    <None Include="Resources\CheckMarkX.jpg" />
+    <None Include="Resources\data.gif" />
+    <None Include="Resources\warning.gif" />
+    <None Include="Resources\information.gif" />
+    <None Include="Resources\find.gif" />
+    <None Include="Resources\check2.gif" />
+    <None Include="Resources\check.gif" />
+    <None Include="Resources\view.gif" />
+    <None Include="Resources\gear_ok.gif" />
+    <None Include="Resources\gear_error.gif" />
+    <None Include="Resources\error.gif" />
+    <None Include="Resources\cube_green_add.gif" />
+    <None Include="Resources\data_into.gif" />
+    <None Include="Resources\lock.gif" />
+    <None Include="Resources\disk_blue1.gif" />
+    <None Include="Resources\handshake.gif" />
+    <Resource Include="Resources\tv4.gif" />
+    <None Include="Resources\tv41.gif" />
+    <None Include="Resources\tv4.bmp" />
+    <Content Include="Trinity.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Projects\ConnectWrapper\ConnectWrapper.csproj">
+      <Project>{A0228581-7C2A-4127-BB42-AC5E673C477D}</Project>
+      <Name>ConnectWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScheduleUploader\ScheduleUploader\ScheduleUploader.vbproj">
+      <Project>{5decc64d-f37d-4123-b7b2-12102ef517be}</Project>
+      <Name>ScheduleUploader</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

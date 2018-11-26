@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="clTrinity.Trinity.cActualSpot">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Class Library\cActualSpot.vb</FileName>
+      <HashCode>YAACABAhIBDAgCAAAACAiKAAQGRUIAUAgIEABAAAAAQ=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="clTrinity.Trinity.cActualSpot.EnumBreakType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Trinity.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="clTrinity.Trinity.cActualSpot.ActualTargetEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Trinity.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="clTrinity.Trinity.cActualSpots" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Class Library\cActualSpots.vb</FileName>
+      <HashCode>AAIAAAIAAAAAQBABAAAABAQEAEAEAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="clTrinity.Trinity.cPlannedSpot">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Class Library\cPlannedSpot.vb</FileName>
+      <HashCode>QEAmABAhABpggDAAACCAQbwUgCZUpEAIAS0gDIAAQUQ=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="clTrinity.Trinity.cPlannedSpot.EstEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Trinity.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="clTrinity.Trinity.cPlannedSpot.PlaceEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Trinity.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="clTrinity.Trinity.cPlannedSpot.PlannedTargetEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Trinity.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="clTrinity.Trinity.cPlannedSpots" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Class Library\cPlannedSpots.vb</FileName>
+      <HashCode>AAIAAAAAAAAAABAAAAAABAQEAEAEAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="clTrinity.Trinity.cBookedSpots" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Class Library\cBookedSpots.vb</FileName>
+      <HashCode>AAIAAAAAAAAAABAAAAAABAQEAEAEAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="clTrinity.Trinity.cBookedSpot">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Class Library\cBookedSpot.vb</FileName>
+      <HashCode>QQggCBAhABgggSAAESCgQKAEgCIUrAAIkACADUAAYAA=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="clTrinity.Trinity.cBookedSpot.PlaceEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Trinity.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="clTrinity.Trinity.cSpot">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Class Library\cSpot.vb</FileName>
+      <HashCode>SAAAAAAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="clTrinity.Trinity.cSpots" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Class Library\cSpots.vb</FileName>
+      <HashCode>AAIAAAAAAAAAABAAAAAAREQEAEAAAAgAAAAAAABAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+</ClassDiagram>

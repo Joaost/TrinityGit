@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F82719E1-2A07-4232-8884-B4DC889FF386}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Animation</RootNamespace>
+    <AssemblyName>Animation</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Animation.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Animation.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BalthazarAnimation.vb" />
+    <Compile Include="frmAnimation.Designer.vb">
+      <DependentUpon>frmAnimation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAnimation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ProgressBar.Designer.vb">
+      <DependentUpon>ProgressBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressBar.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmAnimation.resx">
+      <DependentUpon>frmAnimation.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressBar.resx">
+      <DependentUpon>ProgressBar.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör12.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör13.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör15.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör16.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör17.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör18.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör19.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör20.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör22.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör23.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör24.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör25.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör26.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör27.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör28.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör30.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör31.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör32.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör33.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör34.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör35.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör36.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör37.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör38.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör39.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör40.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör41.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör42.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör43.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör44.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör45.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör46.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör47.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör48.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör49.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör50.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör51.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör53.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör54.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör55.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rör9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\balt.wav" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

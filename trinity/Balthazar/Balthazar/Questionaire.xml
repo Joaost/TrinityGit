@@ -1,0 +1,106 @@
+<Questionaires>
+  <Questionaire Name="Återrapportering Vicks Icebergs" DatabaseID="1" Validate="False">
+    <input validate="true" type="text" name="namn" value="" text="Ditt namn:" data=""></input>
+    <input type="text" name="arbetsgivare" value="" text="Din arbetsgivare (personalleverantör):" data=""></input>
+    <input type="text" name="kontakt" value="" text="Kontakt i butik:" data=""></input>
+    <input type="text" name="säljare" value="" text="Vickssäljare:" data=""></input>
+    <output type="text" name="" value="" text="" />
+    <output type="data" name="butik" value="location" text="Butik:" />
+    <output type="data" name="stad" value="city" text="Stad:" />
+    <output type="text" name="" value="" text="" />
+    <output type="data" name="vecka" value="week" text="Vecka:" />
+    <output type="data" name="dag" value="weekday" text="Veckodag:" />
+    <output type="text" name="" value="" text="" />
+    <output type="line" />
+    <group name="Vicks Halstabletter">
+      <output type="text" name="" value="Vicks Halstabletter" text="Produkt:" />
+      <input type="number" name="halstabletter_provsmak" value="" text="Antal Provsmak" data="" unit=""></input>
+      <input type="number" name="halstabletter_kontakter" value="" text="Antal Kontakter" data="" unit=""></input>
+      <input type="number" name="halstabletter_förpackningar" value="" text="Försäljning på demodagen (Antal förpackningar)" data="" unit=""></input>
+      <input type="number" name="halstabletter_ord. försäljning" value="" text="Ord. försäljning" data="" unit=""></input>
+    </group>
+    <group name="Vicks Icebergs">
+      <output type="text" name="" value="Vicks Icebergs" text="Produkt:" />
+      <input type="number" name="icebergs_provsmak" value="" text="Antal Provsmak" data="" unit=""></input>
+      <input type="number" name="icebergs_kontakter" value="" text="Antal Kontakter" data="" unit=""></input>
+      <input type="number" name="icebergs_förpackningar" value="" text="Försäljning på demodagen (Antal förpackningar)" data="" unit=""></input>
+      <input type="number" name="icebergs_ord. försäljning" value="" text="Ord. försäljning" data="" unit=""></input>
+    </group>
+    <output type="text" name="" value="" text="" />
+    <output type="text" name="" value="Klicka i lämpligt svaralternativ på kundernas upplevelser och beskriv reaktionerna med ord i fälten under" text="" />
+    <output type="text" name="" value="" text="" />
+    <output type="headline" name="" value="VICKS HALSTABLETTER" />
+    <input type="rating" name="halstabletter_smakreaktion" values="5" text="Reaktion på smak" left_text="Mkt dåligt" right_text="Mkt bra"></input>
+    <input type="rating" name="halstabletter_intresse" values="5" text="Konsumentintresse" left_text="Mkt litet" right_text="Mkt stort"></input>
+    <input type="rating" name="halstabletter_prisreaktion" values="5" text="Reaktion på pris" left_text="Mkt dyr" right_text="Mkt prisvärd"></input>
+    <input type="rating" name="halstabletter_förpackning" values="5" text="Förpackning" left_text="Mkt dålig" right_text="Mkt bra"></input>
+    <input type="singlechoice" name="halstabletter_åldersgrupp" text="Åldersgrupp mest positiva:">
+      <choice value="1" text="0-15" />
+      <choice value="2" text="16-30" />
+      <choice value="3" text="31-45" />
+      <choice value="4" text="46-60" />
+      <choice value="5" text="61-" />
+    </input>
+    <input type="singlechoice" name="halstabletter_kön" text="Vilka visade störst intresse:">
+      <choice value="1" text="Kvinnor" />
+      <choice value="2" text="Män" />
+      <choice value="3" text="Lika mycket" />
+    </input>
+    <input type="text" name="halstabletter_var i butiken" value="" text="Var i butiken stod du:" data=""></input>
+    <input type="singlechoice" name="halstabletter_rabattkupong" text="Fanns det erbjudande/rabattkupong?">
+      <choice value="1" text="Ja" />
+      <choice value="2" text="Nej" />
+    </input>
+    <input type="number" name="halstabletter_kännedom" value="" text="Andel av kontakterna du uppskattar kände till produkten:" data="" unit=""></input>
+    <output type="text" name="" value="Kundkommentarer om Vicks Halstabletter (de vanligaste)" text="" />
+    <input validate="false" type="textarea" name="halstabletter_positiva" value="" text="Positiva" data=""></input>
+    <input validate="false" type="textarea" name="halstabletter_negativa" value="" text="Negativa" data=""></input>
+    <output type="text" name="" value="" text="" />
+    <output type="headline" name="" value="VICKS ICEBERGS" />
+    <input type="rating" name="icebergs_smakreaktion" values="5" text="Reaktion på smak" left_text="Mkt dåligt" right_text="Mkt bra"></input>
+    <input type="rating" name="icebergs_intresse" values="5" text="Konsumentintresse" left_text="Mkt litet" right_text="Mkt stort"></input>
+    <input type="rating" name="icebergs_prisreaktion" values="5" text="Reaktion på pris" left_text="Mkt dyr" right_text="Mkt prisvärd"></input>
+    <input type="rating" name="icebergs_förpackning" values="5" text="Förpackning" left_text="Mkt dålig" right_text="Mkt bra"></input>
+    <input type="singlechoice" name="icebergs_åldersgrupp" text="Åldersgrupp mest positiva:">
+      <choice value="1" text="0-15" />
+      <choice value="2" text="16-30" />
+      <choice value="3" text="31-45" />
+      <choice value="4" text="46-60" />
+      <choice value="5" text="61-" />
+    </input>
+    <input type="singlechoice" name="icebergs_kön" text="Vilka visade störst intresse:">
+      <choice value="1" text="Kvinnor" />
+      <choice value="2" text="Män" />
+      <choice value="3" text="Lika mycket" />
+    </input>
+    <input type="text" name="icebergs_var i butiken" value="" text="Var i butiken stod du:" data=""></input>
+    <input type="singlechoice" name="icebergs_rabattkupong" text="Fanns det erbjudande/rabattkupong?">
+      <choice value="1" text="Ja" />
+      <choice value="2" text="Nej" />
+    </input>
+    <input type="number" name="icebergs_kännedom" value="" text="Andel av kontakterna du uppskattar kände till produkten:" data="" unit=""></input>
+    <output type="text" name="" value="Kundkommentarer om Vicks Icebergs (de vanligaste)" text="" />
+    <input validate="false" type="textarea" name="icebergs_positiva" value="" text="Positiva" data=""></input>
+    <input validate="false" type="textarea" name="icebergs_negativa" value="" text="Negativa" data=""></input>
+    <output type="text" name="" value="" text="" />
+    <output type="text" name="" value="Egna kommentarer om aktiviteten" text="" />
+    <input validate="false" type="textarea" name="positiva" value="" text="Positiva" data=""></input>
+    <input validate="false" type="textarea" name="negativa" value="" text="Negativa" data=""></input>
+  </Questionaire>
+  <Questionaire Name="Bedömning av butiksaktivitet" DatabaseID="0" Validate="True">
+    <output type="headline" name="" value="Vicks Blur Halstabletter och Icebergs" />
+    <output type="text" name="" value="" text="" />
+    <output type="headline" name="" value="(Ska fyllas i av butiksrepresentant)" />
+    <output type="text" name="" value="" text="" />
+    <output type="text" name="" value="" text="" />
+    <output type="text" name="" value="" text="" />
+    <output type="text" name="" value="Betyg 1-10, 1=mycket dåligt, 10=mycket bra" text="" />
+    <input type="rating" name="" values="10" text="Demonstratrisens insats" left_text="" right_text=""></input>
+    <input type="rating" name="" values="10" text="Försäljningen?" left_text="" right_text=""></input>
+    <input type="rating" name="" values="10" text="Totalintrycket av aktiviteten" left_text="" right_text=""></input>
+    <output type="text" name="" value="" text="" />
+    <input type="text" name="" value="" text="Namn:" data=""></input>
+    <output type="data" name="" value="date" text="Datum:" />
+    <input type="text" name="" value="" text="Butik:" data=""></input>
+  </Questionaire>
+</Questionaires>

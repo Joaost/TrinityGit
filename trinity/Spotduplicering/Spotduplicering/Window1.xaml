@@ -1,0 +1,51 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/wpf/2008/toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="Window1"
+    Title="Huvudfönster" BorderThickness="0" Icon="telia48.ico" IsEnabled="True" WindowStyle="ToolWindow" Background="{DynamicResource MEC_BackgroundBrush}" HorizontalAlignment="Left" mc:Ignorable="d"  Height="400" Width="1000" ResizeMode="NoResize">
+  
+    <Grid>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="0.282*"/>
+    		<ColumnDefinition Width="0.171*"/>
+    		<ColumnDefinition Width="0.007*"/>
+    		<ColumnDefinition Width="0.072*"/>
+    		<ColumnDefinition Width="0.06*"/>
+    		<ColumnDefinition Width="0.035*"/>
+    		<ColumnDefinition Width="0.106*"/>
+    		<ColumnDefinition Width="0.036*"/>
+    		<ColumnDefinition Width="0.231*"/>
+    	</Grid.ColumnDefinitions>
+      <toolkit:DatePicker Height="30" VerticalAlignment="Top" Margin="10,23,52,0" x:Name="fromDate" BorderThickness="0" Opacity="1" Text="Startdatum">
+
+        <toolkit:DatePicker.BlackoutDates>
+
+          <toolkit:CalendarDateRange Start="4/1/2008" End="4/6/2008"/>
+
+          <toolkit:CalendarDateRange Start="4/14/2008" End="4/17/2008"/>
+
+        </toolkit:DatePicker.BlackoutDates>
+
+      </toolkit:DatePicker>
+        <my:DatePicker xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Height="30" Margin="-49,23,43.698,0" x:Name="toDate" VerticalAlignment="Top" BorderThickness="0" Text="d" Grid.Column="1">
+            <my:DatePicker.BlackoutDates>
+                <my:CalendarDateRange End="2008-04-06" Start="2008-04-01" />
+                <my:CalendarDateRange End="2008-04-17" Start="2008-04-14" />
+            </my:DatePicker.BlackoutDates>
+        </my:DatePicker>
+        <ProgressBar Height="20" Width="400" Margin="10,77,0,0" x:Name="prgSpots" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
+            
+        </ProgressBar>
+        <ProgressBar Margin="10,119,0,0" x:Name="prgExcel" Width="400" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox">
+           
+        </ProgressBar>
+        <Button Height="23" Margin="7.224,88,-13.992,0" x:Name="Button1" VerticalAlignment="Top" Grid.Column="3" Content="Kör" Grid.ColumnSpan="3" />
+        <Button Height="23" Margin="7.224,116,-13.992,0" x:Name="cmdChange" VerticalAlignment="Top" Grid.Column="3" Content="Andra märken" Grid.ColumnSpan="3" />
+        <Label Height="28" Margin="10,55,42,0" x:Name="Label1" VerticalAlignment="Top" Content="Hämta spottar"/>
+        <Label Height="28" Margin="10,97,42,0" x:Name="Label2" VerticalAlignment="Top" Content="Skapa Excel"/>
+        <Label Height="28" Margin="10,0,42,0" x:Name="Label3" VerticalAlignment="Top" Content="Från"/>
+        <Label Height="28" Margin="-49,0,33.698,0" x:Name="Label4" VerticalAlignment="Top" Grid.Column="1" Content="Till"/>
+        <Label Margin="70,149,-12.296,155" x:Name="lblWhatsHappening" Grid.ColumnSpan="6"/>
+    </Grid>
+</Window>
