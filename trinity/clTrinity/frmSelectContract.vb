@@ -77,9 +77,8 @@
     Private Sub txtSearchBox_TextChanged(sender As Object, e As EventArgs) Handles txtSearchBox.TextChanged
         populateContract(txtSearchBox.Text)
     End Sub
-
     'Added a textfield in the searcharea to make it more user friendly
-    'joos
+    'JOOS
     Private Sub frmSelectContract_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         txtSearchBox.Text = "Search..."
         populateContract()
@@ -120,6 +119,8 @@
             End If
         End If
     End Sub
+    '2018-11-26, JOOS'
+    'Added Events to display "Search..."'
     Private Sub txtSearchBox_Leave(sender As Object, e As EventArgs) Handles txtSearchBox.Leave
         If txtSearchBox.Text = "" Then
             txtSearchBox.Text = "Search..."
