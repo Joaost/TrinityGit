@@ -16,17 +16,18 @@ namespace connect
                 var TmpAdedge = new Connect.Brands();
                 int SpotCount = 0;
 
+                //Parameters for the Adedge objects
                 TmpAdedge.setArea("SE");
-
-                //TmpAdedge.setBrandFilmCode("NO", "NYIANI3001N8");
                 TmpAdedge.setPeriod("-1d");
                 TmpAdedge.setTargetMnemonic("3+", false);
                 TmpAdedge.setChannelsAll();
 
+                //Channel list object
                 List<string> channels = new List<string>();
 
                 SpotCount = TmpAdedge.Run(false, false, -1,false);
 
+                // FIlter each channel so we dont add duplicates
                 for (int i = 1; i < SpotCount - 1; i++)
                 {
                     string tmpchannel = TmpAdedge.getAttrib(Connect.eAttribs.aChannel, i);
@@ -35,7 +36,6 @@ namespace connect
                         channels.Add(tmpchannel);
                     }
                 }
-
 
                 Console.WriteLine(channels);
                 Console.WriteLine(SpotCount.ToString());
