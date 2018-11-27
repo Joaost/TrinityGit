@@ -76,13 +76,13 @@
 
     Private Sub txtSearchBox_TextChanged(sender As Object, e As EventArgs) Handles txtSearchBox.TextChanged
         populateContract(txtSearchBox.Text)
-    End Sub
-    'Added a textfield in the searcharea to make it more user friendly
+    End Sub 'Added a textfield in the searcharea to make it more user friendly
     'JOOS
     Private Sub frmSelectContract_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         txtSearchBox.Text = "Search..."
         populateContract()
     End Sub
+
     Private Sub btnCopyPasteContract_Click(sender As Object, e As EventArgs) Handles btnCopyPasteContract.Click
 
         'Get the ID from the chosen contract 
