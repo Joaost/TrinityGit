@@ -5577,11 +5577,14 @@ grdSchedule_DblClick_Error:
                         If (.Cells(r, 1).Value.ToString.Contains("Plus") Or .Cells(r, 1).Value.ToString.Contains("+")) Then
                             ID = "TV4+" & AirDate & Mam
                             Chronology = AirDate + Mam
+                        ElseIf (.Cells(r, 1).Value.ToString.Contains(“Sjuan”)) Then 'Added Sjuan 2018-05-24
+                            ID = “Sjuan” & AirDate & Mam
                         Else
                             ID = "TV4" & AirDate & Mam
                             Chronology = AirDate + Mam
                         End If
 
+                        'Added Sjuan 2018-05-24
                         If TmpBT.GetWeek(Date.FromOADate(AirDate)) IsNot Nothing Then
                             If Not Campaign.ExtendedInfos.Exists(ID) Then
                                 TmpEI = New Trinity.cExtendedInfo(Campaign)
@@ -5591,6 +5594,8 @@ grdSchedule_DblClick_Error:
                                 TmpEI.ProgAfter = .Cells(r, intProgramCol).Value
                                 If (.Cells(r, 1).Value.ToString.Contains("Plus") Or .Cells(r, 1).Value.ToString.Contains("+")) Then
                                     TmpEI.Channel = "TV4+"
+                                ElseIf (.Cells(r, 1).Value.ToString.Contains("Sjuan")) Then
+                                    TmpEI.Channel = "Sjuan"
                                 Else
                                     TmpEI.Channel = "TV4"
                                 End If
