@@ -17,7 +17,7 @@ namespace connect
                 int SpotCount = 0;
 
                 //Parameters for the Adedge objects
-                TmpAdedge.setArea("SE");
+                TmpAdedge.setArea("se");
                 TmpAdedge.setPeriod("-1d");
                 TmpAdedge.setTargetMnemonic("3+", false);
                 TmpAdedge.setChannelsAll();
@@ -25,9 +25,9 @@ namespace connect
                 //Channel list object
                 List<string> channels = new List<string>();
 
-                SpotCount = TmpAdedge.Run(false, false, -1,false);
+                SpotCount = TmpAdedge.Run(true, false, -1, false);
 
-                // FIlter each channel so we dont add duplicates
+                // Filter each channel so we dont add duplicates
                 for (int i = 1; i < SpotCount - 1; i++)
                 {
                     string tmpchannel = TmpAdedge.getAttrib(Connect.eAttribs.aChannel, i);

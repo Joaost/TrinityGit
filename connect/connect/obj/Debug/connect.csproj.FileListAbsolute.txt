@@ -16,3 +16,12 @@ C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\c
 C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\connect.csproj.CoreCompileInputs.cache
 C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\connect.exe
 C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\Trinity_Git\connect\connect\obj\Debug\connect.pdb
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\bin\Debug\connect.exe.config
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\bin\Debug\connect.exe
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\bin\Debug\connect.pdb
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\connect.csprojResolveAssemblyReference.cache
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\Interop.Connect.dll
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\connect.csproj.ResolveComReference.cache
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\connect.csproj.CoreCompileInputs.cache
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\connect.exe
+C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\connect.pdb
