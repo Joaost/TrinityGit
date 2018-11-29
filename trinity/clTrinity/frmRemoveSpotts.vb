@@ -1,11 +1,15 @@
 ﻿Imports System.Windows.Forms
 Imports clTrinity
+Imports System
+Imports System.Collections
 
 
 Public Class frmRemoveSpotts
 
     Dim listOfRemovableSpotts As new List(Of Trinity.cBookedSpot)
-    Dim listOfRemovableAcualSpotts As new List(Of Trinity.cActualSpot)
+    Dim listOfRemovableAcualSpotts As New List(Of Trinity.cActualSpot)
+    Dim listOfRemovableFilmcodes As New List(Of String)
+    Dim listOfDistinctRemovableFilmcodes As New List(Of String)
 
     Public sub New()
 
@@ -20,6 +24,19 @@ Public Class frmRemoveSpotts
                     Dim tmpDate = Trinity.Helper.FormatDateForBooking(Campaign.EndDate)
 
                     listOfRemovableSpotts.Add(tmpSpot)
+                    'Fast solution to get all filmcodes that needs to be removed.'
+                    'Alternativly only use:
+                    'For Each tmpFilm As Trinity.cBookedSpot In Campaign.BookedSpots
+                    'Debug.Print(tmpFilm.Filmcode)
+                    'Next
+                    For Each tmpFilm As Trinity.cBookedSpot In Campaign.BookedSpots
+                        listOfRemovableFilmcodes.Add(tmpFilm.Filmcode)
+                    Next
+                    Dim filmResult As List(Of String) = listOfRemovableFilmcodes.Distinct().ToList
+                    For Each element As String In filmResult
+                        listOfDistinctRemovableFilmcodes.Add(element)
+                    Next
+
                 End If
             Next
         End If
@@ -111,6 +128,7 @@ Public Class frmRemoveSpotts
 
     Private Sub cmdRemoveSpotts_Click(sender As Object, e As EventArgs) Handles cmdRemoveSpotts.Click
         Campaign.ActualSpots.Collection.Clear()
-        
+
+        Windows.Forms.MessageBox.Show("Removed", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
     End Sub
 End Class
