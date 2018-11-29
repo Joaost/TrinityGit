@@ -68,7 +68,7 @@ Public Class CExportUnicornFileNew
     Dim filteredChannels As New List(Of cChannel)
 
     'Dim _campaign As Trinity.cKampanj
-    '2018-10-26 changed MTG TV to NENT in every PrinTtable, and '
+    '2018-10-26 changed MTG TV to NENT in every PrinTtable'
 
     Public Sub printUnicornFile(Optional ByVal tempBundleTV4 As Boolean = False, Optional ByVal tempBundleMTG As Boolean = False, Optional ByVal tempBundleMTGSpecial As Boolean = False, Optional ByVal tempBundleSBS As Boolean = False, Optional ByVal tempBundleFOX As Boolean = False, Optional ByVal tempBundleCMORE As Boolean = False, Optional ByVal tempBundleDisney As Boolean = False, Optional ByVal temBundleTNT As Boolean = False, Optional ByVal useOwnCommission As Boolean = False, Optional ByVal useOwnCommissionAmount As Decimal = 0, Optional ByVal tmpPrintExportAsCampaign As Boolean = False, Optional ByVal weeks As List(Of cWeek) = Nothing, Optional ByVal tmpFilteredChannels As List(Of cChannel) = Nothing)
 
