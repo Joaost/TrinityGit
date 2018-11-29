@@ -9,7 +9,7 @@ Public Class frmRemoveSpotts
     Dim listOfRemovableSpotts As new List(Of Trinity.cBookedSpot)
     Dim listOfRemovableAcualSpotts As New List(Of Trinity.cActualSpot)
     Dim listOfRemovableFilmcodes As New List(Of String)
-    Dim listOfDistinctRemovableFilmvcodes As New List(Of String)
+    Dim listOfDistinctRemovableFilmcodes As New List(Of String)
 
     Public sub New()
 
@@ -34,7 +34,7 @@ Public Class frmRemoveSpotts
                     Next
                     Dim filmResult As List(Of String) = listOfRemovableFilmcodes.Distinct().ToList
                     For Each element As String In filmResult
-                        listOfDistinctRemovableFilmvcodes.Add(element)
+                        listOfDistinctRemovableFilmcodes.Add(element)
                     Next
 
                 End If
