@@ -38,10 +38,10 @@ Public Class frmExportCampaignUnicorn_new
             Next
         Next
 
-
+        '2018-05-15 : Added filteredChannels.First to only return the first element in the sequence
         If Not NotAll Then
             weeks.Clear()
-            For Each w As cWeek In filteredChannels(1).BookingTypes(1).Weeks
+            For Each w As cWeek In filteredChannels.First.BookingTypes(1).Weeks
                 weeks.Add(w)
             Next
         End If
@@ -110,6 +110,7 @@ Public Class frmExportCampaignUnicorn_new
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        mnuWeeks.Items.Clear()
     End Sub
 
 
@@ -146,6 +147,7 @@ Public Class frmExportCampaignUnicorn_new
         Dim TmpWeekStr As String = ""
         Dim TmpMnu As Windows.Forms.ToolStripMenuItem
         weeks.Clear()
+        'mnuWeeks.Items.Clear() 'test clear Itemlist
 
         If sender.tag.GetType.FullName = "System.String" AndAlso sender.tag = "Invert" Then
             For Each TmpMnu In mnuWeeks.Items
