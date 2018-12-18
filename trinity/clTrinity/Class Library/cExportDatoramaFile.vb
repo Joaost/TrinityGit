@@ -64,8 +64,10 @@ Public Class cExportDatoramaFile
     Dim tmpOwnFee As Decimal = 0
     Dim ownCommission As Boolean = False
     Dim ownCommissionAmount As Single = 0
-    Dim _listOfWeeks As new List(Of cWeek)
-    
+    Dim _listOfWeeks As New List(Of cWeek)
+    Dim _listOfDays As New List(Of DayOfWeek)
+    Dim d As Date
+
     'Dim _campaign As Trinity.cKampanj
 
     Public Sub exportDatoramaFile(Optional ByVal tempBundleTV4 As Boolean = False, Optional ByVal tempBundleMTG As Boolean = False, Optional ByVal tempBundleMTGSpecial As Boolean = False, Optional ByVal tempBundleSBS As Boolean = False, Optional ByVal tempBundleFOX As Boolean = False, Optional ByVal tempBundleCMORE As Boolean = False, Optional ByVal tempBundleDisney As Boolean = False, Optional ByVal temBundleTNT As Boolean = False, Optional ByVal useOwnCommission As Boolean = False, Optional ByVal useOwnCommissionAmount As Decimal = 0, Optional ByVal tmpPrintExportAsCampaign As Boolean = False)
@@ -239,7 +241,7 @@ Public Class cExportDatoramaFile
         Return False
     End Function
 
-    Public Function GetWeeks
+    Public Function GetWeeks()
         For Each tmpC As Trinity.cChannel In Campaign.Channels
             For Each tmpBT As Trinity.cBookingType In tmpC.BookingTypes
                 If tmpBT.BookIt Then
@@ -251,6 +253,10 @@ Public Class cExportDatoramaFile
             Next
         Next
     End Function
+
+    'Public Shared Function DataRange(Start As DateTime, Thru As DateTime) As IEnumerable(Of Date)
+    '    Return Enumerable.Range(0, (Thru.Date - Start.Date).Days + 1).Select(Function(i) Start.AddDays(i))
+    'End Function
     Public Function checkCampaignForHoles
         'Dim daysBetween As Integer = 0
         'Dim holeInCampaign As Boolean = False
@@ -626,7 +632,6 @@ Public Class cExportDatoramaFile
                 .Cells(savedRow - 1, column + 5).Value = "Primary target: TRP pr. station, pr. spotlength"
             End If
             .Cells(row, column + 5).Value += Math.Round(totalTRPForPT, 2)
-
         End With
     End Sub
     Function CheckChannel(ByVal tmpChName As String)

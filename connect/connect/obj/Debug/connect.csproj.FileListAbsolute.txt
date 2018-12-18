@@ -25,3 +25,11 @@ C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\co
 C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\connect.csproj.CoreCompileInputs.cache
 C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\connect.exe
 C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\connect\connect\obj\Debug\connect.pdb
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\bin\Debug\connect.exe.config
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\bin\Debug\connect.exe
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\bin\Debug\connect.pdb
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\Interop.Connect.dll
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\connect.csproj.ResolveComReference.cache
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\connect.csproj.CoreCompileInputs.cache
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\connect.exe
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\connect.pdb

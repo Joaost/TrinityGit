@@ -17,7 +17,7 @@ namespace connect
                 int SpotCount = 0;
 
                 //Parameters for the Adedge objects
-                TmpAdedge.setArea("se");
+                TmpAdedge.setArea("no");
                 TmpAdedge.setPeriod("-1d");
                 TmpAdedge.setTargetMnemonic("3+", false);
                 TmpAdedge.setChannelsAll();
