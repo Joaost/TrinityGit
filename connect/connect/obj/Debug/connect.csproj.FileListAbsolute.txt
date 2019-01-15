@@ -33,3 +33,4 @@ C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\conne
 C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\connect.csproj.CoreCompileInputs.cache
 C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\connect.exe
 C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\connect.pdb
+C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\connect\connect\obj\Debug\connect.csprojAssemblyReference.cache

@@ -2796,8 +2796,17 @@ CreatePlan:
         End If
         Dim catalog As New AggregateCatalog()
         catalog.Catalogs.Add(New AssemblyCatalog(Assembly.GetExecutingAssembly))
+
+        'Below comment were already commented
         'catalog.Catalogs.Add(New AssemblyCatalog(GetType(IPlugin).Assembly))
-        If IO.Directory.Exists("./Plugins/") Then
+
+        ' /JOOS
+        '   IO.Directory.Exists does not find the current directory and needs a specified path.
+        '   Changed: "IO.Directory.Exists("./Plugins/")" into:
+        '   "IO.Directory.Exists(IO.Path.Combine(My.Application.Info.DirectoryPath, "Plugins"))"
+        ' 
+
+        If IO.Directory.Exists(IO.Path.Combine(My.Application.Info.DirectoryPath, "Plugins")) Then
             catalog.Catalogs.Add(New DirectoryCatalog("./Plugins/"))
         End If
         'catalog.Catalogs.Add(New TypeCatalog(GetType(IPlugin)))
