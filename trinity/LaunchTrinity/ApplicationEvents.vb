@@ -507,7 +507,10 @@ Namespace My
                     Windows.Forms.MessageBox.Show("Launch.ini is damaged or missing.", "T R I N I T Y", MessageBoxButtons.OK)
                     End
                 End If
-                If Ini.Text("Server", "Address").Substring(0, 3).ToUpper = "WWW" Then
+                '    /JOOS 2019-01-22
+                '   Changed If-Statement: If Ini.Text("Server", "Address").Substring(0, 3).ToUpper = "WWW" Then
+                '   due to problems with connection to STO-DMZ and downloading latest version and LaunchTrinity
+                If Ini.Text("Server", "Address") = "apps.mecglobal.se" Then
                     Try
                         WriteToLogFile("Connecting to HTTP")
                         Dim fileList As New List(Of String)
@@ -520,8 +523,10 @@ Namespace My
                         WriteToLogFile("Reading version")
 
                         'get the server version (it was downloaded by the launcher
+                        '/JOOS
+                        'Changed My.Application.Info.DirectoryPath & "\versions.xml") cause it was not working
                         Dim xmlDocServer As New Xml.XmlDocument
-                        xmlDocServer.Load(My.Application.Info.DirectoryPath & "\versions.xml")
+                        xmlDocServer.Load(IO.Directory.Exists(IO.Path.Combine(My.Application.Info.DirectoryPath, "\versions.xml")))
 
                         Dim xmlServerList As Xml.XmlElement
                         xmlServerList = xmlDocServer.SelectSingleNode("//LauncherFiles")
