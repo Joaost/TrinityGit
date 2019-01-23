@@ -464,6 +464,8 @@ Namespace My
             End If
 
             Dim Ini As New clsIni
+            'Ini.Create(My.Application.Info.DirectoryPath & "\launch.ini")
+
             Ini.Create(My.Application.Info.DirectoryPath & "\launch.ini")
 
             If Not Ini.Text("Launcher", "Debug") = "" Then
@@ -587,7 +589,7 @@ Namespace My
                         '    End If
                     Catch
                         WriteToLogFile("ERROR connecting to the web server")
-                        Windows.Forms.MessageBox.Show("There was an error while connecting to the server." & vbCrLf & "Could not check for new versions.", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Windows.Forms.MessageBox.Show("There was an error while connecting to the server." & vbCrLf & "Could not check for new versions. + 1", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Shell(My.Application.Info.DirectoryPath & "\Trinity.exe", AppWinStyle.MaximizedFocus, False, -1)
                         End
                     End Try
@@ -650,7 +652,7 @@ Namespace My
 
                     Catch 'if something fails we start trinity and display a error messege
                         WriteToLogFile("ERROR in connecting to the network")
-                        Windows.Forms.MessageBox.Show("There was an error while connecting to the network server." & vbCrLf & "Could not check for new versions.", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Windows.Forms.MessageBox.Show("There was an error while connecting to the network server." & vbCrLf & "Could not check for new versions. + 2", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Shell(My.Application.Info.DirectoryPath & "\Trinity.exe", AppWinStyle.MaximizedFocus, False, -1)
                         End
                     End Try
