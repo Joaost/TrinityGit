@@ -181,19 +181,23 @@ Public Class CExportUnicornFileNewNorway
         End If
         Return False
     End Function
+    '   //JOOS
+    '   Added Nat Geo, Fox, BBC to MTG/NENT export
+    '
     Public Function checkNameMTG(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("TV3") Or tmpChannelName.Contains("TV6") Or tmpChannelName.Contains("MTV") Or tmpChannelName.Contains("Comedy central") Or tmpChannelName.Contains("Comedy") Or tmpChannelName.Contains("Viasat") Then
+        If tmpChannelName.Contains("TV3") Or tmpChannelName.Contains("TV6") Or tmpChannelName.Contains("MTV") Or tmpChannelName.Contains("Comedy central") Or tmpChannelName.Contains("Comedy") Or tmpChannelName.Contains("Viasat") Or tmpChannelName.Contains("National Geographic") Or tmpChannelName.Contains("Fox") Or tmpChannelName.Contains("BBC Brit") Then
             Return True
         End If
         Return False
     End Function
-        Public Function checkNameMatkanalen(ByVal tmpChannelName As String)
+    Public Function checkNameMatkanalen(ByVal tmpChannelName As String)
         If tmpChannelName.Contains("Matkanalen") Then
             Return True
         End If
         Return False
     End Function
-    Public Function checkNameFOX(ByVal tmpChannelName As String)
+    'Remove this 
+    Public Function checkNameFOXold(ByVal tmpChannelName As String)
         If tmpChannelName.Contains("National Geographic") Or tmpChannelName.Contains("Fox") Or tmpChannelName.Contains("BBC Brit") Then
             Return True
         End If
@@ -456,9 +460,9 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
                         End If
                     End If
-                ElseIf groupName = "FOX" Then
+                ElseIf groupName = "FOXold" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "FOX"
+                        .Cells(row, 2).Value = "FOXold"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -498,8 +502,8 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "MTG"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
-                ElseIf groupName = "FOX" Then
-                    .Cells(row, 2).Value = "FOX"
+                ElseIf groupName = "FOXold" Then
+                    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
                 ElseIf groupName = "¨TNT" Then
@@ -519,10 +523,10 @@ Public Class CExportUnicornFileNewNorway
                         .Cells(row, 3).Value = "TV 2 no; TV 2 Zebra; TV 2 Sport; TV2 Nyhetskanalen; TV 2 Bliss; TV 2 Humor; TV 2 Livsstil;"
                     ElseIf groupName = "DNN" Then
                         .Cells(row, 3).Value = "TVN; FEM; Eurosport 1 Norge; MAX; Discovery no; TLC Norge; VOX; Eurosport Norge"
-                    ElseIf groupName = "FOX" Then
-                        .Cells(row, 3).Value = "National Geographic; Fox Norway; BBC Brit; Fox Crime;"
+                    ElseIf groupName = "FOXold" Then
+                        .Cells(row, 3).Value = "National GeographicREMOVE; Fox NorwayREMOVE; BBC BritREMOVE; Fox CrimeREMOVE;"
                     ElseIf groupName = "MTG" Then
-                        .Cells(row, 3).Value = "TV3; Viasat 4; TV6; Comedy Central"
+                        .Cells(row, 3).Value = "TV3; Viasat 4; TV6; Comedy Central; National Geographic; Fox Norway; BBC Brit; Fox Crime;"
                     ElseIf groupName = "TNT" Then
                         .Cells(row, 3).Value = "TNT"
                     End If
@@ -711,8 +715,8 @@ Public Class CExportUnicornFileNewNorway
             result = "MTG"
         ElseIf CheckNameDNN(tmpChName) Then
             result = "DNN"
-        ElseIf checkNameFOX(tmpChName) Then
-            result = "FOX"
+        ElseIf checkNameFOXold(tmpChName) Then
+            result = "FOXold"
         ElseIf checkNameMatkanalen(tmpChName) Then
             result = "Matkanalen"
         ElseIf checkNameTNT(tmpChName) Then
@@ -764,7 +768,7 @@ Public Class CExportUnicornFileNewNorway
                                 ElseIf CheckNameDNN(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowDNN = rowCombination
-                                ElseIf checkNameFOX(c.ChannelName) Then
+                                ElseIf checkNameFOXold(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowFOX = rowCombination
                                 ElseIf checkNameMTG(c.ChannelName) Then
@@ -824,9 +828,9 @@ Public Class CExportUnicornFileNewNorway
                                     DNNString = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN)
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If checkNameFOXold(tmpChan.ChannelName) Then
                                     If BundleFOX And rowFOX <> 0 Then
-                                        If rowFOX = 0
+                                        If rowFOX = 0 Then
                                             rowFOX = tmpRow
                                         End If
                                     Else
@@ -834,7 +838,7 @@ Public Class CExportUnicornFileNewNorway
                                         tmpRow = tmpRow + 1
                                     End If
                                     NatGeoString = tmpChan.ChannelName
-                                    HelperTable1(tmpChan, tmpBook, "FOX", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
+                                    HelperTable1(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                 End If
 
                                 If checkNameMTG(tmpChan.ChannelName) Then
@@ -944,9 +948,9 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                ElseIf groupName = "FOX" Then
+                ElseIf groupName = "FOXold" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "FOX"
+                        .Cells(row, 2).Value = "FOXold"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -1071,7 +1075,7 @@ Public Class CExportUnicornFileNewNorway
                                 ElseIf CheckNameDNN(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowDNN = rowCombination
-                                ElseIf checkNameFOX(c.ChannelName) Then
+                                ElseIf checkNameFOXold(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowFOX = rowCombination
                                 ElseIf checkNameMTG(c.ChannelName) Then
@@ -1143,16 +1147,16 @@ Public Class CExportUnicornFileNewNorway
                                     HelperTable2(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If checkNameFOXold(tmpChan.ChannelName) Then
                                     If BundleFOX And rowFOX <> 0 Then
-                                        If rowFOX = 0
+                                        If rowFOX = 0 Then
                                             rowFOX = tmpRow
                                         End If
                                     Else
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable2(tmpChan, tmpBook, "FOX", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
+                                    HelperTable2(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
@@ -1259,9 +1263,9 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                ElseIf groupName = "FOX" Then
+                ElseIf groupName = "FOXold" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "FOX"
+                        .Cells(row, 2).Value = "FOXold"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -1403,7 +1407,7 @@ Public Class CExportUnicornFileNewNorway
                                 ElseIf CheckNameDNN(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowDNN = rowCombination
-                                ElseIf checkNameFOX(c.ChannelName) Then
+                                ElseIf checkNameFOXold(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowFOX = rowCombination
                                 ElseIf checkNameMTG(c.ChannelName) Then
@@ -1477,16 +1481,16 @@ Public Class CExportUnicornFileNewNorway
                                     helperTable3(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If checkNameFOXold(tmpChan.ChannelName) Then
                                     If BundleFOX And rowFOX <> 0 Then
-                                        If rowFOX = 0
+                                        If rowFOX = 0 Then
                                             rowFOX = tmpRow
                                         End If
                                     Else
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable3(tmpChan, tmpBook, "FOX", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
+                                    helperTable3(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
@@ -1601,9 +1605,9 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                ElseIf groupName = "FOX" Then
+                ElseIf groupName = "FOXold" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "FOX"
+                        .Cells(row, 2).Value = "FOXold"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -1667,8 +1671,8 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "MTG"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
-                ElseIf groupName = "FOX" Then
-                    .Cells(row, 2).Value = "FOX"
+                ElseIf groupName = "FOXold" Then
+                    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
                 Else
@@ -1767,7 +1771,7 @@ Public Class CExportUnicornFileNewNorway
                             ElseIf CheckNameDNN(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowDNN = rowCombination
-                            ElseIf checkNameFOX(c.ChannelName) Then
+                            ElseIf checkNameFOXold(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowFOX = rowCombination
                             ElseIf checkNameMTG(c.ChannelName) Then
@@ -1839,16 +1843,16 @@ Public Class CExportUnicornFileNewNorway
                                     HelperTable4(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If checkNameFOXold(tmpChan.ChannelName) Then
                                     If BundleFOX And rowFOX <> 0 Then
-                                        If rowFOX = 0
+                                        If rowFOX = 0 Then
                                             rowFOX = tmpRow
                                         End If
                                     Else
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable4(tmpChan, tmpBook, "FOX", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
+                                    HelperTable4(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
@@ -1962,9 +1966,9 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                ElseIf groupName = "FOX" Then
+                ElseIf groupName = "FOXold" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "FOX"
+                        .Cells(row, 2).Value = "FOXold"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -2028,8 +2032,8 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "MTG"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
-                ElseIf groupName = "FOX" Then
-                    .Cells(row, 2).Value = "FOX"
+                ElseIf groupName = "FOXold" Then
+                    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
                 Else
@@ -2141,7 +2145,7 @@ Public Class CExportUnicornFileNewNorway
                             ElseIf CheckNameDNN(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowDNN = rowCombination
-                            ElseIf checkNameFOX(c.ChannelName) Then
+                            ElseIf checkNameFOXold(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowFOX = rowCombination
                             ElseIf checkNameMTG(c.ChannelName) Then
@@ -2213,19 +2217,19 @@ Public Class CExportUnicornFileNewNorway
                                     helperTable5(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If checkNameFOXold(tmpChan.ChannelName) Then
                                     If BundleFOX And rowFOX <> 0 Then
-                                        If rowFOX = 0
+                                        If rowFOX = 0 Then
                                             rowFOX = tmpRow
                                         End If
                                     Else
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable5(tmpChan, tmpBook, "FOX", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
+                                    helperTable5(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                
+
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
                                         If rowMatkanalen = 0
