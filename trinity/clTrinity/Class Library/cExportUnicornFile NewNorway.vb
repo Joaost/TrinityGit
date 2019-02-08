@@ -460,16 +460,16 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
                         End If
                     End If
-                ElseIf groupName = "FOXold" Then
-                    If tmpBundle Then
-                        .Cells(row, 2).Value = "FOXold"
-                    Else
-                        If .Cells(row, 2).Value Is Nothing Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
-                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
-                        End If
-                    End If
+                    'ElseIf groupName = "FOXold" Then
+                    '    If tmpBundle Then
+                    '        .Cells(row, 2).Value = "FOXold"
+                    '    Else
+                    '        If .Cells(row, 2).Value Is Nothing Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
+                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
+                    '        End If
+                    '    End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "MTG"
@@ -502,8 +502,8 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "MTG"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
-                ElseIf groupName = "FOXold" Then
-                    .Cells(row, 2).Value = "FOXold"
+                    'ElseIf groupName = "FOXold" Then
+                    '    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
                 ElseIf groupName = "¨TNT" Then
@@ -523,8 +523,8 @@ Public Class CExportUnicornFileNewNorway
                         .Cells(row, 3).Value = "TV 2 no; TV 2 Zebra; TV 2 Sport; TV2 Nyhetskanalen; TV 2 Bliss; TV 2 Humor; TV 2 Livsstil;"
                     ElseIf groupName = "DNN" Then
                         .Cells(row, 3).Value = "TVN; FEM; Eurosport 1 Norge; MAX; Discovery no; TLC Norge; VOX; Eurosport Norge"
-                    ElseIf groupName = "FOXold" Then
-                        .Cells(row, 3).Value = "National GeographicREMOVE; Fox NorwayREMOVE; BBC BritREMOVE; Fox CrimeREMOVE;"
+                        'ElseIf groupName = "FOXold" Then
+                        '    .Cells(row, 3).Value = "National GeographicREMOVE; Fox NorwayREMOVE; BBC BritREMOVE; Fox CrimeREMOVE;"
                     ElseIf groupName = "MTG" Then
                         .Cells(row, 3).Value = "TV3; Viasat 4; TV6; Comedy Central; National Geographic; Fox Norway; BBC Brit; Fox Crime;"
                     ElseIf groupName = "TNT" Then
@@ -948,16 +948,16 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                ElseIf groupName = "FOXold" Then
-                    If tmpBundle Then
-                        .Cells(row, 2).Value = "FOXold"
-                    Else
-                        If .Cells(row, 2).Value Is Nothing Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                        End If
-                    End If
+                    'ElseIf groupName = "FOXold" Then
+                    '    If tmpBundle Then
+                    '        .Cells(row, 2).Value = "FOXold"
+                    '    Else
+                    '        If .Cells(row, 2).Value Is Nothing Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                    '        End If
+                    '    End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "MTG"
@@ -1263,16 +1263,16 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                ElseIf groupName = "FOXold" Then
-                    If tmpBundle Then
-                        .Cells(row, 2).Value = "FOXold"
-                    Else
-                        If .Cells(row, 2).Value Is Nothing Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                        End If
-                    End If
+                    'ElseIf groupName = "FOXold" Then
+                    '    If tmpBundle Then
+                    '        .Cells(row, 2).Value = "FOXold"
+                    '    Else
+                    '        If .Cells(row, 2).Value Is Nothing Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                    '        End If
+                    '    End If
                 ElseIf groupName = "TV2" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "TV2 Group"
@@ -1605,16 +1605,16 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                ElseIf groupName = "FOXold" Then
-                    If tmpBundle Then
-                        .Cells(row, 2).Value = "FOXold"
-                    Else
-                        If .Cells(row, 2).Value Is Nothing Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                        End If
-                    End If
+                    'ElseIf groupName = "FOXold" Then
+                    '    If tmpBundle Then
+                    '        .Cells(row, 2).Value = "FOXold"
+                    '    Else
+                    '        If .Cells(row, 2).Value Is Nothing Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                    '        End If
+                    '    End If
                 ElseIf groupName = "Cartoon" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "Cartoon"
@@ -1671,8 +1671,8 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "MTG"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
-                ElseIf groupName = "FOXold" Then
-                    .Cells(row, 2).Value = "FOXold"
+                    'ElseIf groupName = "FOXold" Then
+                    '    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
                 Else
@@ -1966,16 +1966,16 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                ElseIf groupName = "FOXold" Then
-                    If tmpBundle Then
-                        .Cells(row, 2).Value = "FOXold"
-                    Else
-                        If .Cells(row, 2).Value Is Nothing Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                        End If
-                    End If
+                    'ElseIf groupName = "FOXold" Then
+                    '    If tmpBundle Then
+                    '        .Cells(row, 2).Value = "FOXold"
+                    '    Else
+                    '        If .Cells(row, 2).Value Is Nothing Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                    '        End If
+                    '    End If
                 ElseIf groupName = "Cartoon" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "Cartoon"
@@ -2032,8 +2032,8 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "MTG"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
-                ElseIf groupName = "FOXold" Then
-                    .Cells(row, 2).Value = "FOXold"
+                    'ElseIf groupName = "FOXold" Then
+                    '    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
                 Else
