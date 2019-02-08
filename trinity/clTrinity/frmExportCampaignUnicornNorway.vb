@@ -56,8 +56,11 @@ Public Class frmExportCampaignUnicornNorway
         _campaignType2 = cmbCampaignType2.SelectedItem
 
         Dim export As New CExportUnicornFileNewNorway(Campaign)
-
-        export.printUnicornFile(bundleTV2, bundleMTG, bundleSBS, bundleNatGeo, False, False, printExportAsCampaign, _campaignType, _campaignType2)
+        '   /JOOS
+        '
+        '   removed bundleNatGeo 2019-02-08 containing FOX, Nat Geo and BBC
+        '   Following channels are moved to NENT (MTG)
+        export.printUnicornFile(bundleTV2, bundleMTG, bundleSBS, False, False, printExportAsCampaign, _campaignType, _campaignType2)
 
     End Sub
 
