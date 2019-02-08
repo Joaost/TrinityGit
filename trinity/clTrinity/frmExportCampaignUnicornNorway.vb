@@ -8,7 +8,7 @@ Public Class frmExportCampaignUnicornNorway
 
     Dim bundleSBS As Boolean = False
     Dim bundleTV2 As Boolean = False
-    Dim bundleNatGeo As Boolean = False
+    'Dim bundleNatGeo As Boolean = False
     Dim bundleMTG As Boolean = False
     Dim printExportAsCampaign As Boolean = False
     Dim bundleDiscovery As Boolean = False
@@ -29,11 +29,11 @@ Public Class frmExportCampaignUnicornNorway
         Else
             bundleTV2 = False
         End If
-        If chkBundleNatGeo.Checked Then
-            bundleNatGeo = True
-        Else
-            bundleNatGeo = False
-        End If
+        'If chkBundleNatGeo.Checked Then
+        '    bundleNatGeo = True
+        'Else
+        '    bundleNatGeo = False
+        'End If
         If chkBundleViasat.Checked Then
             bundleMTG = True
         Else
