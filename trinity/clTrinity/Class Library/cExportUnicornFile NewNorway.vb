@@ -518,7 +518,7 @@ Public Class CExportUnicornFileNewNorway
             End If
             'Eurosport NO changed to Eurosport 1 Norge
             If Not .Cells(row, 3) Is Nothing Then
-                If tmpBundle or printExportAsCampaign Then
+                If tmpBundle Or printExportAsCampaign Then
                     If groupName = "TV2" Then
                         .Cells(row, 3).Value = "TV 2 no; TV 2 Zebra; TV 2 Sport; TV2 Nyhetskanalen; TV 2 Bliss; TV 2 Humor; TV 2 Livsstil;"
                     ElseIf groupName = "DNN" Then
@@ -706,7 +706,7 @@ Public Class CExportUnicornFileNewNorway
             .Cells(row, 12).Value = targets
         End With
     End Sub
-    
+
     Function CheckChannel(ByVal tmpChName As String)
         Dim result As String = ""
         If checkNameTV2(tmpChName) Then
@@ -751,7 +751,7 @@ Public Class CExportUnicornFileNewNorway
             Dim firstRow As Integer = 39
 
             Dim tmpChannelNameInputForCheckBundling As String = ""
-            
+
             If Campaign.Combinations.Count > 0 And _printExportAsCampaign Then
                 For Each tmpCombo As Trinity.cCombination In Campaign.Combinations
                     For Each tmpCC As Trinity.cCombinationChannel In tmpCombo.Relations
@@ -794,7 +794,7 @@ Public Class CExportUnicornFileNewNorway
                 For Each tmpChan As Trinity.cChannel In Campaign.Channels
                     For Each tmpBook As Trinity.cBookingType In tmpChan.BookingTypes
                         If tmpBook.BookIt Then
-                            Dim jumpBookingType As Boolean = False                            
+                            Dim jumpBookingType As Boolean = False
                             If (_printExportAsCampaign) Then
                                 For i As Integer = 1 To Campaign.Combinations.Count
                                     If Campaign.Combinations.Item(i).Relations.Cast(Of cCombinationChannel)().Any(Function(tmpC) tmpC.Bookingtype Is tmpBook) Then
@@ -806,7 +806,7 @@ Public Class CExportUnicornFileNewNorway
                                 'MTG
                                 If checkNameTV2(tmpChan.ChannelName) Then
                                     If BundleTV2 And rowTV2 <> 0 Then
-                                        If rowTV2 = 0
+                                        If rowTV2 = 0 Then
                                             rowTV2 = tmpRow
                                         End If
                                     Else
@@ -818,7 +818,7 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If CheckNameDNN(tmpChan.ChannelName) Then
                                     If BundleDNN And rowDNN <> 0 Then
-                                        If rowDNN = 0
+                                        If rowDNN = 0 Then
                                             rowDNN = tmpRow
                                         End If
                                     Else
@@ -843,7 +843,7 @@ Public Class CExportUnicornFileNewNorway
 
                                 If checkNameMTG(tmpChan.ChannelName) Then
                                     If BundleMTG And rowMTG <> 0 Then
-                                        If rowMTG = 0
+                                        If rowMTG = 0 Then
                                             rowMTG = tmpRow
                                         End If
                                     Else
@@ -855,19 +855,19 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
-                                        If rowMatkanalen = 0
+                                        If rowMatkanalen = 0 Then
                                             rowMatkanalen = tmpRow
                                         End If
                                     Else
                                         rowMatkanalen = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    MatkanalenString = tmpChan.ChannelName
+                                    Matkanalenstring = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "Matkanalen", BundleMatkanalen, tmpRow, tmpChan.ChannelName, rowMatkanalen)
-                                End If     
+                                End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
                                     If BundleTNT And rowTNT <> 0 Then
-                                        If rowTNT = 0
+                                        If rowTNT = 0 Then
                                             rowTNT = tmpRow
                                         End If
                                     Else
@@ -876,7 +876,7 @@ Public Class CExportUnicornFileNewNorway
                                     End If
                                     TNTString = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "TNT", BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
-                                End If                               
+                                End If
                             End If
                         End If
                     Next
@@ -1059,7 +1059,7 @@ Public Class CExportUnicornFileNewNorway
 
             Dim rowCombination As Integer = 0
             Dim tmpChannelNameInputForCheckBundling As String = ""
-             If Campaign.Combinations.Count > 0 And _printExportAsCampaign Then
+            If Campaign.Combinations.Count > 0 And _printExportAsCampaign Then
                 For Each tmpCombo As Trinity.cCombination In Campaign.Combinations
                     For Each tmpCC As Trinity.cCombinationChannel In tmpCombo.Relations
                         Dim tmpChan As Trinity.cChannel = Nothing
@@ -1113,7 +1113,7 @@ Public Class CExportUnicornFileNewNorway
                                 'MTG
                                 If checkNameTV2(tmpChan.ChannelName) Then
                                     If BundleTV2 And rowTV2 <> 0 Then
-                                        If rowTV2 = 0
+                                        If rowTV2 = 0 Then
                                             rowTV2 = tmpRow
                                         End If
                                     Else
@@ -1125,7 +1125,7 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If checkNameMTG(tmpChan.ChannelName) Then
                                     If BundleMTG And rowMTG <> 0 Then
-                                        If rowMTG = 0
+                                        If rowMTG = 0 Then
                                             rowMTG = tmpRow
                                         End If
                                     Else
@@ -1137,7 +1137,7 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If CheckNameDNN(tmpChan.ChannelName) Then
                                     If BundleDNN And rowDNN <> 0 Then
-                                        If rowDNN = 0
+                                        If rowDNN = 0 Then
                                             rowDNN = tmpRow
                                         End If
                                     Else
@@ -1161,7 +1161,7 @@ Public Class CExportUnicornFileNewNorway
                                 'End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
-                                        If rowMatkanalen = 0
+                                        If rowMatkanalen = 0 Then
                                             rowMatkanalen = tmpRow
                                         End If
                                     Else
@@ -1173,7 +1173,7 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
                                     If BundleTNT And rowTNT <> 0 Then
-                                        If rowTNT = 0
+                                        If rowTNT = 0 Then
                                             rowTNT = tmpRow
                                         End If
                                     Else
@@ -1189,7 +1189,7 @@ Public Class CExportUnicornFileNewNorway
                 Next
             End If
         End With
-        If currentRow < tmpRow
+        If currentRow < tmpRow Then
             currentRow = tmpRow
         End If
         _sheet.Range("B" & lastRowComboTable1 - 1 & ":M" & currentRow).Numberformat = "0.0"
@@ -1340,7 +1340,7 @@ Public Class CExportUnicornFileNewNorway
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
                     End If
                 End If
-            End If            
+            End If
             Dim column = 3
             For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks
                 totalTRPForBT = tmpWeek.TRPBuyingTarget
@@ -1370,7 +1370,7 @@ Public Class CExportUnicornFileNewNorway
                 For Each tmpBook As Trinity.cBookingType In tmpchan.BookingTypes
                     If tmpBook.BookIt Then
                         Dim column As Integer = 3
-                        For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks                            
+                        For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks
                             Dim yearForWeek As Date = Trinity.Helper.FormatDateForBooking(tmpWeek.StartDate)
                             .Cells(currentRow, column).Value = yearForWeek.Year.ToString() & "w" & tmpWeek.Name
                             column = column + 1
@@ -1381,14 +1381,14 @@ Public Class CExportUnicornFileNewNorway
             Next
             currentRow = currentRow + 1
             tmpRow = currentRow
-            
+
             Dim rowTV2 = 0
             Dim rowDNN = 0
             Dim rowFOX = 0
             Dim rowMTG = 0
             Dim rowMatkanalen = 0
             Dim rowTNT = 0
-            
+
             Dim rowCombination As Integer = 0
             Dim tmpChannelNameInputForCheckBundling As String = ""
             If Campaign.Combinations.Count > 0 And _printExportAsCampaign Then
@@ -1418,7 +1418,7 @@ Public Class CExportUnicornFileNewNorway
                                     rowMatkanalen = rowCombination
                                 End If
                                 tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
-                                HelperTable3(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
+                                helperTable3(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                              c.ChannelName, rowCombination, True)
                                 Exit For
                             Next
@@ -1428,7 +1428,7 @@ Public Class CExportUnicornFileNewNorway
                 Next
                 ExportedAsCampaignCombination = True
             End If
-            
+
             If (_printExportAsCampaign = False) Or (Campaign.Combinations.Count > 0 And _printExportAsCampaign) Or (Campaign.Combinations.Count < 1 And _printExportAsCampaign) Then
                 For Each tmpChan As Trinity.cChannel In Campaign.Channels
                     For Each tmpBook As Trinity.cBookingType In tmpChan.BookingTypes
@@ -1445,7 +1445,7 @@ Public Class CExportUnicornFileNewNorway
                                 'TV2
                                 If checkNameTV2(tmpChan.ChannelName) Then
                                     If BundleTV2 And rowTV2 <> 0 Then
-                                        If rowTV2 = 0
+                                        If rowTV2 = 0 Then
                                             rowTV2 = tmpRow
                                         End If
                                     Else
@@ -1458,7 +1458,7 @@ Public Class CExportUnicornFileNewNorway
                                 'MTG
                                 If checkNameMTG(tmpChan.ChannelName) Then
                                     If BundleMTG And rowMTG <> 0 Then
-                                        If rowMTG = 0
+                                        If rowMTG = 0 Then
                                             rowMTG = tmpRow
                                         End If
                                     Else
@@ -1471,7 +1471,7 @@ Public Class CExportUnicornFileNewNorway
                                 'DNN
                                 If CheckNameDNN(tmpChan.ChannelName) Then
                                     If BundleDNN And rowDNN <> 0 Then
-                                        If rowDNN = 0
+                                        If rowDNN = 0 Then
                                             rowDNN = tmpRow
                                         End If
                                     Else
@@ -1495,7 +1495,7 @@ Public Class CExportUnicornFileNewNorway
                                 'End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
-                                        If rowMatkanalen = 0
+                                        If rowMatkanalen = 0 Then
                                             rowMatkanalen = tmpRow
                                         End If
                                     Else
@@ -1507,7 +1507,7 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
                                     If BundleTNT And rowTNT <> 0 Then
-                                        If rowTNT = 0
+                                        If rowTNT = 0 Then
                                             rowTNT = tmpRow
                                         End If
                                     Else
@@ -1523,7 +1523,7 @@ Public Class CExportUnicornFileNewNorway
                 Next
             End If
         End With
-        If currentRow < tmpRow
+        If currentRow < tmpRow Then
             currentRow = tmpRow
         End If
         _sheet.Range("B" & lastRowComboTable1 - 1 & ":M" & currentRow).Numberformat = "0.0"
@@ -1701,7 +1701,7 @@ Public Class CExportUnicornFileNewNorway
                     If _amountOfFilmLength(x).ToString = tmpF.FilmLength Then
                         For Each tmpWeek As Trinity.cWeek In tmpB.Weeks
                             trpForShare = tmpWeek.TRP
-                            If (tmpF.Filmcode <> "") and tmpWeek.Films(tmpF.Filmcode) IsNot Nothing Then
+                            If (tmpF.Filmcode <> "") And tmpWeek.Films(tmpF.Filmcode) IsNot Nothing Then
                                 tmpShare = tmpWeek.Films(tmpF.Filmcode).Share()
                                 tmpFilm = tmpWeek.Films(tmpF.Filmcode).FilmLength
                             Else
@@ -1752,7 +1752,7 @@ Public Class CExportUnicornFileNewNorway
         Dim rowFOX = 0
         Dim rowMatkanalen = 0
         Dim rowTNT = 0
-        
+
         Dim rowCombination As Integer = 0
         Dim tmpChannelNameInputForCheckBundling As String = ""
         If Campaign.Combinations.Count > 0 And _printExportAsCampaign Then
@@ -1798,7 +1798,7 @@ Public Class CExportUnicornFileNewNorway
                 For Each tmpChan As Trinity.cChannel In Campaign.Channels
                     For Each tmpBook As Trinity.cBookingType In tmpChan.BookingTypes
                         If tmpBook.BookIt Then
-                            Dim jumpBookingType As Boolean = False                            
+                            Dim jumpBookingType As Boolean = False
                             If (_printExportAsCampaign) Then
                                 For i As Integer = 1 To Campaign.Combinations.Count
                                     If Campaign.Combinations.Item(i).Relations.Cast(Of cCombinationChannel)().Any(Function(tmpC) tmpC.Bookingtype Is tmpBook) Then
@@ -1809,7 +1809,7 @@ Public Class CExportUnicornFileNewNorway
                             If (Not jumpBookingType) Then
                                 If checkNameTV2(tmpChan.ChannelName) Then
                                     If BundleTV2 And rowTV2 <> 0 Then
-                                        If rowTV2 = 0
+                                        If rowTV2 = 0 Then
                                             rowTV2 = tmpRow
                                         End If
                                     Else
@@ -1821,7 +1821,7 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If checkNameMTG(tmpChan.ChannelName) Then
                                     If BundleMTG And rowMTG <> 0 Then
-                                        If rowMTG = 0
+                                        If rowMTG = 0 Then
                                             rowMTG = tmpRow
                                         End If
                                     Else
@@ -1832,8 +1832,8 @@ Public Class CExportUnicornFileNewNorway
                                     currentRow = tmpRow
                                 End If
                                 If CheckNameDNN(tmpChan.ChannelName) Then
-                                     If BundleDNN And rowDNN <> 0 Then
-                                        If rowDNN = 0
+                                    If BundleDNN And rowDNN <> 0 Then
+                                        If rowDNN = 0 Then
                                             rowDNN = tmpRow
                                         End If
                                     Else
@@ -1857,7 +1857,7 @@ Public Class CExportUnicornFileNewNorway
                                 'End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
-                                        If rowMatkanalen = 0
+                                        If rowMatkanalen = 0 Then
                                             rowMatkanalen = tmpRow
                                         End If
                                     Else
@@ -1869,7 +1869,7 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
                                     If BundleTNT And rowTNT <> 0 Then
-                                        If rowTNT = 0
+                                        If rowTNT = 0 Then
                                             rowTNT = tmpRow
                                         End If
                                     Else
@@ -1885,7 +1885,7 @@ Public Class CExportUnicornFileNewNorway
                 Next
             End If
         End With
-        If currentRow < tmpRow
+        If currentRow < tmpRow Then
             currentRow = tmpRow
         End If
         _sheet.Range("B" & lastRowComboTable1 - 1 & ":M" & currentRow).Numberformat = "0.0"
@@ -1906,7 +1906,7 @@ Public Class CExportUnicornFileNewNorway
         Dim target As String = ""
 
         With _sheet
-            If tmpBundle And groupName = tmpGroupName  Then
+            If tmpBundle And groupName = tmpGroupName Then
                 row = savedRow
             ElseIf tmpBundle And groupName = tmpGroupName Then
             ElseIf tmpBundle Then
