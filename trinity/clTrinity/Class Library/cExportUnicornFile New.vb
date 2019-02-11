@@ -732,11 +732,15 @@ Public Class CExportUnicornFileNew
                             Else
                                 tmptotalPlannedGrossBudget += _w2.GrossBudget
                             End If
-                        
+
+                            '   /JOOS
+                            '   Changed so that the TotalPLannedGross budget doesnt add with itself
+                            ' B4: 'totalPlannedGrossBudget += tmptotalPlannedGrossBudget
+                            '
                             tmptotalPlannedNetBudget += _w2.NetBudget
-                            totalPlannedGrossBudget += tmptotalPlannedGrossBudget
+                            totalPlannedGrossBudget = tmptotalPlannedGrossBudget
                             totalPlannedNetBudget = tmptotalPlannedNetBudget
-                        
+
                             'If tmpBook.ConfirmedGrossBudget = 0 Then
                             '    tmptotalPlannedGrossBudget = tmpBook.PlannedGrossBudget
                             'Else
