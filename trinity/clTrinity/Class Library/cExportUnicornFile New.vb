@@ -94,14 +94,14 @@ Public Class CExportUnicornFileNew
 
         Dim value = Trinity.Helper.FormatDateForBooking(Campaign.StartDate)
         With _sheet
-
-            printHeader()
-            PrintTable1()
-            PrintTable2()
-            PrintTable3()
-            PrintTable4()
-            printTable5()
-            printTable6()
+            'Print Functions
+            printHeader()   ' Print Main header With overview data
+            printStationBudgetTable()    'First table. Print first table containing all stations budget. Gross, Net, Netnet, Fees, Ctc, TRP and Buying target
+            printPrimarytargetTRPWeekly()   'Second table.Print Primary target TRP per station and week
+            printBuyingtargetTRPWeekly()    'Third table. Print buying target TRP per station and week
+            printPrimarytargetTRPSpotlength()   'Fourth table. Print Primary target total TRP per station and spotlength
+            printBuyingtargetTRPSpotlength()   'Fifth table. Print Buying target total TRP pers station and spotlength
+            printFilmcodesSummery()   'Sixth table. Print Filmcodes, spotlength, duration and total Primary target TRP for all stations per week
             For i As Integer = 1 To 20
                 .Columns(i).AutoFit()
             Next
@@ -110,8 +110,8 @@ Public Class CExportUnicornFileNew
         _sheet.Range("B" & 2 & ":M" & 200).VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         resetEnivorment()
     End Sub
-    Sub checkBefore2016
-        If Campaign.StartDate <= 42735
+    Sub checkBefore2016()
+        If Campaign.StartDate <= 42735 Then
             before2016 = True
         Else
             before2016 = False
@@ -187,7 +187,7 @@ Public Class CExportUnicornFileNew
         _BundleTNT = tempBundleTNT
         _BundleDisney = tempBundleDisney
         _printExportAsCampaign = tmpPrintAsCampaign
-        
+
     End Sub
     Public Function checkNameTV4(ByVal tmpChannelName As String)
         If tmpChannelName.Contains("TV4") Or tmpChannelName = "Sjuan" Or tmpChannelName = "TV12" Or tmpChannelName = "Sportkanalen" Then
@@ -196,12 +196,12 @@ Public Class CExportUnicornFileNew
         Return False
     End Function
     Public Function checkNameMTG(ByVal tmpChannelName As String)
-        If before2016             
+        If before2016 Then
             If tmpChannelName = "TV3" Or tmpChannelName = "TV6" Or tmpChannelName = "MTV" Or tmpChannelName = "TV8" Or tmpChannelName = "TV10" Or tmpChannelName = "Comedy central" Or tmpChannelName.Contains("Comedy") Or tmpChannelName = "Nickelodeon" Then
                 Return True
             End If
         Else
-            If tmpChannelName = "TV3" Or tmpChannelName = "TV6" Or tmpChannelName = "MTV" Or tmpChannelName = "TV8" Or tmpChannelName = "TV10" Or tmpChannelName = "Comedy central" Or tmpChannelName.Contains("Comedy") Or tmpChannelName = "Nickelodeon" Or tmpChannelName.Contains("FOX") Or tmpChannelName.Contains("National") Or tmpChannelName.Contains("History") Then
+            If tmpChannelName = "TV3" Or tmpChannelName = "TV6" Or tmpChannelName = "MTV" Or tmpChannelName = "TV8" Or tmpChannelName = "TV10" Or tmpChannelName = "Comedy central" Or tmpChannelName.Contains("Comedy") Or tmpChannelName = "Nickelodeon" Or tmpChannelName.Contains("FOX") Or tmpChannelName.Contains("National") Or tmpChannelName.Contains("History") Or tmpChannelName.Contains("Paramount") Then
                 Return True
             End If
         End If
@@ -215,7 +215,7 @@ Public Class CExportUnicornFileNew
     End Function
 
     Public Function checkNameFOX(ByVal tmpChannelName As String)
-        If before2016            
+        If before2016 Then
             If tmpChannelName.Contains("FOX") Or tmpChannelName.Contains("National") Then
                 Return True
             End If
@@ -247,7 +247,7 @@ Public Class CExportUnicornFileNew
         Return False
     End Function
 
-    Public Function GetWeeks
+    Public Function GetWeeks()
         For Each tmpC As Trinity.cChannel In Campaign.Channels
             For Each tmpBT As Trinity.cBookingType In tmpC.BookingTypes
                 If tmpBT.BookIt Then
@@ -259,7 +259,7 @@ Public Class CExportUnicornFileNew
             Next
         Next
     End Function
-    Public Function checkCampaignForHoles
+    Public Function checkCampaignForHoles()
         'Dim daysBetween As Integer = 0
         'Dim holeInCampaign As Boolean = False
 
@@ -282,9 +282,9 @@ Public Class CExportUnicornFileNew
         '                newWeek.EndDate = p2Start - 1
         '                newWeek.StartDate = p1End + 1
         '                newWeek.TRP = 0
-                                                
+
         '                Dim TmpFilms As Trinity.cFilms = TmpBT.Weeks(1).Films
-                        
+
         '                Dim TmpFilm As Trinity.cFilm
         '                For Each TmpFilm In TmpFilms
         '                    newWeek.Films.Add(TmpFilm.Name).Clone(TmpFilm)
@@ -300,7 +300,7 @@ Public Class CExportUnicornFileNew
         ''        listOfWeeks.Item
         ''    Next
         ''End If
-        
+
         'Return False
     End Function
 
@@ -406,8 +406,8 @@ Public Class CExportUnicornFileNew
             '.Cells(17, 3).Value = Trinity.Helper.FormatDateForBooking(Campaign.StartDate)
             '.Cells(18, 3).Value = Trinity.Helper.FormatDateForBooking(Campaign.EndDate)
 
-            
-            .Cells(17, 3).Value = Trinity.Helper.FormatDateForBooking(listOfWeeks.first().StartDate)
+
+            .Cells(17, 3).Value = Trinity.Helper.FormatDateForBooking(listOfWeeks.First().StartDate)
             .Cells(18, 3).Value = Trinity.Helper.FormatDateForBooking(listOfWeeks.Last().EndDate)
 
 
@@ -485,7 +485,7 @@ Public Class CExportUnicornFileNew
         End If
         Return True
     End Function
-    Sub HelperTable1(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
+    Sub StationBudgetTableData(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
 
 
         Dim tmpBook As Trinity.cBookingType = tmpB
@@ -658,10 +658,10 @@ Public Class CExportUnicornFileNew
             If Not .Cells(row, 3) Is Nothing Then
                 If tmpBundle And tmpGroupName <> "TV4" Then
                     If groupName = "MTG" Then
-                        If before2016
+                        If before2016 Then
                             .Cells(row, 3).Value = "TV3 se; TV6 SE; MTV se; TV8; Comedy Central; TV10; Nickelodeon;"
                         Else
-                            .Cells(row, 3).Value = "TV3 se; TV6 SE; MTV se; TV8; Comedy Central; TV10; FOX; NatlGeo se; Nickelodeon; History;"
+                            .Cells(row, 3).Value = "TV3 se; TV6 SE; MTV se; TV8; Comedy Central; TV10; FOX; NatlGeo se; Nickelodeon; History; Paramount;"
                         End If
                     ElseIf groupName = "SBS" Then
                         .Cells(row, 3).Value = "Kanal 5; Eurosport SE; Discovery se; TLC; Kanal 9; Kanal11; Investigation Discovery; Eurosport 2 SE;"
@@ -715,17 +715,18 @@ Public Class CExportUnicornFileNew
             Dim tmpPrintNetNet = 0
 
             For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks
-                    For each _w As cWeek In listOfWeeks
-                        If _w.Name = tmpWeek.Name
-                            totalTRPForBT += tmpWeek.TRP
-                        End If
-                    next
+                For Each _w As cWeek In listOfWeeks
+                    If _w.Name = tmpWeek.Name Then
+                        totalTRPForBT += tmpWeek.TRP
+                    End If
                 Next
-                .Cells(row, 11).Value += Math.Round(totalTRPForBT, 2)
-            If Not tmpB.IsCompensation
-                For each _w As cWeek In listOfWeeks
-                    For each _w2 As cWeek In tmpBook.Weeks
-                        If _w2.Name = _w.Name
+            Next
+            .Cells(row, 11).Value += Math.Round(totalTRPForBT, 2)
+            If Not tmpB.IsCompensation Then
+
+                For Each _w As cWeek In listOfWeeks
+                    For Each _w2 As cWeek In tmpBook.Weeks
+                        If _w2.Name = _w.Name Then
 
                             If _w2.GrossBudget = 0 Then
                                 tmptotalPlannedGrossBudget += _w2.GrossCPP + _w2.TRP
@@ -754,16 +755,16 @@ Public Class CExportUnicornFileNew
                     Next
                 Next
 
-                
-            'Cost
+
+                'Cost
 
                 For Each TmpCost In Campaign.Costs
                     If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
                         If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnRatecard Then
-                            For each _w As cWeek In listOfWeeks
-                                For each _w2 As cWeek In tmpB.Weeks
-                                    If _w.Name = _w2.Name
-                                        tmptotalPlannedGrossBudget = TmpCost.Amount * _w2.NetBudget   
+                            For Each _w As cWeek In listOfWeeks
+                                For Each _w2 As cWeek In tmpB.Weeks
+                                    If _w.Name = _w2.Name Then
+                                        tmptotalPlannedGrossBudget = TmpCost.Amount * _w2.NetBudget
                                         'tmptotalPlannedGrossBudget = TmpCost.Amount * tmpB.PlannedGrossBudget                                    
                                     End If
                                 Next
@@ -805,23 +806,23 @@ Public Class CExportUnicornFileNew
                         ElseIf TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypeOnDiscount Then
                             SumUnit = 0
                             If TmpCost.CountCostOn Is Nothing Then
-                                For Each TmpWeek As Trinity.cWeek In tmpB.Weeks                                
-                                    For each _w As cWeek In listOfWeeks
-                                        If _w.Name = tmpWeek.Name
+                                For Each TmpWeek As Trinity.cWeek In tmpB.Weeks
+                                    For Each _w As cWeek In listOfWeeks
+                                        If _w.Name = TmpWeek.Name Then
                                             Dim Discount As Single = TmpWeek.GrossBudget - TmpWeek.NetBudget
                                             SumUnit += (Discount * TmpCost.Amount)
-                                        End if
+                                        End If
                                     Next
                                 Next
                             Else
                                 For Each tmpB In DirectCast(TmpCost.CountCostOn, Trinity.cChannel).BookingTypes
                                     For Each TmpWeek As Trinity.cWeek In tmpB.Weeks
-                                        For each _w As cWeek In listOfWeeks
-                                             If _w.Name = tmpWeek.Name
+                                        For Each _w As cWeek In listOfWeeks
+                                            If _w.Name = TmpWeek.Name Then
                                                 Dim Discount As Single = TmpWeek.GrossBudget - TmpWeek.NetBudget
                                                 SumUnit += (Discount * TmpCost.Amount)
-                                             End If
-                                        next
+                                            End If
+                                        Next
                                     Next
                                 Next
                             End If
@@ -861,7 +862,7 @@ Public Class CExportUnicornFileNew
                         tmpPrintNetNet = totalPlannedNetNetBudget
                     End If
                 End If
-                
+
             End If
 
 
@@ -917,7 +918,7 @@ Public Class CExportUnicornFileNew
         End If
         Return result
     End Function
-    Sub PrintTable1()
+    Sub printStationBudgetTable()
         'Print the first table for channels
         With _sheet
             .Range("B" & 37 & ":L" & 37).Interior.Color = RGB(0, 37, 110)
@@ -984,7 +985,7 @@ Public Class CExportUnicornFileNew
                                     rowDisney = rowCombination
                                 End If
                                 tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
-                                HelperTable1(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
+                                StationBudgetTableData(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                              c.ChannelName, rowCombination, True)
                                 Exit For
                             Next
@@ -1015,19 +1016,19 @@ Public Class CExportUnicornFileNew
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            HelperTable1(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            StationBudgetTableData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         ElseIf _BundleTV4 Then
-                                            HelperTable1(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            StationBudgetTableData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         Else
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            HelperTable1(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            StationBudgetTableData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         End If
                                     ElseIf (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific)) And (tmpChan.ChannelName = channelName) Or (_printExportAsCampaign And rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific) And tmpChan.ChannelName = channelName) Or (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific Or tmpBook.IsRBS) And tmpChan.ChannelName = channelName) Then
                                         rowTV4 = rowTV4
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable1(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                        StationBudgetTableData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
 
                                     ElseIf rowOnlyTV4 <> 0 And tmpChan.ChannelName = "TV4" Or tmpChan.ChannelName = "TV4" And _BundleTV4 Then
                                         If rowOnlyTV4 = 0 Then
@@ -1036,14 +1037,14 @@ Public Class CExportUnicornFileNew
                                         End If
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable1(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4)
+                                        StationBudgetTableData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4)
                                     Else
                                         rowTV4 = tmpRow
                                         tmpRow = tmpRow + 1
 
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable1(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                        StationBudgetTableData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                     End If
                                 End If
                                 'MTG
@@ -1056,7 +1057,7 @@ Public Class CExportUnicornFileNew
                                                 tmpRow = tmpRow + 1
                                             End If
 
-                                            HelperTable1(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial)
+                                            StationBudgetTableData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial)
                                         Else
                                             If _BundleMTG And rowMTG <> 0 Then
                                                 If rowMTG = 0 Then
@@ -1068,7 +1069,7 @@ Public Class CExportUnicornFileNew
                                                 rowMTG = tmpRow
                                                 tmpRow = tmpRow + 1
                                             End If
-                                            HelperTable1(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
+                                            StationBudgetTableData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
                                         End If
                                     Else
                                         If _BundleMTG And rowMTG <> 0 Then
@@ -1081,7 +1082,7 @@ Public Class CExportUnicornFileNew
                                             rowMTG = tmpRow
                                             tmpRow = tmpRow + 1
                                         End If
-                                        HelperTable1(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
+                                        StationBudgetTableData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
                                     End If
 
                                 End If
@@ -1097,7 +1098,7 @@ Public Class CExportUnicornFileNew
                                         rowSBS = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable1(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
+                                    StationBudgetTableData(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
                                 End If
                                 'Fox
                                 If checkNameFOX(tmpChan.ChannelName) Then
@@ -1111,7 +1112,7 @@ Public Class CExportUnicornFileNew
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable1(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
+                                    StationBudgetTableData(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                 End If
                                 'Cmore
                                 If checkNameCMORE(tmpChan.ChannelName) Then
@@ -1125,7 +1126,7 @@ Public Class CExportUnicornFileNew
                                         rowCMORE = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable1(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
+                                    StationBudgetTableData(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
                                 End If
                                 'TNT
                                 If checkNameTNT(tmpChan.ChannelName) Then
@@ -1139,7 +1140,7 @@ Public Class CExportUnicornFileNew
                                         rowTNT = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable1(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
+                                    StationBudgetTableData(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
                                 End If
                                 'Cartoon
                                 If checkNameCartoon(tmpChan.ChannelName) Then
@@ -1153,7 +1154,7 @@ Public Class CExportUnicornFileNew
                                         rowCartoon = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable1(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
+                                    StationBudgetTableData(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
                                 End If
                                 'Disney
                                 If checkNameDisney(tmpChan.ChannelName) Then
@@ -1167,7 +1168,7 @@ Public Class CExportUnicornFileNew
                                         rowDisney = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable1(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
+                                    StationBudgetTableData(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
                                 End If
                             End If
                         End If
@@ -1179,7 +1180,7 @@ Public Class CExportUnicornFileNew
         End With
         '_sheet.Range("B" & 39 & ":M" & 48).Numberformat = "0.0"
     End Sub
-    Sub HelperTable2(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
+    Sub PrimarytargetTRPweeklyData(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
 
         Dim tmpBook As Trinity.cBookingType = tmpB
         Dim tmpBundle = bundle
@@ -1337,17 +1338,17 @@ Public Class CExportUnicornFileNew
 
             Dim column = 3
             For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks
-                For each w As cWeek In listOfWeeks
-                    If w.Name = tmpWeek.Name
-                            totalTRPForBT = tmpWeek.TRP
-                            .Cells(row, column).Value += Math.Round(totalTRPForBT, 2)
-                            column = column + 1
+                For Each w As cWeek In listOfWeeks
+                    If w.Name = tmpWeek.Name Then
+                        totalTRPForBT = tmpWeek.TRP
+                        .Cells(row, column).Value += Math.Round(totalTRPForBT, 2)
+                        column = column + 1
                     End If
                 Next
             Next
         End With
     End Sub
-    Sub PrintTable2()
+    Sub printPrimarytargetTRPWeekly()
         Dim filmColumnArray As String() = {":B", ":C", ":D", ":E", ":F", ":G", ":H", ":I", ":J", ":K", ":L", ":M", ":N", ":O", ":P", ":Q", ":R", ":S", ":T", ":U", ":V", ":W", ":X", ":Y", ":Z", ":AA", ":AB", ":AC", ":AD"}
         Dim columnValue As String = filmColumnArray.GetValue(listOfWeeks.Count)
         Dim currentRow As Integer = lastRowComboTable1
@@ -1436,7 +1437,7 @@ Public Class CExportUnicornFileNew
                                     rowDisney = rowCombination
                                 End If
                                 tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
-                                HelperTable2(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
+                                PrimarytargetTRPweeklyData(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                              c.ChannelName, rowCombination, True)
                                 Exit For
                             Next
@@ -1467,19 +1468,19 @@ Public Class CExportUnicornFileNew
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            HelperTable2(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            PrimarytargetTRPweeklyData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         ElseIf _BundleTV4 Then
-                                            HelperTable2(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            PrimarytargetTRPweeklyData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         Else
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            HelperTable2(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            PrimarytargetTRPweeklyData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         End If
                                     ElseIf (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific)) And (tmpChan.ChannelName = channelName) Or (_printExportAsCampaign And rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific) And tmpChan.ChannelName = channelName) Or (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific Or tmpBook.IsRBS) And tmpChan.ChannelName = channelName) Then
                                         rowTV4 = rowTV4
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable2(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                        PrimarytargetTRPweeklyData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
 
                                     ElseIf rowOnlyTV4 <> 0 And tmpChan.ChannelName = "TV4" Or tmpChan.ChannelName = "TV4" And _BundleTV4 Then
                                         If rowOnlyTV4 = 0 Then
@@ -1488,13 +1489,13 @@ Public Class CExportUnicornFileNew
                                         End If
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable2(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4)
+                                        PrimarytargetTRPweeklyData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4)
                                     Else
                                         rowTV4 = tmpRow
                                         tmpRow = tmpRow + 1
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable2(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                        PrimarytargetTRPweeklyData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                     End If
                                     currentRow = tmpRow
                                 End If
@@ -1508,7 +1509,7 @@ Public Class CExportUnicornFileNew
                                                 tmpRow = tmpRow + 1
                                             End If
 
-                                            HelperTable2(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial)
+                                            PrimarytargetTRPweeklyData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial)
                                         Else
                                             If _BundleMTG And rowMTG <> 0 Then
                                                 If rowMTG = 0 Then
@@ -1520,7 +1521,7 @@ Public Class CExportUnicornFileNew
                                                 rowMTG = tmpRow
                                                 tmpRow = tmpRow + 1
                                             End If
-                                            HelperTable2(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
+                                            PrimarytargetTRPweeklyData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
                                         End If
                                     Else
                                         If _BundleMTG And rowMTG <> 0 Then
@@ -1533,7 +1534,7 @@ Public Class CExportUnicornFileNew
                                             rowMTG = tmpRow
                                             tmpRow = tmpRow + 1
                                         End If
-                                        HelperTable2(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
+                                        PrimarytargetTRPweeklyData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
                                     End If
                                     currentRow = tmpRow
                                 End If
@@ -1548,7 +1549,7 @@ Public Class CExportUnicornFileNew
                                         rowSBS = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable2(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
+                                    PrimarytargetTRPweeklyData(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameFOX(tmpChan.ChannelName) Then
@@ -1562,7 +1563,7 @@ Public Class CExportUnicornFileNew
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable2(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
+                                    PrimarytargetTRPweeklyData(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameCMORE(tmpChan.ChannelName) Then
@@ -1576,7 +1577,7 @@ Public Class CExportUnicornFileNew
                                         rowCMORE = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable2(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
+                                    PrimarytargetTRPweeklyData(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
@@ -1590,7 +1591,7 @@ Public Class CExportUnicornFileNew
                                         rowTNT = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable2(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
+                                    PrimarytargetTRPweeklyData(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameCartoon(tmpChan.ChannelName) Then
@@ -1604,7 +1605,7 @@ Public Class CExportUnicornFileNew
                                         rowCartoon = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable2(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
+                                    PrimarytargetTRPweeklyData(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameDisney(tmpChan.ChannelName) Then
@@ -1618,7 +1619,7 @@ Public Class CExportUnicornFileNew
                                         rowDisney = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable2(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
+                                    PrimarytargetTRPweeklyData(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
                                     currentRow = tmpRow
                                 End If
                             End If
@@ -1631,7 +1632,7 @@ Public Class CExportUnicornFileNew
         lastRowComboTable2 = currentRow + 1
     End Sub
 
-    Sub helperTable3(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
+    Sub BuyingtargetTRPWeeklyDATA(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
 
         Dim tmpBook As Trinity.cBookingType = tmpB
         Dim tmpBundle = bundle
@@ -1787,18 +1788,18 @@ Public Class CExportUnicornFileNew
                 End If
             End If
             Dim column = 3
-            For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks                
-                For each w As cWeek In listOfWeeks
-                    If w.Name = tmpWeek.Name
+            For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks
+                For Each w As cWeek In listOfWeeks
+                    If w.Name = tmpWeek.Name Then
                         totalTRPForBT = tmpWeek.TRPBuyingTarget
                         .Cells(row, column).Value += Math.Round(totalTRPForBT, 2)
                         column = column + 1
                     End If
-                next
+                Next
             Next
         End With
     End Sub
-    Sub PrintTable3()
+    Sub printBuyingtargetTRPWeekly()
         Dim filmColumnArray As String()
         filmColumnArray = {":B", ":C", ":D", ":E", ":F", ":G", ":H", ":I", ":J", ":K", ":L", ":M", ":N", ":O", ":P", ":Q", ":R", ":S", ":T", ":U", ":V", ":W", ":X", ":Y", ":Z", ":AA", ":AB", ":AC", ":AD"}
         Dim columnValue As String = filmColumnArray.GetValue(listOfWeeks.Count)
@@ -1885,7 +1886,7 @@ Public Class CExportUnicornFileNew
                                     rowDisney = rowCombination
                                 End If
                                 tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
-                                helperTable3(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
+                                BuyingtargetTRPWeeklyDATA(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                              c.ChannelName, rowCombination, True)
                                 Exit For
                             Next
@@ -1916,19 +1917,19 @@ Public Class CExportUnicornFileNew
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            helperTable3(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         ElseIf _BundleTV4 Then
-                                            helperTable3(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         Else
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            helperTable3(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                            BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                         End If
                                     ElseIf (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific)) And (tmpChan.ChannelName = channelName) Or (_printExportAsCampaign And rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific) And tmpChan.ChannelName = channelName) Or (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific Or tmpBook.IsRBS) And tmpChan.ChannelName = channelName) Then
                                         rowTV4 = rowTV4
 
                                         tv4String = tmpChan.ChannelName
-                                        helperTable3(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                        BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
 
                                     ElseIf rowOnlyTV4 <> 0 And tmpChan.ChannelName = "TV4" Or tmpChan.ChannelName = "TV4" And _BundleTV4 Then
                                         If rowOnlyTV4 = 0 Then
@@ -1937,14 +1938,14 @@ Public Class CExportUnicornFileNew
                                         End If
 
                                         tv4String = tmpChan.ChannelName
-                                        helperTable3(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4)
+                                        BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4)
                                     Else
                                         rowTV4 = tmpRow
                                         tmpRow = tmpRow + 1
 
 
                                         tv4String = tmpChan.ChannelName
-                                        helperTable3(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
+                                        BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4)
                                     End If
                                     currentRow = tmpRow
                                 End If
@@ -1957,7 +1958,7 @@ Public Class CExportUnicornFileNew
                                                 tmpRow = tmpRow + 1
                                             End If
 
-                                            helperTable3(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial)
+                                            BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial)
                                         Else
                                             If _BundleMTG And rowMTG <> 0 Then
                                                 If rowMTG = 0 Then
@@ -1969,7 +1970,7 @@ Public Class CExportUnicornFileNew
                                                 rowMTG = tmpRow
                                                 tmpRow = tmpRow + 1
                                             End If
-                                            helperTable3(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
+                                            BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
                                         End If
                                     Else
                                         If _BundleMTG And rowMTG <> 0 Then
@@ -1982,7 +1983,7 @@ Public Class CExportUnicornFileNew
                                             rowMTG = tmpRow
                                             tmpRow = tmpRow + 1
                                         End If
-                                        helperTable3(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
+                                        BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
                                     End If
                                     currentRow = tmpRow
                                 End If
@@ -1997,7 +1998,7 @@ Public Class CExportUnicornFileNew
                                         rowSBS = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable3(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
+                                    BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameFOX(tmpChan.ChannelName) Then
@@ -2011,7 +2012,7 @@ Public Class CExportUnicornFileNew
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable3(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
+                                    BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameCMORE(tmpChan.ChannelName) Then
@@ -2025,7 +2026,7 @@ Public Class CExportUnicornFileNew
                                         rowCMORE = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable3(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
+                                    BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
@@ -2039,7 +2040,7 @@ Public Class CExportUnicornFileNew
                                         rowTNT = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable3(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
+                                    BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameCartoon(tmpChan.ChannelName) Then
@@ -2053,7 +2054,7 @@ Public Class CExportUnicornFileNew
                                         rowCartoon = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable3(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
+                                    BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameDisney(tmpChan.ChannelName) Then
@@ -2067,7 +2068,7 @@ Public Class CExportUnicornFileNew
                                         rowDisney = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable3(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
+                                    BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
                                     currentRow = tmpRow
                                 End If
                             End If
@@ -2078,14 +2079,14 @@ Public Class CExportUnicornFileNew
         End With
         '_sheet.Range("B" & lastRowComboTable1 - 1 & ":M" & currentRow).Numberformat = "0.0"
 
-        If currentRow < tmpRow
+        If currentRow < tmpRow Then
             currentRow = tmpRow
         End If
 
         lastRowComboTable3 = currentRow + 1
     End Sub
 
-    Sub HelperTable4(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional rowheader As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
+    Sub PrimTargetTRPSpotlengthData(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional rowheader As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
 
         Dim tmpBook As Trinity.cBookingType = tmpB
         Dim tmpBundle = bundle
@@ -2254,14 +2255,14 @@ Public Class CExportUnicornFileNew
                 For Each tmpF As Trinity.cFilm In listOfFilms
                     If _amountOfFilmLength(x).ToString = tmpF.FilmLength Then
                         For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks
-                            For each w As cWeek In listOfWeeks
-                                If tmpWeek.Name = w.Name
+                            For Each w As cWeek In listOfWeeks
+                                If tmpWeek.Name = w.Name Then
                                     trpForShare = tmpWeek.TRP
                                     If (tmpF.Filmcode <> "") Then
-                                        If tmpWeek.Films(tmpF.Name) IsNot Nothing
+                                        If tmpWeek.Films(tmpF.Name) IsNot Nothing Then
                                             tmpShare = tmpWeek.Films(tmpF.Name).Share()
                                             tmpFilm = tmpWeek.Films(tmpF.Name).FilmLength
-                                        End if
+                                        End If
                                     Else
                                         tmpShare = tmpWeek.Films(tmpF.Name).Share()
                                         tmpFilm = tmpWeek.Films(tmpF.Name).FilmLength
@@ -2270,7 +2271,7 @@ Public Class CExportUnicornFileNew
                                         trpForFilm += trpForShare * (tmpShare / 100)
                                     End If
                                 End If
-                            Next                            
+                            Next
                         Next
                     End If
                 Next
@@ -2283,7 +2284,7 @@ Public Class CExportUnicornFileNew
             Next
         End With
     End Sub
-    Sub PrintTable4()
+    Sub printPrimarytargetTRPSpotlength()
         Dim filmColumnArray As String() = {":B", ":C", ":D", ":E", ":F", ":G", ":H", ":I", ":J", ":K", ":L", ":M", ":N", ":O", ":P", ":Q", ":R", ":S", ":T", ":U", ":V", ":W", ":X", ":Y", ":Z", ":AA", ":AB", ":AC", ":AD"}
         Dim columnValue As String
         columnValue = filmColumnArray.GetValue(listOfFilms.Count)
@@ -2326,7 +2327,7 @@ Public Class CExportUnicornFileNew
                     Dim tmpChan As Trinity.cChannel = Nothing
                     Dim tmpBook As Trinity.cBookingType = Nothing
                     For Each c As Trinity.cChannel In Campaign.Channels
-                        For Each tmpB As cBookingType In _
+                        For Each tmpB As cBookingType In
                             From tmpB1 As cBookingType In c.BookingTypes Where tmpB1 Is tmpCC.Bookingtype
                             tmpChan = c
                             tmpBook = tmpB
@@ -2358,7 +2359,7 @@ Public Class CExportUnicornFileNew
                                 rowDisney = rowCombination
                             End If
                             tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
-                            HelperTable4(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
+                            PrimTargetTRPSpotlengthData(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                          c.ChannelName, rowCombination, rowHeader, True)
                             Exit For
                         Next
@@ -2389,19 +2390,19 @@ Public Class CExportUnicornFileNew
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            HelperTable4(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                            PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
                                         ElseIf _BundleTV4 Then
-                                            HelperTable4(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                            PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
                                         Else
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            HelperTable4(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                            PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
                                         End If
                                     ElseIf (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific)) And (tmpChan.ChannelName = channelName) Or (_printExportAsCampaign And rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific) And tmpChan.ChannelName = channelName) Or (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific Or tmpBook.IsRBS) And tmpChan.ChannelName = channelName) Then
                                         rowTV4 = rowTV4
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable4(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                        PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
 
                                     ElseIf rowOnlyTV4 <> 0 And tmpChan.ChannelName = "TV4" Or tmpChan.ChannelName = "TV4" And _BundleTV4 Then
                                         If rowOnlyTV4 = 0 Then
@@ -2410,13 +2411,13 @@ Public Class CExportUnicornFileNew
                                         End If
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable4(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4, rowHeader)
+                                        PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4, rowHeader)
                                     Else
                                         rowTV4 = tmpRow
                                         tmpRow = tmpRow + 1
 
                                         tv4String = tmpChan.ChannelName
-                                        HelperTable4(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                        PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
                                     End If
                                     currentRow = tmpRow
                                 End If
@@ -2429,7 +2430,7 @@ Public Class CExportUnicornFileNew
                                                 tmpRow = tmpRow + 1
                                             End If
 
-                                            HelperTable4(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial, rowHeader)
+                                            PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial, rowHeader)
                                         Else
                                             If _BundleMTG And rowMTG <> 0 Then
                                                 If rowMTG = 0 Then
@@ -2441,7 +2442,7 @@ Public Class CExportUnicornFileNew
                                                 rowMTG = tmpRow
                                                 tmpRow = tmpRow + 1
                                             End If
-                                            HelperTable4(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
+                                            PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
                                         End If
                                     Else
                                         If _BundleMTG And rowMTG <> 0 Then
@@ -2454,7 +2455,7 @@ Public Class CExportUnicornFileNew
                                             rowMTG = tmpRow
                                             tmpRow = tmpRow + 1
                                         End If
-                                        HelperTable4(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
+                                        PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
                                     End If
                                 End If
                                 If checkNameSBS(tmpChan.ChannelName) Then
@@ -2468,7 +2469,7 @@ Public Class CExportUnicornFileNew
                                         rowSBS = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable4(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS, rowHeader)
+                                    PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameFOX(tmpChan.ChannelName) Then
@@ -2482,7 +2483,7 @@ Public Class CExportUnicornFileNew
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable4(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
+                                    PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameCMORE(tmpChan.ChannelName) Then
@@ -2496,7 +2497,7 @@ Public Class CExportUnicornFileNew
                                         rowCMORE = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable4(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE, rowHeader)
+                                    PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameCartoon(tmpChan.ChannelName) Then
@@ -2510,7 +2511,7 @@ Public Class CExportUnicornFileNew
                                         rowCartoon = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable4(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon, rowHeader)
+                                    PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameDisney(tmpChan.ChannelName) Then
@@ -2524,7 +2525,7 @@ Public Class CExportUnicornFileNew
                                         rowDisney = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable4(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney, rowHeader)
+                                    PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
@@ -2538,7 +2539,7 @@ Public Class CExportUnicornFileNew
                                         rowTNT = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    HelperTable4(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT, rowHeader)
+                                    PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT, rowHeader)
                                     currentRow = tmpRow
                                 End If
                             End If
@@ -2550,7 +2551,7 @@ Public Class CExportUnicornFileNew
         '_sheet.Range("B" & lastRowComboTable1 - 1 & ":M" & currentRow).Numberformat = "0.0"
         lastRowComboTable4 = currentRow + 1
     End Sub
-    Sub helperTable5(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional rowheader As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
+    Sub BuyTargetTRPSpotlengthData(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional rowheader As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False)
 
         Dim tmpBook As Trinity.cBookingType = tmpB
         Dim tmpBundle = bundle
@@ -2723,8 +2724,8 @@ Public Class CExportUnicornFileNew
                 For Each tmpF As Trinity.cFilm In listOfFilms
                     If _amountOfFilmLength(x).ToString = tmpF.FilmLength Then
                         For Each tmpWeek As Trinity.cWeek In tmpB.Weeks
-                            For each w As cWeek In listOfWeeks
-                                If tmpWeek.Name = w.Name                                    
+                            For Each w As cWeek In listOfWeeks
+                                If tmpWeek.Name = w.Name Then
                                     trpForShare = tmpWeek.TRPBuyingTarget
                                     If (tmpF.Filmcode <> "") Then
                                         tmpShare = tmpWeek.Films(tmpF.Name).Share()
@@ -2752,7 +2753,7 @@ Public Class CExportUnicornFileNew
     End Sub
 
 
-    Sub printTable5()
+    Sub printBuyingtargetTRPSpotlength()
         Dim filmColumnArray As String() = {":B", ":C", ":D", ":E", ":F", ":G", ":H", ":I", ":J", ":K", ":L", ":M", ":N", ":O", ":P", ":Q", ":R", ":S", ":T", ":U", ":V", ":W", ":X", ":Y", ":Z", ":AA", ":AB", ":AC", ":AD"}
         Dim columnValue As String = filmColumnArray.GetValue(listOfFilms.Count)
 
@@ -2798,7 +2799,7 @@ Public Class CExportUnicornFileNew
                     Dim tmpChan As Trinity.cChannel = Nothing
                     Dim tmpBook As Trinity.cBookingType = Nothing
                     For Each c As Trinity.cChannel In Campaign.Channels
-                        For Each tmpB As cBookingType In _
+                        For Each tmpB As cBookingType In
                             From tmpB1 As cBookingType In c.BookingTypes Where tmpB1 Is tmpCC.Bookingtype
                             tmpChan = c
                             tmpBook = tmpB
@@ -2830,7 +2831,7 @@ Public Class CExportUnicornFileNew
                                 rowDisney = rowCombination
                             End If
                             tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
-                            helperTable5(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
+                            BuyTargetTRPSpotlengthData(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                          c.ChannelName, rowCombination, rowHeader, True)
                             Exit For
                         Next
@@ -2859,19 +2860,19 @@ Public Class CExportUnicornFileNew
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            helperTable5(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                            BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
                                         ElseIf _BundleTV4 Then
-                                            helperTable5(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                            BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
                                         Else
                                             rowTV4 = tmpRow
                                             tv4String = tmpChan.ChannelName
-                                            helperTable5(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                            BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
                                         End If
-                                    ElseIf (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific)) And (tmpChan.ChannelName = channelName) Or (_printExportAsCampaign And rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific) And tmpChan.ChannelName = channelName) Or (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific Or tmpBook.isrbs) And tmpChan.ChannelName = channelName) Then
+                                    ElseIf (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific)) And (tmpChan.ChannelName = channelName) Or (_printExportAsCampaign And rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific) And tmpChan.ChannelName = channelName) Or (rowTV4 <> 0 And (tmpBook.IsCompensation Or tmpBook.IsSpecific Or tmpBook.IsRBS) And tmpChan.ChannelName = channelName) Then
                                         rowTV4 = rowTV4
 
                                         tv4String = tmpChan.ChannelName
-                                        helperTable5(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                        BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
 
                                     ElseIf rowOnlyTV4 <> 0 And tmpChan.ChannelName = "TV4" Or tmpChan.ChannelName = "TV4" And _BundleTV4 Then
                                         If rowOnlyTV4 = 0 Then
@@ -2880,13 +2881,13 @@ Public Class CExportUnicornFileNew
                                         End If
 
                                         tv4String = tmpChan.ChannelName
-                                        helperTable5(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4, rowHeader)
+                                        BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowOnlyTV4, rowHeader)
                                     Else
                                         rowTV4 = tmpRow
                                         tmpRow = tmpRow + 1
 
                                         tv4String = tmpChan.ChannelName
-                                        helperTable5(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
+                                        BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "TV4", _BundleTV4, tmpRow, tmpChan.ChannelName, rowTV4, rowHeader)
                                     End If
                                     currentRow = tmpRow
                                 End If
@@ -2899,7 +2900,7 @@ Public Class CExportUnicornFileNew
                                                 tmpRow = tmpRow + 1
                                             End If
 
-                                            helperTable5(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial, rowHeader)
+                                            BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTGSpecial, rowHeader)
                                         Else
                                             If _BundleMTG And rowMTG <> 0 Then
                                                 If rowMTG = 0 Then
@@ -2911,7 +2912,7 @@ Public Class CExportUnicornFileNew
                                                 rowMTG = tmpRow
                                                 tmpRow = tmpRow + 1
                                             End If
-                                            helperTable5(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
+                                            BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
                                         End If
                                     Else
                                         If _BundleMTG And rowMTG <> 0 Then
@@ -2924,7 +2925,7 @@ Public Class CExportUnicornFileNew
                                             rowMTG = tmpRow
                                             tmpRow = tmpRow + 1
                                         End If
-                                        helperTable5(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
+                                        BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
                                     End If
                                     currentRow = tmpRow
                                 End If
@@ -2939,7 +2940,7 @@ Public Class CExportUnicornFileNew
                                         rowSBS = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable5(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS, rowHeader)
+                                    BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameFOX(tmpChan.ChannelName) Then
@@ -2953,7 +2954,7 @@ Public Class CExportUnicornFileNew
                                         rowFOX = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable5(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
+                                    BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameCMORE(tmpChan.ChannelName) Then
@@ -2967,7 +2968,7 @@ Public Class CExportUnicornFileNew
                                         rowCMORE = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable5(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE, rowHeader)
+                                    BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameCartoon(tmpChan.ChannelName) Then
@@ -2981,7 +2982,7 @@ Public Class CExportUnicornFileNew
                                         rowCartoon = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable5(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon, rowHeader)
+                                    BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameDisney(tmpChan.ChannelName) Then
@@ -2995,7 +2996,7 @@ Public Class CExportUnicornFileNew
                                         rowDisney = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable5(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney, rowHeader)
+                                    BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney, rowHeader)
                                     currentRow = tmpRow
                                 End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
@@ -3009,7 +3010,7 @@ Public Class CExportUnicornFileNew
                                         rowTNT = tmpRow
                                         tmpRow = tmpRow + 1
                                     End If
-                                    helperTable5(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT, rowHeader)
+                                    BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT, rowHeader)
                                     currentRow = tmpRow
                                 End If
                             End If
@@ -3021,7 +3022,7 @@ Public Class CExportUnicornFileNew
         '_sheet.Range("B" & lastRowComboTable1 - 1 & ":M" & currentRow).Numberformat = "0.0"
         lastRowComboTable5 = currentRow + 1
     End Sub
-     Sub printTable6()
+    Sub printFilmcodesSummery()
 
         Dim weekCol As String() = {":B", ":C", ":D", ":E", ":F", ":G", ":H", ":I", ":J", ":K", ":L", ":M", ":N", ":O", ":P", ":Q", ":R", ":S", ":T", ":U", ":V", ":W", ":X", ":Y", ":Z", ":AA", ":AB", ":AC", ":AD"}
         Dim columnValue As String = weekCol.GetValue(3 + listOfWeeks.Count)
@@ -3045,17 +3046,17 @@ Public Class CExportUnicornFileNew
         currentRow = currentRow + 1
         Dim amountOfFilms = 1
 
-        Dim filmLengths As new List(Of Integer)
-        
+        Dim filmLengths As New List(Of Integer)
+
         Dim x As Integer = 0
-        For each tmpfilm as cFilm In listOfFilms
-            If not filmLengths.contains(listOfFilms.Item(x).FilmLength)
+        For Each tmpfilm As cFilm In listOfFilms
+            If Not filmLengths.Contains(listOfFilms.Item(x).FilmLength) Then
                 filmLengths.Add(listOfFilms.Item(x).FilmLength)
             End If
             x = x + 1
         Next
 
-        For each tmpLength As Byte In filmLengths
+        For Each tmpLength As Byte In filmLengths
             For i As Integer = 1 To listOfFilms.Count
                 With _sheet
                     For Each tmpChan As Trinity.cChannel In Campaign.Channels
@@ -3064,10 +3065,10 @@ Public Class CExportUnicornFileNew
                                 .Cells(currentRow, 2).Value = amountOfFilms
                                 Dim totalTRPForWeek As Decimal = 0
                                 Dim startingColumn = 6
-                                For Each tmpWeek As Trinity.cWeek In tmpBt.Weeks        
-                                    For each w As cWeek In listOfWeeks
-                                        If w.Name = tmpWeek.Name                                                                    
-                                            If tmpWeek.Films(i).FilmLength = tmpLength                                            
+                                For Each tmpWeek As Trinity.cWeek In tmpBt.Weeks
+                                    For Each w As cWeek In listOfWeeks
+                                        If w.Name = tmpWeek.Name Then
+                                            If tmpWeek.Films(i).FilmLength = tmpLength Then
                                                 totalTRPForWeek = tmpWeek.TRP * (tmpWeek.Films(i).Share / 100)
                                                 If .Cells(headerRow, startingColumn).Value = "" Then
                                                     Dim yearForWeek As Date = Trinity.Helper.FormatDateForBooking(tmpWeek.StartDate)
@@ -3080,10 +3081,10 @@ Public Class CExportUnicornFileNew
                                                     '    .Cells(currentRow, 3).Value = tmpWeek.Films(i).Description
                                                     'End If
                                                     .Cells(currentRow, 3).Value = tmpLength & " Sec"
-                                                End If                                
+                                                End If
                                                 If .Cells(currentRow, 4).Value Is Nothing Then
                                                     .Cells(currentRow, 4).Value += tmpWeek.Films(i).Filmcode + ";"
-                                                ElseIf Not .Cells(currentRow, 4).Text.Contains(tmpWeek.Films(i).Filmcode)
+                                                ElseIf Not .Cells(currentRow, 4).Text.Contains(tmpWeek.Films(i).Filmcode) Then
                                                     .Cells(currentRow, 4).Value += tmpWeek.Films(i).Filmcode + ";"
                                                 End If
                                                 If .Cells(currentRow, 5).Value Is Nothing Then
@@ -3094,7 +3095,7 @@ Public Class CExportUnicornFileNew
                                                 totalTRPForWeek = 0
                                             End If
                                         End If
-                                    Next   
+                                    Next
                                 Next
                                 .Range("B" & currentRow & ":B" & currentRow).Interior.Color = RGB(0, 137, 178)
                                 .Range("B" & currentRow & ":B" & currentRow).Font.Color = RGB(255, 255, 255)
