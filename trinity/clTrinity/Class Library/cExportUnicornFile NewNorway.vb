@@ -69,7 +69,9 @@ Public Class CExportUnicornFileNewNorway
     Dim tmpUserCompany As String = ""
     Dim userCompany As String = ""
 
-
+    '   /JOOS
+    '   2019-02-12 Chenges:
+    '   Changed name on MTG to NENT in every PrinTtable and removed Comedy Central from Export
     Public Sub printUnicornFile(Optional ByVal bundleTV2 As Boolean = False, Optional ByVal bundleMTG As Boolean = False, Optional ByVal bundleDNN As Boolean = False, Optional ByVal useOwnCommission As Boolean = False, Optional ByVal useOwnCommissionAmount As Decimal = 0, Optional ByVal tmpPrintExportAsCampaign As Boolean = False, Optional ByVal ct As String = "", Optional ByVal ct2 As String = "")
 
         If useOwnCommission Then
@@ -183,9 +185,9 @@ Public Class CExportUnicornFileNewNorway
     End Function
     '   //JOOS
     '   Added Nat Geo, Fox, BBC to MTG/NENT export
-    '
+    '   2019-02-12: Removed Comedy Central from export
     Public Function checkNameMTG(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("TV3") Or tmpChannelName.Contains("TV6") Or tmpChannelName.Contains("MTV") Or tmpChannelName.Contains("Comedy central") Or tmpChannelName.Contains("Comedy") Or tmpChannelName.Contains("Viasat") Or tmpChannelName.Contains("National Geographic") Or tmpChannelName.Contains("Fox") Or tmpChannelName.Contains("BBC Brit") Then
+        If tmpChannelName.Contains("TV3") Or tmpChannelName.Contains("TV6") Or tmpChannelName.Contains("MTV") Or tmpChannelName.Contains("Viasat") Or tmpChannelName.Contains("National Geographic") Or tmpChannelName.Contains("Fox") Or tmpChannelName.Contains("BBC Brit") Then
             Return True
         End If
         Return False
@@ -472,7 +474,7 @@ Public Class CExportUnicornFileNewNorway
                     '    End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "MTG"
+                        .Cells(row, 2).Value = "NENT"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -499,7 +501,7 @@ Public Class CExportUnicornFileNewNorway
                 End If
             Else
                 If groupName = "MTG" Then
-                    .Cells(row, 2).Value = "MTG"
+                    .Cells(row, 2).Value = "NENT"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
                     'ElseIf groupName = "FOXold" Then
@@ -526,7 +528,7 @@ Public Class CExportUnicornFileNewNorway
                         'ElseIf groupName = "FOXold" Then
                         '    .Cells(row, 3).Value = "National GeographicREMOVE; Fox NorwayREMOVE; BBC BritREMOVE; Fox CrimeREMOVE;"
                     ElseIf groupName = "MTG" Then
-                        .Cells(row, 3).Value = "TV3; Viasat 4; TV6; Comedy Central; National Geographic; Fox Norway; BBC Brit; Fox Crime;"
+                        .Cells(row, 3).Value = "TV3; Viasat 4; TV6; National Geographic; Fox Norway; BBC Brit; Fox Crime;"
                     ElseIf groupName = "TNT" Then
                         .Cells(row, 3).Value = "TNT"
                     End If
@@ -960,7 +962,7 @@ Public Class CExportUnicornFileNewNorway
                     '    End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "MTG"
+                        .Cells(row, 2).Value = "NENT"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -991,7 +993,7 @@ Public Class CExportUnicornFileNewNorway
                 End If
             Else
                 If groupName = "MTG" Then
-                    .Cells(row, 2).Value = "MTG"
+                    .Cells(row, 2).Value = "NENT"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
                 ElseIf groupName = "FOX" Then
@@ -1245,7 +1247,7 @@ Public Class CExportUnicornFileNewNorway
                     End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "MTG"
+                        .Cells(row, 2).Value = "NENT"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -1326,7 +1328,7 @@ Public Class CExportUnicornFileNewNorway
                 End If
             Else
                 If groupName = "MTG" Then
-                    .Cells(row, 2).Value = "MTG"
+                    .Cells(row, 2).Value = "NENT"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
                 ElseIf groupName = "FOX" Then
@@ -1587,7 +1589,7 @@ Public Class CExportUnicornFileNewNorway
                     End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "MTG"
+                        .Cells(row, 2).Value = "NENT"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -1668,7 +1670,7 @@ Public Class CExportUnicornFileNewNorway
                 End If
             Else
                 If groupName = "MTG" Then
-                    .Cells(row, 2).Value = "MTG"
+                    .Cells(row, 2).Value = "NENT"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
                     'ElseIf groupName = "FOXold" Then
@@ -1948,7 +1950,7 @@ Public Class CExportUnicornFileNewNorway
                     End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "MTG"
+                        .Cells(row, 2).Value = "NENT"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -2029,7 +2031,7 @@ Public Class CExportUnicornFileNewNorway
                 End If
             Else
                 If groupName = "MTG" Then
-                    .Cells(row, 2).Value = "MTG"
+                    .Cells(row, 2).Value = "NENT"
                 ElseIf groupName = "DNN" Then
                     .Cells(row, 2).Value = "Discovery Networks Norway"
                     'ElseIf groupName = "FOXold" Then
