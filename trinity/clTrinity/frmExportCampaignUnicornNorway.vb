@@ -60,6 +60,7 @@ Public Class frmExportCampaignUnicornNorway
         '
         '   removed bundleNatGeo 2019-02-08 containing FOX, Nat Geo and BBC
         '   Following channels are moved to NENT (MTG)
+        '   Removed Comedy Channel and changed name on MTG to NENT
         export.printUnicornFile(bundleTV2, bundleMTG, bundleSBS, False, False, printExportAsCampaign, _campaignType, _campaignType2)
 
     End Sub

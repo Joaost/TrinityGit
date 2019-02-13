@@ -206,7 +206,7 @@ Public Class CExportUnicornFileNewNorway
     '    Return False
     'End Function
     Public Function checkNameTNT(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("TNT")Then
+        If tmpChannelName.Contains("TNT") Then
             Return True
         End If
         Return False

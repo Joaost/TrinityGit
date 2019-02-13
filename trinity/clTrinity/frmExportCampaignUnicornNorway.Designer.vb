@@ -113,9 +113,9 @@ Partial Class frmExportCampaignUnicornNorway
         Me.chkBundleViasat.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkBundleViasat.Location = New System.Drawing.Point(194, 118)
         Me.chkBundleViasat.Name = "chkBundleViasat"
-        Me.chkBundleViasat.Size = New System.Drawing.Size(88, 17)
+        Me.chkBundleViasat.Size = New System.Drawing.Size(93, 17)
         Me.chkBundleViasat.TabIndex = 15
-        Me.chkBundleViasat.Text = "Bundle MTG"
+        Me.chkBundleViasat.Text = "Bundle NENT"
         Me.chkBundleViasat.UseVisualStyleBackColor = True
         '
         'chkOwnCommission
