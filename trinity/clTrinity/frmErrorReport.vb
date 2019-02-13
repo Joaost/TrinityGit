@@ -74,7 +74,7 @@
             End Try
 
 
-            Trinity.Helper.SendEmail("trinity@groupm.com", txtName.Text, TrinitySettings.UserEmail, "Trinity error report" & campaignName, _body.ToString, _files)
+            Trinity.Helper.SendEmail("trinity.support@groupm.com", txtName.Text, TrinitySettings.UserEmail, "Trinity error report" & campaignName, _body.ToString, _files)
             'Trinity.Helper.SendEmail("mecstomail.trinity@mecglobal.com", txtName.Text, TrinitySettings.UserEmail, "Trinity error report", _body.ToString)
 
             Windows.Forms.MessageBox.Show("Error report has been sent", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
