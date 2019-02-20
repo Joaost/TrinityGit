@@ -56,9 +56,17 @@ Namespace Trinity
             mCol.Remove(Index)
         End Sub
 
-        Public Sub remove(ByVal CombinationChannel As cCombinationChannel)
+        Public Sub Remove(ByVal CombinationChannel As cCombinationChannel)
             CombinationChannel.Bookingtype.Combination = Nothing
             mCol.Remove(CombinationChannel.ID)
+        End Sub
+
+        '   Added 2019-02-20 /JOOS
+        '   In order to remove Channels in frmContract when creating new combinations
+        Public Sub RemoveChannelFromContractCombo(ByVal CombinationChannel As cCombinationChannel)
+            If CombinationChannel.Bookingtype Is Nothing Then
+                mCol.Remove(CombinationChannel.ID)
+            End If
         End Sub
 
         Public Sub New(ByVal MainObject As cKampanj, ByVal ParentCombination As cCombination)

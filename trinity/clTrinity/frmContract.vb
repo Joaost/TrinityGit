@@ -1003,11 +1003,14 @@ Public Class frmContract
         grpCombo.Visible = False
     End Sub
 
+    '   Changed 2019-02-20  In order to remove Channels in Contract while creating new combinations//JOOS
+    '   From: .Relations.Remove(TmpCC)
+    '   To: .Relations.RemoveChannelfromContractCombo(TmpCC)
     Private Sub cmdDeleteChannelFromCombo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDeleteChannelFromCombo.Click
         With DirectCast(grpCombo.Tag, Trinity.cCombination)
             For Each TmpRow As DataGridViewRow In grdCombo.SelectedRows
                 Dim TmpCC As Trinity.cCombinationChannel = TmpRow.Tag
-                .Relations.Remove(TmpCC)
+                .Relations.RemoveChannelFromContractCombo(TmpCC)
                 grdCombo.Rows.Remove(TmpRow)
             Next
         End With
