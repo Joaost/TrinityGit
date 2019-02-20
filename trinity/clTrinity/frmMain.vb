@@ -4266,6 +4266,15 @@ CreatePlan:
                     End If
                 End If
             End If
+
+            '   /JOOS
+            '   Deleting unused data to decrease DB load
+            '   
+            Debug.Print("/*********** TESTING DELETING UNUSED DATA!!!!! /JOOS *************/")
+            Debug.Print("Number of Channels before Deleted unused data: " & Campaign.Channels.Count)
+            Campaign.DeleteUnusedChannels()
+            Debug.Print("Number of Channels after: " & Campaign.Channels.Count)
+            Debug.Print("/****************** TEST DONE!! ****************/")
             Campaign.SaveCampaign(, True, , , , True)
             Me.Cursor = Windows.Forms.Cursors.Default
             tmrAutosave.Enabled = enableAutosave
