@@ -4092,7 +4092,15 @@ CreatePlan:
             Exit Sub
         Else
             Campaign.DatabaseID = 0
+            '   Added 2019-02-21 /JOOS
+            '   Delete unused Channeldata to decrease DB load
+            Debug.Print("Number of Channels before Deleted unused data: " & Campaign.Channels.Count)
+
+            Campaign.DeleteUnusedChannels()
+            Debug.Print("Number of Channels after removal of unused Channeldata: " & Campaign.Channels.Count)
+
             Campaign.SaveCampaign(, True, , , , True)
+            Windows.Forms.MessageBox.Show("Campaign was saved!", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
         End If
     End Sub
 
@@ -4266,6 +4274,14 @@ CreatePlan:
                     End If
                 End If
             End If
+
+            '   /JOOS
+            '   Deleting unused data to decrease DB load
+            '   
+            Debug.Print("Number of Channels before Deleted unused data: " & Campaign.Channels.Count)
+            Campaign.DeleteUnusedChannels()
+            Debug.Print("Number of Channels after: " & Campaign.Channels.Count)
+
             Campaign.SaveCampaign(, True, , , , True)
             Me.Cursor = Windows.Forms.Cursors.Default
             tmrAutosave.Enabled = enableAutosave
