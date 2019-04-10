@@ -73,9 +73,9 @@ Partial Class frmExportCampaignUnicorn_new
         Me.chkBundleMTG.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkBundleMTG.Location = New System.Drawing.Point(110, 75)
         Me.chkBundleMTG.Name = "chkBundleMTG"
-        Me.chkBundleMTG.Size = New System.Drawing.Size(88, 17)
+        Me.chkBundleMTG.Size = New System.Drawing.Size(93, 17)
         Me.chkBundleMTG.TabIndex = 4
-        Me.chkBundleMTG.Text = "Bundle MTG"
+        Me.chkBundleMTG.Text = "Bundle NENT"
         Me.chkBundleMTG.UseVisualStyleBackColor = True
         '
         'chkBundleSBS
@@ -85,9 +85,9 @@ Partial Class frmExportCampaignUnicorn_new
         Me.chkBundleSBS.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkBundleSBS.Location = New System.Drawing.Point(202, 75)
         Me.chkBundleSBS.Name = "chkBundleSBS"
-        Me.chkBundleSBS.Size = New System.Drawing.Size(85, 17)
+        Me.chkBundleSBS.Size = New System.Drawing.Size(88, 17)
         Me.chkBundleSBS.TabIndex = 5
-        Me.chkBundleSBS.Text = "Bundle SBS"
+        Me.chkBundleSBS.Text = "Bundle DNS"
         Me.chkBundleSBS.UseVisualStyleBackColor = True
         '
         'chkBundleCMORE

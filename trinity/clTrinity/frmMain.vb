@@ -1344,6 +1344,7 @@ cmdSave_Click_Error:
             Exit Sub
         End If
 
+
         'Create orders for each of the channels and each of the booking types in the campaign. We should get an order number from each
         For Each TmpChan As Trinity.cChannel In Campaign.Channels
             For Each TmpBT As Trinity.cBookingType In TmpChan.BookingTypes
