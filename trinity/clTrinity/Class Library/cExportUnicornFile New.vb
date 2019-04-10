@@ -661,7 +661,7 @@ Public Class CExportUnicornFileNew
                         If before2016 Then
                             .Cells(row, 3).Value = "TV3 se; TV6 SE; MTV se; TV8; Comedy Central; TV10; Nickelodeon;"
                         Else
-                            .Cells(row, 3).Value = "TV3 se; TV6 SE; MTV se; TV8; Comedy Central; TV10; FOX; NatlGeo se; Nickelodeon; History; Paramount;"
+                            .Cells(row, 3).Value = "TV3 se; TV6 SE; MTV se; TV8; Comedy Central; TV10; FOX; NatlGeo se; Nickelodeon; History; Paramount Network;"
                         End If
                     ElseIf groupName = "SBS" Then
                         .Cells(row, 3).Value = "Kanal 5; Eurosport SE; Discovery se; TLC; Kanal 9; Kanal11; Investigation Discovery; Eurosport 2 SE;"
