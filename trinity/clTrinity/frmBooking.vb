@@ -7324,4 +7324,8 @@ grdSchedule_DblClick_Error:
     Private Sub grdSpotlist_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdSpotlist.CellContentClick
 
     End Sub
+
+    Private Sub cmdScheduleFilter_Click(sender As Object, e As EventArgs) Handles cmdScheduleFilter.Click
+
+    End Sub
 End Class

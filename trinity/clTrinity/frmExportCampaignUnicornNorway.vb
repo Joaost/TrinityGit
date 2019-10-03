@@ -8,7 +8,7 @@ Public Class frmExportCampaignUnicornNorway
 
     Dim bundleSBS As Boolean = False
     Dim bundleTV2 As Boolean = False
-    Dim bundleNatGeo As Boolean = False
+    'Dim bundleNatGeo As Boolean = False
     Dim bundleMTG As Boolean = False
     Dim printExportAsCampaign As Boolean = False
     Dim bundleDiscovery As Boolean = False
@@ -29,11 +29,11 @@ Public Class frmExportCampaignUnicornNorway
         Else
             bundleTV2 = False
         End If
-        If chkBundleNatGeo.Checked Then
-            bundleNatGeo = True
-        Else
-            bundleNatGeo = False
-        End If
+        'If chkBundleNatGeo.Checked Then
+        '    bundleNatGeo = True
+        'Else
+        '    bundleNatGeo = False
+        'End If
         If chkBundleViasat.Checked Then
             bundleMTG = True
         Else
@@ -56,8 +56,12 @@ Public Class frmExportCampaignUnicornNorway
         _campaignType2 = cmbCampaignType2.SelectedItem
 
         Dim export As New CExportUnicornFileNewNorway(Campaign)
-
-        export.printUnicornFile(bundleTV2, bundleMTG, bundleSBS, bundleNatGeo, False, False, printExportAsCampaign, _campaignType, _campaignType2)
+        '   /JOOS
+        '
+        '   removed bundleNatGeo 2019-02-08 containing FOX, Nat Geo and BBC
+        '   Following channels are moved to NENT (MTG)
+        '   Removed Comedy Channel and changed name on MTG to NENT
+        export.printUnicornFile(bundleTV2, bundleMTG, bundleSBS, False, False, printExportAsCampaign, _campaignType, _campaignType2)
 
     End Sub
 

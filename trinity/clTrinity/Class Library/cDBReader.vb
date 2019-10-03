@@ -85,7 +85,9 @@ Namespace Trinity
         Public MustOverride Function GetCampaign(ByVal ID As Long, Optional ByVal OpenReadOnly As Boolean = False) As String
 
         Public MustOverride Function GetCampaigns(Optional ByVal SQLQuery As String = "") As List(Of CampaignEssentials)
-        
+
+        Public MustOverride Function GetCampaignsUserAccess(Optional ByVal SQLQuery As String = "") As List(Of CampaignEssentials)
+
         Public MustOverride Function GetCampaignsXML(Optional ByVal SQLQuery As String = "") As List(Of CampaignEssentials)
 
         Public MustOverride Function GetBackUpCampaigns(Optional ByVal SQLQuery As String = "") As List(Of CampaignEssentials)
