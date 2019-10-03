@@ -32,6 +32,43 @@ Namespace Trinity
             Public LockDate As Date
         End Structure
 
+        Public Overrides Function GetCampaignsUserAccess(Optional ByVal SQLQuery As String = "") As List(Of CampaignEssentials)
+            Using _conn As New SqlClient.SqlConnection(_connectionString)
+                _conn.Open()
+                Using Command As New SqlClient.SqlCommand
+                    Command.Connection = _conn
+                    Using ds As New DataTable
+                        Dim Clients As New List(Of Integer)
+                        Dim Product As New List(Of Integer)
+                        Dim Years As New List(Of Integer)
+                        Dim Months As New List(Of Integer)
+                        Dim Campaigns As New List(Of String)
+                        Dim CampaignList As New List(Of CampaignEssentials)
+
+                        If SQLQuery = "" Then
+                            Command.CommandText = "IF IS_SRVROLEMEMBER('mc_access') = 1 PRINT 'DR KOCH'"
+                        Else
+                            Command.CommandText = SQLQuery
+                        End If
+
+                        Try
+                            Using rd As SqlClient.SqlDataReader = Command.ExecuteReader
+                                ds.Load(rd)
+                                rd.Close()
+                            End Using
+                        Catch ex As SqlClient.SqlException
+                            Throw ex
+                            'Windows.Forms.MessageBox.Show("Could not open the campaigns. Error message: " & vbNewLine & ex.Message)
+                            '_conn.Close()
+                            'Return New List(Of clTrinity.CampaignEssentials)
+                        End Try
+
+                        Return CampaignList
+                    End Using
+                    _conn.Close()
+                End Using
+            End Using
+        End Function
         Public Overrides Function RecoverCampaignFromBackup(originalID As Integer) As Boolean
             Using _conn As New SqlClient.SqlConnection(_connectionString)
                 _conn.Open()

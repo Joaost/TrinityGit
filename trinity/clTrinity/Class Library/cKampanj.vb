@@ -3147,6 +3147,10 @@ On_Error:
         ' Purpose   : Saves the current campaign
         '---------------------------------------------------------------------------------------
         '
+        Public Function SaveCampaignTest()
+
+        End Function
+
         Public Function SaveCampaign(Optional ByRef Path As String = "", Optional ByRef DoNotSaveToFile As Boolean = False, Optional ByRef SkipHistory As Boolean = False, Optional ByRef SkipLab As Boolean = False, Optional ByVal SkipReach As Boolean = False, Optional ByVal ToDB As Boolean = False) As String
 
             Helper.WriteToLogFile("Start saving")
