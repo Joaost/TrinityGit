@@ -152,6 +152,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\BalloonToolTip.dll</HintPath>
     </Reference>
+    <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.AgData.v9.2">
       <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
     </Reference>
@@ -1709,6 +1713,15 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+    <COMReference Include="Connect">
+      <Guid>{B220DF47-1F54-4D7C-A042-EED01A7CE585}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -1989,10 +2002,6 @@
     <Content Include="Trinity.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Projects\ConnectWrapper\ConnectWrapper.csproj">
-      <Project>{A0228581-7C2A-4127-BB42-AC5E673C477D}</Project>
-      <Name>ConnectWrapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ScheduleUploader\ScheduleUploader\ScheduleUploader.vbproj">
       <Project>{5decc64d-f37d-4123-b7b2-12102ef517be}</Project>
       <Name>ScheduleUploader</Name>
