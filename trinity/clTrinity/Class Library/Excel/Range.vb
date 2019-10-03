@@ -100,7 +100,7 @@ Namespace CultureSafeExcel
 
         Public ReadOnly Property Address As String
             Get
-                try
+                Try
                     Return _range.GetType.InvokeMember("Address", Reflection.BindingFlags.GetProperty, Nothing, _range, Nothing, _ci)
                 Catch ex As Reflection.TargetInvocationException
                     Throw ex.InnerException
@@ -118,7 +118,7 @@ Namespace CultureSafeExcel
 
         Public WriteOnly Property Numberformat As String
             Set(value As String)
-                try
+                Try
                     _range.GetType.InvokeMember("Numberformat", Reflection.BindingFlags.SetProperty, Nothing, _range, New Object() {value}, _ci)
                 Catch ex As Reflection.TargetInvocationException
                     Throw ex.InnerException
@@ -252,7 +252,7 @@ Namespace CultureSafeExcel
 
         Public WriteOnly Property RowHeight As Single
             Set(value As Single)
-                try
+                Try
                     _range.GetType.InvokeMember("RowHeight", Reflection.BindingFlags.SetProperty, Nothing, _range, New Object() {value}, _ci)
                 Catch ex As Reflection.TargetInvocationException
                     Throw ex.InnerException

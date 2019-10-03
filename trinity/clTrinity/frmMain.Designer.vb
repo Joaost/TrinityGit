@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
@@ -232,24 +232,24 @@ Partial Class frmMain
         Me.lblUserCompany = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.msMain.SuspendLayout
-        Me.tstMain.SuspendLayout
-        Me.pnlMenu.SuspendLayout
-        CType(Me.icnProblems,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.pnlInfo.SuspendLayout
-        CType(Me.picPin,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdReach,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PictureBox3,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox1.SuspendLayout
-        Me.Panel3.SuspendLayout
-        Me.Panel2.SuspendLayout
-        Me.pnlStartHelp.SuspendLayout
-        Me.pnlMessage.SuspendLayout
-        Me.SuspendLayout
+        Me.msMain.SuspendLayout()
+        Me.tstMain.SuspendLayout()
+        Me.pnlMenu.SuspendLayout()
+        CType(Me.icnProblems, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlInfo.SuspendLayout()
+        CType(Me.picPin, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdReach, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.pnlStartHelp.SuspendLayout()
+        Me.pnlMessage.SuspendLayout()
+        Me.SuspendLayout()
         '
         'ilsSmall
         '
-        Me.ilsSmall.ImageStream = CType(resources.GetObject("ilsSmall.ImageStream"),System.Windows.Forms.ImageListStreamer)
+        Me.ilsSmall.ImageStream = CType(resources.GetObject("ilsSmall.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ilsSmall.TransparentColor = System.Drawing.Color.Transparent
         Me.ilsSmall.Images.SetKeyName(0, "UK")
         Me.ilsSmall.Images.SetKeyName(1, "SE")
@@ -261,7 +261,7 @@ Partial Class frmMain
         '
         'ilsBig
         '
-        Me.ilsBig.ImageStream = CType(resources.GetObject("ilsBig.ImageStream"),System.Windows.Forms.ImageListStreamer)
+        Me.ilsBig.ImageStream = CType(resources.GetObject("ilsBig.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ilsBig.TransparentColor = System.Drawing.Color.Transparent
         Me.ilsBig.Images.SetKeyName(0, "SE")
         Me.ilsBig.Images.SetKeyName(1, "DK")
@@ -308,7 +308,7 @@ Partial Class frmMain
         Me.NewToolStripMenuItem.Image = Global.clTrinity.My.Resources.Resources.new_file_4_16x16
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N),System.Windows.Forms.Keys)
+        Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
         Me.NewToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.NewToolStripMenuItem.Text = "&New"
         '
@@ -316,7 +316,7 @@ Partial Class frmMain
         '
         Me.mnuOpen.Image = Global.clTrinity.My.Resources.Resources.open_2
         Me.mnuOpen.Name = "mnuOpen"
-        Me.mnuOpen.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O),System.Windows.Forms.Keys)
+        Me.mnuOpen.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.mnuOpen.Size = New System.Drawing.Size(202, 22)
         Me.mnuOpen.Text = "Open"
         '
@@ -330,7 +330,7 @@ Partial Class frmMain
         Me.mnuSave.Image = Global.clTrinity.My.Resources.Resources.save_2
         Me.mnuSave.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.mnuSave.Name = "mnuSave"
-        Me.mnuSave.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S),System.Windows.Forms.Keys)
+        Me.mnuSave.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.mnuSave.Size = New System.Drawing.Size(202, 22)
         Me.mnuSave.Text = "&Save"
         '
@@ -354,7 +354,7 @@ Partial Class frmMain
         'mnuRecent
         '
         Me.mnuRecent.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Recent1ToolStripMenuItem, Me.Recent2ToolStripMenuItem, Me.Recent3ToolStripMenuItem, Me.Recent4ToolStripMenuItem, Me.Recent5ToolStripMenuItem, Me.Recent6ToolStripMenuItem, Me.Recent7ToolStripMenuItem, Me.Recent8ToolStripMenuItem, Me.Recent9ToolStripMenuItem, Me.Recent10ToolStripMenuItem})
-        Me.mnuRecent.Enabled = false
+        Me.mnuRecent.Enabled = False
         Me.mnuRecent.Name = "mnuRecent"
         Me.mnuRecent.Size = New System.Drawing.Size(202, 22)
         Me.mnuRecent.Text = "Recent files"
@@ -440,7 +440,7 @@ Partial Class frmMain
         'MarathonToolStripMenuItem
         '
         Me.MarathonToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateOrdersInMarathonToolStripMenuItem, Me.CreateInsertionsInMarathonToolStripMenuItem, Me.MakeOrdersDefinitiveInMarathonToolStripMenuItem, Me.ToolStripMenuItem5, Me.mnuMarathonShowInsertions, Me.mnuMarathonCampaignSettings, Me.ToolStripMenuItem6, Me.ResetMarathonSettingsToolStripMenuItem, Me.AddOrdersInMarathonToolStripMenuItem})
-        Me.MarathonToolStripMenuItem.Image = CType(resources.GetObject("MarathonToolStripMenuItem.Image"),System.Drawing.Image)
+        Me.MarathonToolStripMenuItem.Image = CType(resources.GetObject("MarathonToolStripMenuItem.Image"), System.Drawing.Image)
         Me.MarathonToolStripMenuItem.Name = "MarathonToolStripMenuItem"
         Me.MarathonToolStripMenuItem.Size = New System.Drawing.Size(204, 22)
         Me.MarathonToolStripMenuItem.Text = "Marathon"
@@ -459,7 +459,7 @@ Partial Class frmMain
         '
         'MakeOrdersDefinitiveInMarathonToolStripMenuItem
         '
-        Me.MakeOrdersDefinitiveInMarathonToolStripMenuItem.Enabled = false
+        Me.MakeOrdersDefinitiveInMarathonToolStripMenuItem.Enabled = False
         Me.MakeOrdersDefinitiveInMarathonToolStripMenuItem.Name = "MakeOrdersDefinitiveInMarathonToolStripMenuItem"
         Me.MakeOrdersDefinitiveInMarathonToolStripMenuItem.Size = New System.Drawing.Size(281, 22)
         Me.MakeOrdersDefinitiveInMarathonToolStripMenuItem.Text = "Make orders definitive in Marathon"
@@ -538,7 +538,7 @@ Partial Class frmMain
         Me.mnuExtranet.Name = "mnuExtranet"
         Me.mnuExtranet.Size = New System.Drawing.Size(204, 22)
         Me.mnuExtranet.Text = "Upload to extranet"
-        Me.mnuExtranet.Visible = false
+        Me.mnuExtranet.Visible = False
         '
         'CreateFromAdvantEdgeToolStripMenuItem
         '
@@ -561,7 +561,7 @@ Partial Class frmMain
         '
         'PlanningToolStripMenuItem
         '
-        Me.PlanningToolStripMenuItem.Checked = true
+        Me.PlanningToolStripMenuItem.Checked = True
         Me.PlanningToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.PlanningToolStripMenuItem.Name = "PlanningToolStripMenuItem"
         Me.PlanningToolStripMenuItem.Size = New System.Drawing.Size(126, 22)
@@ -632,28 +632,28 @@ Partial Class frmMain
         Me.channelset1.Name = "channelset1"
         Me.channelset1.Size = New System.Drawing.Size(202, 22)
         Me.channelset1.Text = "1"
-        Me.channelset1.Visible = false
+        Me.channelset1.Visible = False
         '
         'channelset2
         '
         Me.channelset2.Name = "channelset2"
         Me.channelset2.Size = New System.Drawing.Size(202, 22)
         Me.channelset2.Text = "2"
-        Me.channelset2.Visible = false
+        Me.channelset2.Visible = False
         '
         'channelset3
         '
         Me.channelset3.Name = "channelset3"
         Me.channelset3.Size = New System.Drawing.Size(202, 22)
         Me.channelset3.Text = "3"
-        Me.channelset3.Visible = false
+        Me.channelset3.Visible = False
         '
         'channelset4
         '
         Me.channelset4.Name = "channelset4"
         Me.channelset4.Size = New System.Drawing.Size(202, 22)
         Me.channelset4.Text = "4"
-        Me.channelset4.Visible = false
+        Me.channelset4.Visible = False
         '
         'EditPricelistToolStripMenuItem
         '
@@ -775,7 +775,7 @@ Partial Class frmMain
         '
         'HelpSupportToolStripMenuItem
         '
-        Me.HelpSupportToolStripMenuItem.Enabled = false
+        Me.HelpSupportToolStripMenuItem.Enabled = False
         Me.HelpSupportToolStripMenuItem.Name = "HelpSupportToolStripMenuItem"
         Me.HelpSupportToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.HelpSupportToolStripMenuItem.Text = "Help and Support"
@@ -834,7 +834,7 @@ Partial Class frmMain
         Me.mnuMatrix.Name = "mnuMatrix"
         Me.mnuMatrix.Size = New System.Drawing.Size(52, 20)
         Me.mnuMatrix.Text = "Matrix"
-        Me.mnuMatrix.Visible = false
+        Me.mnuMatrix.Visible = False
         '
         'mnuMatrixLogin
         '
@@ -849,7 +849,7 @@ Partial Class frmMain
         '
         'mnuMatrixExport
         '
-        Me.mnuMatrixExport.Enabled = false
+        Me.mnuMatrixExport.Enabled = False
         Me.mnuMatrixExport.Name = "mnuMatrixExport"
         Me.mnuMatrixExport.Size = New System.Drawing.Size(213, 22)
         Me.mnuMatrixExport.Text = "Export campaign to Matrix"
@@ -975,7 +975,7 @@ Partial Class frmMain
         Me.btnExportGridToExcel.Name = "btnExportGridToExcel"
         Me.btnExportGridToExcel.Size = New System.Drawing.Size(23, 22)
         Me.btnExportGridToExcel.Text = "ToolStripButton1"
-        Me.btnExportGridToExcel.ToolTipText = "Export any grid to Excel. Click on this button and then on the grid you want to e"& _ 
+        Me.btnExportGridToExcel.ToolTipText = "Export any grid to Excel. Click on this button and then on the grid you want to e" &
     "xport."
         '
         'cmdUpdateChannelsPricelists
@@ -1053,9 +1053,9 @@ Partial Class frmMain
         '
         'lblClickMe
         '
-        Me.lblClickMe.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.lblClickMe.AutoSize = true
-        Me.lblClickMe.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblClickMe.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblClickMe.AutoSize = True
+        Me.lblClickMe.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblClickMe.Location = New System.Drawing.Point(1077, 22)
         Me.lblClickMe.Name = "lblClickMe"
         Me.lblClickMe.Size = New System.Drawing.Size(49, 13)
@@ -1064,7 +1064,7 @@ Partial Class frmMain
         '
         'icnProblems
         '
-        Me.icnProblems.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.icnProblems.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.icnProblems.Cursor = System.Windows.Forms.Cursors.Hand
         Me.icnProblems.ErrorImage = Global.clTrinity.My.Resources.Resources.attention_2
         Me.icnProblems.Image = Global.clTrinity.My.Resources.Resources.attention_2
@@ -1074,8 +1074,8 @@ Partial Class frmMain
         Me.icnProblems.Size = New System.Drawing.Size(32, 32)
         Me.icnProblems.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.icnProblems.TabIndex = 17
-        Me.icnProblems.TabStop = false
-        Me.icnProblems.Visible = false
+        Me.icnProblems.TabStop = False
+        Me.icnProblems.Visible = False
         '
         'Button2
         '
@@ -1084,8 +1084,8 @@ Partial Class frmMain
         Me.Button2.Size = New System.Drawing.Size(75, 21)
         Me.Button2.TabIndex = 16
         Me.Button2.Text = "test xmlser"
-        Me.Button2.UseVisualStyleBackColor = true
-        Me.Button2.Visible = false
+        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
         '
         'Button1
         '
@@ -1094,15 +1094,15 @@ Partial Class frmMain
         Me.Button1.Size = New System.Drawing.Size(75, 21)
         Me.Button1.TabIndex = 15
         Me.Button1.Text = "Pivot"
-        Me.Button1.UseVisualStyleBackColor = true
-        Me.Button1.Visible = false
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'cmdDelivery
         '
-        Me.cmdDelivery.Enabled = false
+        Me.cmdDelivery.Enabled = False
         Me.cmdDelivery.FlatAppearance.BorderSize = 0
         Me.cmdDelivery.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdDelivery.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdDelivery.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdDelivery.Image = Global.clTrinity.My.Resources.Resources.delivery_2
         Me.cmdDelivery.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdDelivery.Location = New System.Drawing.Point(557, 6)
@@ -1112,12 +1112,12 @@ Partial Class frmMain
         Me.cmdDelivery.Text = "Delivery"
         Me.cmdDelivery.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdDelivery, "View Budget")
-        Me.cmdDelivery.UseVisualStyleBackColor = true
+        Me.cmdDelivery.UseVisualStyleBackColor = True
         '
         'Label7
         '
-        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.Label7.AutoSize = true
+        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.SystemColors.Control
         Me.Label7.Location = New System.Drawing.Point(1043, 54)
         Me.Label7.Name = "Label7"
@@ -1127,8 +1127,8 @@ Partial Class frmMain
         '
         'lblStatus
         '
-        Me.lblStatus.AutoSize = true
-        Me.lblStatus.Font = New System.Drawing.Font("Segoe UI", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStatus.ForeColor = System.Drawing.Color.Red
         Me.lblStatus.Location = New System.Drawing.Point(647, 26)
         Me.lblStatus.Name = "lblStatus"
@@ -1137,11 +1137,11 @@ Partial Class frmMain
         '
         'cmdNotes
         '
-        Me.cmdNotes.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.cmdNotes.Enabled = false
+        Me.cmdNotes.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdNotes.Enabled = False
         Me.cmdNotes.FlatAppearance.BorderSize = 0
         Me.cmdNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdNotes.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdNotes.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdNotes.Image = Global.clTrinity.My.Resources.Resources.notes_2
         Me.cmdNotes.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdNotes.Location = New System.Drawing.Point(1129, 6)
@@ -1151,14 +1151,14 @@ Partial Class frmMain
         Me.cmdNotes.Text = "Notes"
         Me.cmdNotes.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdNotes, "Comments on campaign")
-        Me.cmdNotes.UseVisualStyleBackColor = true
+        Me.cmdNotes.UseVisualStyleBackColor = True
         '
         'cmdBudget
         '
-        Me.cmdBudget.Enabled = false
+        Me.cmdBudget.Enabled = False
         Me.cmdBudget.FlatAppearance.BorderSize = 0
         Me.cmdBudget.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdBudget.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdBudget.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdBudget.Image = Global.clTrinity.My.Resources.Resources.budget_2
         Me.cmdBudget.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdBudget.Location = New System.Drawing.Point(496, 6)
@@ -1168,14 +1168,14 @@ Partial Class frmMain
         Me.cmdBudget.Text = "Budget"
         Me.cmdBudget.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdBudget, "View Budget")
-        Me.cmdBudget.UseVisualStyleBackColor = true
+        Me.cmdBudget.UseVisualStyleBackColor = True
         '
         'cmdInfo
         '
-        Me.cmdInfo.Enabled = false
+        Me.cmdInfo.Enabled = False
         Me.cmdInfo.FlatAppearance.BorderSize = 0
         Me.cmdInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdInfo.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdInfo.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdInfo.Image = Global.clTrinity.My.Resources.Resources.info_2
         Me.cmdInfo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdInfo.Location = New System.Drawing.Point(435, 6)
@@ -1185,14 +1185,14 @@ Partial Class frmMain
         Me.cmdInfo.Text = "Info"
         Me.cmdInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdInfo, "View campaign info")
-        Me.cmdInfo.UseVisualStyleBackColor = true
+        Me.cmdInfo.UseVisualStyleBackColor = True
         '
         'cmdMonitor
         '
-        Me.cmdMonitor.Enabled = false
+        Me.cmdMonitor.Enabled = False
         Me.cmdMonitor.FlatAppearance.BorderSize = 0
         Me.cmdMonitor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdMonitor.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdMonitor.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdMonitor.Image = Global.clTrinity.My.Resources.Resources.monitor_2
         Me.cmdMonitor.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdMonitor.Location = New System.Drawing.Point(374, 6)
@@ -1202,14 +1202,14 @@ Partial Class frmMain
         Me.cmdMonitor.Text = "Monitor"
         Me.cmdMonitor.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdMonitor, "Monitor Campaign")
-        Me.cmdMonitor.UseVisualStyleBackColor = true
+        Me.cmdMonitor.UseVisualStyleBackColor = True
         '
         'cmdPivot
         '
-        Me.cmdPivot.Enabled = false
+        Me.cmdPivot.Enabled = False
         Me.cmdPivot.FlatAppearance.BorderSize = 0
         Me.cmdPivot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdPivot.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdPivot.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdPivot.Image = Global.clTrinity.My.Resources.Resources.pivot_2
         Me.cmdPivot.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdPivot.Location = New System.Drawing.Point(313, 6)
@@ -1219,14 +1219,14 @@ Partial Class frmMain
         Me.cmdPivot.Text = "Pivot"
         Me.cmdPivot.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdPivot, "Pivot Campaign")
-        Me.cmdPivot.UseVisualStyleBackColor = true
+        Me.cmdPivot.UseVisualStyleBackColor = True
         '
         'cmdSpots
         '
-        Me.cmdSpots.Enabled = false
+        Me.cmdSpots.Enabled = False
         Me.cmdSpots.FlatAppearance.BorderSize = 0
         Me.cmdSpots.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdSpots.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdSpots.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSpots.Image = Global.clTrinity.My.Resources.Resources.spots_2
         Me.cmdSpots.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdSpots.Location = New System.Drawing.Point(252, 6)
@@ -1236,14 +1236,14 @@ Partial Class frmMain
         Me.cmdSpots.Text = "Spots"
         Me.cmdSpots.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdSpots, "Manage Spots")
-        Me.cmdSpots.UseVisualStyleBackColor = true
+        Me.cmdSpots.UseVisualStyleBackColor = True
         '
         'cmdBooking
         '
-        Me.cmdBooking.Enabled = false
+        Me.cmdBooking.Enabled = False
         Me.cmdBooking.FlatAppearance.BorderSize = 0
         Me.cmdBooking.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdBooking.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdBooking.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdBooking.Image = Global.clTrinity.My.Resources.Resources.book_2
         Me.cmdBooking.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdBooking.Location = New System.Drawing.Point(191, 6)
@@ -1253,14 +1253,14 @@ Partial Class frmMain
         Me.cmdBooking.Text = "Booking"
         Me.cmdBooking.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdBooking, "Handle Bookings")
-        Me.cmdBooking.UseVisualStyleBackColor = true
+        Me.cmdBooking.UseVisualStyleBackColor = True
         '
         'cmdAllocate
         '
-        Me.cmdAllocate.Enabled = false
+        Me.cmdAllocate.Enabled = False
         Me.cmdAllocate.FlatAppearance.BorderSize = 0
         Me.cmdAllocate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAllocate.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdAllocate.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdAllocate.Image = Global.clTrinity.My.Resources.Resources.allocate_2
         Me.cmdAllocate.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdAllocate.Location = New System.Drawing.Point(130, 6)
@@ -1270,14 +1270,14 @@ Partial Class frmMain
         Me.cmdAllocate.Text = "Allocate"
         Me.cmdAllocate.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdAllocate, "Allocate TRP/CPP")
-        Me.cmdAllocate.UseVisualStyleBackColor = true
+        Me.cmdAllocate.UseVisualStyleBackColor = True
         '
         'cmdLab
         '
-        Me.cmdLab.Enabled = false
+        Me.cmdLab.Enabled = False
         Me.cmdLab.FlatAppearance.BorderSize = 0
         Me.cmdLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdLab.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdLab.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdLab.Image = Global.clTrinity.My.Resources.Resources.lab_2
         Me.cmdLab.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdLab.Location = New System.Drawing.Point(69, 6)
@@ -1287,13 +1287,13 @@ Partial Class frmMain
         Me.cmdLab.Text = "Lab"
         Me.cmdLab.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdLab, "Compare Allocate Options")
-        Me.cmdLab.UseVisualStyleBackColor = true
+        Me.cmdLab.UseVisualStyleBackColor = True
         '
         'cmdSetup
         '
         Me.cmdSetup.FlatAppearance.BorderSize = 0
         Me.cmdSetup.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdSetup.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmdSetup.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSetup.Image = Global.clTrinity.My.Resources.Resources.setup_2
         Me.cmdSetup.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdSetup.Location = New System.Drawing.Point(5, 6)
@@ -1303,7 +1303,7 @@ Partial Class frmMain
         Me.cmdSetup.Text = "Setup"
         Me.cmdSetup.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip.SetToolTip(Me.cmdSetup, "Setup Campaign")
-        Me.cmdSetup.UseVisualStyleBackColor = true
+        Me.cmdSetup.UseVisualStyleBackColor = True
         '
         'pnlInfo
         '
@@ -1342,11 +1342,11 @@ Partial Class frmMain
         Me.pnlInfo.Name = "pnlInfo"
         Me.pnlInfo.Size = New System.Drawing.Size(243, 558)
         Me.pnlInfo.TabIndex = 6
-        Me.pnlInfo.Visible = false
+        Me.pnlInfo.Visible = False
         '
         'Label8
         '
-        Me.Label8.AutoSize = true
+        Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(150, 292)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(38, 13)
@@ -1356,7 +1356,7 @@ Partial Class frmMain
         'cmbTarget
         '
         Me.cmbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTarget.FormattingEnabled = true
+        Me.cmbTarget.FormattingEnabled = True
         Me.cmbTarget.Items.AddRange(New Object() {"Main", "Second"})
         Me.cmbTarget.Location = New System.Drawing.Point(150, 307)
         Me.cmbTarget.Name = "cmbTarget"
@@ -1365,7 +1365,7 @@ Partial Class frmMain
         '
         'lblUpdatedTo
         '
-        Me.lblUpdatedTo.AutoSize = true
+        Me.lblUpdatedTo.AutoSize = True
         Me.lblUpdatedTo.Location = New System.Drawing.Point(8, 445)
         Me.lblUpdatedTo.Name = "lblUpdatedTo"
         Me.lblUpdatedTo.Size = New System.Drawing.Size(76, 13)
@@ -1374,7 +1374,7 @@ Partial Class frmMain
         '
         'lblFreq10
         '
-        Me.lblFreq10.AutoSize = true
+        Me.lblFreq10.AutoSize = True
         Me.lblFreq10.Location = New System.Drawing.Point(8, 336)
         Me.lblFreq10.Name = "lblFreq10"
         Me.lblFreq10.Size = New System.Drawing.Size(21, 13)
@@ -1383,7 +1383,7 @@ Partial Class frmMain
         '
         'lblFreq9
         '
-        Me.lblFreq9.AutoSize = true
+        Me.lblFreq9.AutoSize = True
         Me.lblFreq9.Location = New System.Drawing.Point(3, 323)
         Me.lblFreq9.Name = "lblFreq9"
         Me.lblFreq9.Size = New System.Drawing.Size(21, 13)
@@ -1392,7 +1392,7 @@ Partial Class frmMain
         '
         'lblFreq8
         '
-        Me.lblFreq8.AutoSize = true
+        Me.lblFreq8.AutoSize = True
         Me.lblFreq8.Location = New System.Drawing.Point(13, 302)
         Me.lblFreq8.Name = "lblFreq8"
         Me.lblFreq8.Size = New System.Drawing.Size(21, 13)
@@ -1401,7 +1401,7 @@ Partial Class frmMain
         '
         'lblFreq7
         '
-        Me.lblFreq7.AutoSize = true
+        Me.lblFreq7.AutoSize = True
         Me.lblFreq7.Location = New System.Drawing.Point(8, 310)
         Me.lblFreq7.Name = "lblFreq7"
         Me.lblFreq7.Size = New System.Drawing.Size(21, 13)
@@ -1410,7 +1410,7 @@ Partial Class frmMain
         '
         'lblFreq6
         '
-        Me.lblFreq6.AutoSize = true
+        Me.lblFreq6.AutoSize = True
         Me.lblFreq6.Location = New System.Drawing.Point(8, 297)
         Me.lblFreq6.Name = "lblFreq6"
         Me.lblFreq6.Size = New System.Drawing.Size(21, 13)
@@ -1419,7 +1419,7 @@ Partial Class frmMain
         '
         'lblFreq5
         '
-        Me.lblFreq5.AutoSize = true
+        Me.lblFreq5.AutoSize = True
         Me.lblFreq5.Location = New System.Drawing.Point(8, 284)
         Me.lblFreq5.Name = "lblFreq5"
         Me.lblFreq5.Size = New System.Drawing.Size(21, 13)
@@ -1428,7 +1428,7 @@ Partial Class frmMain
         '
         'lblFreq4
         '
-        Me.lblFreq4.AutoSize = true
+        Me.lblFreq4.AutoSize = True
         Me.lblFreq4.Location = New System.Drawing.Point(8, 276)
         Me.lblFreq4.Name = "lblFreq4"
         Me.lblFreq4.Size = New System.Drawing.Size(21, 13)
@@ -1437,7 +1437,7 @@ Partial Class frmMain
         '
         'lblFreq3
         '
-        Me.lblFreq3.AutoSize = true
+        Me.lblFreq3.AutoSize = True
         Me.lblFreq3.Location = New System.Drawing.Point(3, 252)
         Me.lblFreq3.Name = "lblFreq3"
         Me.lblFreq3.Size = New System.Drawing.Size(21, 13)
@@ -1446,7 +1446,7 @@ Partial Class frmMain
         '
         'lblFreq2
         '
-        Me.lblFreq2.AutoSize = true
+        Me.lblFreq2.AutoSize = True
         Me.lblFreq2.Location = New System.Drawing.Point(8, 289)
         Me.lblFreq2.Name = "lblFreq2"
         Me.lblFreq2.Size = New System.Drawing.Size(21, 13)
@@ -1455,7 +1455,7 @@ Partial Class frmMain
         '
         'lblFreq1
         '
-        Me.lblFreq1.AutoSize = true
+        Me.lblFreq1.AutoSize = True
         Me.lblFreq1.Location = New System.Drawing.Point(3, 266)
         Me.lblFreq1.Name = "lblFreq1"
         Me.lblFreq1.Size = New System.Drawing.Size(21, 13)
@@ -1470,12 +1470,12 @@ Partial Class frmMain
         Me.picPin.Size = New System.Drawing.Size(20, 20)
         Me.picPin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.picPin.TabIndex = 46
-        Me.picPin.TabStop = false
+        Me.picPin.TabStop = False
         '
         'cmbFF
         '
         Me.cmbFF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbFF.FormattingEnabled = true
+        Me.cmbFF.FormattingEnabled = True
         Me.cmbFF.Items.AddRange(New Object() {"1+", "2+", "3+", "4+", "5+", "6+", "7+", "8+", "9+", "10+"})
         Me.cmbFF.Location = New System.Drawing.Point(178, 266)
         Me.cmbFF.Name = "cmbFF"
@@ -1484,7 +1484,7 @@ Partial Class frmMain
         '
         'Label18
         '
-        Me.Label18.AutoSize = true
+        Me.Label18.AutoSize = True
         Me.Label18.Location = New System.Drawing.Point(150, 268)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(22, 13)
@@ -1504,23 +1504,23 @@ Partial Class frmMain
         Me.cmdCalculate.Text = "Calculate"
         Me.cmdCalculate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.ToolTip.SetToolTip(Me.cmdCalculate, "Calculate Frequency Focus")
-        Me.cmdCalculate.UseVisualStyleBackColor = true
+        Me.cmdCalculate.UseVisualStyleBackColor = True
         '
         'grdReach
         '
-        Me.grdReach.AllowUserToAddRows = false
-        Me.grdReach.AllowUserToDeleteRows = false
-        Me.grdReach.AllowUserToResizeColumns = false
-        Me.grdReach.AllowUserToResizeRows = false
+        Me.grdReach.AllowUserToAddRows = False
+        Me.grdReach.AllowUserToDeleteRows = False
+        Me.grdReach.AllowUserToResizeColumns = False
+        Me.grdReach.AllowUserToResizeRows = False
         Me.grdReach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdReach.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colPlannedReach, Me.colActualReach})
         Me.grdReach.Location = New System.Drawing.Point(33, 234)
         Me.grdReach.Name = "grdReach"
-        Me.grdReach.ReadOnly = true
-        Me.grdReach.RowHeadersVisible = false
+        Me.grdReach.ReadOnly = True
+        Me.grdReach.RowHeadersVisible = False
         Me.grdReach.Size = New System.Drawing.Size(111, 208)
         Me.grdReach.TabIndex = 40
-        Me.grdReach.VirtualMode = true
+        Me.grdReach.VirtualMode = True
         '
         'colPlannedReach
         '
@@ -1529,7 +1529,7 @@ Partial Class frmMain
         Me.colPlannedReach.DefaultCellStyle = DataGridViewCellStyle1
         Me.colPlannedReach.HeaderText = "Planned"
         Me.colPlannedReach.Name = "colPlannedReach"
-        Me.colPlannedReach.ReadOnly = true
+        Me.colPlannedReach.ReadOnly = True
         '
         'colActualReach
         '
@@ -1538,7 +1538,7 @@ Partial Class frmMain
         Me.colActualReach.DefaultCellStyle = DataGridViewCellStyle2
         Me.colActualReach.HeaderText = "Actual"
         Me.colActualReach.Name = "colActualReach"
-        Me.colActualReach.ReadOnly = true
+        Me.colActualReach.ReadOnly = True
         '
         'PictureBox3
         '
@@ -1548,7 +1548,7 @@ Partial Class frmMain
         Me.PictureBox3.Size = New System.Drawing.Size(21, 20)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 27
-        Me.PictureBox3.TabStop = false
+        Me.PictureBox3.TabStop = False
         '
         'GroupBox1
         '
@@ -1569,12 +1569,12 @@ Partial Class frmMain
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(234, 97)
         Me.GroupBox1.TabIndex = 26
-        Me.GroupBox1.TabStop = false
+        Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "        Targets"
         '
         'lblThirdSize
         '
-        Me.lblThirdSize.AutoSize = true
+        Me.lblThirdSize.AutoSize = True
         Me.lblThirdSize.Location = New System.Drawing.Point(165, 72)
         Me.lblThirdSize.Name = "lblThirdSize"
         Me.lblThirdSize.Size = New System.Drawing.Size(13, 13)
@@ -1583,8 +1583,8 @@ Partial Class frmMain
         '
         'txtThird
         '
-        Me.txtThird.Enabled = false
-        Me.txtThird.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtThird.Enabled = False
+        Me.txtThird.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtThird.Location = New System.Drawing.Point(51, 71)
         Me.txtThird.Name = "txtThird"
         Me.txtThird.Size = New System.Drawing.Size(46, 22)
@@ -1593,8 +1593,8 @@ Partial Class frmMain
         'cmbThirdUni
         '
         Me.cmbThirdUni.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbThirdUni.Enabled = false
-        Me.cmbThirdUni.FormattingEnabled = true
+        Me.cmbThirdUni.Enabled = False
+        Me.cmbThirdUni.FormattingEnabled = True
         Me.cmbThirdUni.Location = New System.Drawing.Point(103, 70)
         Me.cmbThirdUni.Name = "cmbThirdUni"
         Me.cmbThirdUni.Size = New System.Drawing.Size(56, 21)
@@ -1602,7 +1602,7 @@ Partial Class frmMain
         '
         'lblThirdTarget
         '
-        Me.lblThirdTarget.AutoSize = true
+        Me.lblThirdTarget.AutoSize = True
         Me.lblThirdTarget.Location = New System.Drawing.Point(7, 72)
         Me.lblThirdTarget.Name = "lblThirdTarget"
         Me.lblThirdTarget.Size = New System.Drawing.Size(33, 13)
@@ -1611,7 +1611,7 @@ Partial Class frmMain
         '
         'lblSecondSize
         '
-        Me.lblSecondSize.AutoSize = true
+        Me.lblSecondSize.AutoSize = True
         Me.lblSecondSize.Location = New System.Drawing.Point(165, 51)
         Me.lblSecondSize.Name = "lblSecondSize"
         Me.lblSecondSize.Size = New System.Drawing.Size(13, 13)
@@ -1620,8 +1620,8 @@ Partial Class frmMain
         '
         'txtSec
         '
-        Me.txtSec.Enabled = false
-        Me.txtSec.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtSec.Enabled = False
+        Me.txtSec.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSec.Location = New System.Drawing.Point(51, 48)
         Me.txtSec.Name = "txtSec"
         Me.txtSec.Size = New System.Drawing.Size(46, 22)
@@ -1630,8 +1630,8 @@ Partial Class frmMain
         'cmbSecondUni
         '
         Me.cmbSecondUni.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbSecondUni.Enabled = false
-        Me.cmbSecondUni.FormattingEnabled = true
+        Me.cmbSecondUni.Enabled = False
+        Me.cmbSecondUni.FormattingEnabled = True
         Me.cmbSecondUni.Location = New System.Drawing.Point(103, 46)
         Me.cmbSecondUni.Name = "cmbSecondUni"
         Me.cmbSecondUni.Size = New System.Drawing.Size(56, 21)
@@ -1639,7 +1639,7 @@ Partial Class frmMain
         '
         'lblSecondTarget
         '
-        Me.lblSecondTarget.AutoSize = true
+        Me.lblSecondTarget.AutoSize = True
         Me.lblSecondTarget.Location = New System.Drawing.Point(7, 51)
         Me.lblSecondTarget.Name = "lblSecondTarget"
         Me.lblSecondTarget.Size = New System.Drawing.Size(45, 13)
@@ -1648,7 +1648,7 @@ Partial Class frmMain
         '
         'Label6
         '
-        Me.Label6.AutoSize = true
+        Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(168, 9)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(27, 13)
@@ -1657,7 +1657,7 @@ Partial Class frmMain
         '
         'lblMainSize
         '
-        Me.lblMainSize.AutoSize = true
+        Me.lblMainSize.AutoSize = True
         Me.lblMainSize.Location = New System.Drawing.Point(165, 28)
         Me.lblMainSize.Name = "lblMainSize"
         Me.lblMainSize.Size = New System.Drawing.Size(13, 13)
@@ -1666,8 +1666,8 @@ Partial Class frmMain
         '
         'txtMain
         '
-        Me.txtMain.Enabled = false
-        Me.txtMain.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtMain.Enabled = False
+        Me.txtMain.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMain.Location = New System.Drawing.Point(51, 25)
         Me.txtMain.Name = "txtMain"
         Me.txtMain.Size = New System.Drawing.Size(46, 22)
@@ -1676,8 +1676,8 @@ Partial Class frmMain
         'cmbMainUni
         '
         Me.cmbMainUni.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbMainUni.Enabled = false
-        Me.cmbMainUni.FormattingEnabled = true
+        Me.cmbMainUni.Enabled = False
+        Me.cmbMainUni.FormattingEnabled = True
         Me.cmbMainUni.Location = New System.Drawing.Point(103, 23)
         Me.cmbMainUni.Name = "cmbMainUni"
         Me.cmbMainUni.Size = New System.Drawing.Size(56, 21)
@@ -1685,7 +1685,7 @@ Partial Class frmMain
         '
         'lblMainTarget
         '
-        Me.lblMainTarget.AutoSize = true
+        Me.lblMainTarget.AutoSize = True
         Me.lblMainTarget.Location = New System.Drawing.Point(7, 28)
         Me.lblMainTarget.Name = "lblMainTarget"
         Me.lblMainTarget.Size = New System.Drawing.Size(33, 13)
@@ -1696,39 +1696,39 @@ Partial Class frmMain
         '
         Me.cmdEditProduct.FlatAppearance.BorderSize = 0
         Me.cmdEditProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdEditProduct.Image = CType(resources.GetObject("cmdEditProduct.Image"),System.Drawing.Image)
+        Me.cmdEditProduct.Image = CType(resources.GetObject("cmdEditProduct.Image"), System.Drawing.Image)
         Me.cmdEditProduct.Location = New System.Drawing.Point(210, 100)
         Me.cmdEditProduct.Name = "cmdEditProduct"
         Me.cmdEditProduct.Size = New System.Drawing.Size(22, 20)
         Me.cmdEditProduct.TabIndex = 25
         Me.ToolTip.SetToolTip(Me.cmdEditProduct, "Edit Product")
-        Me.cmdEditProduct.UseVisualStyleBackColor = true
+        Me.cmdEditProduct.UseVisualStyleBackColor = True
         '
         'cmdAddProduct
         '
         Me.cmdAddProduct.FlatAppearance.BorderSize = 0
         Me.cmdAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddProduct.Image = CType(resources.GetObject("cmdAddProduct.Image"),System.Drawing.Image)
+        Me.cmdAddProduct.Image = CType(resources.GetObject("cmdAddProduct.Image"), System.Drawing.Image)
         Me.cmdAddProduct.Location = New System.Drawing.Point(185, 101)
         Me.cmdAddProduct.Name = "cmdAddProduct"
         Me.cmdAddProduct.Size = New System.Drawing.Size(21, 20)
         Me.cmdAddProduct.TabIndex = 24
         Me.ToolTip.SetToolTip(Me.cmdAddProduct, "Add Product")
-        Me.cmdAddProduct.UseVisualStyleBackColor = true
+        Me.cmdAddProduct.UseVisualStyleBackColor = True
         '
         'cmbProduct
         '
         Me.cmbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbProduct.FormattingEnabled = true
+        Me.cmbProduct.FormattingEnabled = True
         Me.cmbProduct.Location = New System.Drawing.Point(6, 104)
         Me.cmbProduct.Name = "cmbProduct"
         Me.cmbProduct.Size = New System.Drawing.Size(174, 21)
-        Me.cmbProduct.Sorted = true
+        Me.cmbProduct.Sorted = True
         Me.cmbProduct.TabIndex = 23
         '
         'Label3
         '
-        Me.Label3.AutoSize = true
+        Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(3, 88)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(47, 13)
@@ -1739,39 +1739,39 @@ Partial Class frmMain
         '
         Me.cmdEditClient.FlatAppearance.BorderSize = 0
         Me.cmdEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdEditClient.Image = CType(resources.GetObject("cmdEditClient.Image"),System.Drawing.Image)
+        Me.cmdEditClient.Image = CType(resources.GetObject("cmdEditClient.Image"), System.Drawing.Image)
         Me.cmdEditClient.Location = New System.Drawing.Point(210, 62)
         Me.cmdEditClient.Name = "cmdEditClient"
         Me.cmdEditClient.Size = New System.Drawing.Size(22, 20)
         Me.cmdEditClient.TabIndex = 21
         Me.ToolTip.SetToolTip(Me.cmdEditClient, "Edit Client")
-        Me.cmdEditClient.UseVisualStyleBackColor = true
+        Me.cmdEditClient.UseVisualStyleBackColor = True
         '
         'cmdAddClient
         '
         Me.cmdAddClient.FlatAppearance.BorderSize = 0
         Me.cmdAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddClient.Image = CType(resources.GetObject("cmdAddClient.Image"),System.Drawing.Image)
+        Me.cmdAddClient.Image = CType(resources.GetObject("cmdAddClient.Image"), System.Drawing.Image)
         Me.cmdAddClient.Location = New System.Drawing.Point(185, 63)
         Me.cmdAddClient.Name = "cmdAddClient"
         Me.cmdAddClient.Size = New System.Drawing.Size(21, 20)
         Me.cmdAddClient.TabIndex = 20
         Me.ToolTip.SetToolTip(Me.cmdAddClient, "Add Client")
-        Me.cmdAddClient.UseVisualStyleBackColor = true
+        Me.cmdAddClient.UseVisualStyleBackColor = True
         '
         'cmbClient
         '
         Me.cmbClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbClient.FormattingEnabled = true
+        Me.cmbClient.FormattingEnabled = True
         Me.cmbClient.Location = New System.Drawing.Point(6, 65)
         Me.cmbClient.Name = "cmbClient"
         Me.cmbClient.Size = New System.Drawing.Size(174, 21)
-        Me.cmbClient.Sorted = true
+        Me.cmbClient.Sorted = True
         Me.cmbClient.TabIndex = 19
         '
         'Label2
         '
-        Me.Label2.AutoSize = true
+        Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(3, 49)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 13)
@@ -1787,7 +1787,7 @@ Partial Class frmMain
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
+        Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(3, 8)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(91, 13)
@@ -1800,7 +1800,7 @@ Partial Class frmMain
         '
         'Panel3
         '
-        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(128,Byte),Integer), CType(CType(128,Byte),Integer), CType(CType(255,Byte),Integer))
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label5)
         Me.Panel3.Location = New System.Drawing.Point(3, 123)
@@ -1810,8 +1810,8 @@ Partial Class frmMain
         '
         'Label5
         '
-        Me.Label5.AutoSize = true
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(3, 1)
         Me.Label5.Name = "Label5"
@@ -1821,7 +1821,7 @@ Partial Class frmMain
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128,Byte),Integer), CType(CType(128,Byte),Integer), CType(CType(255,Byte),Integer))
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
@@ -1831,8 +1831,8 @@ Partial Class frmMain
         '
         'Label4
         '
-        Me.Label4.AutoSize = true
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(3, 1)
         Me.Label4.Name = "Label4"
@@ -1842,8 +1842,8 @@ Partial Class frmMain
         '
         'lblRecent1
         '
-        Me.lblRecent1.AutoSize = true
-        Me.lblRecent1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblRecent1.AutoSize = True
+        Me.lblRecent1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRecent1.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblRecent1.Location = New System.Drawing.Point(10, 28)
         Me.lblRecent1.Name = "lblRecent1"
@@ -1853,8 +1853,8 @@ Partial Class frmMain
         '
         'pnlStartHelp
         '
-        Me.pnlStartHelp.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.pnlStartHelp.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.pnlStartHelp.Controls.Add(Me.lblManual)
         Me.pnlStartHelp.Controls.Add(Me.lblOpenCampaign)
         Me.pnlStartHelp.Controls.Add(Me.lblNewCampaign)
@@ -1869,12 +1869,12 @@ Partial Class frmMain
         Me.pnlStartHelp.Name = "pnlStartHelp"
         Me.pnlStartHelp.Size = New System.Drawing.Size(265, 558)
         Me.pnlStartHelp.TabIndex = 10
-        Me.pnlStartHelp.Visible = false
+        Me.pnlStartHelp.Visible = False
         '
         'lblManual
         '
-        Me.lblManual.AutoSize = true
-        Me.lblManual.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblManual.AutoSize = True
+        Me.lblManual.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblManual.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblManual.Location = New System.Drawing.Point(11, 199)
         Me.lblManual.Name = "lblManual"
@@ -1884,8 +1884,8 @@ Partial Class frmMain
         '
         'lblOpenCampaign
         '
-        Me.lblOpenCampaign.AutoSize = true
-        Me.lblOpenCampaign.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblOpenCampaign.AutoSize = True
+        Me.lblOpenCampaign.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblOpenCampaign.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblOpenCampaign.Location = New System.Drawing.Point(11, 175)
         Me.lblOpenCampaign.Name = "lblOpenCampaign"
@@ -1895,8 +1895,8 @@ Partial Class frmMain
         '
         'lblNewCampaign
         '
-        Me.lblNewCampaign.AutoSize = true
-        Me.lblNewCampaign.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblNewCampaign.AutoSize = True
+        Me.lblNewCampaign.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNewCampaign.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblNewCampaign.Location = New System.Drawing.Point(11, 152)
         Me.lblNewCampaign.Name = "lblNewCampaign"
@@ -1906,8 +1906,8 @@ Partial Class frmMain
         '
         'lblRecent5
         '
-        Me.lblRecent5.AutoSize = true
-        Me.lblRecent5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblRecent5.AutoSize = True
+        Me.lblRecent5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRecent5.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblRecent5.Location = New System.Drawing.Point(10, 102)
         Me.lblRecent5.Name = "lblRecent5"
@@ -1917,8 +1917,8 @@ Partial Class frmMain
         '
         'lblRecent4
         '
-        Me.lblRecent4.AutoSize = true
-        Me.lblRecent4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblRecent4.AutoSize = True
+        Me.lblRecent4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRecent4.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblRecent4.Location = New System.Drawing.Point(10, 84)
         Me.lblRecent4.Name = "lblRecent4"
@@ -1928,8 +1928,8 @@ Partial Class frmMain
         '
         'lblRecent3
         '
-        Me.lblRecent3.AutoSize = true
-        Me.lblRecent3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblRecent3.AutoSize = True
+        Me.lblRecent3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRecent3.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblRecent3.Location = New System.Drawing.Point(10, 65)
         Me.lblRecent3.Name = "lblRecent3"
@@ -1939,8 +1939,8 @@ Partial Class frmMain
         '
         'lblRecent2
         '
-        Me.lblRecent2.AutoSize = true
-        Me.lblRecent2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblRecent2.AutoSize = True
+        Me.lblRecent2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRecent2.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblRecent2.Location = New System.Drawing.Point(10, 46)
         Me.lblRecent2.Name = "lblRecent2"
@@ -1950,17 +1950,17 @@ Partial Class frmMain
         '
         'tmrNewVersion
         '
-        Me.tmrNewVersion.Enabled = true
+        Me.tmrNewVersion.Enabled = True
         Me.tmrNewVersion.Interval = 1800000
         '
         'tmrDetectProblems
         '
-        Me.tmrDetectProblems.Enabled = true
+        Me.tmrDetectProblems.Enabled = True
         Me.tmrDetectProblems.Interval = 500
         '
         'pnlMessage
         '
-        Me.pnlMessage.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.pnlMessage.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pnlMessage.Controls.Add(Me.lblHideMessage)
         Me.pnlMessage.Controls.Add(Me.lblMsgReadMore)
@@ -1970,13 +1970,13 @@ Partial Class frmMain
         Me.pnlMessage.Name = "pnlMessage"
         Me.pnlMessage.Size = New System.Drawing.Size(277, 93)
         Me.pnlMessage.TabIndex = 12
-        Me.pnlMessage.Visible = false
+        Me.pnlMessage.Visible = False
         '
         'lblHideMessage
         '
-        Me.lblHideMessage.AutoSize = true
+        Me.lblHideMessage.AutoSize = True
         Me.lblHideMessage.BackColor = System.Drawing.Color.Black
-        Me.lblHideMessage.Font = New System.Drawing.Font("Segoe UI", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblHideMessage.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblHideMessage.ForeColor = System.Drawing.Color.White
         Me.lblHideMessage.Location = New System.Drawing.Point(256, 0)
         Me.lblHideMessage.Name = "lblHideMessage"
@@ -1986,17 +1986,17 @@ Partial Class frmMain
         '
         'lblMsgReadMore
         '
-        Me.lblMsgReadMore.AutoSize = true
+        Me.lblMsgReadMore.AutoSize = True
         Me.lblMsgReadMore.Location = New System.Drawing.Point(4, 74)
         Me.lblMsgReadMore.Name = "lblMsgReadMore"
         Me.lblMsgReadMore.Size = New System.Drawing.Size(71, 13)
         Me.lblMsgReadMore.TabIndex = 2
-        Me.lblMsgReadMore.TabStop = true
+        Me.lblMsgReadMore.TabStop = True
         Me.lblMsgReadMore.Text = "Read more..."
         '
         'lblMsgMessage
         '
-        Me.lblMsgMessage.AutoEllipsis = true
+        Me.lblMsgMessage.AutoEllipsis = True
         Me.lblMsgMessage.Location = New System.Drawing.Point(4, 22)
         Me.lblMsgMessage.Name = "lblMsgMessage"
         Me.lblMsgMessage.Size = New System.Drawing.Size(260, 52)
@@ -2005,8 +2005,8 @@ Partial Class frmMain
         '
         'lblMsgHeadline
         '
-        Me.lblMsgHeadline.AutoSize = true
-        Me.lblMsgHeadline.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblMsgHeadline.AutoSize = True
+        Me.lblMsgHeadline.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMsgHeadline.Location = New System.Drawing.Point(4, 6)
         Me.lblMsgHeadline.Name = "lblMsgHeadline"
         Me.lblMsgHeadline.Size = New System.Drawing.Size(63, 17)
@@ -2015,8 +2015,8 @@ Partial Class frmMain
         '
         'lblUserCompany
         '
-        Me.lblUserCompany.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.lblUserCompany.AutoSize = true
+        Me.lblUserCompany.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblUserCompany.AutoSize = True
         Me.lblUserCompany.BackColor = System.Drawing.Color.White
         Me.lblUserCompany.Location = New System.Drawing.Point(976, 22)
         Me.lblUserCompany.Name = "lblUserCompany"
@@ -2031,7 +2031,7 @@ Partial Class frmMain
         Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn1.HeaderText = "Planned"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = true
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         '
         'DataGridViewTextBoxColumn2
         '
@@ -2040,11 +2040,11 @@ Partial Class frmMain
         Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn2.HeaderText = "Actual"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = true
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
         '
         'frmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1208, 680)
         Me.Controls.Add(Me.lblUserCompany)
@@ -2054,39 +2054,39 @@ Partial Class frmMain
         Me.Controls.Add(Me.tstMain)
         Me.Controls.Add(Me.pnlMenu)
         Me.Controls.Add(Me.msMain)
-        Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
-        Me.IsMdiContainer = true
+        Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.msMain
         Me.Name = "frmMain"
         Me.Text = "T R I N I T Y   4.0"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.msMain.ResumeLayout(false)
-        Me.msMain.PerformLayout
-        Me.tstMain.ResumeLayout(false)
-        Me.tstMain.PerformLayout
-        Me.pnlMenu.ResumeLayout(false)
-        Me.pnlMenu.PerformLayout
-        CType(Me.icnProblems,System.ComponentModel.ISupportInitialize).EndInit
-        Me.pnlInfo.ResumeLayout(false)
-        Me.pnlInfo.PerformLayout
-        CType(Me.picPin,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdReach,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox3,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox1.ResumeLayout(false)
-        Me.GroupBox1.PerformLayout
-        Me.Panel3.ResumeLayout(false)
-        Me.Panel3.PerformLayout
-        Me.Panel2.ResumeLayout(false)
-        Me.Panel2.PerformLayout
-        Me.pnlStartHelp.ResumeLayout(false)
-        Me.pnlStartHelp.PerformLayout
-        Me.pnlMessage.ResumeLayout(false)
-        Me.pnlMessage.PerformLayout
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        Me.msMain.ResumeLayout(False)
+        Me.msMain.PerformLayout()
+        Me.tstMain.ResumeLayout(False)
+        Me.tstMain.PerformLayout()
+        Me.pnlMenu.ResumeLayout(False)
+        Me.pnlMenu.PerformLayout()
+        CType(Me.icnProblems, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlInfo.ResumeLayout(False)
+        Me.pnlInfo.PerformLayout()
+        CType(Me.picPin, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdReach, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.pnlStartHelp.ResumeLayout(False)
+        Me.pnlStartHelp.PerformLayout()
+        Me.pnlMessage.ResumeLayout(False)
+        Me.pnlMessage.PerformLayout()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents ilsSmall As System.Windows.Forms.ImageList
     Friend WithEvents ilsBig As System.Windows.Forms.ImageList
     Friend WithEvents dlgDialog As System.Windows.Forms.OpenFileDialog
