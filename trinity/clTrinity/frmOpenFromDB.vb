@@ -273,7 +273,7 @@ Public Class frmOpenFromDB
         Dim NeedsAnd As Boolean = False
 
         'SQLString &= "SELECT id,name,startdate,enddate,client,status,product,contractid,planner,buyer,lastopened,lastsaved,originallocation,originalfilechangeddate,campaignid from campaigns WHERE deletedon < '2001-01-01' AND "
-
+        Dim DBUser As List(Of dbUA) = Campaign.GetCampaignArea
         SQLString &= "SELECT campaigns.id,campaigns.name,startdate,enddate,client,status,product,contractid,lastopened,lastsaved,originallocation,originalfilechangeddate,campaignid, p.name as planner, ps.name as buyer,pl.name as lockedby from campaigns left join people as p on campaigns.planner = p.id left join people as ps on campaigns.buyer = ps.id left join people as pl on campaigns.lockedby=pl.id WHERE deletedon < '2001-01-01' AND "
 
 

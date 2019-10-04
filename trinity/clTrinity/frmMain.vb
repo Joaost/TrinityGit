@@ -4331,20 +4331,7 @@ CreatePlan:
                     End If
                 End If
             End If
-            '
-            '   //JOOS
-            '   Testing UserAccess in new SQL Database Setup
-            '
-            DBReader.GetCampaignsUserAccess(String.Format("IF IS_SRVROLEMEMBER('mc_access') = 1 ", Campaign.DatabaseID))
 
-            If Campaign.DatabaseID > 0 Then
-                Dim _newlist As List(Of CampaignEssentials) = DBReader.GetCampaignsUserAccess(String.Format("IF IS_SRVROLEMEMBER('mc_access') = 1 PRINT 'Testing' ELSE 'Går inte'", Campaign.DatabaseID))
-                Debug.Print(_newlist.ToString)
-
-            End If
-            '   /JOOS
-            '   Deleting unused data to decrease DB load
-            '   
             Debug.Print("Number of Channels before Deleted unused data: " & Campaign.Channels.Count)
             Campaign.DeleteUnusedChannels()
             Debug.Print("Number of Channels after: " & Campaign.Channels.Count)

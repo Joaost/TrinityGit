@@ -66,7 +66,7 @@ Namespace Trinity
         Public Overrides Function GetCampaign(ByVal ID As Long, Optional ByVal OpenReadOnly As Boolean = False) As String
             Return Nothing
         End Function
-        Public Overrides Function GetCampaignsUserAccess(Optional ByVal SQLQuery As String = "") As List(Of CampaignEssentials)
+        Public Overrides Function GetCampaignsUserAccess(Optional ByVal SQLQuery As String = "", Optional ByVal relation As String = "") As Integer
             Return Nothing
         End Function
         Public Overrides Function GetCampaigns(Optional ByVal SQLQuery As String = "") As List(Of CampaignEssentials)

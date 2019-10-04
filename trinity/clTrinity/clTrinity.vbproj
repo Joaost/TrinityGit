@@ -295,6 +295,7 @@
     <Compile Include="Class Library\cExportUnicornFile NewNorway.vb" />
     <Compile Include="Class Library\cExportUnicornFile New.vb" />
     <Compile Include="Class Library\cExportXmlToUnicorn.vb" />
+    <Compile Include="Class Library\dbUA.vb" />
     <Compile Include="Class Library\EventArgs\PriceListEventArgs.vb" />
     <Compile Include="Class Library\ExcelReadTemplates\cColumnHeadline.vb" />
     <Compile Include="Class Library\ExcelReadTemplates\cMutableRuleList.vb" />

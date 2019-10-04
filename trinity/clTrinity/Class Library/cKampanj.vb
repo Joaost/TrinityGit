@@ -76,6 +76,7 @@ Namespace Trinity
         Private mvarPlannerID As Integer = -1
         Private mvarUpdatedTo As Integer
         Private mvarAdtoox As cAdtoox
+        Private mvarCampaignArea As List(Of dbUA)
 
         Dim newSpots As Boolean = True
 
@@ -3044,6 +3045,45 @@ BookedSpots_Error:
 
         End Sub
 
+        Public Function GetCampaignArea() As List(Of dbUA)
+
+            Dim listOfDBValues As New List(Of dbUA)
+            'Dim sqlCommand = "SELECT 'Name' = sp.NAME
+            '                                        FROM sys.server_role_members rm
+            '                                            ,sys.server_principals sp
+            '                                        WHERE rm.role_principal_id = SUSER_ID('mc_access')
+            '                                            AND rm.member_principal_id = sp.principal_id"
+
+            Dim sqlCommand = ""
+
+            Dim UA1 As New dbUA
+            UA1.dbName = "mc_access"
+            UA1.dbValue = False
+            listOfDBValues.Add(UA1)
+
+            Dim UA2 As New dbUA
+            UA2.dbName = "ms_access"
+            UA2.dbValue = False
+            listOfDBValues.Add(UA2)
+
+            Dim UA3 As New dbUA
+            UA3.dbName = "wm_acsess"
+            UA3.dbValue = False
+            listOfDBValues.Add(UA3)
+
+            For Each tmpObj As dbUA In listOfDBValues
+                Dim tmpRows As Integer = 0
+                tmpRows = DBReader.GetCampaignsUserAccess(sqlCommand, tmpObj.dbName)
+                If tmpRows > 0 Then
+                    tmpObj.dbValue = True
+                Else
+
+                End If
+            Next
+            Return listOfDBValues
+
+        End Function
+
 
         '---------------------------------------------------------------------------------------
         ' Procedure : New
@@ -3071,6 +3111,7 @@ BookedSpots_Error:
 
             mvarArea = TrinitySettings.DefaultArea
             mvarAreaLog = TrinitySettings.DefaultAreaLog
+            mvarCampaignArea = GetCampaignArea()
 
             mvarStatus = "Planned"
 

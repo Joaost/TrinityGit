@@ -32,7 +32,8 @@ Namespace Trinity
             Public LockDate As Date
         End Structure
 
-        Public Overrides Function GetCampaignsUserAccess(Optional ByVal SQLQuery As String = "") As List(Of CampaignEssentials)
+        Public Overrides Function GetCampaignsUserAccess(Optional ByVal SQLQuery As String = "", Optional ByVal relation As String = "") As Integer
+            Dim rowResult As Integer = 0
             Using _conn As New SqlClient.SqlConnection(_connectionString)
                 _conn.Open()
                 Using Command As New SqlClient.SqlCommand
@@ -43,10 +44,15 @@ Namespace Trinity
                         Dim Years As New List(Of Integer)
                         Dim Months As New List(Of Integer)
                         Dim Campaigns As New List(Of String)
-                        Dim CampaignList As New List(Of CampaignEssentials)
+                        Dim CampaignList As New List(Of String)
+                        Dim NameOfUser As String
 
                         If SQLQuery = "" Then
-                            Command.CommandText = "IF IS_SRVROLEMEMBER('mc_access') = 1 PRINT 'DR KOCH'"
+                            Command.CommandText = "SELECT 'Name' = sp.NAME
+                                                    FROM sys.server_role_members rm
+                                                        ,sys.server_principals sp
+                                                    WHERE rm.role_principal_id = SUSER_ID('" & relation & "')
+                                                        AND rm.member_principal_id = sp.principal_id"
                         Else
                             Command.CommandText = SQLQuery
                         End If
@@ -54,6 +60,18 @@ Namespace Trinity
                         Try
                             Using rd As SqlClient.SqlDataReader = Command.ExecuteReader
                                 ds.Load(rd)
+
+                                For Each row As DataRow In ds.Rows
+                                    Try
+                                        NameOfUser = row!Name
+                                        rowResult = ds.Rows.Count()
+                                    Catch ex As Exception
+                                        _conn.Close()
+
+                                    End Try
+                                Next
+                                Return rowResult
+
                                 rd.Close()
                             End Using
                         Catch ex As SqlClient.SqlException
@@ -63,7 +81,7 @@ Namespace Trinity
                             'Return New List(Of clTrinity.CampaignEssentials)
                         End Try
 
-                        Return CampaignList
+                        Return rowResult
                     End Using
                     _conn.Close()
                 End Using

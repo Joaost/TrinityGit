@@ -213,6 +213,8 @@ Partial Class frmSetup
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmbDBRelation = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.mnuContract.SuspendLayout()
         Me.mnuCalculateDaypart.SuspendLayout()
         Me.mnuCalculcateComboND.SuspendLayout()
@@ -862,11 +864,13 @@ Partial Class frmSetup
         Me.tabSetup.Location = New System.Drawing.Point(1, 2)
         Me.tabSetup.Name = "tabSetup"
         Me.tabSetup.SelectedIndex = 0
-        Me.tabSetup.Size = New System.Drawing.Size(650, 443)
+        Me.tabSetup.Size = New System.Drawing.Size(650, 558)
         Me.tabSetup.TabIndex = 0
         '
         'tpGeneral
         '
+        Me.tpGeneral.Controls.Add(Me.cmbDBRelation)
+        Me.tpGeneral.Controls.Add(Me.Label14)
         Me.tpGeneral.Controls.Add(Me.cmdContract)
         Me.tpGeneral.Controls.Add(Me.cmdGeneralNext)
         Me.tpGeneral.Controls.Add(Me.GroupBox2)
@@ -897,7 +901,7 @@ Partial Class frmSetup
         Me.tpGeneral.Location = New System.Drawing.Point(4, 22)
         Me.tpGeneral.Name = "tpGeneral"
         Me.tpGeneral.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpGeneral.Size = New System.Drawing.Size(642, 417)
+        Me.tpGeneral.Size = New System.Drawing.Size(642, 532)
         Me.tpGeneral.TabIndex = 1
         Me.tpGeneral.Text = "General"
         Me.tpGeneral.UseVisualStyleBackColor = True
@@ -907,7 +911,7 @@ Partial Class frmSetup
         Me.cmdGeneralNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdGeneralNext.FlatAppearance.BorderSize = 0
         Me.cmdGeneralNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdGeneralNext.Location = New System.Drawing.Point(555, 381)
+        Me.cmdGeneralNext.Location = New System.Drawing.Point(555, 496)
         Me.cmdGeneralNext.Name = "cmdGeneralNext"
         Me.cmdGeneralNext.Size = New System.Drawing.Size(75, 29)
         Me.cmdGeneralNext.TabIndex = 25
@@ -926,9 +930,9 @@ Partial Class frmSetup
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.txtBudget)
         Me.GroupBox2.Controls.Add(Me.PictureBox4)
-        Me.GroupBox2.Location = New System.Drawing.Point(8, 207)
+        Me.GroupBox2.Location = New System.Drawing.Point(8, 265)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(622, 166)
+        Me.GroupBox2.Size = New System.Drawing.Size(622, 223)
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Budget"
@@ -952,7 +956,7 @@ Partial Class frmSetup
         Me.grdCosts.Name = "grdCosts"
         Me.grdCosts.RowHeadersVisible = False
         Me.grdCosts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdCosts.Size = New System.Drawing.Size(577, 102)
+        Me.grdCosts.Size = New System.Drawing.Size(577, 159)
         Me.grdCosts.TabIndex = 4
         Me.grdCosts.VirtualMode = True
         '
@@ -2231,7 +2235,7 @@ Partial Class frmSetup
         'cmbIndexChannel
         '
         Me.cmbIndexChannel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbIndexChannel.FormattingEnabled = true
+        Me.cmbIndexChannel.FormattingEnabled = True
         Me.cmbIndexChannel.Location = New System.Drawing.Point(3, 41)
         Me.cmbIndexChannel.Name = "cmbIndexChannel"
         Me.cmbIndexChannel.Size = New System.Drawing.Size(160, 21)
@@ -2245,7 +2249,7 @@ Partial Class frmSetup
         Me.PictureBox7.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox7.TabIndex = 0
-        Me.PictureBox7.TabStop = false
+        Me.PictureBox7.TabStop = False
         '
         'DataGridViewTextBoxColumn1
         '
@@ -2277,17 +2281,38 @@ Partial Class frmSetup
         Me.DataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn4.Width = 60
         '
+        'cmbDBRelation
+        '
+        Me.cmbDBRelation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmbDBRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbDBRelation.FormattingEnabled = True
+        Me.cmbDBRelation.Location = New System.Drawing.Point(336, 225)
+        Me.cmbDBRelation.Name = "cmbDBRelation"
+        Me.cmbDBRelation.Size = New System.Drawing.Size(284, 21)
+        Me.cmbDBRelation.Sorted = True
+        Me.cmbDBRelation.TabIndex = 27
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(333, 209)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(98, 13)
+        Me.Label14.TabIndex = 26
+        Me.Label14.Text = "Database relation"
+        '
         'frmSetup
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(648, 446)
+        Me.ClientSize = New System.Drawing.Size(648, 561)
         Me.Controls.Add(Me.tabSetup)
-        Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
-        Me.MaximizeBox = false
-        Me.MaximumSize = New System.Drawing.Size(664, 485)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(664, 600)
         Me.MinimizeBox = false
         Me.MinimumSize = New System.Drawing.Size(664, 485)
         Me.Name = "frmSetup"
@@ -2546,4 +2571,6 @@ End Sub
     Friend WithEvents txtMarathonIDCombo As Windows.Forms.TextBox
     Friend WithEvents PictureBox9 As Windows.Forms.PictureBox
     Friend WithEvents chkSendAsUnitMarathon As Windows.Forms.CheckBox
+    Friend WithEvents cmbDBRelation As Windows.Forms.ComboBox
+    Friend WithEvents Label14 As Windows.Forms.Label
 End Class

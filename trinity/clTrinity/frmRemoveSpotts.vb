@@ -127,8 +127,12 @@ Public Class frmRemoveSpotts
     End Sub
 
     Private Sub cmdRemoveSpotts_Click(sender As Object, e As EventArgs) Handles cmdRemoveSpotts.Click
+        Dim removedAcSpotts As Integer = 0
+        Dim removedBSpotts As Integer = 0
         Campaign.ActualSpots.Collection.Clear()
-
-        Windows.Forms.MessageBox.Show("Removed", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+        For i As Integer = 0 To Campaign.BookedSpots.Count
+            Campaign.BookedSpots.Remove(i)
+        Next
+        Windows.Forms.MessageBox.Show("Removed " & removedBSpotts & " booked sptts and " & removedAcSpotts, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
     End Sub
 End Class
