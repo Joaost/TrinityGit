@@ -45,34 +45,32 @@ Namespace Trinity
                         Dim Months As New List(Of Integer)
                         Dim Campaigns As New List(Of String)
                         Dim CampaignList As New List(Of String)
-                        Dim NameOfUser As String
+                        Dim UserAccess As Boolean
 
                         If SQLQuery = "" Then
-                            Command.CommandText = "SELECT 'Name' = sp.NAME
-                                                    FROM sys.server_role_members rm
-                                                        ,sys.server_principals sp
-                                                    WHERE rm.role_principal_id = SUSER_ID('" & relation & "')
-                                                        AND rm.member_principal_id = sp.principal_id"
+
+                            Command.CommandText = "DECLARE @sys_usr varchar(30) SET @sys_usr = SYSTEM_USER 
+                                        SELECT 'Name' = sp.NAME
+                                        FROM sys.server_role_members rm
+                                            ,sys.server_principals sp
+                                        WHERE rm.role_principal_id = SUSER_ID('" & relation & "')
+                                            AND rm.member_principal_id = sp.principal_id AND sp.NAME = @sys_usr"
                         Else
                             Command.CommandText = SQLQuery
                         End If
 
                         Try
                             Using rd As SqlClient.SqlDataReader = Command.ExecuteReader
-                                ds.Load(rd)
-
-                                For Each row As DataRow In ds.Rows
-                                    Try
-                                        NameOfUser = row!Name
-                                        rowResult = ds.Rows.Count()
-                                    Catch ex As Exception
-                                        _conn.Close()
-
-                                    End Try
-                                Next
-                                Return rowResult
-
+                                If rd.HasRows Then
+                                    ds.Load(rd)
+                                    For Each row As Object In ds.Rows
+                                        Dim tempPerson
+                                        tempPerson = row!Name
+                                        UserAccess = True
+                                    Next
+                                End If
                                 rd.Close()
+                                Return UserAccess
                             End Using
                         Catch ex As SqlClient.SqlException
                             Throw ex
@@ -81,7 +79,7 @@ Namespace Trinity
                             'Return New List(Of clTrinity.CampaignEssentials)
                         End Try
 
-                        Return rowResult
+                        Return UserAccess
                     End Using
                     _conn.Close()
                 End Using
