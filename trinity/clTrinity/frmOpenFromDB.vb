@@ -9,6 +9,8 @@ Public Class frmOpenFromDB
 
     Dim _orderVar As String = "startdate"
     Dim _ascDesc As String = "DESC"
+    Dim _userAccessMC As String = "mc_access"
+    Dim _userAccessMS As String = "ms_access"
 
 
     Private _doNotLoadCampaign As Boolean = False
@@ -271,6 +273,7 @@ Public Class frmOpenFromDB
     Public Function BuildSQL() As String
         Dim SQLString As String = Nothing
         Dim NeedsAnd As Boolean = False
+        Dim EmptyException As String = ""
 
         'SQLString &= "SELECT id,name,startdate,enddate,client,status,product,contractid,planner,buyer,lastopened,lastsaved,originallocation,originalfilechangeddate,campaignid from campaigns WHERE deletedon < '2001-01-01' AND "
         Dim DBUserAccess As List(Of dbUA) = Campaign.GetCampaignArea
@@ -353,12 +356,44 @@ Public Class frmOpenFromDB
             Return Strings.Left(SQLString, SQLString.LastIndexOf("AND ")) & " ORDER BY startdate DESC,client, product"
         End If
 
-        If DBUserAccess.Count > 0 Then
+        Dim tmpCount As Integer = 0
+        Dim UserAccessComplete As Boolean = False
+        For i As Integer = 0 To DBUserAccess.Count - 1
+            If DBUserAccess(i).dbValue Then
+                UserAccessComplete = True
+                tmpCount = tmpCount + 1
+            End If
+        Next
+        If tmpCount > 1 Then
+            NeedsAnd = True
+        Else
+            NeedsAnd = False
+        End If
+
+        If DBUserAccess.Count > 0 And UserAccessComplete Then
+            SQLString &= " AND "
+            Dim pointerIndex = 1
             For Each tmpObj As dbUA In DBUserAccess
                 If tmpObj.dbValue Then
-                    SQLString &= " OR campaigns.useraccess  LIKE '%" & tmpObj.dbName & "%'"
+                    If NeedsAnd Then
+                        SQLString &= "(campaigns.useraccess LIKE '%" & tmpObj.dbName & "%' OR "
+                        NeedsAnd = False
+                    Else
+                        If DBUserAccess.Count <> pointerIndex Then
+                            SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%' OR "
+                        Else
+                            SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%'"
+                        End If
+                    End If
                 End If
+                pointerIndex = pointerIndex + 1
             Next
+            If tmpCount > 1 Then
+                SQLString &= ")"
+            End If
+        Else
+            SQLString &= " AND campaigns.useraccess = ''"
+
         End If
 
         Return SQLString & " ORDER BY " & _orderVar & " " & _ascDesc

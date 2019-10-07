@@ -152,9 +152,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\BalloonToolTip.dll</HintPath>
     </Reference>
-    <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
+    <Reference Include="ConnectWrapper">
+      <HintPath>..\..\..\..\Projects\trinity\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.AgData.v9.2">
       <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
