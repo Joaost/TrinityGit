@@ -3007,7 +3007,6 @@ Namespace Trinity
                 MessageReceived(Me, Nothing)
             End If
         End Sub
-
         Public Class MessageEventArgs
             Inherits EventArgs
 

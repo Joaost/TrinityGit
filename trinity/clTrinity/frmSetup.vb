@@ -4829,5 +4829,34 @@ Public Class frmSetup
     Private Sub grdIndexes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdIndexes.CellContentClick
 
     End Sub
+
+    Private Sub cmbDBRelation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDBRelation.SelectedIndexChanged
+        Dim listForDBRelations As List(Of dbUA) = Campaign.GetCampaignAreas
+        If Campaign.mvarCampagignArea_prop = "" Then
+            'Set the first element or the only that contains the campaign relation
+            cmbDBRelation.SelectedItem() = listForDBRelations.Item(0).dbName
+        Else
+
+
+        End If
+    End Sub
+
+    Private Sub cmbDBRelation_Enter(sender As Object, e As EventArgs) Handles cmbDBRelation.Enter
+        Dim listForDBRelations As List(Of dbUA) = Campaign.GetCampaignAreas
+        If Campaign.mvarCampagignArea_prop = "" Then
+            'Set the first element or the only that contains the campaign relation
+            cmbDBRelation.Items.Add(listForDBRelations.Item(0).dbName)
+        Else
+        End If
+    End Sub
+
+    Private Sub cmbDBRelation_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbDBRelation.SelectedValueChanged
+
+        Campaign.mvarCampagignArea_prop = cmbDBRelation.SelectedText
+    End Sub
+
+    Private Sub cmbDBRelation_TextChanged(sender As Object, e As EventArgs) Handles cmbDBRelation.TextChanged
+        Campaign.mvarCampagignArea_prop = cmbDBRelation.SelectedText
+    End Sub
 End Class
 

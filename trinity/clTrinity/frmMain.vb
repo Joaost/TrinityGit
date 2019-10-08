@@ -4678,7 +4678,10 @@ CreatePlan:
         updateAllPricelists()
     End Sub
 
-
+    Private Sub EditClietsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditClietsToolStripMenuItem.Click
+        Dim editClietntWindow = New frmEditClients()
+        editClietntWindow.show()
+    End Sub
 End Class
 
 'Public Class clsExcelReport

@@ -232,6 +232,7 @@ Partial Class frmMain
         Me.lblUserCompany = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EditClietsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msMain.SuspendLayout()
         Me.tstMain.SuspendLayout()
         Me.pnlMenu.SuspendLayout()
@@ -592,7 +593,7 @@ Partial Class frmMain
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DefineChannelsToolStripMenuItem, Me.LoToolStripMenuItem, Me.EditPricelistToolStripMenuItem, Me.ChannelPackagesToolStripMenuItem, Me.DefineDaypartsToolStripMenuItem, Me.mnuEditPeople, Me.ToolStripMenuItem1, Me.PreferencesToolStripMenuItem, Me.ToolStripMenuItem3, Me.DownloadLatestVersionToolStripMenuItem, Me.mnuDownloadDevVersion, Me.InstalledPluginsToolStripMenuItem, Me.ToolStripMenuItem8, Me.ReadScheduleFileToolStripMenuItem, Me.mnuReadSpotcontrol, Me.UploadChannelSchedulesToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DefineChannelsToolStripMenuItem, Me.LoToolStripMenuItem, Me.EditPricelistToolStripMenuItem, Me.ChannelPackagesToolStripMenuItem, Me.DefineDaypartsToolStripMenuItem, Me.EditClietsToolStripMenuItem, Me.mnuEditPeople, Me.ToolStripMenuItem1, Me.PreferencesToolStripMenuItem, Me.ToolStripMenuItem3, Me.DownloadLatestVersionToolStripMenuItem, Me.mnuDownloadDevVersion, Me.InstalledPluginsToolStripMenuItem, Me.ToolStripMenuItem8, Me.ReadScheduleFileToolStripMenuItem, Me.mnuReadSpotcontrol, Me.UploadChannelSchedulesToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
@@ -2042,6 +2043,12 @@ Partial Class frmMain
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
         '
+        'EditClietsToolStripMenuItem
+        '
+        Me.EditClietsToolStripMenuItem.Name = "EditClietsToolStripMenuItem"
+        Me.EditClietsToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.EditClietsToolStripMenuItem.Text = "Edit cliets"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2296,4 +2303,5 @@ Partial Class frmMain
     Friend WithEvents UpdateChannelListToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReloadAllPricelistsToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents DoBothToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EditClietsToolStripMenuItem As Windows.Forms.ToolStripMenuItem
 End Class

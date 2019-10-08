@@ -32,42 +32,6 @@ Partial Class frmSetup
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuEditContract = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.cmdContract = New System.Windows.Forms.Button()
-        Me.cmdDeleteCost = New System.Windows.Forms.Button()
-        Me.cmdAddCost = New System.Windows.Forms.Button()
-        Me.cmdEditProduct = New System.Windows.Forms.Button()
-        Me.cmdAddProduct = New System.Windows.Forms.Button()
-        Me.cmdEditClient = New System.Windows.Forms.Button()
-        Me.cmdAddClient = New System.Windows.Forms.Button()
-        Me.cmdPeriod = New System.Windows.Forms.Button()
-        Me.cmdCountry = New System.Windows.Forms.Button()
-        Me.cmdAddChannelWizard = New System.Windows.Forms.Button()
-        Me.cmdQuickCopy = New System.Windows.Forms.Button()
-        Me.cmdCalculateDayparts = New System.Windows.Forms.Button()
-        Me.cmdRemoveChannel = New System.Windows.Forms.Button()
-        Me.cmdAddChannel = New System.Windows.Forms.Button()
-        Me.cmdComboND = New System.Windows.Forms.Button()
-        Me.cmdDeleteChannelFromCombo = New System.Windows.Forms.Button()
-        Me.cmdAddChannelToCombo = New System.Windows.Forms.Button()
-        Me.cmdDeleteCombo = New System.Windows.Forms.Button()
-        Me.cmdAddCombo = New System.Windows.Forms.Button()
-        Me.chkAutoFilmCode = New System.Windows.Forms.CheckBox()
-        Me.chkFilmIdxAsDiscount = New System.Windows.Forms.CheckBox()
-        Me.cmdSaveToAdtoox = New System.Windows.Forms.Button()
-        Me.cmdSave = New System.Windows.Forms.Button()
-        Me.cmdPlayMovie = New System.Windows.Forms.Button()
-        Me.cmdFindInAdtoox = New System.Windows.Forms.Button()
-        Me.cmdFind = New System.Windows.Forms.Button()
-        Me.cmdRemoveFilm = New System.Windows.Forms.Button()
-        Me.cmdAddFilm = New System.Windows.Forms.Button()
-        Me.cmdAddCopy = New System.Windows.Forms.Button()
-        Me.cmdCopyIndex = New System.Windows.Forms.Button()
-        Me.cmdEditEnhancement = New System.Windows.Forms.Button()
-        Me.cmdRemoveIndex = New System.Windows.Forms.Button()
-        Me.cmdAddIndex = New System.Windows.Forms.Button()
-        Me.cmdCopyAV = New System.Windows.Forms.Button()
-        Me.cmdRemoveAV = New System.Windows.Forms.Button()
-        Me.cmdAddAV = New System.Windows.Forms.Button()
         Me.mnuCalculateDaypart = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuLastWeek = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuLastYear = New System.Windows.Forms.ToolStripMenuItem()
@@ -82,8 +46,13 @@ Partial Class frmSetup
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.tabSetup = New clTrinity.ExtendedTabControl()
         Me.tpGeneral = New System.Windows.Forms.TabPage()
+        Me.cmbDBRelation = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cmdContract = New System.Windows.Forms.Button()
         Me.cmdGeneralNext = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cmdDeleteCost = New System.Windows.Forms.Button()
+        Me.cmdAddCost = New System.Windows.Forms.Button()
         Me.grdCosts = New System.Windows.Forms.DataGridView()
         Me.colCost = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colType = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -115,8 +84,12 @@ Partial Class frmSetup
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cmbBuyer = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmdEditProduct = New System.Windows.Forms.Button()
+        Me.cmdAddProduct = New System.Windows.Forms.Button()
         Me.cmbProduct = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.cmdEditClient = New System.Windows.Forms.Button()
+        Me.cmdAddClient = New System.Windows.Forms.Button()
         Me.cmbClient = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtName = New System.Windows.Forms.TextBox()
@@ -124,6 +97,8 @@ Partial Class frmSetup
         Me.lblContract = New System.Windows.Forms.Label()
         Me.lblPeriod = New System.Windows.Forms.Label()
         Me.lblArea = New System.Windows.Forms.Label()
+        Me.cmdPeriod = New System.Windows.Forms.Button()
+        Me.cmdCountry = New System.Windows.Forms.Button()
         Me.tpChannels = New System.Windows.Forms.TabPage()
         Me.lblOldPricelist = New System.Windows.Forms.Label()
         Me.cmdChannelsNext = New System.Windows.Forms.Button()
@@ -135,8 +110,13 @@ Partial Class frmSetup
         Me.colInfoNat = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colInfoChn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cmdAddChannelWizard = New System.Windows.Forms.Button()
+        Me.cmdQuickCopy = New System.Windows.Forms.Button()
+        Me.cmdCalculateDayparts = New System.Windows.Forms.Button()
         Me.cmbCPT = New System.Windows.Forms.ComboBox()
+        Me.cmdRemoveChannel = New System.Windows.Forms.Button()
         Me.cmdQuickAdd = New System.Windows.Forms.Button()
+        Me.cmdAddChannel = New System.Windows.Forms.Button()
         Me.grdChannels = New System.Windows.Forms.DataGridView()
         Me.colChannel = New clTrinity.ExtendedComboboxColumn()
         Me.colBuyingTarget = New clTrinity.ExtendedComboboxColumn()
@@ -152,6 +132,7 @@ Partial Class frmSetup
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtMarathonIDCombo = New System.Windows.Forms.TextBox()
         Me.chkPrintAsOne = New System.Windows.Forms.CheckBox()
+        Me.cmdComboND = New System.Windows.Forms.Button()
         Me.chkShowAsOne = New System.Windows.Forms.CheckBox()
         Me.txtComboName = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -160,15 +141,23 @@ Partial Class frmSetup
         Me.grdCombo = New System.Windows.Forms.DataGridView()
         Me.colComboChannel = New clTrinity.ExtendedComboboxColumn()
         Me.colRelation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmdDeleteChannelFromCombo = New System.Windows.Forms.Button()
+        Me.cmdAddChannelToCombo = New System.Windows.Forms.Button()
         Me.grpCombos = New System.Windows.Forms.GroupBox()
         Me.grdCombos = New System.Windows.Forms.DataGridView()
         Me.colComboName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colChannels = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmdDeleteCombo = New System.Windows.Forms.Button()
+        Me.cmdAddCombo = New System.Windows.Forms.Button()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.tpFilms = New System.Windows.Forms.TabPage()
         Me.cmdFilmsNext = New System.Windows.Forms.Button()
         Me.grpFilm = New System.Windows.Forms.GroupBox()
+        Me.chkAutoFilmCode = New System.Windows.Forms.CheckBox()
         Me.lblIndexWarning = New System.Windows.Forms.Label()
+        Me.chkFilmIdxAsDiscount = New System.Windows.Forms.CheckBox()
+        Me.cmdSaveToAdtoox = New System.Windows.Forms.Button()
+        Me.cmdSave = New System.Windows.Forms.Button()
         Me.grdFilmDetails = New System.Windows.Forms.DataGridView()
         Me.colChannelFilmcode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colGrossFilmIndex = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -182,6 +171,11 @@ Partial Class frmSetup
         Me.txtFilmName = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.cmdPlayMovie = New System.Windows.Forms.Button()
+        Me.cmdFindInAdtoox = New System.Windows.Forms.Button()
+        Me.cmdFind = New System.Windows.Forms.Button()
+        Me.cmdRemoveFilm = New System.Windows.Forms.Button()
+        Me.cmdAddFilm = New System.Windows.Forms.Button()
         Me.grdFilms = New System.Windows.Forms.DataGridView()
         Me.colFilmName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colFilmDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -192,6 +186,9 @@ Partial Class frmSetup
         Me.lblSeasonal = New System.Windows.Forms.Label()
         Me.cmdApply = New System.Windows.Forms.Button()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.cmdAddCopy = New System.Windows.Forms.Button()
+        Me.cmdCopyIndex = New System.Windows.Forms.Button()
+        Me.cmdEditEnhancement = New System.Windows.Forms.Button()
         Me.grdIndexes = New System.Windows.Forms.DataGridView()
         Me.colDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colOn = New System.Windows.Forms.DataGridViewComboBoxColumn()
@@ -199,22 +196,25 @@ Partial Class frmSetup
         Me.colTo = New clTrinity.CalendarColumn()
         Me.colIndexAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colUse = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.cmdRemoveIndex = New System.Windows.Forms.Button()
+        Me.cmdAddIndex = New System.Windows.Forms.Button()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.chkMultiply = New System.Windows.Forms.CheckBox()
+        Me.cmdCopyAV = New System.Windows.Forms.Button()
         Me.grdAddedValues = New System.Windows.Forms.DataGridView()
         Me.colAVName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colGrossIndex = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colNetIndex = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colShowIn = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.colUseAV = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.cmdRemoveAV = New System.Windows.Forms.Button()
+        Me.cmdAddAV = New System.Windows.Forms.Button()
         Me.cmbIndexChannel = New System.Windows.Forms.ComboBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cmbDBRelation = New System.Windows.Forms.ComboBox()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.mnuContract.SuspendLayout()
         Me.mnuCalculateDaypart.SuspendLayout()
         Me.mnuCalculcateComboND.SuspendLayout()
@@ -299,478 +299,6 @@ Partial Class frmSetup
         Me.mnuEditContract.Name = "mnuEditContract"
         Me.mnuEditContract.Size = New System.Drawing.Size(148, 22)
         Me.mnuEditContract.Text = "Edit Contract"
-        '
-        'cmdContract
-        '
-        Me.cmdContract.FlatAppearance.BorderSize = 0
-        Me.cmdContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdContract.Image = Global.clTrinity.My.Resources.Resources.handshake_2
-        Me.cmdContract.Location = New System.Drawing.Point(179, 6)
-        Me.cmdContract.Name = "cmdContract"
-        Me.cmdContract.Size = New System.Drawing.Size(43, 40)
-        Me.cmdContract.TabIndex = 2
-        Me.cmdContract.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip.SetToolTip(Me.cmdContract, "Manage Contract")
-        Me.cmdContract.UseVisualStyleBackColor = True
-        '
-        'cmdDeleteCost
-        '
-        Me.cmdDeleteCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdDeleteCost.FlatAppearance.BorderSize = 0
-        Me.cmdDeleteCost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdDeleteCost.Image = Global.clTrinity.My.Resources.Resources.delete_3
-        Me.cmdDeleteCost.Location = New System.Drawing.Point(590, 81)
-        Me.cmdDeleteCost.Name = "cmdDeleteCost"
-        Me.cmdDeleteCost.Size = New System.Drawing.Size(24, 28)
-        Me.cmdDeleteCost.TabIndex = 12
-        Me.ToolTip.SetToolTip(Me.cmdDeleteCost, "Delete cost")
-        Me.cmdDeleteCost.UseVisualStyleBackColor = True
-        '
-        'cmdAddCost
-        '
-        Me.cmdAddCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddCost.FlatAppearance.BorderSize = 0
-        Me.cmdAddCost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddCost.Image = CType(resources.GetObject("cmdAddCost.Image"), System.Drawing.Image)
-        Me.cmdAddCost.Location = New System.Drawing.Point(594, 58)
-        Me.cmdAddCost.Name = "cmdAddCost"
-        Me.cmdAddCost.Size = New System.Drawing.Size(18, 17)
-        Me.cmdAddCost.TabIndex = 11
-        Me.ToolTip.SetToolTip(Me.cmdAddCost, "Add a cost to Budget")
-        Me.cmdAddCost.UseVisualStyleBackColor = True
-        '
-        'cmdEditProduct
-        '
-        Me.cmdEditProduct.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdEditProduct.FlatAppearance.BorderSize = 0
-        Me.cmdEditProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdEditProduct.Image = CType(resources.GetObject("cmdEditProduct.Image"), System.Drawing.Image)
-        Me.cmdEditProduct.Location = New System.Drawing.Point(598, 102)
-        Me.cmdEditProduct.Name = "cmdEditProduct"
-        Me.cmdEditProduct.Size = New System.Drawing.Size(22, 20)
-        Me.cmdEditProduct.TabIndex = 15
-        Me.ToolTip.SetToolTip(Me.cmdEditProduct, "Edit Product")
-        Me.cmdEditProduct.UseVisualStyleBackColor = True
-        '
-        'cmdAddProduct
-        '
-        Me.cmdAddProduct.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddProduct.FlatAppearance.BorderSize = 0
-        Me.cmdAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddProduct.Image = CType(resources.GetObject("cmdAddProduct.Image"), System.Drawing.Image)
-        Me.cmdAddProduct.Location = New System.Drawing.Point(575, 106)
-        Me.cmdAddProduct.Name = "cmdAddProduct"
-        Me.cmdAddProduct.Size = New System.Drawing.Size(18, 17)
-        Me.cmdAddProduct.TabIndex = 14
-        Me.ToolTip.SetToolTip(Me.cmdAddProduct, "Add Product")
-        Me.cmdAddProduct.UseVisualStyleBackColor = True
-        '
-        'cmdEditClient
-        '
-        Me.cmdEditClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdEditClient.FlatAppearance.BorderSize = 0
-        Me.cmdEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdEditClient.Image = CType(resources.GetObject("cmdEditClient.Image"), System.Drawing.Image)
-        Me.cmdEditClient.Location = New System.Drawing.Point(599, 62)
-        Me.cmdEditClient.Name = "cmdEditClient"
-        Me.cmdEditClient.Size = New System.Drawing.Size(22, 20)
-        Me.cmdEditClient.TabIndex = 11
-        Me.ToolTip.SetToolTip(Me.cmdEditClient, "Edit Client")
-        Me.cmdEditClient.UseVisualStyleBackColor = True
-        '
-        'cmdAddClient
-        '
-        Me.cmdAddClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddClient.FlatAppearance.BorderSize = 0
-        Me.cmdAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddClient.Image = CType(resources.GetObject("cmdAddClient.Image"), System.Drawing.Image)
-        Me.cmdAddClient.Location = New System.Drawing.Point(575, 66)
-        Me.cmdAddClient.Name = "cmdAddClient"
-        Me.cmdAddClient.Size = New System.Drawing.Size(18, 17)
-        Me.cmdAddClient.TabIndex = 10
-        Me.ToolTip.SetToolTip(Me.cmdAddClient, "Add Client")
-        Me.cmdAddClient.UseVisualStyleBackColor = True
-        '
-        'cmdPeriod
-        '
-        Me.cmdPeriod.FlatAppearance.BorderSize = 0
-        Me.cmdPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdPeriod.Image = Global.clTrinity.My.Resources.Resources.calender_2_32x32
-        Me.cmdPeriod.Location = New System.Drawing.Point(3, 45)
-        Me.cmdPeriod.Name = "cmdPeriod"
-        Me.cmdPeriod.Size = New System.Drawing.Size(51, 51)
-        Me.cmdPeriod.TabIndex = 1
-        Me.cmdPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip.SetToolTip(Me.cmdPeriod, "Set period for campaign")
-        Me.cmdPeriod.UseVisualStyleBackColor = True
-        '
-        'cmdCountry
-        '
-        Me.cmdCountry.FlatAppearance.BorderSize = 0
-        Me.cmdCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdCountry.Image = CType(resources.GetObject("cmdCountry.Image"), System.Drawing.Image)
-        Me.cmdCountry.Location = New System.Drawing.Point(7, 6)
-        Me.cmdCountry.Name = "cmdCountry"
-        Me.cmdCountry.Size = New System.Drawing.Size(43, 40)
-        Me.cmdCountry.TabIndex = 0
-        Me.cmdCountry.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip.SetToolTip(Me.cmdCountry, "Set area")
-        Me.cmdCountry.UseVisualStyleBackColor = True
-        '
-        'cmdAddChannelWizard
-        '
-        Me.cmdAddChannelWizard.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddChannelWizard.FlatAppearance.BorderSize = 0
-        Me.cmdAddChannelWizard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddChannelWizard.Image = Global.clTrinity.My.Resources.Resources.add_more_2_small
-        Me.cmdAddChannelWizard.Location = New System.Drawing.Point(599, 44)
-        Me.cmdAddChannelWizard.Name = "cmdAddChannelWizard"
-        Me.cmdAddChannelWizard.Size = New System.Drawing.Size(22, 20)
-        Me.cmdAddChannelWizard.TabIndex = 30
-        Me.ToolTip.SetToolTip(Me.cmdAddChannelWizard, "Add Channel")
-        Me.cmdAddChannelWizard.UseVisualStyleBackColor = True
-        '
-        'cmdQuickCopy
-        '
-        Me.cmdQuickCopy.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdQuickCopy.FlatAppearance.BorderSize = 0
-        Me.cmdQuickCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdQuickCopy.Image = Global.clTrinity.My.Resources.Resources.flash_2_small
-        Me.cmdQuickCopy.Location = New System.Drawing.Point(599, 122)
-        Me.cmdQuickCopy.Name = "cmdQuickCopy"
-        Me.cmdQuickCopy.Size = New System.Drawing.Size(22, 20)
-        Me.cmdQuickCopy.TabIndex = 29
-        Me.ToolTip.SetToolTip(Me.cmdQuickCopy, "Quick copy a bookingtype")
-        Me.cmdQuickCopy.UseVisualStyleBackColor = True
-        '
-        'cmdCalculateDayparts
-        '
-        Me.cmdCalculateDayparts.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdCalculateDayparts.FlatAppearance.BorderSize = 0
-        Me.cmdCalculateDayparts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdCalculateDayparts.Image = CType(resources.GetObject("cmdCalculateDayparts.Image"), System.Drawing.Image)
-        Me.cmdCalculateDayparts.Location = New System.Drawing.Point(599, 96)
-        Me.cmdCalculateDayparts.Name = "cmdCalculateDayparts"
-        Me.cmdCalculateDayparts.Size = New System.Drawing.Size(22, 20)
-        Me.cmdCalculateDayparts.TabIndex = 28
-        Me.ToolTip.SetToolTip(Me.cmdCalculateDayparts, "Get Calculate daypart split")
-        Me.cmdCalculateDayparts.UseVisualStyleBackColor = True
-        '
-        'cmdRemoveChannel
-        '
-        Me.cmdRemoveChannel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdRemoveChannel.FlatAppearance.BorderSize = 0
-        Me.cmdRemoveChannel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdRemoveChannel.Image = Global.clTrinity.My.Resources.Resources.delete_2_small
-        Me.cmdRemoveChannel.Location = New System.Drawing.Point(599, 70)
-        Me.cmdRemoveChannel.Name = "cmdRemoveChannel"
-        Me.cmdRemoveChannel.Size = New System.Drawing.Size(22, 20)
-        Me.cmdRemoveChannel.TabIndex = 14
-        Me.ToolTip.SetToolTip(Me.cmdRemoveChannel, "Delete Channel")
-        Me.cmdRemoveChannel.UseVisualStyleBackColor = True
-        '
-        'cmdAddChannel
-        '
-        Me.cmdAddChannel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddChannel.FlatAppearance.BorderSize = 0
-        Me.cmdAddChannel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddChannel.Image = Global.clTrinity.My.Resources.Resources.add_2_small
-        Me.cmdAddChannel.Location = New System.Drawing.Point(599, 18)
-        Me.cmdAddChannel.Name = "cmdAddChannel"
-        Me.cmdAddChannel.Size = New System.Drawing.Size(22, 20)
-        Me.cmdAddChannel.TabIndex = 13
-        Me.ToolTip.SetToolTip(Me.cmdAddChannel, "Add Channel")
-        Me.cmdAddChannel.UseVisualStyleBackColor = True
-        '
-        'cmdComboND
-        '
-        Me.cmdComboND.FlatAppearance.BorderSize = 0
-        Me.cmdComboND.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdComboND.Image = CType(resources.GetObject("cmdComboND.Image"), System.Drawing.Image)
-        Me.cmdComboND.Location = New System.Drawing.Point(311, 84)
-        Me.cmdComboND.Name = "cmdComboND"
-        Me.cmdComboND.Size = New System.Drawing.Size(22, 20)
-        Me.cmdComboND.TabIndex = 30
-        Me.ToolTip.SetToolTip(Me.cmdComboND, "Get natural delivery split")
-        Me.cmdComboND.UseVisualStyleBackColor = True
-        '
-        'cmdDeleteChannelFromCombo
-        '
-        Me.cmdDeleteChannelFromCombo.FlatAppearance.BorderSize = 0
-        Me.cmdDeleteChannelFromCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdDeleteChannelFromCombo.Image = CType(resources.GetObject("cmdDeleteChannelFromCombo.Image"), System.Drawing.Image)
-        Me.cmdDeleteChannelFromCombo.Location = New System.Drawing.Point(311, 58)
-        Me.cmdDeleteChannelFromCombo.Name = "cmdDeleteChannelFromCombo"
-        Me.cmdDeleteChannelFromCombo.Size = New System.Drawing.Size(22, 20)
-        Me.cmdDeleteChannelFromCombo.TabIndex = 23
-        Me.ToolTip.SetToolTip(Me.cmdDeleteChannelFromCombo, "Delete Channel")
-        Me.cmdDeleteChannelFromCombo.UseVisualStyleBackColor = True
-        '
-        'cmdAddChannelToCombo
-        '
-        Me.cmdAddChannelToCombo.FlatAppearance.BorderSize = 0
-        Me.cmdAddChannelToCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddChannelToCombo.Image = CType(resources.GetObject("cmdAddChannelToCombo.Image"), System.Drawing.Image)
-        Me.cmdAddChannelToCombo.Location = New System.Drawing.Point(311, 32)
-        Me.cmdAddChannelToCombo.Name = "cmdAddChannelToCombo"
-        Me.cmdAddChannelToCombo.Size = New System.Drawing.Size(22, 20)
-        Me.cmdAddChannelToCombo.TabIndex = 22
-        Me.ToolTip.SetToolTip(Me.cmdAddChannelToCombo, "Add Channel")
-        Me.cmdAddChannelToCombo.UseVisualStyleBackColor = True
-        '
-        'cmdDeleteCombo
-        '
-        Me.cmdDeleteCombo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdDeleteCombo.FlatAppearance.BorderSize = 0
-        Me.cmdDeleteCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdDeleteCombo.Image = CType(resources.GetObject("cmdDeleteCombo.Image"), System.Drawing.Image)
-        Me.cmdDeleteCombo.Location = New System.Drawing.Point(605, 44)
-        Me.cmdDeleteCombo.Name = "cmdDeleteCombo"
-        Me.cmdDeleteCombo.Size = New System.Drawing.Size(22, 20)
-        Me.cmdDeleteCombo.TabIndex = 20
-        Me.ToolTip.SetToolTip(Me.cmdDeleteCombo, "Delete Combination")
-        Me.cmdDeleteCombo.UseVisualStyleBackColor = True
-        '
-        'cmdAddCombo
-        '
-        Me.cmdAddCombo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddCombo.FlatAppearance.BorderSize = 0
-        Me.cmdAddCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddCombo.Image = CType(resources.GetObject("cmdAddCombo.Image"), System.Drawing.Image)
-        Me.cmdAddCombo.Location = New System.Drawing.Point(605, 18)
-        Me.cmdAddCombo.Name = "cmdAddCombo"
-        Me.cmdAddCombo.Size = New System.Drawing.Size(22, 20)
-        Me.cmdAddCombo.TabIndex = 19
-        Me.ToolTip.SetToolTip(Me.cmdAddCombo, "Add Combination")
-        Me.cmdAddCombo.UseVisualStyleBackColor = True
-        '
-        'chkAutoFilmCode
-        '
-        Me.chkAutoFilmCode.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkAutoFilmCode.AutoSize = True
-        Me.chkAutoFilmCode.Checked = True
-        Me.chkAutoFilmCode.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkAutoFilmCode.Location = New System.Drawing.Point(469, 139)
-        Me.chkAutoFilmCode.Name = "chkAutoFilmCode"
-        Me.chkAutoFilmCode.Size = New System.Drawing.Size(130, 17)
-        Me.chkAutoFilmCode.TabIndex = 16
-        Me.chkAutoFilmCode.Text = "Auto copy filmcodes"
-        Me.ToolTip.SetToolTip(Me.chkAutoFilmCode, "Use film index as dicount")
-        Me.chkAutoFilmCode.UseVisualStyleBackColor = True
-        '
-        'chkFilmIdxAsDiscount
-        '
-        Me.chkFilmIdxAsDiscount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.chkFilmIdxAsDiscount.AutoSize = True
-        Me.chkFilmIdxAsDiscount.Location = New System.Drawing.Point(292, 140)
-        Me.chkFilmIdxAsDiscount.Name = "chkFilmIdxAsDiscount"
-        Me.chkFilmIdxAsDiscount.Size = New System.Drawing.Size(170, 17)
-        Me.chkFilmIdxAsDiscount.TabIndex = 13
-        Me.chkFilmIdxAsDiscount.Text = "Count filmindex as discount"
-        Me.ToolTip.SetToolTip(Me.chkFilmIdxAsDiscount, "Use film index as dicount")
-        Me.chkFilmIdxAsDiscount.UseVisualStyleBackColor = True
-        '
-        'cmdSaveToAdtoox
-        '
-        Me.cmdSaveToAdtoox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdSaveToAdtoox.FlatAppearance.BorderSize = 0
-        Me.cmdSaveToAdtoox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdSaveToAdtoox.Font = New System.Drawing.Font("Segoe UI", 8.0!)
-        Me.cmdSaveToAdtoox.Image = CType(resources.GetObject("cmdSaveToAdtoox.Image"), System.Drawing.Image)
-        Me.cmdSaveToAdtoox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdSaveToAdtoox.Location = New System.Drawing.Point(511, 7)
-        Me.cmdSaveToAdtoox.Name = "cmdSaveToAdtoox"
-        Me.cmdSaveToAdtoox.Size = New System.Drawing.Size(116, 20)
-        Me.cmdSaveToAdtoox.TabIndex = 15
-        Me.cmdSaveToAdtoox.Text = "Create filmcodes"
-        Me.cmdSaveToAdtoox.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ToolTip.SetToolTip(Me.cmdSaveToAdtoox, "Save to E.C. Express")
-        Me.cmdSaveToAdtoox.UseVisualStyleBackColor = True
-        Me.cmdSaveToAdtoox.Visible = False
-        '
-        'cmdSave
-        '
-        Me.cmdSave.FlatAppearance.BorderSize = 0
-        Me.cmdSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdSave.Image = Global.clTrinity.My.Resources.Resources.save_2_small
-        Me.cmdSave.Location = New System.Drawing.Point(6, 147)
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(22, 20)
-        Me.cmdSave.TabIndex = 12
-        Me.ToolTip.SetToolTip(Me.cmdSave, "Save to Library")
-        Me.cmdSave.UseVisualStyleBackColor = True
-        '
-        'cmdPlayMovie
-        '
-        Me.cmdPlayMovie.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdPlayMovie.FlatAppearance.BorderSize = 0
-        Me.cmdPlayMovie.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdPlayMovie.Image = Global.clTrinity.My.Resources.Resources.play_2_small
-        Me.cmdPlayMovie.Location = New System.Drawing.Point(605, 122)
-        Me.cmdPlayMovie.Name = "cmdPlayMovie"
-        Me.cmdPlayMovie.Size = New System.Drawing.Size(22, 20)
-        Me.cmdPlayMovie.TabIndex = 28
-        Me.ToolTip.SetToolTip(Me.cmdPlayMovie, "Play film")
-        Me.cmdPlayMovie.UseVisualStyleBackColor = True
-        Me.cmdPlayMovie.Visible = False
-        '
-        'cmdFindInAdtoox
-        '
-        Me.cmdFindInAdtoox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdFindInAdtoox.FlatAppearance.BorderSize = 0
-        Me.cmdFindInAdtoox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdFindInAdtoox.Image = CType(resources.GetObject("cmdFindInAdtoox.Image"), System.Drawing.Image)
-        Me.cmdFindInAdtoox.Location = New System.Drawing.Point(605, 96)
-        Me.cmdFindInAdtoox.Name = "cmdFindInAdtoox"
-        Me.cmdFindInAdtoox.Size = New System.Drawing.Size(22, 20)
-        Me.cmdFindInAdtoox.TabIndex = 18
-        Me.ToolTip.SetToolTip(Me.cmdFindInAdtoox, "Get film(s) from your Adtoox library")
-        Me.cmdFindInAdtoox.UseVisualStyleBackColor = True
-        Me.cmdFindInAdtoox.Visible = False
-        '
-        'cmdFind
-        '
-        Me.cmdFind.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdFind.FlatAppearance.BorderSize = 0
-        Me.cmdFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdFind.Image = Global.clTrinity.My.Resources.Resources.find_2_small
-        Me.cmdFind.Location = New System.Drawing.Point(605, 70)
-        Me.cmdFind.Name = "cmdFind"
-        Me.cmdFind.Size = New System.Drawing.Size(22, 20)
-        Me.cmdFind.TabIndex = 17
-        Me.ToolTip.SetToolTip(Me.cmdFind, "Get film from Library")
-        Me.cmdFind.UseVisualStyleBackColor = True
-        '
-        'cmdRemoveFilm
-        '
-        Me.cmdRemoveFilm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdRemoveFilm.FlatAppearance.BorderSize = 0
-        Me.cmdRemoveFilm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdRemoveFilm.Image = Global.clTrinity.My.Resources.Resources.delete_2_small
-        Me.cmdRemoveFilm.Location = New System.Drawing.Point(605, 44)
-        Me.cmdRemoveFilm.Name = "cmdRemoveFilm"
-        Me.cmdRemoveFilm.Size = New System.Drawing.Size(22, 20)
-        Me.cmdRemoveFilm.TabIndex = 16
-        Me.ToolTip.SetToolTip(Me.cmdRemoveFilm, "Delete Film")
-        Me.cmdRemoveFilm.UseVisualStyleBackColor = True
-        '
-        'cmdAddFilm
-        '
-        Me.cmdAddFilm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddFilm.FlatAppearance.BorderSize = 0
-        Me.cmdAddFilm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddFilm.Image = Global.clTrinity.My.Resources.Resources.add_2_small
-        Me.cmdAddFilm.Location = New System.Drawing.Point(605, 18)
-        Me.cmdAddFilm.Name = "cmdAddFilm"
-        Me.cmdAddFilm.Size = New System.Drawing.Size(22, 20)
-        Me.cmdAddFilm.TabIndex = 15
-        Me.ToolTip.SetToolTip(Me.cmdAddFilm, "Add Film")
-        Me.cmdAddFilm.UseVisualStyleBackColor = True
-        '
-        'cmdAddCopy
-        '
-        Me.cmdAddCopy.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddCopy.FlatAppearance.BorderSize = 0
-        Me.cmdAddCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddCopy.Image = Global.clTrinity.My.Resources.Resources.add_more_2_small
-        Me.cmdAddCopy.Location = New System.Drawing.Point(603, 44)
-        Me.cmdAddCopy.Name = "cmdAddCopy"
-        Me.cmdAddCopy.Size = New System.Drawing.Size(22, 20)
-        Me.cmdAddCopy.TabIndex = 30
-        Me.ToolTip.SetToolTip(Me.cmdAddCopy, "Add copy of last Index")
-        Me.cmdAddCopy.UseVisualStyleBackColor = True
-        '
-        'cmdCopyIndex
-        '
-        Me.cmdCopyIndex.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdCopyIndex.FlatAppearance.BorderSize = 0
-        Me.cmdCopyIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdCopyIndex.Image = CType(resources.GetObject("cmdCopyIndex.Image"), System.Drawing.Image)
-        Me.cmdCopyIndex.Location = New System.Drawing.Point(603, 96)
-        Me.cmdCopyIndex.Name = "cmdCopyIndex"
-        Me.cmdCopyIndex.Size = New System.Drawing.Size(22, 20)
-        Me.cmdCopyIndex.TabIndex = 29
-        Me.ToolTip.SetToolTip(Me.cmdCopyIndex, "Copy indexes from another channel")
-        Me.cmdCopyIndex.UseVisualStyleBackColor = True
-        '
-        'cmdEditEnhancement
-        '
-        Me.cmdEditEnhancement.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdEditEnhancement.FlatAppearance.BorderSize = 0
-        Me.cmdEditEnhancement.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdEditEnhancement.Image = Global.clTrinity.My.Resources.Resources.edit_note_3
-        Me.cmdEditEnhancement.Location = New System.Drawing.Point(603, 122)
-        Me.cmdEditEnhancement.Name = "cmdEditEnhancement"
-        Me.cmdEditEnhancement.Size = New System.Drawing.Size(22, 20)
-        Me.cmdEditEnhancement.TabIndex = 21
-        Me.ToolTip.SetToolTip(Me.cmdEditEnhancement, "Edit Enhancement")
-        Me.cmdEditEnhancement.UseVisualStyleBackColor = True
-        Me.cmdEditEnhancement.Visible = False
-        '
-        'cmdRemoveIndex
-        '
-        Me.cmdRemoveIndex.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdRemoveIndex.FlatAppearance.BorderSize = 0
-        Me.cmdRemoveIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdRemoveIndex.Image = CType(resources.GetObject("cmdRemoveIndex.Image"), System.Drawing.Image)
-        Me.cmdRemoveIndex.Location = New System.Drawing.Point(603, 70)
-        Me.cmdRemoveIndex.Name = "cmdRemoveIndex"
-        Me.cmdRemoveIndex.Size = New System.Drawing.Size(22, 20)
-        Me.cmdRemoveIndex.TabIndex = 18
-        Me.ToolTip.SetToolTip(Me.cmdRemoveIndex, "Delete Index")
-        Me.cmdRemoveIndex.UseVisualStyleBackColor = True
-        '
-        'cmdAddIndex
-        '
-        Me.cmdAddIndex.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddIndex.FlatAppearance.BorderSize = 0
-        Me.cmdAddIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddIndex.Image = CType(resources.GetObject("cmdAddIndex.Image"), System.Drawing.Image)
-        Me.cmdAddIndex.Location = New System.Drawing.Point(603, 18)
-        Me.cmdAddIndex.Name = "cmdAddIndex"
-        Me.cmdAddIndex.Size = New System.Drawing.Size(22, 20)
-        Me.cmdAddIndex.TabIndex = 17
-        Me.ToolTip.SetToolTip(Me.cmdAddIndex, "Add Index")
-        Me.cmdAddIndex.UseVisualStyleBackColor = True
-        '
-        'cmdCopyAV
-        '
-        Me.cmdCopyAV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdCopyAV.FlatAppearance.BorderSize = 0
-        Me.cmdCopyAV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdCopyAV.Image = CType(resources.GetObject("cmdCopyAV.Image"), System.Drawing.Image)
-        Me.cmdCopyAV.Location = New System.Drawing.Point(603, 70)
-        Me.cmdCopyAV.Name = "cmdCopyAV"
-        Me.cmdCopyAV.Size = New System.Drawing.Size(22, 20)
-        Me.cmdCopyAV.TabIndex = 30
-        Me.ToolTip.SetToolTip(Me.cmdCopyAV, "Copy added values from another channel")
-        Me.cmdCopyAV.UseVisualStyleBackColor = True
-        '
-        'cmdRemoveAV
-        '
-        Me.cmdRemoveAV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdRemoveAV.FlatAppearance.BorderSize = 0
-        Me.cmdRemoveAV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdRemoveAV.Image = CType(resources.GetObject("cmdRemoveAV.Image"), System.Drawing.Image)
-        Me.cmdRemoveAV.Location = New System.Drawing.Point(603, 44)
-        Me.cmdRemoveAV.Name = "cmdRemoveAV"
-        Me.cmdRemoveAV.Size = New System.Drawing.Size(22, 20)
-        Me.cmdRemoveAV.TabIndex = 18
-        Me.ToolTip.SetToolTip(Me.cmdRemoveAV, "Delete Value")
-        Me.cmdRemoveAV.UseVisualStyleBackColor = True
-        '
-        'cmdAddAV
-        '
-        Me.cmdAddAV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdAddAV.FlatAppearance.BorderSize = 0
-        Me.cmdAddAV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAddAV.Image = CType(resources.GetObject("cmdAddAV.Image"), System.Drawing.Image)
-        Me.cmdAddAV.Location = New System.Drawing.Point(603, 18)
-        Me.cmdAddAV.Name = "cmdAddAV"
-        Me.cmdAddAV.Size = New System.Drawing.Size(22, 20)
-        Me.cmdAddAV.TabIndex = 17
-        Me.ToolTip.SetToolTip(Me.cmdAddAV, "Add Value")
-        Me.cmdAddAV.UseVisualStyleBackColor = True
         '
         'mnuCalculateDaypart
         '
@@ -906,6 +434,40 @@ Partial Class frmSetup
         Me.tpGeneral.Text = "General"
         Me.tpGeneral.UseVisualStyleBackColor = True
         '
+        'cmbDBRelation
+        '
+        Me.cmbDBRelation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmbDBRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbDBRelation.FormattingEnabled = True
+        Me.cmbDBRelation.Location = New System.Drawing.Point(336, 225)
+        Me.cmbDBRelation.Name = "cmbDBRelation"
+        Me.cmbDBRelation.Size = New System.Drawing.Size(284, 21)
+        Me.cmbDBRelation.Sorted = True
+        Me.cmbDBRelation.TabIndex = 27
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(333, 209)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(98, 13)
+        Me.Label14.TabIndex = 26
+        Me.Label14.Text = "Database relation"
+        '
+        'cmdContract
+        '
+        Me.cmdContract.FlatAppearance.BorderSize = 0
+        Me.cmdContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdContract.Image = Global.clTrinity.My.Resources.Resources.handshake_2
+        Me.cmdContract.Location = New System.Drawing.Point(179, 6)
+        Me.cmdContract.Name = "cmdContract"
+        Me.cmdContract.Size = New System.Drawing.Size(43, 40)
+        Me.cmdContract.TabIndex = 2
+        Me.cmdContract.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip.SetToolTip(Me.cmdContract, "Manage Contract")
+        Me.cmdContract.UseVisualStyleBackColor = True
+        '
         'cmdGeneralNext
         '
         Me.cmdGeneralNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -936,6 +498,32 @@ Partial Class frmSetup
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Budget"
+        '
+        'cmdDeleteCost
+        '
+        Me.cmdDeleteCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdDeleteCost.FlatAppearance.BorderSize = 0
+        Me.cmdDeleteCost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdDeleteCost.Image = Global.clTrinity.My.Resources.Resources.delete_3
+        Me.cmdDeleteCost.Location = New System.Drawing.Point(590, 81)
+        Me.cmdDeleteCost.Name = "cmdDeleteCost"
+        Me.cmdDeleteCost.Size = New System.Drawing.Size(24, 28)
+        Me.cmdDeleteCost.TabIndex = 12
+        Me.ToolTip.SetToolTip(Me.cmdDeleteCost, "Delete cost")
+        Me.cmdDeleteCost.UseVisualStyleBackColor = True
+        '
+        'cmdAddCost
+        '
+        Me.cmdAddCost.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddCost.FlatAppearance.BorderSize = 0
+        Me.cmdAddCost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddCost.Image = CType(resources.GetObject("cmdAddCost.Image"), System.Drawing.Image)
+        Me.cmdAddCost.Location = New System.Drawing.Point(594, 58)
+        Me.cmdAddCost.Name = "cmdAddCost"
+        Me.cmdAddCost.Size = New System.Drawing.Size(18, 17)
+        Me.cmdAddCost.TabIndex = 11
+        Me.ToolTip.SetToolTip(Me.cmdAddCost, "Add a cost to Budget")
+        Me.cmdAddCost.UseVisualStyleBackColor = True
         '
         'grdCosts
         '
@@ -1243,6 +831,32 @@ Partial Class frmSetup
         Me.Label4.TabIndex = 16
         Me.Label4.Text = "Buyer"
         '
+        'cmdEditProduct
+        '
+        Me.cmdEditProduct.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdEditProduct.FlatAppearance.BorderSize = 0
+        Me.cmdEditProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdEditProduct.Image = CType(resources.GetObject("cmdEditProduct.Image"), System.Drawing.Image)
+        Me.cmdEditProduct.Location = New System.Drawing.Point(598, 102)
+        Me.cmdEditProduct.Name = "cmdEditProduct"
+        Me.cmdEditProduct.Size = New System.Drawing.Size(22, 20)
+        Me.cmdEditProduct.TabIndex = 15
+        Me.ToolTip.SetToolTip(Me.cmdEditProduct, "Edit Product")
+        Me.cmdEditProduct.UseVisualStyleBackColor = True
+        '
+        'cmdAddProduct
+        '
+        Me.cmdAddProduct.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddProduct.FlatAppearance.BorderSize = 0
+        Me.cmdAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddProduct.Image = CType(resources.GetObject("cmdAddProduct.Image"), System.Drawing.Image)
+        Me.cmdAddProduct.Location = New System.Drawing.Point(575, 106)
+        Me.cmdAddProduct.Name = "cmdAddProduct"
+        Me.cmdAddProduct.Size = New System.Drawing.Size(18, 17)
+        Me.cmdAddProduct.TabIndex = 14
+        Me.ToolTip.SetToolTip(Me.cmdAddProduct, "Add Product")
+        Me.cmdAddProduct.UseVisualStyleBackColor = True
+        '
         'cmbProduct
         '
         Me.cmbProduct.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -1263,6 +877,32 @@ Partial Class frmSetup
         Me.Label3.Size = New System.Drawing.Size(47, 13)
         Me.Label3.TabIndex = 12
         Me.Label3.Text = "Product"
+        '
+        'cmdEditClient
+        '
+        Me.cmdEditClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdEditClient.FlatAppearance.BorderSize = 0
+        Me.cmdEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdEditClient.Image = CType(resources.GetObject("cmdEditClient.Image"), System.Drawing.Image)
+        Me.cmdEditClient.Location = New System.Drawing.Point(599, 62)
+        Me.cmdEditClient.Name = "cmdEditClient"
+        Me.cmdEditClient.Size = New System.Drawing.Size(22, 20)
+        Me.cmdEditClient.TabIndex = 11
+        Me.ToolTip.SetToolTip(Me.cmdEditClient, "Edit Client")
+        Me.cmdEditClient.UseVisualStyleBackColor = True
+        '
+        'cmdAddClient
+        '
+        Me.cmdAddClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddClient.FlatAppearance.BorderSize = 0
+        Me.cmdAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddClient.Image = CType(resources.GetObject("cmdAddClient.Image"), System.Drawing.Image)
+        Me.cmdAddClient.Location = New System.Drawing.Point(575, 66)
+        Me.cmdAddClient.Name = "cmdAddClient"
+        Me.cmdAddClient.Size = New System.Drawing.Size(18, 17)
+        Me.cmdAddClient.TabIndex = 10
+        Me.ToolTip.SetToolTip(Me.cmdAddClient, "Add Client")
+        Me.cmdAddClient.UseVisualStyleBackColor = True
         '
         'cmbClient
         '
@@ -1333,6 +973,32 @@ Partial Class frmSetup
         Me.lblArea.TabIndex = 3
         Me.lblArea.Text = "Sweden"
         '
+        'cmdPeriod
+        '
+        Me.cmdPeriod.FlatAppearance.BorderSize = 0
+        Me.cmdPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdPeriod.Image = Global.clTrinity.My.Resources.Resources.calender_2_32x32
+        Me.cmdPeriod.Location = New System.Drawing.Point(3, 45)
+        Me.cmdPeriod.Name = "cmdPeriod"
+        Me.cmdPeriod.Size = New System.Drawing.Size(51, 51)
+        Me.cmdPeriod.TabIndex = 1
+        Me.cmdPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip.SetToolTip(Me.cmdPeriod, "Set period for campaign")
+        Me.cmdPeriod.UseVisualStyleBackColor = True
+        '
+        'cmdCountry
+        '
+        Me.cmdCountry.FlatAppearance.BorderSize = 0
+        Me.cmdCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdCountry.Image = CType(resources.GetObject("cmdCountry.Image"), System.Drawing.Image)
+        Me.cmdCountry.Location = New System.Drawing.Point(7, 6)
+        Me.cmdCountry.Name = "cmdCountry"
+        Me.cmdCountry.Size = New System.Drawing.Size(43, 40)
+        Me.cmdCountry.TabIndex = 0
+        Me.cmdCountry.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip.SetToolTip(Me.cmdCountry, "Set area")
+        Me.cmdCountry.UseVisualStyleBackColor = True
+        '
         'tpChannels
         '
         Me.tpChannels.Controls.Add(Me.lblOldPricelist)
@@ -1343,7 +1009,7 @@ Partial Class frmSetup
         Me.tpChannels.Location = New System.Drawing.Point(4, 22)
         Me.tpChannels.Name = "tpChannels"
         Me.tpChannels.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpChannels.Size = New System.Drawing.Size(642, 417)
+        Me.tpChannels.Size = New System.Drawing.Size(642, 532)
         Me.tpChannels.TabIndex = 2
         Me.tpChannels.Text = "Channels"
         Me.tpChannels.UseVisualStyleBackColor = True
@@ -1464,6 +1130,45 @@ Partial Class frmSetup
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Channels"
         '
+        'cmdAddChannelWizard
+        '
+        Me.cmdAddChannelWizard.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddChannelWizard.FlatAppearance.BorderSize = 0
+        Me.cmdAddChannelWizard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddChannelWizard.Image = Global.clTrinity.My.Resources.Resources.add_more_2_small
+        Me.cmdAddChannelWizard.Location = New System.Drawing.Point(599, 44)
+        Me.cmdAddChannelWizard.Name = "cmdAddChannelWizard"
+        Me.cmdAddChannelWizard.Size = New System.Drawing.Size(22, 20)
+        Me.cmdAddChannelWizard.TabIndex = 30
+        Me.ToolTip.SetToolTip(Me.cmdAddChannelWizard, "Add Channel")
+        Me.cmdAddChannelWizard.UseVisualStyleBackColor = True
+        '
+        'cmdQuickCopy
+        '
+        Me.cmdQuickCopy.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdQuickCopy.FlatAppearance.BorderSize = 0
+        Me.cmdQuickCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdQuickCopy.Image = Global.clTrinity.My.Resources.Resources.flash_2_small
+        Me.cmdQuickCopy.Location = New System.Drawing.Point(599, 122)
+        Me.cmdQuickCopy.Name = "cmdQuickCopy"
+        Me.cmdQuickCopy.Size = New System.Drawing.Size(22, 20)
+        Me.cmdQuickCopy.TabIndex = 29
+        Me.ToolTip.SetToolTip(Me.cmdQuickCopy, "Quick copy a bookingtype")
+        Me.cmdQuickCopy.UseVisualStyleBackColor = True
+        '
+        'cmdCalculateDayparts
+        '
+        Me.cmdCalculateDayparts.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdCalculateDayparts.FlatAppearance.BorderSize = 0
+        Me.cmdCalculateDayparts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdCalculateDayparts.Image = CType(resources.GetObject("cmdCalculateDayparts.Image"), System.Drawing.Image)
+        Me.cmdCalculateDayparts.Location = New System.Drawing.Point(599, 96)
+        Me.cmdCalculateDayparts.Name = "cmdCalculateDayparts"
+        Me.cmdCalculateDayparts.Size = New System.Drawing.Size(22, 20)
+        Me.cmdCalculateDayparts.TabIndex = 28
+        Me.ToolTip.SetToolTip(Me.cmdCalculateDayparts, "Get Calculate daypart split")
+        Me.cmdCalculateDayparts.UseVisualStyleBackColor = True
+        '
         'cmbCPT
         '
         Me.cmbCPT.BackColor = System.Drawing.SystemColors.MenuBar
@@ -1474,6 +1179,19 @@ Partial Class frmSetup
         Me.cmbCPT.Name = "cmbCPT"
         Me.cmbCPT.Size = New System.Drawing.Size(61, 21)
         Me.cmbCPT.TabIndex = 15
+        '
+        'cmdRemoveChannel
+        '
+        Me.cmdRemoveChannel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdRemoveChannel.FlatAppearance.BorderSize = 0
+        Me.cmdRemoveChannel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdRemoveChannel.Image = Global.clTrinity.My.Resources.Resources.delete_2_small
+        Me.cmdRemoveChannel.Location = New System.Drawing.Point(599, 70)
+        Me.cmdRemoveChannel.Name = "cmdRemoveChannel"
+        Me.cmdRemoveChannel.Size = New System.Drawing.Size(22, 20)
+        Me.cmdRemoveChannel.TabIndex = 14
+        Me.ToolTip.SetToolTip(Me.cmdRemoveChannel, "Delete Channel")
+        Me.cmdRemoveChannel.UseVisualStyleBackColor = True
         '
         'cmdQuickAdd
         '
@@ -1487,6 +1205,19 @@ Partial Class frmSetup
         Me.cmdQuickAdd.TabIndex = 13
         Me.cmdQuickAdd.UseVisualStyleBackColor = True
         Me.cmdQuickAdd.Visible = False
+        '
+        'cmdAddChannel
+        '
+        Me.cmdAddChannel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddChannel.FlatAppearance.BorderSize = 0
+        Me.cmdAddChannel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddChannel.Image = Global.clTrinity.My.Resources.Resources.add_2_small
+        Me.cmdAddChannel.Location = New System.Drawing.Point(599, 18)
+        Me.cmdAddChannel.Name = "cmdAddChannel"
+        Me.cmdAddChannel.Size = New System.Drawing.Size(22, 20)
+        Me.cmdAddChannel.TabIndex = 13
+        Me.ToolTip.SetToolTip(Me.cmdAddChannel, "Add Channel")
+        Me.cmdAddChannel.UseVisualStyleBackColor = True
         '
         'grdChannels
         '
@@ -1567,7 +1298,7 @@ Partial Class frmSetup
         Me.tpCombinations.Location = New System.Drawing.Point(4, 22)
         Me.tpCombinations.Name = "tpCombinations"
         Me.tpCombinations.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpCombinations.Size = New System.Drawing.Size(642, 417)
+        Me.tpCombinations.Size = New System.Drawing.Size(642, 532)
         Me.tpCombinations.TabIndex = 5
         Me.tpCombinations.Text = "Combinations   "
         Me.tpCombinations.UseVisualStyleBackColor = True
@@ -1654,6 +1385,18 @@ Partial Class frmSetup
         Me.chkPrintAsOne.Text = "Print as one booking"
         Me.chkPrintAsOne.UseVisualStyleBackColor = True
         '
+        'cmdComboND
+        '
+        Me.cmdComboND.FlatAppearance.BorderSize = 0
+        Me.cmdComboND.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdComboND.Image = CType(resources.GetObject("cmdComboND.Image"), System.Drawing.Image)
+        Me.cmdComboND.Location = New System.Drawing.Point(311, 84)
+        Me.cmdComboND.Name = "cmdComboND"
+        Me.cmdComboND.Size = New System.Drawing.Size(22, 20)
+        Me.cmdComboND.TabIndex = 30
+        Me.ToolTip.SetToolTip(Me.cmdComboND, "Get natural delivery split")
+        Me.cmdComboND.UseVisualStyleBackColor = True
+        '
         'chkShowAsOne
         '
         Me.chkShowAsOne.AutoSize = True
@@ -1731,6 +1474,30 @@ Partial Class frmSetup
         Me.colRelation.HeaderText = "Relation"
         Me.colRelation.Name = "colRelation"
         '
+        'cmdDeleteChannelFromCombo
+        '
+        Me.cmdDeleteChannelFromCombo.FlatAppearance.BorderSize = 0
+        Me.cmdDeleteChannelFromCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdDeleteChannelFromCombo.Image = CType(resources.GetObject("cmdDeleteChannelFromCombo.Image"), System.Drawing.Image)
+        Me.cmdDeleteChannelFromCombo.Location = New System.Drawing.Point(311, 58)
+        Me.cmdDeleteChannelFromCombo.Name = "cmdDeleteChannelFromCombo"
+        Me.cmdDeleteChannelFromCombo.Size = New System.Drawing.Size(22, 20)
+        Me.cmdDeleteChannelFromCombo.TabIndex = 23
+        Me.ToolTip.SetToolTip(Me.cmdDeleteChannelFromCombo, "Delete Channel")
+        Me.cmdDeleteChannelFromCombo.UseVisualStyleBackColor = True
+        '
+        'cmdAddChannelToCombo
+        '
+        Me.cmdAddChannelToCombo.FlatAppearance.BorderSize = 0
+        Me.cmdAddChannelToCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddChannelToCombo.Image = CType(resources.GetObject("cmdAddChannelToCombo.Image"), System.Drawing.Image)
+        Me.cmdAddChannelToCombo.Location = New System.Drawing.Point(311, 32)
+        Me.cmdAddChannelToCombo.Name = "cmdAddChannelToCombo"
+        Me.cmdAddChannelToCombo.Size = New System.Drawing.Size(22, 20)
+        Me.cmdAddChannelToCombo.TabIndex = 22
+        Me.ToolTip.SetToolTip(Me.cmdAddChannelToCombo, "Add Channel")
+        Me.cmdAddChannelToCombo.UseVisualStyleBackColor = True
+        '
         'grpCombos
         '
         Me.grpCombos.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -1781,6 +1548,32 @@ Partial Class frmSetup
         Me.colChannels.Name = "colChannels"
         Me.colChannels.ReadOnly = True
         '
+        'cmdDeleteCombo
+        '
+        Me.cmdDeleteCombo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdDeleteCombo.FlatAppearance.BorderSize = 0
+        Me.cmdDeleteCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdDeleteCombo.Image = CType(resources.GetObject("cmdDeleteCombo.Image"), System.Drawing.Image)
+        Me.cmdDeleteCombo.Location = New System.Drawing.Point(605, 44)
+        Me.cmdDeleteCombo.Name = "cmdDeleteCombo"
+        Me.cmdDeleteCombo.Size = New System.Drawing.Size(22, 20)
+        Me.cmdDeleteCombo.TabIndex = 20
+        Me.ToolTip.SetToolTip(Me.cmdDeleteCombo, "Delete Combination")
+        Me.cmdDeleteCombo.UseVisualStyleBackColor = True
+        '
+        'cmdAddCombo
+        '
+        Me.cmdAddCombo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddCombo.FlatAppearance.BorderSize = 0
+        Me.cmdAddCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddCombo.Image = CType(resources.GetObject("cmdAddCombo.Image"), System.Drawing.Image)
+        Me.cmdAddCombo.Location = New System.Drawing.Point(605, 18)
+        Me.cmdAddCombo.Name = "cmdAddCombo"
+        Me.cmdAddCombo.Size = New System.Drawing.Size(22, 20)
+        Me.cmdAddCombo.TabIndex = 19
+        Me.ToolTip.SetToolTip(Me.cmdAddCombo, "Add Combination")
+        Me.cmdAddCombo.UseVisualStyleBackColor = True
+        '
         'PictureBox8
         '
         Me.PictureBox8.Image = Global.clTrinity.My.Resources.Resources.people_2
@@ -1800,7 +1593,7 @@ Partial Class frmSetup
         Me.tpFilms.Location = New System.Drawing.Point(4, 22)
         Me.tpFilms.Name = "tpFilms"
         Me.tpFilms.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpFilms.Size = New System.Drawing.Size(642, 417)
+        Me.tpFilms.Size = New System.Drawing.Size(642, 532)
         Me.tpFilms.TabIndex = 3
         Me.tpFilms.Text = "Films"
         Me.tpFilms.UseVisualStyleBackColor = True
@@ -1844,6 +1637,20 @@ Partial Class frmSetup
         Me.grpFilm.Text = "Film"
         Me.grpFilm.Visible = False
         '
+        'chkAutoFilmCode
+        '
+        Me.chkAutoFilmCode.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkAutoFilmCode.AutoSize = True
+        Me.chkAutoFilmCode.Checked = True
+        Me.chkAutoFilmCode.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkAutoFilmCode.Location = New System.Drawing.Point(469, 139)
+        Me.chkAutoFilmCode.Name = "chkAutoFilmCode"
+        Me.chkAutoFilmCode.Size = New System.Drawing.Size(130, 17)
+        Me.chkAutoFilmCode.TabIndex = 16
+        Me.chkAutoFilmCode.Text = "Auto copy filmcodes"
+        Me.ToolTip.SetToolTip(Me.chkAutoFilmCode, "Use film index as dicount")
+        Me.chkAutoFilmCode.UseVisualStyleBackColor = True
+        '
         'lblIndexWarning
         '
         Me.lblIndexWarning.AutoSize = True
@@ -1854,6 +1661,48 @@ Partial Class frmSetup
         Me.lblIndexWarning.TabIndex = 14
         Me.lblIndexWarning.Text = "One or more indexes are likely too low"
         Me.lblIndexWarning.Visible = False
+        '
+        'chkFilmIdxAsDiscount
+        '
+        Me.chkFilmIdxAsDiscount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkFilmIdxAsDiscount.AutoSize = True
+        Me.chkFilmIdxAsDiscount.Location = New System.Drawing.Point(292, 140)
+        Me.chkFilmIdxAsDiscount.Name = "chkFilmIdxAsDiscount"
+        Me.chkFilmIdxAsDiscount.Size = New System.Drawing.Size(170, 17)
+        Me.chkFilmIdxAsDiscount.TabIndex = 13
+        Me.chkFilmIdxAsDiscount.Text = "Count filmindex as discount"
+        Me.ToolTip.SetToolTip(Me.chkFilmIdxAsDiscount, "Use film index as dicount")
+        Me.chkFilmIdxAsDiscount.UseVisualStyleBackColor = True
+        '
+        'cmdSaveToAdtoox
+        '
+        Me.cmdSaveToAdtoox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdSaveToAdtoox.FlatAppearance.BorderSize = 0
+        Me.cmdSaveToAdtoox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdSaveToAdtoox.Font = New System.Drawing.Font("Segoe UI", 8.0!)
+        Me.cmdSaveToAdtoox.Image = CType(resources.GetObject("cmdSaveToAdtoox.Image"), System.Drawing.Image)
+        Me.cmdSaveToAdtoox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdSaveToAdtoox.Location = New System.Drawing.Point(511, 7)
+        Me.cmdSaveToAdtoox.Name = "cmdSaveToAdtoox"
+        Me.cmdSaveToAdtoox.Size = New System.Drawing.Size(116, 20)
+        Me.cmdSaveToAdtoox.TabIndex = 15
+        Me.cmdSaveToAdtoox.Text = "Create filmcodes"
+        Me.cmdSaveToAdtoox.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip.SetToolTip(Me.cmdSaveToAdtoox, "Save to E.C. Express")
+        Me.cmdSaveToAdtoox.UseVisualStyleBackColor = True
+        Me.cmdSaveToAdtoox.Visible = False
+        '
+        'cmdSave
+        '
+        Me.cmdSave.FlatAppearance.BorderSize = 0
+        Me.cmdSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdSave.Image = Global.clTrinity.My.Resources.Resources.save_2_small
+        Me.cmdSave.Location = New System.Drawing.Point(6, 147)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(22, 20)
+        Me.cmdSave.TabIndex = 12
+        Me.ToolTip.SetToolTip(Me.cmdSave, "Save to Library")
+        Me.cmdSave.UseVisualStyleBackColor = True
         '
         'grdFilmDetails
         '
@@ -1984,6 +1833,73 @@ Partial Class frmSetup
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Films"
         '
+        'cmdPlayMovie
+        '
+        Me.cmdPlayMovie.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdPlayMovie.FlatAppearance.BorderSize = 0
+        Me.cmdPlayMovie.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdPlayMovie.Image = Global.clTrinity.My.Resources.Resources.play_2_small
+        Me.cmdPlayMovie.Location = New System.Drawing.Point(605, 122)
+        Me.cmdPlayMovie.Name = "cmdPlayMovie"
+        Me.cmdPlayMovie.Size = New System.Drawing.Size(22, 20)
+        Me.cmdPlayMovie.TabIndex = 28
+        Me.ToolTip.SetToolTip(Me.cmdPlayMovie, "Play film")
+        Me.cmdPlayMovie.UseVisualStyleBackColor = True
+        Me.cmdPlayMovie.Visible = False
+        '
+        'cmdFindInAdtoox
+        '
+        Me.cmdFindInAdtoox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdFindInAdtoox.FlatAppearance.BorderSize = 0
+        Me.cmdFindInAdtoox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdFindInAdtoox.Image = CType(resources.GetObject("cmdFindInAdtoox.Image"), System.Drawing.Image)
+        Me.cmdFindInAdtoox.Location = New System.Drawing.Point(605, 96)
+        Me.cmdFindInAdtoox.Name = "cmdFindInAdtoox"
+        Me.cmdFindInAdtoox.Size = New System.Drawing.Size(22, 20)
+        Me.cmdFindInAdtoox.TabIndex = 18
+        Me.ToolTip.SetToolTip(Me.cmdFindInAdtoox, "Get film(s) from your Adtoox library")
+        Me.cmdFindInAdtoox.UseVisualStyleBackColor = True
+        Me.cmdFindInAdtoox.Visible = False
+        '
+        'cmdFind
+        '
+        Me.cmdFind.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdFind.FlatAppearance.BorderSize = 0
+        Me.cmdFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdFind.Image = Global.clTrinity.My.Resources.Resources.find_2_small
+        Me.cmdFind.Location = New System.Drawing.Point(605, 70)
+        Me.cmdFind.Name = "cmdFind"
+        Me.cmdFind.Size = New System.Drawing.Size(22, 20)
+        Me.cmdFind.TabIndex = 17
+        Me.ToolTip.SetToolTip(Me.cmdFind, "Get film from Library")
+        Me.cmdFind.UseVisualStyleBackColor = True
+        '
+        'cmdRemoveFilm
+        '
+        Me.cmdRemoveFilm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdRemoveFilm.FlatAppearance.BorderSize = 0
+        Me.cmdRemoveFilm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdRemoveFilm.Image = Global.clTrinity.My.Resources.Resources.delete_2_small
+        Me.cmdRemoveFilm.Location = New System.Drawing.Point(605, 44)
+        Me.cmdRemoveFilm.Name = "cmdRemoveFilm"
+        Me.cmdRemoveFilm.Size = New System.Drawing.Size(22, 20)
+        Me.cmdRemoveFilm.TabIndex = 16
+        Me.ToolTip.SetToolTip(Me.cmdRemoveFilm, "Delete Film")
+        Me.cmdRemoveFilm.UseVisualStyleBackColor = True
+        '
+        'cmdAddFilm
+        '
+        Me.cmdAddFilm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddFilm.FlatAppearance.BorderSize = 0
+        Me.cmdAddFilm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddFilm.Image = Global.clTrinity.My.Resources.Resources.add_2_small
+        Me.cmdAddFilm.Location = New System.Drawing.Point(605, 18)
+        Me.cmdAddFilm.Name = "cmdAddFilm"
+        Me.cmdAddFilm.Size = New System.Drawing.Size(22, 20)
+        Me.cmdAddFilm.TabIndex = 15
+        Me.ToolTip.SetToolTip(Me.cmdAddFilm, "Add Film")
+        Me.cmdAddFilm.UseVisualStyleBackColor = True
+        '
         'grdFilms
         '
         Me.grdFilms.AllowUserToAddRows = False
@@ -2055,7 +1971,7 @@ Partial Class frmSetup
         Me.tpIndex.Location = New System.Drawing.Point(4, 22)
         Me.tpIndex.Name = "tpIndex"
         Me.tpIndex.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpIndex.Size = New System.Drawing.Size(642, 417)
+        Me.tpIndex.Size = New System.Drawing.Size(642, 532)
         Me.tpIndex.TabIndex = 4
         Me.tpIndex.Text = "Index / Added value"
         Me.tpIndex.UseVisualStyleBackColor = True
@@ -2100,6 +2016,46 @@ Partial Class frmSetup
         Me.GroupBox7.TabIndex = 3
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Indexes"
+        '
+        'cmdAddCopy
+        '
+        Me.cmdAddCopy.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddCopy.FlatAppearance.BorderSize = 0
+        Me.cmdAddCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddCopy.Image = Global.clTrinity.My.Resources.Resources.add_more_2_small
+        Me.cmdAddCopy.Location = New System.Drawing.Point(603, 44)
+        Me.cmdAddCopy.Name = "cmdAddCopy"
+        Me.cmdAddCopy.Size = New System.Drawing.Size(22, 20)
+        Me.cmdAddCopy.TabIndex = 30
+        Me.ToolTip.SetToolTip(Me.cmdAddCopy, "Add copy of last Index")
+        Me.cmdAddCopy.UseVisualStyleBackColor = True
+        '
+        'cmdCopyIndex
+        '
+        Me.cmdCopyIndex.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdCopyIndex.FlatAppearance.BorderSize = 0
+        Me.cmdCopyIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdCopyIndex.Image = CType(resources.GetObject("cmdCopyIndex.Image"), System.Drawing.Image)
+        Me.cmdCopyIndex.Location = New System.Drawing.Point(603, 96)
+        Me.cmdCopyIndex.Name = "cmdCopyIndex"
+        Me.cmdCopyIndex.Size = New System.Drawing.Size(22, 20)
+        Me.cmdCopyIndex.TabIndex = 29
+        Me.ToolTip.SetToolTip(Me.cmdCopyIndex, "Copy indexes from another channel")
+        Me.cmdCopyIndex.UseVisualStyleBackColor = True
+        '
+        'cmdEditEnhancement
+        '
+        Me.cmdEditEnhancement.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdEditEnhancement.FlatAppearance.BorderSize = 0
+        Me.cmdEditEnhancement.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdEditEnhancement.Image = Global.clTrinity.My.Resources.Resources.edit_note_3
+        Me.cmdEditEnhancement.Location = New System.Drawing.Point(603, 122)
+        Me.cmdEditEnhancement.Name = "cmdEditEnhancement"
+        Me.cmdEditEnhancement.Size = New System.Drawing.Size(22, 20)
+        Me.cmdEditEnhancement.TabIndex = 21
+        Me.ToolTip.SetToolTip(Me.cmdEditEnhancement, "Edit Enhancement")
+        Me.cmdEditEnhancement.UseVisualStyleBackColor = True
+        Me.cmdEditEnhancement.Visible = False
         '
         'grdIndexes
         '
@@ -2157,6 +2113,32 @@ Partial Class frmSetup
         Me.colUse.Name = "colUse"
         Me.colUse.Width = 30
         '
+        'cmdRemoveIndex
+        '
+        Me.cmdRemoveIndex.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdRemoveIndex.FlatAppearance.BorderSize = 0
+        Me.cmdRemoveIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdRemoveIndex.Image = CType(resources.GetObject("cmdRemoveIndex.Image"), System.Drawing.Image)
+        Me.cmdRemoveIndex.Location = New System.Drawing.Point(603, 70)
+        Me.cmdRemoveIndex.Name = "cmdRemoveIndex"
+        Me.cmdRemoveIndex.Size = New System.Drawing.Size(22, 20)
+        Me.cmdRemoveIndex.TabIndex = 18
+        Me.ToolTip.SetToolTip(Me.cmdRemoveIndex, "Delete Index")
+        Me.cmdRemoveIndex.UseVisualStyleBackColor = True
+        '
+        'cmdAddIndex
+        '
+        Me.cmdAddIndex.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddIndex.FlatAppearance.BorderSize = 0
+        Me.cmdAddIndex.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddIndex.Image = CType(resources.GetObject("cmdAddIndex.Image"), System.Drawing.Image)
+        Me.cmdAddIndex.Location = New System.Drawing.Point(603, 18)
+        Me.cmdAddIndex.Name = "cmdAddIndex"
+        Me.cmdAddIndex.Size = New System.Drawing.Size(22, 20)
+        Me.cmdAddIndex.TabIndex = 17
+        Me.ToolTip.SetToolTip(Me.cmdAddIndex, "Add Index")
+        Me.cmdAddIndex.UseVisualStyleBackColor = True
+        '
         'GroupBox6
         '
         Me.GroupBox6.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -2183,6 +2165,19 @@ Partial Class frmSetup
         Me.chkMultiply.TabIndex = 31
         Me.chkMultiply.Text = "Multiply Added Values"
         Me.chkMultiply.UseVisualStyleBackColor = True
+        '
+        'cmdCopyAV
+        '
+        Me.cmdCopyAV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdCopyAV.FlatAppearance.BorderSize = 0
+        Me.cmdCopyAV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdCopyAV.Image = CType(resources.GetObject("cmdCopyAV.Image"), System.Drawing.Image)
+        Me.cmdCopyAV.Location = New System.Drawing.Point(603, 70)
+        Me.cmdCopyAV.Name = "cmdCopyAV"
+        Me.cmdCopyAV.Size = New System.Drawing.Size(22, 20)
+        Me.cmdCopyAV.TabIndex = 30
+        Me.ToolTip.SetToolTip(Me.cmdCopyAV, "Copy added values from another channel")
+        Me.cmdCopyAV.UseVisualStyleBackColor = True
         '
         'grdAddedValues
         '
@@ -2232,6 +2227,32 @@ Partial Class frmSetup
         Me.colUseAV.Name = "colUseAV"
         Me.colUseAV.Width = 30
         '
+        'cmdRemoveAV
+        '
+        Me.cmdRemoveAV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdRemoveAV.FlatAppearance.BorderSize = 0
+        Me.cmdRemoveAV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdRemoveAV.Image = CType(resources.GetObject("cmdRemoveAV.Image"), System.Drawing.Image)
+        Me.cmdRemoveAV.Location = New System.Drawing.Point(603, 44)
+        Me.cmdRemoveAV.Name = "cmdRemoveAV"
+        Me.cmdRemoveAV.Size = New System.Drawing.Size(22, 20)
+        Me.cmdRemoveAV.TabIndex = 18
+        Me.ToolTip.SetToolTip(Me.cmdRemoveAV, "Delete Value")
+        Me.cmdRemoveAV.UseVisualStyleBackColor = True
+        '
+        'cmdAddAV
+        '
+        Me.cmdAddAV.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdAddAV.FlatAppearance.BorderSize = 0
+        Me.cmdAddAV.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdAddAV.Image = CType(resources.GetObject("cmdAddAV.Image"), System.Drawing.Image)
+        Me.cmdAddAV.Location = New System.Drawing.Point(603, 18)
+        Me.cmdAddAV.Name = "cmdAddAV"
+        Me.cmdAddAV.Size = New System.Drawing.Size(22, 20)
+        Me.cmdAddAV.TabIndex = 17
+        Me.ToolTip.SetToolTip(Me.cmdAddAV, "Add Value")
+        Me.cmdAddAV.UseVisualStyleBackColor = True
+        '
         'cmbIndexChannel
         '
         Me.cmbIndexChannel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -2280,27 +2301,6 @@ Partial Class frmSetup
         Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn4.Width = 60
-        '
-        'cmbDBRelation
-        '
-        Me.cmbDBRelation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmbDBRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbDBRelation.FormattingEnabled = True
-        Me.cmbDBRelation.Location = New System.Drawing.Point(336, 225)
-        Me.cmbDBRelation.Name = "cmbDBRelation"
-        Me.cmbDBRelation.Size = New System.Drawing.Size(284, 21)
-        Me.cmbDBRelation.Sorted = True
-        Me.cmbDBRelation.TabIndex = 27
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(333, 209)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(98, 13)
-        Me.Label14.TabIndex = 26
-        Me.Label14.Text = "Database relation"
         '
         'frmSetup
         '

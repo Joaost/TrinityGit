@@ -76,7 +76,8 @@ Namespace Trinity
         Private mvarPlannerID As Integer = -1
         Private mvarUpdatedTo As Integer
         Private mvarAdtoox As cAdtoox
-        Private mvarCampaignArea As List(Of dbUA)
+        Private mvarCampaignAreas As List(Of dbUA)
+        Private mvarCampaignArea As String = ""
 
         Dim newSpots As Boolean = True
 
@@ -290,7 +291,7 @@ Namespace Trinity
             End Set
         End Property
 
-        
+
         Private _printPlannedGrossConfNet As Boolean
         Public Property PrintPlannedGrossConfNet() As Boolean
             Get
@@ -337,7 +338,7 @@ Namespace Trinity
             End While
             IsStripped = True
         End Sub
-        
+
         Dim _progress As frmProgress
         Sub ReloadDeletedChannels()
             'reloads the Bookingtypes that have been deleted
@@ -349,7 +350,7 @@ Namespace Trinity
             Me._progress.BarType = cProgressBarType.SingleBar
 
             For Each TmpChan As Trinity.cChannel In Channels
-                
+
                 Me._progress.Progress += 1
                 Me._progress.Status = "Updating channel " & TmpChan.ChannelName
 
@@ -410,7 +411,7 @@ Namespace Trinity
             Dim tmpStr As String
             Dim found As Boolean = False
             'check that all channels are present
-            While Not XMLTmpNode Is Nothing                
+            While Not XMLTmpNode Is Nothing
                 tmpStr = XMLTmpNode.GetAttribute("Name")
                 For Each channel In Channels
                     If channel.ChannelName = tmpStr Then
@@ -472,10 +473,10 @@ Namespace Trinity
 
             If Contract IsNot Nothing Then
                 If MessageBox.Show("Your campaign is connected to a contract, would you like to apply contract on campaign again?", "T R I N I T Y", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.yes Then
-                Campaign.Contract.ApplyToCampaign()
-                End If 
+                    Campaign.Contract.ApplyToCampaign()
+                End If
             End If
-            
+
             Me._progress.Hide()
             Me._progress.Dispose()
             IsStripped = False
@@ -3044,7 +3045,7 @@ BookedSpots_Error:
             End If
 
         End Sub
-        Public Function GetCampaignArea() As List(Of dbUA)
+        Public Function GetCampaignAreas() As List(Of dbUA)
             Dim valueFromDB = ""
 
             Dim listOfDBValues As New List(Of dbUA)
@@ -3071,16 +3072,21 @@ BookedSpots_Error:
                 If tmpRows Then
                     tmpObj.dbValue = True
                 Else
-
                 End If
             Next
-
-
             'Get area table for user
 
             Return listOfDBValues
 
         End Function
+        Public Property mvarCampagignArea_prop() As String
+            Get
+                Return mvarCampaignArea
+            End Get
+            Set(ByVal value As String)
+                mvarCampaignArea = value
+            End Set
+        End Property
 
 
         '---------------------------------------------------------------------------------------
@@ -3109,7 +3115,7 @@ BookedSpots_Error:
 
             mvarArea = TrinitySettings.DefaultArea
             mvarAreaLog = TrinitySettings.DefaultAreaLog
-            mvarCampaignArea = GetCampaignArea()
+            mvarCampaignAreas = GetCampaignAreas()
 
             mvarStatus = "Planned"
 
@@ -3124,6 +3130,7 @@ BookedSpots_Error:
             Loading = False
 
         End Sub
+
 
         Sub AddChannelsEventHandling()
             AddHandler mvarChannels.TRPChanged, AddressOf _trpChanged
@@ -3505,8 +3512,8 @@ On_Error:
                         XMLBookingType.SetAttribute("Shortname", TmpBookingType.Shortname) ' as String
 
                         'Save the rest of the booking type
-                        
-                        
+
+
                         XMLBookingType.SetAttribute("BookingIdSpotlight", TmpBookingType.BookingIdSpotlight) ' as String
                         XMLBookingType.SetAttribute("BookingUrlSpotlight", TmpBookingType.BookingUrlSpotlight) ' as String
                         XMLBookingType.SetAttribute("BookingConfirmationVersion", TmpBookingType.BookingConfirmationVersion) ' as Integer
@@ -3884,7 +3891,7 @@ On_Error:
                     XMLCombo.SetAttribute("IndexSecondTarget", TmpCombo.IndexSecondTarget)
                     XMLCombo.SetAttribute("IndexAllAdults", TmpCombo.IndexAllAdults)
                     XMLCombo.SetAttribute("MarathonIDCombination", TmpCombo.MarathonIDCombination)
-                    XmlCombo.SetAttribute("SendAsOneUnitToMarathon", TmpCombo.sendAsOneUnitTOMarathon)
+                    XMLCombo.SetAttribute("SendAsOneUnitToMarathon", TmpCombo.sendAsOneUnitTOMarathon)
 
                     For Each TmpCC As Trinity.cCombinationChannel In TmpCombo.Relations
                         XMLComboChannel = XMLDoc.CreateElement("Channel")
@@ -5071,7 +5078,7 @@ SaveCampaign_Error:
                     'Read Spotlight info
                     TmpBookingType.BookingIdSpotlight = XMLBookingType.GetAttribute("BookingIdSpotlight")
                     TmpBookingType.BookingUrlSpotlight = XMLBookingType.GetAttribute("BookingUrlSpotlight")
-                    If Conv(XMLBookingType.GetAttribute("BookingConfirmationVersion")) IsNot ""
+                    If Conv(XMLBookingType.GetAttribute("BookingConfirmationVersion")) IsNot "" Then
                         TmpBookingType.BookingConfirmationVersion = Conv(XMLBookingType.GetAttribute("BookingConfirmationVersion"))
                     End If
                     TmpBookingType.BookingAgencyRefNo = XMLBookingType.GetAttribute("BookingAgencyRefNo")
@@ -5737,7 +5744,7 @@ SaveCampaign_Error:
                         Else
                             .IndexMainTarget = XMLCombo.GetAttribute("IndexMainTarget")
                         End If
-                        
+
                         If XMLCombo.GetAttribute("MarathonIDCombination") = Nothing Or XMLCombo.GetAttribute("MarathonIDCombination") = "" Then
                             .MarathonIDCombination = ""
                         Else
@@ -5745,11 +5752,11 @@ SaveCampaign_Error:
                         End If
 
                         If XMLCombo.GetAttribute("SendAsOneUnitToMarathon") = Nothing Or XMLCombo.GetAttribute("SendAsOneUnitToMarathon") = "" Then
-                            .sendAsOneUnitTOMarathon = false
+                            .sendAsOneUnitTOMarathon = False
                         Else
                             .sendAsOneUnitTOMarathon = XMLCombo.GetAttribute("SendAsOneUnitToMarathon")
                         End If
-                        
+
                         If XMLCombo.GetAttribute("IndexSecondTarget") = "0" Or XMLCombo.GetAttribute("IndexSecondTarget") = "" Then
                             .IndexSecondTarget = 0
                         Else
@@ -7918,5 +7925,16 @@ ActualSpots:
 
         Public Event ProblemsFound(problems As System.Collections.Generic.List(Of cProblem)) Implements IDetectsProblems.ProblemsFound
 
+        Public Sub checkIfCampaignHasRescritions(ByVal userName As String)
+            userName = TrinitySettings.UserName
+
+            If userName = "" Then
+                MessageBox.Show("Please fill in the your nane in the Settings window to be able to open campaign", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                'Check if campgaign client is resctricted
+
+            End If
+
+        End Sub
     End Class
 End Namespace
