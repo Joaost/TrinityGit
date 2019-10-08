@@ -4682,6 +4682,11 @@ CreatePlan:
         Dim editClietntWindow = New frmEditClients()
         editClietntWindow.show()
     End Sub
+    Private Sub CheckUserClientRestriction()
+
+
+        Dim test = Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName)
+    End Sub
 End Class
 
 'Public Class clsExcelReport

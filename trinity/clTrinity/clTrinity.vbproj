@@ -152,8 +152,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\BalloonToolTip.dll</HintPath>
     </Reference>
-    <Reference Include="ConnectWrapper">
-      <HintPath>..\..\..\..\Projects\trinity\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
+    <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.AgData.v9.2">
       <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
@@ -499,6 +500,12 @@
       <DependentUpon>frmConnectContract.vb</DependentUpon>
     </Compile>
     <Compile Include="frmConnectContract.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditClients.Designer.vb">
+      <DependentUpon>frmEditClients.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditClients.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmExportCampaignToDatoramaExport.Designer.vb">
@@ -1207,6 +1214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConnectContract.resx">
       <DependentUpon>frmConnectContract.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditClients.resx">
+      <DependentUpon>frmEditClients.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmExportCampaignToDatoramaExport.resx">
       <DependentUpon>frmExportCampaignToDatoramaExport.vb</DependentUpon>

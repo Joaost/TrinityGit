@@ -77,6 +77,9 @@ Public Class frmOpenFromDB
                 Dim tmpClient As New Client
                 tmpClient.id = item!id
                 tmpClient.name = item!name
+                If Not IsDBNull(item("restricted")) Then
+                    tmpClient.restricted = item("restricted") 'rd!Restricted 
+                End If
                 Clientlist.Add(tmpClient)
             Next
             Clientlist.Sort(New ClientComparer)
@@ -179,14 +182,15 @@ Public Class frmOpenFromDB
         If TrinitySettings.getLastCampaigns().Where(Function(s As String) Val(s) > 0).Count > 0 Then
             '_campIDs = String.Join(",", TrinitySettings.getLastCampaigns().Where(Function(s As String) Val(s) > 0).ToArray)
             For i As Integer = 0 To TrinitySettings.getLastCampaigns.Count() - 1
-                For Each tmpCmp As CampaignEssentials In DBReader.GetCampaigns(BuildRecentSQL)                
-                    If TrinitySettings.getLastCampaigns(i) <> ""
-                        If (tmpCmp.id.ToString() = TrinitySettings.getLastCampaigns(i))
+                For Each tmpCmp As CampaignEssentials In DBReader.GetCampaigns(BuildRecentSQL)
+                    If TrinitySettings.getLastCampaigns(i) <> "" Then
+
+                        If (tmpCmp.id.ToString() = TrinitySettings.getLastCampaigns(i)) Then
                             Dim newRow As Integer = grdRecent.Rows.Add
                             grdRecent.Rows(newRow).Tag = tmpCmp
                         End If
                     End If
-                next
+                Next
             Next
         End If
     End Sub
@@ -380,9 +384,9 @@ Public Class frmOpenFromDB
                         NeedsAnd = False
                     Else
                         If DBUserAccess.Count <> pointerIndex Then
-                            SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%' OR "
-                        Else
                             SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%'"
+                        Else
+                            SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%' OR "
                         End If
                     End If
                 End If
@@ -601,14 +605,18 @@ Public Class frmOpenFromDB
             _campaignID = grdCampaigns.SelectedRows(0).Tag.ID
             If Not _doNotLoadCampaign Then
                 'If campaign contains client that is restricted check with XML
+                If Not Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName) Then
 
-                'If not go a head as usual
-                Campaign = New Trinity.cKampanj(TrinitySettings.ErrorChecking)
-                TrinitySettings.MainObject = Campaign
-                Trinity.Helper.MainObject = Campaign
-                If Not OpenCampaign(_campaignID, grdCampaigns.SelectedRows(0).Tag.ContractID) Then
-                    Exit Sub
+                Else
+                    'If not go a head as usual
+                    Campaign = New Trinity.cKampanj(TrinitySettings.ErrorChecking)
+                    TrinitySettings.MainObject = Campaign
+                    Trinity.Helper.MainObject = Campaign
+                    If Not OpenCampaign(_campaignID, grdCampaigns.SelectedRows(0).Tag.ContractID) Then
+                        Exit Sub
+                    End If
                 End If
+
             End If
         ElseIf grdRecent.SelectedRows.Count > 0 Then
             _campaignID = grdRecent.SelectedRows(0).Tag.ID
@@ -932,12 +940,21 @@ End Class
 Class Client
     Private _id As Integer
     Private _name As String
+    Private _restricted As String
 
     Public Property id() As Integer
         Get
             Return _id
         End Get
         Set(ByVal value As Integer)
+            _id = value
+        End Set
+    End Property
+    Public Property restricted() As Boolean
+        Get
+            Return _restricted
+        End Get
+        Set(ByVal value As Boolean)
             _id = value
         End Set
     End Property
