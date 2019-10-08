@@ -33,6 +33,7 @@ Public Class frmSetup
 
     Private Class CBItem
 
+        Private _restricted As Boolean
         Private _text As String
         Public Property Text() As String
             Get
@@ -40,6 +41,14 @@ Public Class frmSetup
             End Get
             Set(ByVal value As String)
                 _text = value
+            End Set
+        End Property
+        Public Property restricted() As Boolean
+            Get
+                Return _restricted
+            End Get
+            Set(ByVal value As Boolean)
+                _restricted = restricted
             End Set
         End Property
 
@@ -66,8 +75,11 @@ Public Class frmSetup
             Dim TmpItem As New CBItem
             TmpItem.Text = dr.Item("name") 'rd!name
             TmpItem.Tag = dr.Item("id") 'rd!id
+            If Not IsDBNull(dr.Item("restricted")) Then
+                TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+            End If
             cmbClient.Items.Add(TmpItem)
-            If TmpItem.Tag = Campaign.ClientID Then
+                If TmpItem.Tag = Campaign.ClientID Then
                 cmbClient.Text = TmpItem.Text
             End If
         Next
@@ -80,7 +92,13 @@ Public Class frmSetup
         If cmbClient.SelectedItem Is Nothing Then
             Exit Sub
         End If
-
+        Dim tempClient = DirectCast(cmbClient.SelectedItem, CBItem)
+        If tempClient.restricted Then
+            lblRestrictedClientBool.Visible = True
+            lblRestrictedClientBool.Text = "Restricted"
+        Else
+            lblRestrictedClientBool.Visible = False
+        End If
         ActiveCampaign.ClientID = DirectCast(cmbClient.SelectedItem, CBItem).Tag
         cmbProduct.Items.Clear()
         cmbProduct.DisplayMember = "Text"
@@ -4830,33 +4848,6 @@ Public Class frmSetup
 
     End Sub
 
-    Private Sub cmbDBRelation_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDBRelation.SelectedIndexChanged
-        Dim listForDBRelations As List(Of dbUA) = Campaign.GetCampaignAreas
-        If Campaign.mvarCampagignArea_prop = "" Then
-            'Set the first element or the only that contains the campaign relation
-            cmbDBRelation.SelectedItem() = listForDBRelations.Item(0).dbName
-        Else
 
-
-        End If
-    End Sub
-
-    Private Sub cmbDBRelation_Enter(sender As Object, e As EventArgs) Handles cmbDBRelation.Enter
-        Dim listForDBRelations As List(Of dbUA) = Campaign.GetCampaignAreas
-        If Campaign.mvarCampagignArea_prop = "" Then
-            'Set the first element or the only that contains the campaign relation
-            cmbDBRelation.Items.Add(listForDBRelations.Item(0).dbName)
-        Else
-        End If
-    End Sub
-
-    Private Sub cmbDBRelation_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbDBRelation.SelectedValueChanged
-
-        Campaign.mvarCampagignArea_prop = cmbDBRelation.SelectedText
-    End Sub
-
-    Private Sub cmbDBRelation_TextChanged(sender As Object, e As EventArgs) Handles cmbDBRelation.TextChanged
-        Campaign.mvarCampagignArea_prop = cmbDBRelation.SelectedText
-    End Sub
 End Class
 

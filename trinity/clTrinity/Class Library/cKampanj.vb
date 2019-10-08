@@ -3125,7 +3125,7 @@ BookedSpots_Error:
             AddChannelsEventHandling()
 
             TimeShift = TrinitySettings.DefaultTimeShift
-
+            Dim res = checkIfCampaignHasRescritions(TrinitySettings.UserName)
             ID = CreateGUID()
             Loading = False
 
@@ -7925,16 +7925,26 @@ ActualSpots:
 
         Public Event ProblemsFound(problems As System.Collections.Generic.List(Of cProblem)) Implements IDetectsProblems.ProblemsFound
 
-        Public Sub checkIfCampaignHasRescritions(ByVal userName As String)
+        Public Function checkIfCampaignHasRescritions(ByVal userName As String) As Boolean
             userName = TrinitySettings.UserName
+            If Campaign IsNot Nothing Then
+                If userName = "" Then
+                    MessageBox.Show("Please fill in the your nane in the Settings window to be able to open campaign", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Else
+                    'Check if campgaign client is resctricted
+                    'Sets up the table
+                    If Campaign.ClientID <> Nothing Then
+                        Dim campaignClient = DBReader.getClient(Campaign.ClientID)
 
-            If userName = "" Then
-                MessageBox.Show("Please fill in the your nane in the Settings window to be able to open campaign", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Else
-                'Check if campgaign client is resctricted
+                    Else
 
+                    End If
+
+
+                End If
+                Return False
             End If
 
-        End Sub
+        End Function
     End Class
 End Namespace
