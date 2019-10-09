@@ -611,6 +611,7 @@ Namespace Trinity
 
                                     Dim tmpXML As New XmlDocument
                                     tmpXML.LoadXml(ds.Rows(0).Item(0))
+                                    Dim cID As String
                                     If tmpXML.SelectSingleNode("Campaign").Attributes("DatabaseID") Is Nothing Then
                                         DirectCast(tmpXML.SelectSingleNode("Campaign"), XmlElement).SetAttribute("DatabaseID", ID)
                                     Else
@@ -1052,12 +1053,17 @@ Namespace Trinity
             End Using
         End Sub
 
-        Public Overrides Function getAllClients() As DataTable
+        Public Overrides Function getAllClients(Optional ByVal sqlSearchForSpecificClientID As String = "", Optional ByVal campaignClientID As Integer = 0) As DataTable
             'Sets up the table
+            If campaignClientID <> 0 Then
+                sqlSearchForSpecificClientID = "SELECT * FROM Clients WHERE ID=" + campaignClientID.ToString
+            Else
+                sqlSearchForSpecificClientID = "SELECT * FROM Clients"
+            End If
             Using _clients As DataTable = New DataTable
                 Using _conn As New SqlClient.SqlConnection(_connectionString)
                     _conn.Open()
-                    Using com As New SqlClient.SqlCommand("SELECT * FROM Clients", _conn)
+                    Using com As New SqlClient.SqlCommand(sqlSearchForSpecificClientID, _conn)
                         Using rd As SqlClient.SqlDataReader = com.ExecuteReader
                             _clients.Load(rd)
                             rd.Close()
