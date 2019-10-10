@@ -138,7 +138,7 @@ Namespace Trinity
 
         End Sub
 
-        Public Overrides Function getAllClients() As DataTable
+        Public Overrides Function getAllClients(Optional ByVal sqlSearchForSpecificClientID As String = "", Optional ByVal campaignClientID As Integer = 0) As DataTable
             'Sets up the table
             Dim _clients As DataTable = New DataTable
             Dim rd As Odbc.OdbcDataReader

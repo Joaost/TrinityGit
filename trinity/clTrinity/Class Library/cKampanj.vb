@@ -3125,7 +3125,7 @@ BookedSpots_Error:
             AddChannelsEventHandling()
 
             TimeShift = TrinitySettings.DefaultTimeShift
-            Dim res = checkIfCampaignHasRescritions(TrinitySettings.UserName)
+            'Dim res = checkIfCampaignHasRescritions(TrinitySettings.UserName)
             ID = CreateGUID()
             Loading = False
 
@@ -7925,25 +7925,173 @@ ActualSpots:
 
         Public Event ProblemsFound(problems As System.Collections.Generic.List(Of cProblem)) Implements IDetectsProblems.ProblemsFound
 
-        Public Function checkIfCampaignHasRescritions(ByVal userName As String) As Boolean
+        Public Function checkIfCampaignHasRescritions(ByVal userName As String, ByVal campaignID As Integer) As List(Of Client)
             userName = TrinitySettings.UserName
+            Dim cList As New List(Of Client)
             If Campaign IsNot Nothing Then
                 If userName = "" Then
                     MessageBox.Show("Please fill in the your nane in the Settings window to be able to open campaign", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     'Check if campgaign client is resctricted
                     'Sets up the table
-                    If Campaign.ClientID <> Nothing Then
-                        Dim campaignClient = DBReader.getClient(Campaign.ClientID)
+                    If campaignID <> 0 Then
+                        Dim sqlBuilder = "SELECT * from campaigns WHERE " & "id ='" & campaignID & "' AND deletedon < '2001-01-01' "
+                        Dim tempCampaign = DBReader.GetCampaigns(sqlBuilder)
+                        Dim restricition As Boolean
+                        Dim clientList As DataTable = DBReader.getAllClients("", tempCampaign(0).client)
+                        For Each dr As DataRow In clientList.Rows
+                            Dim tempClient As New Client
+                            tempClient.name = dr.Item("name") 'rd!name
+                            tempClient.id = dr.Item("id") 'rd!id
+                            If Not IsDBNull(dr.Item("restricted")) Then
+                                tempClient.restricted = dr.Item("restricted") 'rd!Restricted 
+                                cList.Add(tempClient)
+                            Else
 
+                            End If
+                        Next
                     Else
 
                     End If
-
-
                 End If
-                Return False
+                Return cList
             End If
+
+        End Function
+        Public Class restrictedUsers
+            Private _id As Integer
+            Private _name As String
+            Private _restricted As Boolean
+            Public Property restricted() As Boolean
+                Get
+                    Return _restricted
+                End Get
+                Set(ByVal value As Boolean)
+                    _restricted = value
+                End Set
+            End Property
+            Public Property id() As Integer
+                Get
+                    Return _id
+                End Get
+                Set(ByVal value As Integer)
+                    _id = value
+                End Set
+            End Property
+
+            Public Property name() As String
+                Get
+                    Return _name
+                End Get
+                Set(ByVal value As String)
+                    _name = value
+                End Set
+            End Property
+        End Class
+
+        Public Class Clientrestriction
+            Private _id As Integer
+            Private _name As String
+            Private _restricted As Boolean
+            Public listOfRestrictedUsers As New List(Of restrictedUsers)
+
+            Public Property id() As Integer
+                Get
+                    Return _id
+                End Get
+                Set(ByVal value As Integer)
+                    _id = value
+                End Set
+            End Property
+
+            Public Property name() As String
+                Get
+                    Return _name
+                End Get
+                Set(ByVal value As String)
+                    _name = value
+                End Set
+            End Property
+        End Class
+
+        Public Function checkIfUserIsValid(ByVal clientName As String) As Boolean
+
+            If System.IO.File.Exists(Trinity.Helper.Pathify(TrinitySettings.DataPath(Trinity.cSettings.SettingsLocationEnum.locNetwork)) & "restrictedClients.xml") Then
+                'this code gets all planners and buyers from a XML file
+                'note that not all locations h ave a XML file, some still have the old people.lst file
+                Dim xmldoc As New Xml.XmlDocument
+                xmldoc.Load(Trinity.Helper.Pathify(TrinitySettings.DataPath(Trinity.cSettings.SettingsLocationEnum.locNetwork)) & "restrictedClients.xml")
+
+                Dim listOfClients As New List(Of Clientrestriction)
+                Dim clients = xmldoc.GetElementsByTagName("clients").Item(0)
+                Dim clientRestrictionFound As Boolean = False
+                Dim clientuserFound As Boolean = False
+
+                Dim xmlTmp As Xml.XmlElement
+                Dim xmlTmpUser As Xml.XmlElement
+                For Each xmlTmp In clients.ChildNodes
+                    Dim tempClient As New Clientrestriction
+                    tempClient.name = xmlTmp.GetAttribute("clientName").ToString()
+                    For Each xmlTmpUser In xmlTmp.ChildNodes
+                        Dim res As New restrictedUsers
+                        res.name = xmlTmpUser.GetAttribute("name").ToString()
+                        Dim resString = xmlTmpUser.GetAttribute("relation").ToString()
+                        If resString = "False" Then
+                            res.restricted = False
+                        Else
+                            res.restricted = True
+                        End If
+                        tempClient.listOfRestrictedUsers.Add(res)
+                    Next
+                    listOfClients.Add(tempClient)
+                Next
+
+                For i As Integer = 0 To listOfClients.Count - 1
+                    'Check if 
+                    If listOfClients(i).name = clientName Then
+                        clientRestrictionFound = True
+                        For q As Integer = 0 To listOfClients(i).listOfRestrictedUsers.Count - 1
+                            If listOfClients(i).listOfRestrictedUsers(q).name = TrinitySettings.UserName Then
+                                Return True
+                            End If
+                        Next
+                    End If
+                Next
+                Return False
+                'For Each xmlTmp In clients.ChildNodes
+                '    listOfClients.Add(xmlTmp.GetAttribute("clientName").ToString())
+                'Next
+
+
+                'planners = xmldoc.GetElementsByTagName("planners").Item(0)
+                'buyers = xmldoc.GetElementsByTagName("buyers").Item(0)
+
+                'Dim xmlTmp As Xml.XmlElement
+                'For Each xmlTmp In planners.ChildNodes
+                '    cmbPlanner.Items.Add(xmlTmp.GetAttribute("name"))
+                'Next
+
+
+                'For Each xmlTmp In buyers.ChildNodes
+                '    cmbBuyer.Items.Add(xmlTmp.GetAttribute("name"))
+                'Next
+
+                xmldoc = Nothing
+            Else
+                'read the planners and buyers from the people.lst file
+                Using sr As System.IO.StreamReader = New System.IO.StreamReader(Trinity.Helper.Pathify(TrinitySettings.DataPath(Trinity.cSettings.SettingsLocationEnum.locNetwork)) & "people.lst")
+                    Dim line As String
+                    Do
+                        'line = sr.ReadLine()
+                        'If Not line Is Nothing Then
+                        '    cmbBuyer.Items.Add(line)
+                        '    cmbPlanner.Items.Add(line)
+                        'End If
+                    Loop Until line Is Nothing
+                    sr.Close()
+                End Using
+            End If
+
 
         End Function
     End Class

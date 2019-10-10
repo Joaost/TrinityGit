@@ -4685,7 +4685,7 @@ CreatePlan:
     Private Sub CheckUserClientRestriction()
 
 
-        Dim test = Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName)
+        'Dim test = Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName)
     End Sub
 End Class
 

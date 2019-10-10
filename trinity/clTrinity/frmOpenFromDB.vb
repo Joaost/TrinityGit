@@ -374,31 +374,31 @@ Public Class frmOpenFromDB
             NeedsAnd = False
         End If
 
-        If DBUserAccess.Count > 0 And UserAccessComplete Then
-            SQLString &= " AND "
-            Dim pointerIndex = 1
-            For Each tmpObj As dbUA In DBUserAccess
-                If tmpObj.dbValue Then
-                    If NeedsAnd Then
-                        SQLString &= "(campaigns.useraccess LIKE '%" & tmpObj.dbName & "%' OR "
-                        NeedsAnd = False
-                    Else
-                        If DBUserAccess.Count <> pointerIndex Then
-                            SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%'"
-                        Else
-                            SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%' OR "
-                        End If
-                    End If
-                End If
-                pointerIndex = pointerIndex + 1
-            Next
-            If tmpCount > 1 Then
-                SQLString &= ")"
-            End If
-        Else
-            SQLString &= " AND campaigns.useraccess = ''"
+        'If DBUserAccess.Count > 0 And UserAccessComplete Then
+        '    SQLString &= " AND "
+        '    Dim pointerIndex = 1
+        '    For Each tmpObj As dbUA In DBUserAccess
+        '        If tmpObj.dbValue Then
+        '            If NeedsAnd Then
+        '                SQLString &= "(campaigns.useraccess LIKE '%" & tmpObj.dbName & "%' OR "
+        '                NeedsAnd = False
+        '            Else
+        '                If DBUserAccess.Count <> pointerIndex Then
+        '                    SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%'"
+        '                Else
+        '                    SQLString &= "campaigns.useraccess LIKE '%" & tmpObj.dbName & "%' OR "
+        '                End If
+        '            End If
+        '        End If
+        '        pointerIndex = pointerIndex + 1
+        '    Next
+        '    If tmpCount > 1 Then
+        '        SQLString &= ")"
+        '    End If
+        'Else
+        '    SQLString &= " AND campaigns.useraccess = ''"
 
-        End If
+        'End If
 
         Return SQLString & " ORDER BY " & _orderVar & " " & _ascDesc
 
@@ -605,8 +605,19 @@ Public Class frmOpenFromDB
             _campaignID = grdCampaigns.SelectedRows(0).Tag.ID
             If Not _doNotLoadCampaign Then
                 'If campaign contains client that is restricted check with XML
-                If Not Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName) Then
-
+                Dim returnClient As List(Of Client) = Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName, _campaignID)
+                If returnClient(0).restricted Then
+                    If Campaign.checkIfUserIsValid(returnClient(0).name) Then
+                        Windows.Forms.MessageBox.Show("Campaign client contains restriction but user is correct.", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                        Campaign = New Trinity.cKampanj(TrinitySettings.ErrorChecking)
+                        TrinitySettings.MainObject = Campaign
+                        Trinity.Helper.MainObject = Campaign
+                        If Not OpenCampaign(_campaignID, grdCampaigns.SelectedRows(0).Tag.ContractID) Then
+                            Exit Sub
+                        End If
+                    Else
+                        Windows.Forms.MessageBox.Show("Campaign client contains restriction but user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+                    End If
                 Else
                     'If not go a head as usual
                     Campaign = New Trinity.cKampanj(TrinitySettings.ErrorChecking)
@@ -938,10 +949,10 @@ End Class
 ''' Describes a client in terms of a client ID and name
 ''' </summary>
 ''' <remarks></remarks>
-Class Client
+Public Class Client
     Private _id As Integer
     Private _name As String
-    Private _restricted As String
+    Private _restricted As Boolean
 
     Public Property id() As Integer
         Get
@@ -956,7 +967,7 @@ Class Client
             Return _restricted
         End Get
         Set(ByVal value As Boolean)
-            _id = value
+            _restricted = value
         End Set
     End Property
 

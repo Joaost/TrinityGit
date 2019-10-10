@@ -94,7 +94,7 @@ Namespace Trinity
 
         Public MustOverride Function SaveCampaign(ByVal Camp As Trinity.cKampanj, ByVal XML As Xml.XmlElement) As Boolean
 
-        Public MustOverride Function getAllClients() As DataTable
+        Public MustOverride Function getAllClients(Optional ByVal sqlSearchForSpecificClientID As String = "", Optional ByVal campaignClientID As Integer = 0) As DataTable
 
         Public MustOverride Function getClient(ByVal ID As Integer) As String
 
