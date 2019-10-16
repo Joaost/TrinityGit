@@ -64,9 +64,9 @@ Public Class frmSetup
     End Class
 
 
-    Sub PopulateClientCombo()
+    Public Sub PopulateClientCombo()
         'selcts all clients and put the names into the combo box
-        
+
         cmbClient.Items.Clear()
         cmbClient.DisplayMember = "Text"
 
@@ -83,7 +83,7 @@ Public Class frmSetup
                 End If
             End If
             cmbClient.Items.Add(TmpItem)
-                If TmpItem.Tag = Campaign.ClientID Then
+            If TmpItem.Tag = Campaign.ClientID Then
                 cmbClient.Text = TmpItem.Text
             End If
         Next
@@ -4855,7 +4855,5 @@ Public Class frmSetup
     Private Sub grdIndexes_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdIndexes.CellContentClick
 
     End Sub
-
-
 End Class
 

@@ -948,6 +948,7 @@ Public Class frmOpenFromDB
         Dim multiChange As New frmMultiChangeCampaigns
         multiChange.Show()
     End Sub
+
 End Class
 
 

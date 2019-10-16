@@ -53,8 +53,14 @@ Partial Class frmOpenFromDB
         Me.colBuyer = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colSaved = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colLocked = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colDelete = New System.Windows.Forms.DataGridViewImageColumn()
         Me.grdRecent = New System.Windows.Forms.DataGridView()
+        Me.colrecentstartdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colrecentenddate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colrecentname = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colrecentstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colRecentSaved = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colrecentplanner = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colrecentbuyer = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.chkDefault = New System.Windows.Forms.CheckBox()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -77,23 +83,17 @@ Partial Class frmOpenFromDB
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.cmdImport = New System.Windows.Forms.Button()
         Me.btnOpen = New System.Windows.Forms.Button()
-        Me.colrecentstartdate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colrecentenddate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colrecentname = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colrecentstatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colRecentSaved = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colrecentplanner = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colrecentbuyer = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grpFilter.SuspendLayout
-        CType(Me.grdCampaigns,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdRecent,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.colDelete = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.grpFilter.SuspendLayout()
+        CType(Me.grdCampaigns, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdRecent, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'cmbClient
         '
         Me.cmbClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbClient.FormattingEnabled = true
+        Me.cmbClient.FormattingEnabled = True
         Me.cmbClient.Location = New System.Drawing.Point(53, 42)
         Me.cmbClient.Name = "cmbClient"
         Me.cmbClient.Size = New System.Drawing.Size(121, 21)
@@ -102,7 +102,7 @@ Partial Class frmOpenFromDB
         'cmbProduct
         '
         Me.cmbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbProduct.FormattingEnabled = true
+        Me.cmbProduct.FormattingEnabled = True
         Me.cmbProduct.Location = New System.Drawing.Point(53, 69)
         Me.cmbProduct.Name = "cmbProduct"
         Me.cmbProduct.Size = New System.Drawing.Size(121, 21)
@@ -111,7 +111,7 @@ Partial Class frmOpenFromDB
         'cmbYear
         '
         Me.cmbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbYear.FormattingEnabled = true
+        Me.cmbYear.FormattingEnabled = True
         Me.cmbYear.Location = New System.Drawing.Point(53, 13)
         Me.cmbYear.Name = "cmbYear"
         Me.cmbYear.Size = New System.Drawing.Size(121, 21)
@@ -126,7 +126,7 @@ Partial Class frmOpenFromDB
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
+        Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 42)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(37, 13)
@@ -135,7 +135,7 @@ Partial Class frmOpenFromDB
         '
         'Label2
         '
-        Me.Label2.AutoSize = true
+        Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(3, 70)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(47, 13)
@@ -144,7 +144,7 @@ Partial Class frmOpenFromDB
         '
         'Label3
         '
-        Me.Label3.AutoSize = true
+        Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(16, 16)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(27, 13)
@@ -153,7 +153,7 @@ Partial Class frmOpenFromDB
         '
         'Label5
         '
-        Me.Label5.AutoSize = true
+        Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(182, 16)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(42, 13)
@@ -163,7 +163,7 @@ Partial Class frmOpenFromDB
         'cmbMonth
         '
         Me.cmbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbMonth.FormattingEnabled = true
+        Me.cmbMonth.FormattingEnabled = True
         Me.cmbMonth.Location = New System.Drawing.Point(225, 13)
         Me.cmbMonth.Name = "cmbMonth"
         Me.cmbMonth.Size = New System.Drawing.Size(121, 21)
@@ -187,12 +187,12 @@ Partial Class frmOpenFromDB
         Me.grpFilter.Name = "grpFilter"
         Me.grpFilter.Size = New System.Drawing.Size(356, 99)
         Me.grpFilter.TabIndex = 14
-        Me.grpFilter.TabStop = false
+        Me.grpFilter.TabStop = False
         Me.grpFilter.Text = "Filter"
         '
         'Label7
         '
-        Me.Label7.AutoSize = true
+        Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(182, 72)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(39, 13)
@@ -202,7 +202,7 @@ Partial Class frmOpenFromDB
         'cmbStatus
         '
         Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbStatus.FormattingEnabled = true
+        Me.cmbStatus.FormattingEnabled = True
         Me.cmbStatus.Location = New System.Drawing.Point(225, 69)
         Me.cmbStatus.Name = "cmbStatus"
         Me.cmbStatus.Size = New System.Drawing.Size(121, 21)
@@ -210,7 +210,7 @@ Partial Class frmOpenFromDB
         '
         'Label6
         '
-        Me.Label6.AutoSize = true
+        Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(197, 45)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(19, 13)
@@ -220,7 +220,7 @@ Partial Class frmOpenFromDB
         'cmbBy
         '
         Me.cmbBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbBy.FormattingEnabled = true
+        Me.cmbBy.FormattingEnabled = True
         Me.cmbBy.Location = New System.Drawing.Point(225, 42)
         Me.cmbBy.Name = "cmbBy"
         Me.cmbBy.Size = New System.Drawing.Size(121, 21)
@@ -228,7 +228,7 @@ Partial Class frmOpenFromDB
         '
         'Label8
         '
-        Me.Label8.AutoSize = true
+        Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(688, 118)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(115, 13)
@@ -237,7 +237,7 @@ Partial Class frmOpenFromDB
         '
         'tmrKeypress
         '
-        Me.tmrKeypress.Enabled = true
+        Me.tmrKeypress.Enabled = True
         Me.tmrKeypress.Interval = 1000
         '
         'lblCount
@@ -256,295 +256,339 @@ Partial Class frmOpenFromDB
         Me.btnCancel.Size = New System.Drawing.Size(72, 28)
         Me.btnCancel.TabIndex = 20
         Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = true
+        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'grdCampaigns
         '
-        Me.grdCampaigns.AllowUserToAddRows = false
-        Me.grdCampaigns.AllowUserToDeleteRows = false
-        Me.grdCampaigns.AllowUserToResizeColumns = false
-        Me.grdCampaigns.AllowUserToResizeRows = false
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.grdCampaigns.AllowUserToAddRows = False
+        Me.grdCampaigns.AllowUserToDeleteRows = False
+        Me.grdCampaigns.AllowUserToResizeColumns = False
+        Me.grdCampaigns.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.grdCampaigns.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.grdCampaigns.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grdCampaigns.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdCampaigns.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdCampaigns.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.grdCampaigns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCampaigns.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colStart, Me.colEnd, Me.colName, Me.colStatus, Me.colPlanner, Me.colBuyer, Me.colSaved, Me.colLocked, Me.colDelete})
         Me.grdCampaigns.Location = New System.Drawing.Point(4, 137)
-        Me.grdCampaigns.MultiSelect = false
+        Me.grdCampaigns.MultiSelect = False
         Me.grdCampaigns.Name = "grdCampaigns"
-        Me.grdCampaigns.ReadOnly = true
-        Me.grdCampaigns.RowHeadersVisible = false
+        Me.grdCampaigns.ReadOnly = True
+        Me.grdCampaigns.RowHeadersVisible = False
         Me.grdCampaigns.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdCampaigns.Size = New System.Drawing.Size(681, 331)
         Me.grdCampaigns.TabIndex = 21
-        Me.grdCampaigns.TabStop = false
-        Me.grdCampaigns.VirtualMode = true
+        Me.grdCampaigns.TabStop = False
+        Me.grdCampaigns.VirtualMode = True
         '
         'colStart
         '
-        Me.colStart.FillWeight = 20!
+        Me.colStart.FillWeight = 20.0!
         Me.colStart.HeaderText = "Start"
         Me.colStart.Name = "colStart"
-        Me.colStart.ReadOnly = true
-        Me.colStart.Visible = false
+        Me.colStart.ReadOnly = True
+        Me.colStart.Visible = False
         '
         'colEnd
         '
-        Me.colEnd.FillWeight = 20!
+        Me.colEnd.FillWeight = 20.0!
         Me.colEnd.HeaderText = "End"
         Me.colEnd.Name = "colEnd"
-        Me.colEnd.ReadOnly = true
-        Me.colEnd.Visible = false
+        Me.colEnd.ReadOnly = True
+        Me.colEnd.Visible = False
         '
         'colName
         '
-        Me.colName.FillWeight = 50!
+        Me.colName.FillWeight = 50.0!
         Me.colName.HeaderText = "Name"
         Me.colName.Name = "colName"
-        Me.colName.ReadOnly = true
-        Me.colName.Visible = false
+        Me.colName.ReadOnly = True
+        Me.colName.Visible = False
         '
         'colStatus
         '
-        Me.colStatus.FillWeight = 15!
+        Me.colStatus.FillWeight = 15.0!
         Me.colStatus.HeaderText = "Status"
         Me.colStatus.Name = "colStatus"
-        Me.colStatus.ReadOnly = true
+        Me.colStatus.ReadOnly = True
         Me.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colStatus.Visible = false
+        Me.colStatus.Visible = False
         '
         'colPlanner
         '
-        Me.colPlanner.FillWeight = 20!
+        Me.colPlanner.FillWeight = 20.0!
         Me.colPlanner.HeaderText = "Planner"
         Me.colPlanner.Name = "colPlanner"
-        Me.colPlanner.ReadOnly = true
+        Me.colPlanner.ReadOnly = True
         Me.colPlanner.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colPlanner.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colPlanner.Visible = false
+        Me.colPlanner.Visible = False
         '
         'colBuyer
         '
-        Me.colBuyer.FillWeight = 20!
+        Me.colBuyer.FillWeight = 20.0!
         Me.colBuyer.HeaderText = "Buyer"
         Me.colBuyer.Name = "colBuyer"
-        Me.colBuyer.ReadOnly = true
+        Me.colBuyer.ReadOnly = True
         Me.colBuyer.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colBuyer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colBuyer.Visible = false
+        Me.colBuyer.Visible = False
         '
         'colSaved
         '
-        Me.colSaved.FillWeight = 35!
+        Me.colSaved.FillWeight = 35.0!
         Me.colSaved.HeaderText = "Saved"
         Me.colSaved.Name = "colSaved"
-        Me.colSaved.ReadOnly = true
+        Me.colSaved.ReadOnly = True
         Me.colSaved.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colSaved.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colSaved.Visible = false
+        Me.colSaved.Visible = False
         '
         'colLocked
         '
-        Me.colLocked.FillWeight = 15!
+        Me.colLocked.FillWeight = 15.0!
         Me.colLocked.HeaderText = "Locked"
         Me.colLocked.Name = "colLocked"
-        Me.colLocked.ReadOnly = true
+        Me.colLocked.ReadOnly = True
         Me.colLocked.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colLocked.Visible = false
-        '
-        'colDelete
-        '
-        Me.colDelete.FillWeight = 15!
-        Me.colDelete.HeaderText = "Delete"
-        Me.colDelete.Image = Global.clTrinity.My.Resources.Resources.delete_2_small
-        Me.colDelete.MinimumWidth = 20
-        Me.colDelete.Name = "colDelete"
-        Me.colDelete.ReadOnly = true
-        Me.colDelete.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colLocked.Visible = False
         '
         'grdRecent
         '
-        Me.grdRecent.AllowUserToAddRows = false
-        Me.grdRecent.AllowUserToDeleteRows = false
-        Me.grdRecent.AllowUserToResizeColumns = false
-        Me.grdRecent.AllowUserToResizeRows = false
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.grdRecent.AllowUserToAddRows = False
+        Me.grdRecent.AllowUserToDeleteRows = False
+        Me.grdRecent.AllowUserToResizeColumns = False
+        Me.grdRecent.AllowUserToResizeRows = False
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.grdRecent.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
-        Me.grdRecent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grdRecent.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdRecent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdRecent.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.grdRecent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdRecent.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colrecentstartdate, Me.colrecentenddate, Me.colrecentname, Me.colrecentstatus, Me.colRecentSaved, Me.colrecentplanner, Me.colrecentbuyer})
         Me.grdRecent.Location = New System.Drawing.Point(691, 137)
-        Me.grdRecent.MultiSelect = false
+        Me.grdRecent.MultiSelect = False
         Me.grdRecent.Name = "grdRecent"
-        Me.grdRecent.ReadOnly = true
-        Me.grdRecent.RowHeadersVisible = false
+        Me.grdRecent.ReadOnly = True
+        Me.grdRecent.RowHeadersVisible = False
         Me.grdRecent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdRecent.Size = New System.Drawing.Size(362, 331)
         Me.grdRecent.TabIndex = 22
-        Me.grdRecent.TabStop = false
-        Me.grdRecent.VirtualMode = true
+        Me.grdRecent.TabStop = False
+        Me.grdRecent.VirtualMode = True
+        '
+        'colrecentstartdate
+        '
+        Me.colrecentstartdate.FillWeight = 20.0!
+        Me.colrecentstartdate.HeaderText = "Start"
+        Me.colrecentstartdate.Name = "colrecentstartdate"
+        Me.colrecentstartdate.ReadOnly = True
+        Me.colrecentstartdate.Visible = False
+        '
+        'colrecentenddate
+        '
+        Me.colrecentenddate.FillWeight = 20.0!
+        Me.colrecentenddate.HeaderText = "End"
+        Me.colrecentenddate.Name = "colrecentenddate"
+        Me.colrecentenddate.ReadOnly = True
+        Me.colrecentenddate.Visible = False
+        '
+        'colrecentname
+        '
+        Me.colrecentname.FillWeight = 50.0!
+        Me.colrecentname.HeaderText = "Name"
+        Me.colrecentname.Name = "colrecentname"
+        Me.colrecentname.ReadOnly = True
+        '
+        'colrecentstatus
+        '
+        Me.colrecentstatus.FillWeight = 15.0!
+        Me.colrecentstatus.HeaderText = "Status"
+        Me.colrecentstatus.Name = "colrecentstatus"
+        Me.colrecentstatus.ReadOnly = True
+        Me.colrecentstatus.Visible = False
+        '
+        'colRecentSaved
+        '
+        Me.colRecentSaved.FillWeight = 30.0!
+        Me.colRecentSaved.HeaderText = "Saved"
+        Me.colRecentSaved.Name = "colRecentSaved"
+        Me.colRecentSaved.ReadOnly = True
+        '
+        'colrecentplanner
+        '
+        Me.colrecentplanner.FillWeight = 20.0!
+        Me.colrecentplanner.HeaderText = "Planner"
+        Me.colrecentplanner.Name = "colrecentplanner"
+        Me.colrecentplanner.ReadOnly = True
+        Me.colrecentplanner.Visible = False
+        '
+        'colrecentbuyer
+        '
+        Me.colrecentbuyer.FillWeight = 20.0!
+        Me.colrecentbuyer.HeaderText = "Buyer"
+        Me.colrecentbuyer.Name = "colrecentbuyer"
+        Me.colrecentbuyer.ReadOnly = True
+        Me.colrecentbuyer.Visible = False
         '
         'chkDefault
         '
-        Me.chkDefault.AutoSize = true
+        Me.chkDefault.AutoSize = True
         Me.chkDefault.Location = New System.Drawing.Point(543, 474)
         Me.chkDefault.Name = "chkDefault"
         Me.chkDefault.Size = New System.Drawing.Size(142, 17)
         Me.chkDefault.TabIndex = 26
         Me.chkDefault.Text = "Set columns as default"
-        Me.chkDefault.UseVisualStyleBackColor = true
+        Me.chkDefault.UseVisualStyleBackColor = True
         '
         'DataGridViewTextBoxColumn1
         '
-        Me.DataGridViewTextBoxColumn1.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn1.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn1.HeaderText = "Start"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = true
-        Me.DataGridViewTextBoxColumn1.Visible = false
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Visible = False
         Me.DataGridViewTextBoxColumn1.Width = 105
         '
         'DataGridViewTextBoxColumn2
         '
-        Me.DataGridViewTextBoxColumn2.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn2.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn2.HeaderText = "End"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = true
-        Me.DataGridViewTextBoxColumn2.Visible = false
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Visible = False
         Me.DataGridViewTextBoxColumn2.Width = 104
         '
         'DataGridViewTextBoxColumn3
         '
-        Me.DataGridViewTextBoxColumn3.FillWeight = 50!
+        Me.DataGridViewTextBoxColumn3.FillWeight = 50.0!
         Me.DataGridViewTextBoxColumn3.HeaderText = "Name"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = true
-        Me.DataGridViewTextBoxColumn3.Visible = false
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Visible = False
         Me.DataGridViewTextBoxColumn3.Width = 105
         '
         'DataGridViewTextBoxColumn4
         '
-        Me.DataGridViewTextBoxColumn4.FillWeight = 15!
+        Me.DataGridViewTextBoxColumn4.FillWeight = 15.0!
         Me.DataGridViewTextBoxColumn4.HeaderText = "Status"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = true
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn4.Visible = false
+        Me.DataGridViewTextBoxColumn4.Visible = False
         Me.DataGridViewTextBoxColumn4.Width = 104
         '
         'DataGridViewTextBoxColumn5
         '
-        Me.DataGridViewTextBoxColumn5.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn5.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn5.HeaderText = "Planner"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = true
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn5.Visible = false
+        Me.DataGridViewTextBoxColumn5.Visible = False
         '
         'DataGridViewTextBoxColumn6
         '
-        Me.DataGridViewTextBoxColumn6.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn6.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn6.HeaderText = "Last saved"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = true
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
         Me.DataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn6.Visible = false
+        Me.DataGridViewTextBoxColumn6.Visible = False
         '
         'DataGridViewTextBoxColumn7
         '
-        Me.DataGridViewTextBoxColumn7.FillWeight = 30!
+        Me.DataGridViewTextBoxColumn7.FillWeight = 30.0!
         Me.DataGridViewTextBoxColumn7.HeaderText = "Buyer"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = true
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
         Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn7.Visible = false
+        Me.DataGridViewTextBoxColumn7.Visible = False
         '
         'DataGridViewTextBoxColumn8
         '
-        Me.DataGridViewTextBoxColumn8.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn8.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn8.HeaderText = "Start"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = true
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
         Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn8.Visible = false
+        Me.DataGridViewTextBoxColumn8.Visible = False
         Me.DataGridViewTextBoxColumn8.Width = 98
         '
         'DataGridViewTextBoxColumn9
         '
-        Me.DataGridViewTextBoxColumn9.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn9.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn9.HeaderText = "End"
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = true
-        Me.DataGridViewTextBoxColumn9.Visible = false
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Visible = False
         Me.DataGridViewTextBoxColumn9.Width = 98
         '
         'DataGridViewTextBoxColumn10
         '
-        Me.DataGridViewTextBoxColumn10.FillWeight = 50!
+        Me.DataGridViewTextBoxColumn10.FillWeight = 50.0!
         Me.DataGridViewTextBoxColumn10.HeaderText = "Name"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = true
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
         Me.DataGridViewTextBoxColumn10.Width = 245
         '
         'DataGridViewTextBoxColumn11
         '
-        Me.DataGridViewTextBoxColumn11.FillWeight = 15!
+        Me.DataGridViewTextBoxColumn11.FillWeight = 15.0!
         Me.DataGridViewTextBoxColumn11.HeaderText = "Status"
         Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.ReadOnly = true
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
         Me.DataGridViewTextBoxColumn11.Width = 73
         '
         'DataGridViewTextBoxColumn12
         '
-        Me.DataGridViewTextBoxColumn12.FillWeight = 30!
+        Me.DataGridViewTextBoxColumn12.FillWeight = 30.0!
         Me.DataGridViewTextBoxColumn12.HeaderText = "Last saved"
         Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.ReadOnly = true
-        Me.DataGridViewTextBoxColumn12.Visible = false
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        Me.DataGridViewTextBoxColumn12.Visible = False
         Me.DataGridViewTextBoxColumn12.Width = 73
         '
         'DataGridViewTextBoxColumn13
         '
-        Me.DataGridViewTextBoxColumn13.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn13.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn13.HeaderText = "Planner"
         Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.ReadOnly = true
-        Me.DataGridViewTextBoxColumn13.Visible = false
+        Me.DataGridViewTextBoxColumn13.ReadOnly = True
+        Me.DataGridViewTextBoxColumn13.Visible = False
         Me.DataGridViewTextBoxColumn13.Width = 73
         '
         'DataGridViewTextBoxColumn14
         '
-        Me.DataGridViewTextBoxColumn14.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn14.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn14.HeaderText = "Buyer"
         Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        Me.DataGridViewTextBoxColumn14.ReadOnly = true
-        Me.DataGridViewTextBoxColumn14.Visible = false
+        Me.DataGridViewTextBoxColumn14.ReadOnly = True
+        Me.DataGridViewTextBoxColumn14.Visible = False
         '
         'DataGridViewTextBoxColumn15
         '
-        Me.DataGridViewTextBoxColumn15.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn15.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn15.HeaderText = "Buyer"
         Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        Me.DataGridViewTextBoxColumn15.ReadOnly = true
-        Me.DataGridViewTextBoxColumn15.Visible = false
+        Me.DataGridViewTextBoxColumn15.ReadOnly = True
+        Me.DataGridViewTextBoxColumn15.Visible = False
         '
         'DataGridViewTextBoxColumn16
         '
-        Me.DataGridViewTextBoxColumn16.FillWeight = 20!
+        Me.DataGridViewTextBoxColumn16.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn16.HeaderText = "Buyer"
         Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        Me.DataGridViewTextBoxColumn16.ReadOnly = true
-        Me.DataGridViewTextBoxColumn16.Visible = false
+        Me.DataGridViewTextBoxColumn16.ReadOnly = True
+        Me.DataGridViewTextBoxColumn16.Visible = False
         '
         'btnMultiChangeCampaigns
         '
@@ -555,17 +599,17 @@ Partial Class frmOpenFromDB
         Me.btnMultiChangeCampaigns.Size = New System.Drawing.Size(115, 28)
         Me.btnMultiChangeCampaigns.TabIndex = 27
         Me.btnMultiChangeCampaigns.Text = "Edit campagins"
-        Me.btnMultiChangeCampaigns.UseVisualStyleBackColor = true
-        Me.btnMultiChangeCampaigns.Visible = false
+        Me.btnMultiChangeCampaigns.UseVisualStyleBackColor = True
+        Me.btnMultiChangeCampaigns.Visible = False
         '
         'DataGridViewImageColumn1
         '
-        Me.DataGridViewImageColumn1.FillWeight = 15!
+        Me.DataGridViewImageColumn1.FillWeight = 15.0!
         Me.DataGridViewImageColumn1.HeaderText = "Delete"
-        Me.DataGridViewImageColumn1.Image = CType(resources.GetObject("DataGridViewImageColumn1.Image"),System.Drawing.Image)
+        Me.DataGridViewImageColumn1.Image = CType(resources.GetObject("DataGridViewImageColumn1.Image"), System.Drawing.Image)
         Me.DataGridViewImageColumn1.MinimumWidth = 20
         Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
-        Me.DataGridViewImageColumn1.ReadOnly = true
+        Me.DataGridViewImageColumn1.ReadOnly = True
         Me.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewImageColumn1.Width = 523
         '
@@ -577,7 +621,7 @@ Partial Class frmOpenFromDB
         Me.PictureBox1.Size = New System.Drawing.Size(16, 16)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox1.TabIndex = 25
-        Me.PictureBox1.TabStop = false
+        Me.PictureBox1.TabStop = False
         '
         'cmdImport
         '
@@ -591,7 +635,7 @@ Partial Class frmOpenFromDB
         Me.cmdImport.TabIndex = 24
         Me.cmdImport.Text = "Import campaign files"
         Me.cmdImport.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdImport.UseVisualStyleBackColor = true
+        Me.cmdImport.UseVisualStyleBackColor = True
         '
         'btnOpen
         '
@@ -605,61 +649,17 @@ Partial Class frmOpenFromDB
         Me.btnOpen.TabIndex = 23
         Me.btnOpen.Text = "Open"
         Me.btnOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnOpen.UseVisualStyleBackColor = true
+        Me.btnOpen.UseVisualStyleBackColor = True
         '
-        'colrecentstartdate
+        'colDelete
         '
-        Me.colrecentstartdate.FillWeight = 20!
-        Me.colrecentstartdate.HeaderText = "Start"
-        Me.colrecentstartdate.Name = "colrecentstartdate"
-        Me.colrecentstartdate.ReadOnly = true
-        Me.colrecentstartdate.Visible = false
-        '
-        'colrecentenddate
-        '
-        Me.colrecentenddate.FillWeight = 20!
-        Me.colrecentenddate.HeaderText = "End"
-        Me.colrecentenddate.Name = "colrecentenddate"
-        Me.colrecentenddate.ReadOnly = true
-        Me.colrecentenddate.Visible = false
-        '
-        'colrecentname
-        '
-        Me.colrecentname.FillWeight = 50!
-        Me.colrecentname.HeaderText = "Name"
-        Me.colrecentname.Name = "colrecentname"
-        Me.colrecentname.ReadOnly = true
-        '
-        'colrecentstatus
-        '
-        Me.colrecentstatus.FillWeight = 15!
-        Me.colrecentstatus.HeaderText = "Status"
-        Me.colrecentstatus.Name = "colrecentstatus"
-        Me.colrecentstatus.ReadOnly = true
-        Me.colrecentstatus.Visible = false
-        '
-        'colRecentSaved
-        '
-        Me.colRecentSaved.FillWeight = 30!
-        Me.colRecentSaved.HeaderText = "Saved"
-        Me.colRecentSaved.Name = "colRecentSaved"
-        Me.colRecentSaved.ReadOnly = true
-        '
-        'colrecentplanner
-        '
-        Me.colrecentplanner.FillWeight = 20!
-        Me.colrecentplanner.HeaderText = "Planner"
-        Me.colrecentplanner.Name = "colrecentplanner"
-        Me.colrecentplanner.ReadOnly = true
-        Me.colrecentplanner.Visible = false
-        '
-        'colrecentbuyer
-        '
-        Me.colrecentbuyer.FillWeight = 20!
-        Me.colrecentbuyer.HeaderText = "Buyer"
-        Me.colrecentbuyer.Name = "colrecentbuyer"
-        Me.colrecentbuyer.ReadOnly = true
-        Me.colrecentbuyer.Visible = false
+        Me.colDelete.FillWeight = 15.0!
+        Me.colDelete.HeaderText = "Delete"
+        Me.colDelete.Image = Global.clTrinity.My.Resources.Resources.delete_2_small
+        Me.colDelete.MinimumWidth = 20
+        Me.colDelete.Name = "colDelete"
+        Me.colDelete.ReadOnly = True
+        Me.colDelete.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'frmOpenFromDB
         '

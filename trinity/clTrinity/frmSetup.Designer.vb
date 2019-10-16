@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmSetup
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frmSetup
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSetup))
@@ -214,6 +214,7 @@ Partial Class frmSetup
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.mnuContract.SuspendLayout()
         Me.mnuCalculateDaypart.SuspendLayout()
         Me.mnuCalculcateComboND.SuspendLayout()
@@ -868,6 +869,7 @@ Partial Class frmSetup
         '
         'tpGeneral
         '
+        Me.tpGeneral.Controls.Add(Me.Button1)
         Me.tpGeneral.Controls.Add(Me.lblRestrictedClientBool)
         Me.tpGeneral.Controls.Add(Me.cmdContract)
         Me.tpGeneral.Controls.Add(Me.cmdGeneralNext)
@@ -2289,6 +2291,15 @@ Partial Class frmSetup
         Me.DataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn4.Width = 60
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(539, 236)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 27
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmSetup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2305,56 +2316,56 @@ Partial Class frmSetup
         Me.Name = "frmSetup"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Setup"
-        Me.mnuContract.ResumeLayout(false)
-        Me.mnuCalculateDaypart.ResumeLayout(false)
-        Me.mnuCalculcateComboND.ResumeLayout(false)
-        Me.tabSetup.ResumeLayout(false)
-        Me.tpGeneral.ResumeLayout(false)
-        Me.tpGeneral.PerformLayout
-        Me.GroupBox2.ResumeLayout(false)
-        Me.GroupBox2.PerformLayout
-        CType(Me.grdCosts,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox4,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox3,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox1.ResumeLayout(false)
-        Me.GroupBox1.PerformLayout
-        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tpChannels.ResumeLayout(false)
-        Me.tpChannels.PerformLayout
-        Me.GroupBox4.ResumeLayout(false)
-        CType(Me.grdChannelInfo,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox3.ResumeLayout(false)
-        CType(Me.grdChannels,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox5,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tpCombinations.ResumeLayout(false)
-        Me.tpCombinations.PerformLayout
-        Me.grpCombo.ResumeLayout(false)
-        Me.grpCombo.PerformLayout
-        CType(Me.PictureBox9,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.grdCombo,System.ComponentModel.ISupportInitialize).EndInit
-        Me.grpCombos.ResumeLayout(false)
-        CType(Me.grdCombos,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox8,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tpFilms.ResumeLayout(false)
-        Me.tpFilms.PerformLayout
-        Me.grpFilm.ResumeLayout(false)
-        Me.grpFilm.PerformLayout
-        CType(Me.grdFilmDetails,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox5.ResumeLayout(false)
-        CType(Me.grdFilms,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox6,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tpIndex.ResumeLayout(false)
-        Me.tpIndex.PerformLayout
-        Me.GroupBox7.ResumeLayout(false)
-        CType(Me.grdIndexes,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox6.ResumeLayout(false)
-        Me.GroupBox6.PerformLayout
-        CType(Me.grdAddedValues,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox7,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        Me.mnuContract.ResumeLayout(False)
+        Me.mnuCalculateDaypart.ResumeLayout(False)
+        Me.mnuCalculcateComboND.ResumeLayout(False)
+        Me.tabSetup.ResumeLayout(False)
+        Me.tpGeneral.ResumeLayout(False)
+        Me.tpGeneral.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        CType(Me.grdCosts, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpChannels.ResumeLayout(False)
+        Me.tpChannels.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        CType(Me.grdChannelInfo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.grdChannels, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpCombinations.ResumeLayout(False)
+        Me.tpCombinations.PerformLayout()
+        Me.grpCombo.ResumeLayout(False)
+        Me.grpCombo.PerformLayout()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdCombo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpCombos.ResumeLayout(False)
+        CType(Me.grdCombos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpFilms.ResumeLayout(False)
+        Me.tpFilms.PerformLayout()
+        Me.grpFilm.ResumeLayout(False)
+        Me.grpFilm.PerformLayout()
+        CType(Me.grdFilmDetails, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox5.ResumeLayout(False)
+        CType(Me.grdFilms, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpIndex.ResumeLayout(False)
+        Me.tpIndex.PerformLayout()
+        Me.GroupBox7.ResumeLayout(False)
+        CType(Me.grdIndexes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        CType(Me.grdAddedValues, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
     Friend WithEvents tabSetup As ExtendedTabControl
     Friend WithEvents tpGeneral As System.Windows.Forms.TabPage
     Friend WithEvents tpChannels As System.Windows.Forms.TabPage
@@ -2559,4 +2570,5 @@ End Sub
     Friend WithEvents PictureBox9 As Windows.Forms.PictureBox
     Friend WithEvents chkSendAsUnitMarathon As Windows.Forms.CheckBox
     Friend WithEvents lblRestrictedClientBool As Windows.Forms.Label
+    Friend WithEvents Button1 As Windows.Forms.Button
 End Class
