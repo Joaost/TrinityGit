@@ -2908,8 +2908,13 @@ Public Class frmPricelist
                         With tmpTarget.PricelistPeriods.Add(_period.Name)
 
                             If Not valueDictionary.ContainsKey(tmpTarget.TargetName) Then
-                                valueDictionary.Add(tmpTarget.TargetName, tmpTarget.Target.UniSizeTot)
-                                valueDictionary2.Add(tmpTarget.TargetName, tmpTarget.Target.UniSize)
+                                If TrinitySettings.DefaultArea = "NO" Then
+                                    valueDictionary.Add(tmpTarget.TargetName, "4450")
+                                    valueDictionary2.Add(tmpTarget.TargetName, "4450")
+                                Else
+                                    valueDictionary.Add(tmpTarget.TargetName, tmpTarget.Target.UniSizeTot)
+                                    valueDictionary2.Add(tmpTarget.TargetName, tmpTarget.Target.UniSize)
+                                End If
                             End If
                             .TargetNat = valueDictionary(tmpTarget.TargetName)
                             .TargetUni = valueDictionary2(tmpTarget.TargetName)

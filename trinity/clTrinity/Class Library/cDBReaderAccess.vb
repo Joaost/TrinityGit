@@ -333,10 +333,10 @@ ClientExist_error:
 
         End Function
 
-        Public Overrides Sub addClient(ByVal name As String)
+        Public Overrides Sub addClient(ByVal newClient As Client)
             Dim com As New Odbc.OdbcCommand
             com.Connection = DBConn
-            com.CommandText = "INSERT INTO clients(Name) VALUES ('" + name + "')"
+            com.CommandText = "INSERT INTO clients(Name, restricted) VALUES ('" + newClient.name + newClient.restricted + "')"
             com.ExecuteNonQuery()
         End Sub
 

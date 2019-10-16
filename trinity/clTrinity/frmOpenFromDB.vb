@@ -606,17 +606,27 @@ Public Class frmOpenFromDB
             If Not _doNotLoadCampaign Then
                 'If campaign contains client that is restricted check with XML
                 Dim returnClient As List(Of Client) = Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName, _campaignID)
-                If returnClient(0).restricted Then
-                    If Campaign.checkIfUserIsValid(returnClient(0).name) Then
-                        Windows.Forms.MessageBox.Show("Campaign client contains restriction but user is correct.", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                If returnClient.Count <> 0 Then
+                    If returnClient(0).restricted Then
+                        If Campaign.checkIfUserIsValid(returnClient(0).name) Then
+                            'Windows.Forms.MessageBox.Show("Campaign client contains restriction but user is correct.", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                            Campaign = New Trinity.cKampanj(TrinitySettings.ErrorChecking)
+                            TrinitySettings.MainObject = Campaign
+                            Trinity.Helper.MainObject = Campaign
+                            If Not OpenCampaign(_campaignID, grdCampaigns.SelectedRows(0).Tag.ContractID) Then
+                                Exit Sub
+                            End If
+                        Else
+                            Windows.Forms.MessageBox.Show("Campaign client contains restriction and user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+                        End If
+                    Else
+                        'If not go a head as usual
                         Campaign = New Trinity.cKampanj(TrinitySettings.ErrorChecking)
                         TrinitySettings.MainObject = Campaign
                         Trinity.Helper.MainObject = Campaign
                         If Not OpenCampaign(_campaignID, grdCampaigns.SelectedRows(0).Tag.ContractID) Then
                             Exit Sub
                         End If
-                    Else
-                        Windows.Forms.MessageBox.Show("Campaign client contains restriction but user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
                     End If
                 Else
                     'If not go a head as usual
@@ -627,7 +637,6 @@ Public Class frmOpenFromDB
                         Exit Sub
                     End If
                 End If
-
             End If
         ElseIf grdRecent.SelectedRows.Count > 0 Then
             _campaignID = grdRecent.SelectedRows(0).Tag.ID

@@ -7926,7 +7926,9 @@ ActualSpots:
         Public Event ProblemsFound(problems As System.Collections.Generic.List(Of cProblem)) Implements IDetectsProblems.ProblemsFound
 
         Public Function checkIfCampaignHasRescritions(ByVal userName As String, ByVal campaignID As Integer) As List(Of Client)
-            userName = TrinitySettings.UserName
+
+            userName = Environment.UserName
+
             Dim cList As New List(Of Client)
             If Campaign IsNot Nothing Then
                 If userName = "" Then
@@ -8015,7 +8017,7 @@ ActualSpots:
         End Class
 
         Public Function checkIfUserIsValid(ByVal clientName As String) As Boolean
-
+            Dim loggedIndUser = Environment.UserName
             If System.IO.File.Exists(Trinity.Helper.Pathify(TrinitySettings.DataPath(Trinity.cSettings.SettingsLocationEnum.locNetwork)) & "restrictedClients.xml") Then
                 'this code gets all planners and buyers from a XML file
                 'note that not all locations h ave a XML file, some still have the old people.lst file
@@ -8051,7 +8053,7 @@ ActualSpots:
                     If listOfClients(i).name = clientName Then
                         clientRestrictionFound = True
                         For q As Integer = 0 To listOfClients(i).listOfRestrictedUsers.Count - 1
-                            If listOfClients(i).listOfRestrictedUsers(q).name = TrinitySettings.UserName Then
+                            If listOfClients(i).listOfRestrictedUsers(q).name = loggedIndUser Then
                                 Return True
                             End If
                         Next

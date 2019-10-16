@@ -118,7 +118,7 @@ Namespace Trinity
 
         Public MustOverride Function productExist(ByVal name As String) As Boolean
 
-        Public MustOverride Sub addClient(ByVal name As String)
+        Public MustOverride Sub addClient(ByVal newClient As Client)
 
         Public MustOverride Sub addProduct(ByVal Name As String, ByVal ClientID As String, ByVal MarathonClient As String, ByVal MarathonProduct As String, ByVal MarathonCompany As String, ByVal MarathonContract As String, ByVal AdEdgeBrands As List(Of String), ByVal AdTooxAdvertiserID As Long, ByVal AdTooxDivisionID As Long, ByVal AdTooxBrandID As Long, ByVal AdTooxProductType As String)
 

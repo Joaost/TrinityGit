@@ -48,7 +48,7 @@ Public Class frmSetup
                 Return _restricted
             End Get
             Set(ByVal value As Boolean)
-                _restricted = restricted
+                _restricted = value
             End Set
         End Property
 
@@ -75,8 +75,12 @@ Public Class frmSetup
             Dim TmpItem As New CBItem
             TmpItem.Text = dr.Item("name") 'rd!name
             TmpItem.Tag = dr.Item("id") 'rd!id
-            If Not IsDBNull(dr.Item("restricted")) Then
-                TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+            ' Added by JOKO
+            ' Important contraint since Norway dont have that value and will then return null and it will break down.
+            If TrinitySettings.DefaultArea <> "NO" Then
+                If Not IsDBNull(dr.Item("restricted")) Then
+                    TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+                End If
             End If
             cmbClient.Items.Add(TmpItem)
                 If TmpItem.Tag = Campaign.ClientID Then
@@ -93,11 +97,15 @@ Public Class frmSetup
             Exit Sub
         End If
         Dim tempClient = DirectCast(cmbClient.SelectedItem, CBItem)
-        If tempClient.restricted Then
-            lblRestrictedClientBool.Visible = True
-            lblRestrictedClientBool.Text = "Restricted"
-        Else
-            lblRestrictedClientBool.Visible = False
+        ' Added by JOKO
+        ' Important contraint since Norway dont have that value and will then return null and it will break down.
+        If TrinitySettings.DefaultArea <> "NO" Then
+            If tempClient.restricted Then
+                lblRestrictedClientBool.Visible = True
+                lblRestrictedClientBool.Text = "Restricted client"
+            Else
+                lblRestrictedClientBool.Visible = False
+            End If
         End If
         ActiveCampaign.ClientID = DirectCast(cmbClient.SelectedItem, CBItem).Tag
         cmbProduct.Items.Clear()
@@ -269,7 +277,7 @@ Public Class frmSetup
     End Sub
 
     'Private Sub grdCosts_CellValueChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grdCosts.CellValueChanged
-    '    If e.RowIndex > -1 And e.RowIndex < grdCosts.Rows.Count Then
+    '    If e.RowIndex > -1 And e.RowIndex <grdCosts.Rows.Count Then
     '        If e.ColumnIndex = 0 Then
     '            Dim TmpCell As DataGridViewTextBoxCell = grdCosts.Rows(e.RowIndex).Cells(e.ColumnIndex)
     '            ActiveCampaign.Costs(e.RowIndex + 1).CostName = TmpCell.Value

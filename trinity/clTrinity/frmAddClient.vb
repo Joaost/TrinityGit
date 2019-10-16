@@ -22,7 +22,12 @@ Public Class frmAddClient
                 'End While
                 'rd.Close()
                 'if all is ok then we add the new CLient
-                DBReader.addClient(txtName.Text)
+                Dim newClientTemp As New Client
+                If chkBoxRestrictedBool.Checked Then
+                    newClientTemp.restricted = True
+                End If
+                newClientTemp.name = txtName.Text
+                DBReader.addClient(newClientTemp)
                 'com.CommandText = "INSERT INTO Clients (Name) VALUES ('" & txtName.Text & "')"
                 'com.ExecuteScalar()
             Else 'edit the client

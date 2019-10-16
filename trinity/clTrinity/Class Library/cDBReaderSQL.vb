@@ -1338,12 +1338,12 @@ Namespace Trinity
             End Using
         End Function
 
-        Public Overrides Sub addClient(ByVal name As String)
+        Public Overrides Sub addClient(ByVal newClient As Client)
             Using _conn As New SqlClient.SqlConnection(_connectionString)
                 _conn.Open()
                 Using com As New SqlClient.SqlCommand
                     com.Connection = _conn
-                    com.CommandText = "INSERT INTO clients(Name) VALUES ('" + name + "')"
+                    com.CommandText = "INSERT INTO clients(Name, restricted) VALUES ('" + newClient.name + newClient.restricted + "')"
                     com.ExecuteNonQuery()
                     _conn.Close()
                 End Using
