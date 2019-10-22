@@ -7945,11 +7945,11 @@ ActualSpots:
                             Dim tempClient As New Client
                             tempClient.name = dr.Item("name") 'rd!name
                             tempClient.id = dr.Item("id") 'rd!id
-                            If Not IsDBNull(dr.Item("restricted")) Then
-                                tempClient.restricted = dr.Item("restricted") 'rd!Restricted 
-                                cList.Add(tempClient)
-                            Else
-
+                            If TrinitySettings.DefaultArea <> "NO" Then
+                                If Not IsDBNull(dr.Item("restricted")) Then
+                                    tempClient.restricted = dr.Item("restricted") 'rd!Restricted 
+                                    cList.Add(tempClient)
+                                End If
                             End If
                         Next
                     Else
@@ -8033,7 +8033,7 @@ ActualSpots:
                 Dim xmlTmpUser As Xml.XmlElement
                 For Each xmlTmp In clients.ChildNodes
                     Dim tempClient As New Clientrestriction
-                    tempClient.name = xmlTmp.GetAttribute("clientName").ToString()
+                    tempClient.name = xmlTmp.GetAttribute("name").ToString()
                     For Each xmlTmpUser In xmlTmp.ChildNodes
                         Dim res As New restrictedUsers
                         res.name = xmlTmpUser.GetAttribute("name").ToString()
@@ -8053,7 +8053,7 @@ ActualSpots:
                     If listOfClients(i).name = clientName Then
                         clientRestrictionFound = True
                         For q As Integer = 0 To listOfClients(i).listOfRestrictedUsers.Count - 1
-                            If listOfClients(i).listOfRestrictedUsers(q).name = loggedIndUser Then
+                            If listOfClients(i).listOfRestrictedUsers(q).name = loggedIndUser And listOfClients(i).listOfRestrictedUsers(q).restricted Then
                                 Return True
                             End If
                         Next
