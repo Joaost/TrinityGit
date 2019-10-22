@@ -91,6 +91,7 @@ Partial Class frmMain
         Me.EditPricelistToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChannelPackagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DefineDaypartsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditClietsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuEditPeople = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.PreferencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -232,7 +233,6 @@ Partial Class frmMain
         Me.lblUserCompany = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EditClietsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msMain.SuspendLayout()
         Me.tstMain.SuspendLayout()
         Me.pnlMenu.SuspendLayout()
@@ -673,6 +673,12 @@ Partial Class frmMain
         Me.DefineDaypartsToolStripMenuItem.Name = "DefineDaypartsToolStripMenuItem"
         Me.DefineDaypartsToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
         Me.DefineDaypartsToolStripMenuItem.Text = "Define dayparts"
+        '
+        'EditClietsToolStripMenuItem
+        '
+        Me.EditClietsToolStripMenuItem.Name = "EditClietsToolStripMenuItem"
+        Me.EditClietsToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.EditClietsToolStripMenuItem.Text = "Edit clients"
         '
         'mnuEditPeople
         '
@@ -2042,12 +2048,6 @@ Partial Class frmMain
         Me.DataGridViewTextBoxColumn2.HeaderText = "Actual"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'EditClietsToolStripMenuItem
-        '
-        Me.EditClietsToolStripMenuItem.Name = "EditClietsToolStripMenuItem"
-        Me.EditClietsToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
-        Me.EditClietsToolStripMenuItem.Text = "Edit cliets"
         '
         'frmMain
         '

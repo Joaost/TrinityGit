@@ -21,9 +21,9 @@ Partial Class frmSetup
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSetup))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mnuArea = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuContract = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuNoContract = New System.Windows.Forms.ToolStripMenuItem()
@@ -214,7 +214,6 @@ Partial Class frmSetup
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.mnuContract.SuspendLayout()
         Me.mnuCalculateDaypart.SuspendLayout()
         Me.mnuCalculcateComboND.SuspendLayout()
@@ -869,7 +868,6 @@ Partial Class frmSetup
         '
         'tpGeneral
         '
-        Me.tpGeneral.Controls.Add(Me.Button1)
         Me.tpGeneral.Controls.Add(Me.lblRestrictedClientBool)
         Me.tpGeneral.Controls.Add(Me.cmdContract)
         Me.tpGeneral.Controls.Add(Me.cmdGeneralNext)
@@ -940,9 +938,9 @@ Partial Class frmSetup
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.txtBudget)
         Me.GroupBox2.Controls.Add(Me.PictureBox4)
-        Me.GroupBox2.Location = New System.Drawing.Point(8, 265)
+        Me.GroupBox2.Location = New System.Drawing.Point(8, 207)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(604, 100)
+        Me.GroupBox2.Size = New System.Drawing.Size(604, 158)
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Budget"
@@ -966,7 +964,7 @@ Partial Class frmSetup
         Me.grdCosts.Name = "grdCosts"
         Me.grdCosts.RowHeadersVisible = False
         Me.grdCosts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdCosts.Size = New System.Drawing.Size(554, 28)
+        Me.grdCosts.Size = New System.Drawing.Size(554, 86)
         Me.grdCosts.TabIndex = 4
         Me.grdCosts.VirtualMode = True
         '
@@ -986,9 +984,9 @@ Partial Class frmSetup
         '
         'colAmount
         '
-        DataGridViewCellStyle4.Format = "C0"
-        DataGridViewCellStyle4.NullValue = "0"
-        Me.colAmount.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Format = "C0"
+        DataGridViewCellStyle1.NullValue = "0"
+        Me.colAmount.DefaultCellStyle = DataGridViewCellStyle1
         Me.colAmount.HeaderText = "Amount"
         Me.colAmount.Name = "colAmount"
         Me.colAmount.Width = 93
@@ -1353,7 +1351,7 @@ Partial Class frmSetup
         Me.tpChannels.Location = New System.Drawing.Point(4, 22)
         Me.tpChannels.Name = "tpChannels"
         Me.tpChannels.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpChannels.Size = New System.Drawing.Size(626, 532)
+        Me.tpChannels.Size = New System.Drawing.Size(639, 417)
         Me.tpChannels.TabIndex = 2
         Me.tpChannels.Text = "Channels"
         Me.tpChannels.UseVisualStyleBackColor = True
@@ -1544,9 +1542,9 @@ Partial Class frmSetup
         '
         'colMax
         '
-        DataGridViewCellStyle5.Format = "P"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.colMax.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Format = "P"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.colMax.DefaultCellStyle = DataGridViewCellStyle2
         Me.colMax.HeaderText = "Max"
         Me.colMax.Name = "colMax"
         Me.colMax.Width = 60
@@ -1577,7 +1575,7 @@ Partial Class frmSetup
         Me.tpCombinations.Location = New System.Drawing.Point(4, 22)
         Me.tpCombinations.Name = "tpCombinations"
         Me.tpCombinations.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpCombinations.Size = New System.Drawing.Size(626, 532)
+        Me.tpCombinations.Size = New System.Drawing.Size(639, 417)
         Me.tpCombinations.TabIndex = 5
         Me.tpCombinations.Text = "Combinations   "
         Me.tpCombinations.UseVisualStyleBackColor = True
@@ -1810,7 +1808,7 @@ Partial Class frmSetup
         Me.tpFilms.Location = New System.Drawing.Point(4, 22)
         Me.tpFilms.Name = "tpFilms"
         Me.tpFilms.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpFilms.Size = New System.Drawing.Size(626, 532)
+        Me.tpFilms.Size = New System.Drawing.Size(639, 417)
         Me.tpFilms.TabIndex = 3
         Me.tpFilms.Text = "Films"
         Me.tpFilms.UseVisualStyleBackColor = True
@@ -2065,7 +2063,7 @@ Partial Class frmSetup
         Me.tpIndex.Location = New System.Drawing.Point(4, 22)
         Me.tpIndex.Name = "tpIndex"
         Me.tpIndex.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpIndex.Size = New System.Drawing.Size(626, 532)
+        Me.tpIndex.Size = New System.Drawing.Size(639, 417)
         Me.tpIndex.TabIndex = 4
         Me.tpIndex.Text = "Index / Added value"
         Me.tpIndex.UseVisualStyleBackColor = True
@@ -2270,9 +2268,9 @@ Partial Class frmSetup
         '
         'DataGridViewTextBoxColumn2
         '
-        DataGridViewCellStyle6.Format = "C0"
-        DataGridViewCellStyle6.NullValue = "0"
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Format = "C0"
+        DataGridViewCellStyle3.NullValue = "0"
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn2.HeaderText = "Amount"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.Width = 70
@@ -2290,15 +2288,6 @@ Partial Class frmSetup
         Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn4.Width = 60
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(539, 236)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 27
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmSetup
         '
@@ -2570,5 +2559,4 @@ Partial Class frmSetup
     Friend WithEvents PictureBox9 As Windows.Forms.PictureBox
     Friend WithEvents chkSendAsUnitMarathon As Windows.Forms.CheckBox
     Friend WithEvents lblRestrictedClientBool As Windows.Forms.Label
-    Friend WithEvents Button1 As Windows.Forms.Button
 End Class

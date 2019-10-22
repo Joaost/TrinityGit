@@ -77,15 +77,14 @@ Public Class frmOpenFromDB
                 Dim tmpClient As New Client
                 tmpClient.id = item!id
                 tmpClient.name = item!name
-                If Not IsDBNull(item("restricted")) Then
-                    tmpClient.restricted = item("restricted") 'rd!Restricted 
+                If TrinitySettings.DefaultArea <> "NO" Then
+                    If Not IsDBNull(item("restricted")) Then
+                        tmpClient.restricted = item("restricted") 'rd!Restricted 
+                    End If
                 End If
                 Clientlist.Add(tmpClient)
             Next
             Clientlist.Sort(New ClientComparer)
-
-
-
         End If
 
         cmbClient.Items.Clear()

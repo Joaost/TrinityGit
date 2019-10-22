@@ -701,13 +701,38 @@ Public Class frmSetup
     Private Sub OpenContractFromDB()
 
         If frmSelectContract.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            ActiveCampaign.Contract = New Trinity.cContract(Campaign)
-            ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
-            ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
 
-            ActiveCampaign.Contract.ApplyToCampaign()
+            'Function to check if contract client is restricted or not
+            Dim contractId = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
+            Dim res As DataTable = DBReader.getContractAsDatatable(contractId)
+            Dim contractClientName = DBReader.getClient(res.Rows(0).Item(10))
 
-            lblContract.Text = ActiveCampaign.Contract.Name
+            If Campaign.checkIfUserIsValid(contractClientName) Then
+                ActiveCampaign.Contract = New Trinity.cContract(Campaign)
+                ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
+                ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
+
+                ActiveCampaign.Contract.ApplyToCampaign()
+
+                lblContract.Text = ActiveCampaign.Contract.Name
+            Else
+                Windows.Forms.MessageBox.Show("Campaign client contains restriction and user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+
+            End If
+
+
+            'Old way with rescrition as a column from the DB
+            'If TrinitySettings.DefaultArea <> "NO" Then
+            '    Dim res As DataTable = DBReader.getContractAsDatatable(contractId)
+            '    'Returns if a contract contains restriction, if so then check if the user has access to that contract as well.
+            '    Dim restrictionRes = res.Rows(0).Item(8)
+            '    If restrictionRes Then
+            '        'Check if user has access to that contract
+            '        Windows.Forms.MessageBox.Show("Contract has restriction and is locked", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            '        Exit Sub
+            '    End If
+            'End If
+
         End If
         frmSetup_Activated(New Object, New EventArgs)
 
@@ -1267,7 +1292,7 @@ Public Class frmSetup
                 If tmpPerson.statusActive <> False Then
                     cmbPlanner.Items.Add(tmpPerson)
                     cmbBuyer.Items.Add(tmpPerson)
-                End if
+                End If
             Next
         Else
             If planners Is Nothing Or buyers Is Nothing Then
@@ -2436,7 +2461,7 @@ Public Class frmSetup
         'Added If bSpot.Film is not nothing /JK
         Dim BookedSpots As List(Of Trinity.cBookedSpot) = (From bSpot As Trinity.cBookedSpot In Campaign.BookedSpots Select bSpot Where bSpot.Film IsNot Nothing AndAlso bSpot.Film.Name = Film).ToList
         If BookedSpots.Count > 0 Then
-            Dim messageText As String = "You have booked the following spots using the film you are about to remove. Removing this film will remove your booked spots. Continue?" & _
+            Dim messageText As String = "You have booked the following spots using the film you are about to remove. Removing this film will remove your booked spots. Continue?" &
             vbNewLine & "Note that you can avoid this message if you instead of removing the spot simply change its details below."
             For Each bSpot As Trinity.cBookedSpot In BookedSpots
                 messageText &= bSpot.AirDate.ToShortDateString & " " & bSpot.Bookingtype.ToString & " " & bSpot.ProgAfter & vbNewLine
@@ -3751,7 +3776,7 @@ Public Class frmSetup
             Else
                 If ActiveCampaign.Contract IsNot Nothing Then
                     With ActiveCampaign.Contract.Channels(Chan).BookingTypes(1).Item(BT).Indexes(TmpIndex.ID).Enhancements.Item(TmpRow.Tag)
-                        If .Amount <> TmpRow.Cells(1).Value OrElse _
+                        If .Amount <> TmpRow.Cells(1).Value OrElse
                            .Name <> TmpRow.Cells(0).Value Then
                             _noChange = False
                             Exit For
@@ -3862,7 +3887,7 @@ Public Class frmSetup
         End If
         grpCombo.Visible = True
         txtMarathonIDCombo.Text = TmpCombo.MarathonIDCombination
-        If TmpCombo.sendAsOneUnitTOMarathon
+        If TmpCombo.sendAsOneUnitTOMarathon Then
             chkSendAsUnitMarathon.Checked = TmpCombo.sendAsOneUnitTOMarathon
         Else
             chkSendAsUnitMarathon.Checked = TmpCombo.sendAsOneUnitTOMarathon
@@ -4737,7 +4762,7 @@ Public Class frmSetup
 
         TmpCombo.PrintAsOne = chkPrintAsOne.Checked
     End Sub
-    
+
 
     Private Sub cmdAddChannelWizard_Click(sender As System.Object, e As System.EventArgs) Handles cmdAddChannelWizard.Click
         If ActiveCampaign.IsStripped AndAlso Windows.Forms.MessageBox.Show("Unused channels has been removed from this campaign." & vbCrLf & vbCrLf & "Do you want to reload all channels now?", "T R I N I T Y", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
@@ -4759,21 +4784,21 @@ Public Class frmSetup
 
     Private Sub mnuFF36810MTVCC_Click(sender As Object, e As EventArgs) Handles mnuFF36810MTVCC.Click
         Dim tmpListOfCombinationChannels As New List(Of String)
-        For Each TmpRow As DataGridViewRow In grdCombo.Rows            
+        For Each TmpRow As DataGridViewRow In grdCombo.Rows
             Dim TmpCC As Trinity.cCombinationChannel = TmpRow.Tag
             tmpListOfCombinationChannels.Add(TmpCC.ChannelName)
         Next
 
         Dim FFAll As Boolean = False
         'FF 3-6-8-10-MTV-CC
-        If tmpListOfCombinationChannels.Contains("TV3") And tmpListOfCombinationChannels.Contains("TV6") And tmpListOfCombinationChannels.Contains("TV8") And tmpListOfCombinationChannels.Contains("TV10") And tmpListOfCombinationChannels.Contains("MTV") And tmpListOfCombinationChannels.Contains("Comedy Central")
-            FFAll = True   
+        If tmpListOfCombinationChannels.Contains("TV3") And tmpListOfCombinationChannels.Contains("TV6") And tmpListOfCombinationChannels.Contains("TV8") And tmpListOfCombinationChannels.Contains("TV10") And tmpListOfCombinationChannels.Contains("MTV") And tmpListOfCombinationChannels.Contains("Comedy Central") Then
+            FFAll = True
         End If
 
-        If FFAll
+        If FFAll Then
             Dim xmldoc As New XmlDataDocument()
             Dim xmlnode As XmlNodeList
-            Dim listTargets As new List(Of Object)
+            Dim listTargets As New List(Of Object)
             Dim str As String = ""
             Dim fs As New FileStream(TrinitySettings.ActiveDataPath & "3-6-8-10-MTV-CC.xml", FileMode.Open, FileAccess.Read)
             xmldoc.Load(fs)
@@ -4794,47 +4819,48 @@ Public Class frmSetup
     End Sub
 
     Private Sub mnuCalculcateComboND_Opening(sender As Object, e As CancelEventArgs) Handles mnuCalculcateComboND.Opening
-        If TrinitySettings.DefaultArea = "SE"
+        If TrinitySettings.DefaultArea = "SE" Then
             UseMTGChannelSplitToolStripMenuItem.Visible = True
         End If
     End Sub
 
     Private Sub txtMarathonIDCombo_TextChanged(sender As Object, e As EventArgs) Handles txtMarathonIDCombo.TextChanged
         Dim selectedCombo As Trinity.cCombination
-        For each row As DataGridViewrow In grdcombos.Rows
-            If row.Selected = True
+        For Each row As DataGridViewRow In grdCombos.Rows
+            If row.Selected = True Then
                 selectedCombo = row.Tag()
             End If
         Next
-        If selectedCombo isnot Nothing
+        If selectedCombo IsNot Nothing Then
             selectedCombo.MarathonIDCombination = txtMarathonIDCombo.Text
         End If
     End Sub
 
     Private Sub txtMarathonIDCombo_Enter(sender As Object, e As EventArgs) Handles txtMarathonIDCombo.Enter
-        
+
         Dim selectedCombo As Trinity.cCombination
-        For each row As DataGridViewrow In grdcombos.Rows
-            If row.Selected = True
+        For Each row As DataGridViewRow In grdCombos.Rows
+            If row.Selected = True Then
                 selectedCombo = row.Tag()
             End If
         Next
-        If selectedCombo isnot Nothing
+        If selectedCombo IsNot Nothing Then
             selectedCombo.MarathonIDCombination = txtMarathonIDCombo.Text
         End If
     End Sub
 
     Private Sub chkSendAsUnitMarathon_CheckedChanged(sender As Object, e As EventArgs) Handles chkSendAsUnitMarathon.CheckedChanged
         Dim selectedCombo As Trinity.cCombination
-        For each row As DataGridViewrow In grdcombos.Rows
-            If row.Selected = True
+        For Each row As DataGridViewRow In grdCombos.Rows
+            If row.Selected = True Then
                 selectedCombo = row.Tag()
             End If
         Next
-        If selectedCombo isnot Nothing
-            If chkSendAsUnitMarathon.Checked
+        If selectedCombo IsNot Nothing Then
+
+            If chkSendAsUnitMarathon.Checked Then
                 selectedCombo.sendAsOneUnitTOMarathon = True
-            Else                
+            Else
                 selectedCombo.sendAsOneUnitTOMarathon = False
             End If
         End If

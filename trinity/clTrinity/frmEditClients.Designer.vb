@@ -53,7 +53,7 @@ Partial Class frmEditClients
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.clTrinity.My.Resources.Resources.search_2_16x16
-        Me.PictureBox1.Location = New System.Drawing.Point(20, 33)
+        Me.PictureBox1.Location = New System.Drawing.Point(6, 1)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(16, 16)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -66,7 +66,7 @@ Partial Class frmEditClients
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSave.Image = Global.clTrinity.My.Resources.Resources.save_2_small
         Me.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSave.Location = New System.Drawing.Point(493, 392)
+        Me.btnSave.Location = New System.Drawing.Point(507, 360)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(66, 28)
         Me.btnSave.TabIndex = 29
@@ -88,13 +88,13 @@ Partial Class frmEditClients
         Me.grdClients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.grdClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdClients.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colStart, Me.colEnd, Me.colName, Me.colStatus, Me.colPlanner, Me.colBuyer, Me.colSaved, Me.colLocked, Me.colDelete})
-        Me.grdClients.Location = New System.Drawing.Point(6, 55)
+        Me.grdClients.Location = New System.Drawing.Point(6, 23)
         Me.grdClients.MultiSelect = False
         Me.grdClients.Name = "grdClients"
         Me.grdClients.ReadOnly = True
         Me.grdClients.RowHeadersVisible = False
         Me.grdClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdClients.Size = New System.Drawing.Size(553, 331)
+        Me.grdClients.Size = New System.Drawing.Size(581, 331)
         Me.grdClients.TabIndex = 28
         Me.grdClients.TabStop = False
         Me.grdClients.VirtualMode = True
@@ -113,7 +113,7 @@ Partial Class frmEditClients
         '
         Me.btnCancel.FlatAppearance.BorderSize = 0
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancel.Location = New System.Drawing.Point(415, 392)
+        Me.btnCancel.Location = New System.Drawing.Point(429, 360)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(68, 28)
         Me.btnCancel.TabIndex = 27
@@ -122,9 +122,9 @@ Partial Class frmEditClients
         '
         'txtSearch
         '
-        Me.txtSearch.Location = New System.Drawing.Point(42, 30)
+        Me.txtSearch.Location = New System.Drawing.Point(28, 1)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(328, 20)
+        Me.txtSearch.Size = New System.Drawing.Size(559, 20)
         Me.txtSearch.TabIndex = 26
         '
         'DataGridViewTextBoxColumn1
@@ -277,13 +277,15 @@ Partial Class frmEditClients
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(585, 450)
+        Me.ClientSize = New System.Drawing.Size(585, 393)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.grdClients)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.txtSearch)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximumSize = New System.Drawing.Size(601, 432)
+        Me.MinimumSize = New System.Drawing.Size(601, 432)
         Me.Name = "frmEditClients"
         Me.Text = "Edit clients"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

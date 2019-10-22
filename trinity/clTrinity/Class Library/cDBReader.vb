@@ -50,9 +50,11 @@ Namespace Trinity
 
         Public MustOverride Function getContractSaveTime(ByVal DatabaseID As Long) As DateTime
 
-        Public MustOverride Function getContracts() As DataTable
+        Public MustOverride Function getContracts(Optional ByVal searchForRestrictionLock = False) As DataTable
 
         Public MustOverride Function getContract(ByVal ContractID As Long) As Xml.XmlElement
+
+        Public MustOverride Function getContractAsDatatable(ByVal ContractID As Long) As System.Data.DataTable
 
         Public MustOverride Function saveContract(Contract As Trinity.cContract, ByVal XML As Xml.XmlDocument) As Boolean
 

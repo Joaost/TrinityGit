@@ -20,6 +20,8 @@ Namespace Trinity
         Private mvarPath As String
         Private mvarSaveDateTime As Date
         Private mvarIncludedSets() As String
+        Private mvarResctricted As Boolean
+
         Private mvarMain As cKampanj
 
         Private mvarChannelPackage As String
@@ -51,7 +53,15 @@ Namespace Trinity
                 Return mvarSaveDateTime
             End Get
         End Property
-
+        Private mvarClient As Integer = 0
+        Public Property client() As Integer
+            Get
+                Return mvarClient
+            End Get
+            Set(ByVal value As Integer)
+                mvarClient = value
+            End Set
+        End Property
         Sub ApplyToCampaign()
             Dim TmpBT As Trinity.cBookingType
             Dim _p As Integer = 0
@@ -1467,7 +1477,8 @@ End_BT:
                         End If
                         XMLComboChannel = XMLCombo.FirstChild
                         While Not XMLComboChannel Is Nothing
-                            If mvarMain.Channels(XMLComboChannel.GetAttribute("Chan")) Isnot nothing
+                            If mvarMain.Channels(XMLComboChannel.GetAttribute("Chan")) IsNot Nothing Then
+
                                 If Channels(XMLComboChannel.GetAttribute("Chan")) IsNot Nothing AndAlso Channels(XMLComboChannel.GetAttribute("Chan")).BookingTypes(1)(XMLComboChannel.GetAttribute("BT")) Is Nothing Then
                                     If mvarMain.Channels(XMLComboChannel.GetAttribute("Chan")).BookingTypes(XMLComboChannel.GetAttribute("BT")) IsNot Nothing Then
                                         Dim TmpBT As Trinity.cBookingType = mvarMain.Channels(XMLComboChannel.GetAttribute("Chan")).BookingTypes(XMLComboChannel.GetAttribute("BT"))
@@ -1505,7 +1516,14 @@ End_BT:
                 mvarPath = Path
             End If
         End Sub
-
+        Public Property restriced() As Boolean
+            Get
+                Return mvarResctricted
+            End Get
+            Set(ByVal value As Boolean)
+                mvarResctricted = value
+            End Set
+        End Property
         Public Property Channels() As cContractChannels
             Get
                 Channels = mvarChannels

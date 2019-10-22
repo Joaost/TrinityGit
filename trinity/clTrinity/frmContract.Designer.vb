@@ -241,6 +241,9 @@ Partial Class frmContract
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.chkContractRestriction = New System.Windows.Forms.CheckBox()
+        Me.cmbClient = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.mnuWizard.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tpCombinations.SuspendLayout()
@@ -415,7 +418,7 @@ Partial Class frmContract
         Me.tpCombinations.Location = New System.Drawing.Point(4, 22)
         Me.tpCombinations.Name = "tpCombinations"
         Me.tpCombinations.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpCombinations.Size = New System.Drawing.Size(693, 592)
+        Me.tpCombinations.Size = New System.Drawing.Size(693, 575)
         Me.tpCombinations.TabIndex = 6
         Me.tpCombinations.Text = "Combinations / Packages"
         Me.tpCombinations.UseVisualStyleBackColor = True
@@ -638,7 +641,7 @@ Partial Class frmContract
         Me.tpChannelSetup.Location = New System.Drawing.Point(4, 22)
         Me.tpChannelSetup.Name = "tpChannelSetup"
         Me.tpChannelSetup.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpChannelSetup.Size = New System.Drawing.Size(693, 592)
+        Me.tpChannelSetup.Size = New System.Drawing.Size(693, 575)
         Me.tpChannelSetup.TabIndex = 1
         Me.tpChannelSetup.Text = "Channel Setup"
         Me.tpChannelSetup.UseVisualStyleBackColor = True
@@ -1152,7 +1155,7 @@ Partial Class frmContract
         Me.tpGeneralSetup.Location = New System.Drawing.Point(4, 22)
         Me.tpGeneralSetup.Name = "tpGeneralSetup"
         Me.tpGeneralSetup.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpGeneralSetup.Size = New System.Drawing.Size(693, 592)
+        Me.tpGeneralSetup.Size = New System.Drawing.Size(693, 575)
         Me.tpGeneralSetup.TabIndex = 0
         Me.tpGeneralSetup.Text = "General Setup"
         Me.tpGeneralSetup.UseVisualStyleBackColor = True
@@ -1588,10 +1591,10 @@ Partial Class frmContract
         Me.TabControl1.Controls.Add(Me.tpChannelSetup)
         Me.TabControl1.Controls.Add(Me.tpCombinations)
         Me.TabControl1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(0, 44)
+        Me.TabControl1.Location = New System.Drawing.Point(0, 61)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(701, 618)
+        Me.TabControl1.Size = New System.Drawing.Size(701, 601)
         Me.TabControl1.TabIndex = 1
         '
         'tpDescription
@@ -1599,7 +1602,7 @@ Partial Class frmContract
         Me.tpDescription.Controls.Add(Me.txtNotes)
         Me.tpDescription.Location = New System.Drawing.Point(4, 22)
         Me.tpDescription.Name = "tpDescription"
-        Me.tpDescription.Size = New System.Drawing.Size(693, 592)
+        Me.tpDescription.Size = New System.Drawing.Size(693, 575)
         Me.tpDescription.TabIndex = 7
         Me.tpDescription.Text = "Description"
         Me.tpDescription.UseVisualStyleBackColor = True
@@ -1613,7 +1616,7 @@ Partial Class frmContract
         Me.txtNotes.Location = New System.Drawing.Point(0, 0)
         Me.txtNotes.Multiline = True
         Me.txtNotes.Name = "txtNotes"
-        Me.txtNotes.Size = New System.Drawing.Size(693, 587)
+        Me.txtNotes.Size = New System.Drawing.Size(693, 576)
         Me.txtNotes.TabIndex = 3
         '
         'cmdUpdate
@@ -2125,11 +2128,45 @@ Partial Class frmContract
         Me.Button2.TabIndex = 11
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'chkContractRestriction
+        '
+        Me.chkContractRestriction.AutoSize = True
+        Me.chkContractRestriction.Location = New System.Drawing.Point(274, 23)
+        Me.chkContractRestriction.Name = "chkContractRestriction"
+        Me.chkContractRestriction.Size = New System.Drawing.Size(81, 17)
+        Me.chkContractRestriction.TabIndex = 42
+        Me.chkContractRestriction.Text = "Restriction"
+        Me.chkContractRestriction.UseVisualStyleBackColor = True
+        '
+        'cmbClient
+        '
+        Me.cmbClient.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmbClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbClient.FormattingEnabled = True
+        Me.cmbClient.Location = New System.Drawing.Point(58, 19)
+        Me.cmbClient.Name = "cmbClient"
+        Me.cmbClient.Size = New System.Drawing.Size(200, 21)
+        Me.cmbClient.Sorted = True
+        Me.cmbClient.TabIndex = 44
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(55, 3)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(37, 13)
+        Me.Label8.TabIndex = 43
+        Me.Label8.Text = "Client"
+        '
         'frmContract
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(701, 661)
+        Me.Controls.Add(Me.cmbClient)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.chkContractRestriction)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.cmdUpdate)
         Me.Controls.Add(Me.cmdSaveToDB)
@@ -2395,4 +2432,7 @@ End Sub
     Friend WithEvents colAmount As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colCostOn As Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents colMarathonID As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents chkContractRestriction As Windows.Forms.CheckBox
+    Friend WithEvents cmbClient As Windows.Forms.ComboBox
+    Friend WithEvents Label8 As Windows.Forms.Label
 End Class

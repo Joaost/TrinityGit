@@ -13,10 +13,13 @@ Namespace Trinity
         Public Overrides Function getContractSaveTime(ByVal DatabaseID As Long) As Date
             Return Nothing
         End Function
-        Public Overrides Function getContracts() As System.Data.DataTable
+        Public Overrides Function getContracts(Optional ByVal searchForRestrictionLock = False) As System.Data.DataTable
             Return Nothing
         End Function
         Public Overrides Function getContract(ByVal ContractID As Long) As System.Xml.XmlElement
+            Return Nothing
+        End Function
+        Public Overrides Function getContractAsDatatable(ByVal ContractID As Long) As System.Data.DataTable
             Return Nothing
         End Function
         Public Overrides Function saveContract(Contract As Trinity.cContract, ByVal XML As System.Xml.XmlDocument) As Boolean

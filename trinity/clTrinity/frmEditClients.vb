@@ -4,24 +4,24 @@
     Dim _restrictedClients As DataTable
     Dim _clients As DataTable = DBReader.getAllClients()
 
-    Public Sub populateClients()
-        PopulateClientList()
+    'Public Sub populateClients()
+    '    PopulateClientList()
 
-        'Sets up the table
-        'Using _clients As DataTable = New DataTable
-        '    Using _conn As New SqlClient.SqlConnection(_connectionString)
-        '        _conn.Open()
-        '        Using com As New SqlClient.SqlCommand("SELECT * FROM Clients", _conn)
-        '            Using rd As SqlClient.SqlDataReader = com.ExecuteReader
-        '                _clients.Load(rd)
-        '                rd.Close()
-        '                _conn.Close()
-        '                Return _clients
-        '            End Using
-        '        End Using
-        '    End Using
-        'End Using
-    End Sub
+    '    'Sets up the table
+    '    Using _clients As DataTable = New DataTable
+    '        Using _conn As New SqlClient.SqlConnection(_connectionString)
+    '            _conn.Open()
+    '            Using com As New SqlClient.SqlCommand("SELECT * FROM Clients", _conn)
+    '                Using rd As SqlClient.SqlDataReader = com.ExecuteReader
+    '                    _clients.Load(rd)
+    '                    rd.Close()
+    '                    _conn.Close()
+    '                    Return _clients
+    '                End Using
+    '            End Using
+    '        End Using
+    '    End Using
+    'End Sub
     Public Sub PopulateClientList()
         grdClients.Rows.Clear()
 
@@ -66,9 +66,24 @@
         '' DBReader.addClients(_list)
         'Me.DialogResult = Windows.Forms.DialogResult.OK
     End Sub
-
+    Private Sub getAllClients()
+        Dim clients As DataTable = DBReader.getAllClients()
+        For Each dr As DataRow In clients.Rows
+            Dim TmpItem As New CBItem
+            TmpItem.Text = dr.Item("name") 'rd!name
+            TmpItem.Tag = dr.Item("id") 'rd!id
+            ' Added by JOKO
+            ' Important contraint since Norway dont have that value and will then return null and it will break down.
+            If TrinitySettings.DefaultArea <> "NO" Then
+                If Not IsDBNull(dr.Item("restricted")) Then
+                    TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+                End If
+            End If
+            grdClients.Rows.Add(TmpItem)
+            'cmbClient.Items.Add(TmpItem)
+        Next
+    End Sub
     Private Sub frmClients_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        frmSetup.PopulateClientCombo()
         '_clients = DBReader.getAllClients
         'grdClients.Rows.Clear()
 
@@ -119,4 +134,12 @@
         End Property
     End Class
 
+    Private Sub grdClients_CellValueNeeded(sender As Object, e As Windows.Forms.DataGridViewCellValueEventArgs) Handles grdClients.CellValueNeeded
+
+        getAllClients()
+    End Sub
+
+    Private Sub grdClients_CellValuePushed(sender As Object, e As Windows.Forms.DataGridViewCellValueEventArgs) Handles grdClients.CellValuePushed
+        getAllClients()
+    End Sub
 End Class

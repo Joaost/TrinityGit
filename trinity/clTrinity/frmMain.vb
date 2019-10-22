@@ -48,15 +48,15 @@ Public Class frmMain
 
         My.Application.checkDeveloper()
 
-        If TrinitySettings.UserEmail = "joakim.koch@groupm.com" Then
-            'Added to load all pricelists when clicking on Setup'
-            Trinity.Helper.WriteToLogFile("Read Pricelists")
-            For Each TmpChan In Campaign.Channels
-                For Each TmpBT In TmpChan.BookingTypes
-                    TmpBT.ReadPricelist()
-                Next
-            Next
-        End If
+        'If TrinitySettings.UserEmail = "joakim.koch@groupm.com" Then
+        '    'Added to load all pricelists when clicking on Setup'
+        '    Trinity.Helper.WriteToLogFile("Read Pricelists")
+        '    For Each TmpChan In Campaign.Channels
+        '        For Each TmpBT In TmpChan.BookingTypes
+        '            TmpBT.ReadPricelist()
+        '        Next
+        '    Next
+        'End If
 
         frmSetup.MdiParent = Me
         frmSetup.Show()

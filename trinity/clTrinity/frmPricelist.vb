@@ -2166,10 +2166,12 @@ Public Class frmPricelist
                     For Each PriceListPeriod As Trinity.cPricelistPeriod In Target.PricelistPeriods
                         If PriceListPeriod.ToDate >= pickDate.dateFrom.Value Then 'AndAlso pickDate.dateTo.Value >= PriceListPeriod.ToDate Then
                             Dim _targetName As String = Target.Target.TargetName
-                            If TrinitySettings.DefaultArea = "NO"
-                                
-                                _targetName = "12+"
-                                Target.Target.TargetName = Target.TargetName.Replace("A", "").Replace("K", "W")
+                            If TrinitySettings.DefaultArea = "NO" Then
+
+                                _targetName = "10-79"
+                                Target.Target.TargetName = "10-79"
+
+                                'Target.Target.TargetName = Target.TargetName.Replace("A", "").Replace("K", "W")
                             Else
 
                             End If
@@ -2909,8 +2911,8 @@ Public Class frmPricelist
 
                             If Not valueDictionary.ContainsKey(tmpTarget.TargetName) Then
                                 If TrinitySettings.DefaultArea = "NO" Then
-                                    valueDictionary.Add(tmpTarget.TargetName, "4450")
-                                    valueDictionary2.Add(tmpTarget.TargetName, "4450")
+                                    valueDictionary.Add(tmpTarget.TargetName, "4487")
+                                    valueDictionary2.Add(tmpTarget.TargetName, "4487")
                                 Else
                                     valueDictionary.Add(tmpTarget.TargetName, tmpTarget.Target.UniSizeTot)
                                     valueDictionary2.Add(tmpTarget.TargetName, tmpTarget.Target.UniSize)

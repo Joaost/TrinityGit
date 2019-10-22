@@ -152,9 +152,14 @@ Public Class frmContract
         '    grdCosts.Rows.Add()
         '    grdCosts.Rows(grdCosts.Rows.Count - 1).Tag = TmpCost
         'Next
-
+        PopulateClientCombo()
         If Campaign.Area <> "DK" Then
             grdAddedValues.Columns(3).Visible = False
+        End If
+        If Campaign.Contract.restriced Then
+            chkContractRestriction.Checked = True
+        Else
+            chkContractRestriction.Checked = False
         End If
 
         colMarathonID.Visible = TrinitySettings.MarathonEnabled
@@ -163,7 +168,31 @@ Public Class frmContract
         cmdSaveToDB.Visible = Not TrinitySettings.SaveCampaignsAsFiles
     End Sub
 
+    Public Sub PopulateClientCombo()
+        'selcts all clients and put the names into the combo box
 
+        cmbClient.Items.Clear()
+        cmbClient.DisplayMember = "Name"
+
+        Dim clients As DataTable = DBReader.getAllClients()
+        For Each dr As DataRow In clients.Rows
+            Dim TmpItem As New Client
+            TmpItem.name = dr.Item("name") 'rd!name
+            TmpItem.id = dr.Item("id") 'rd!id
+            ' Added by JOKO
+            ' Important contraint since Norway dont have that value and will then return null and it will break down.
+            If TrinitySettings.DefaultArea <> "NO" Then
+                If Not IsDBNull(dr.Item("restricted")) Then
+                    TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+                End If
+            End If
+            cmbClient.Items.Add(TmpItem)
+            If TmpItem.id = Campaign.ClientID Then
+                cmbClient.Text = TmpItem.name
+            End If
+        Next
+
+    End Sub
     Private Sub cmdAddTarget_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddTarget.Click
         If cmbBookingtypes.SelectedIndex = -1 Then Exit Sub
 
@@ -2192,6 +2221,18 @@ Public Class frmContract
 
     Private Sub grdCosts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles grdCosts.CellContentClick
 
+    End Sub
+
+    Private Sub chkContractRestriction_CheckedChanged(sender As Object, e As EventArgs) Handles chkContractRestriction.CheckedChanged
+        If chkContractRestriction.Checked Then
+            Campaign.Contract.restriced = True
+        Else
+            Campaign.Contract.restriced = False
+        End If
+    End Sub
+
+    Private Sub cmbClient_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbClient.SelectedIndexChanged
+        Campaign.Contract.client = DirectCast(cmbClient.SelectedItem, Client).id
     End Sub
 End Class
 

@@ -124,12 +124,18 @@ Namespace Trinity
             End Using
         End Function
 
-        Public Overrides Function getContracts() As System.Data.DataTable
+        Public Overrides Function getContracts(Optional ByVal searchForRestrictionLock = False) As System.Data.DataTable
             Using _conn As New SqlClient.SqlConnection(_connectionString)
                 _conn.Open()
                 Using Command As SqlClient.SqlCommand = New SqlClient.SqlCommand
                     Command.Connection = _conn
-                    Command.CommandText = "SELECT id, name,startdate,enddate,version,originallocation,deletedon,lastsavedon FROM contracts WHERE deletedon IS NULL ORDER BY name"
+                    If searchForRestrictionLock Then
+
+                        Command.CommandText = "SELECT id, name,startdate,enddate,version,originallocation,deletedon,lastsavedon, restricted FROM contracts WHERE deletedon IS NULL ORDER BY name"
+                    Else
+                        Command.CommandText = "SELECT id, name,startdate,enddate,version,originallocation,deletedon,lastsavedon FROM contracts WHERE deletedon IS NULL ORDER BY name"
+
+                    End If
                     Try
                         Using rd As SqlClient.SqlDataReader = Command.ExecuteReader
                             Try
@@ -188,8 +194,38 @@ Namespace Trinity
             End Using
         End Function
 
-        Public Overrides Function saveContract(Contract As Trinity.cContract, ByVal XML As System.Xml.XmlDocument) As Boolean
+        Public Overrides Function getContractAsDatatable(ByVal ContractID As Long) As System.Data.DataTable
+            Using _conn As New SqlClient.SqlConnection(_connectionString)
+                _conn.Open()
+                Using Command As SqlClient.SqlCommand = New SqlClient.SqlCommand
+                    Command.Connection = _conn
+                    'Command.CommandText = "SELECT xml FROM contracts WHERE id=" & ContractID
+                    Command.CommandText = "SELECT * FROM contracts WHERE deletedon IS NULL AND id=" & ContractID
+                    Try
+                        Using rd As SqlClient.SqlDataReader = Command.ExecuteReader
+                            Try
+                                Using dt As New DataTable
+                                    dt.Load(rd)
+                                    rd.Close()
+                                    _conn.Close()
+                                    Return dt
+                                End Using
+                            Catch ex As Exception
+                                Debug.Print(ex.Message)
+                                rd.Close()
+                            End Try
+                        End Using
+                    Catch ex As SqlClient.SqlException
+                        Debug.Print(ex.Message)
+                    End Try
+                End Using
+                _conn.Close()
+                Return New System.Data.DataTable
+            End Using
+        End Function
 
+        Public Overrides Function saveContract(Contract As Trinity.cContract, ByVal XML As System.Xml.XmlDocument) As Boolean
+            Dim restrictedRes = Convert.ToInt32(Campaign.Contract.restriced)
             If Contract.MainObject.ContractID > 0 Then
                 Dim Version As Long
                 Using _conn As New SqlClient.SqlConnection(_connectionString)
@@ -201,8 +237,8 @@ Namespace Trinity
                     End Using
                     Using Command As New SqlClient.SqlCommand
                         Command.Connection = _conn
-                        Command.CommandText = "UPDATE contracts SET name='" & Contract.Name & "',startdate='" & Contract.FromDate & "',enddate='" & _
-                                                Contract.ToDate & "',lastsavedon='" & Contract.SaveDateTime & "',lastsavedby=" & TrinitySettings.UserID & ",version=" & Version & _
+                        Command.CommandText = "UPDATE contracts SET name='" & Contract.Name & "',startdate='" & Contract.FromDate & "',enddate='" &
+                                                Contract.ToDate & "',lastsavedon='" & Contract.SaveDateTime & "',lastsavedby=" & TrinitySettings.UserID & ",version=" & Version & ", client='" & Campaign.Contract.client & "'" &
                                                 ",xml=@xml WHERE id = " & Contract.MainObject.ContractID
                         Command.Parameters.Add("@xml", SqlDbType.Xml)
                         Command.Parameters("@xml").Value = XML.OuterXml.ToString
@@ -225,8 +261,8 @@ Namespace Trinity
                     If Rows = 0 Then
                         Using Command As New SqlClient.SqlCommand
                             Command.Connection = _conn
-                            Command.CommandText = "INSERT INTO contracts (name,startdate,enddate,lastsavedon,lastsavedby,version,originallocation,xml) VALUES('" & Contract.Name & "','" & Contract.FromDate & "','" & _
-                                                    Contract.ToDate & "','" & Contract.SaveDateTime & "'," & TrinitySettings.UserID & ",1,'" & Contract.Path & "',@xml);SELECT @@IDENTITY"
+                            Command.CommandText = "INSERT INTO contracts (name,startdate,enddate, client,lastsavedon,lastsavedby,version,originallocation,xml) VALUES('" & Contract.Name & "','" & Contract.FromDate & "','" &
+                                                    Contract.ToDate & "','" & Campaign.Contract.client & "','" & Contract.SaveDateTime & "'," & TrinitySettings.UserID & ",1,'" & Contract.Path & "',@xml);SELECT @@IDENTITY"
                             Command.Parameters.Add("@xml", SqlDbType.Xml)
                             Command.Parameters("@xml").Value = XML.OuterXml.ToString
 
