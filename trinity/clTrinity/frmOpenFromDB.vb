@@ -617,6 +617,7 @@ Public Class frmOpenFromDB
                             End If
                         Else
                             Windows.Forms.MessageBox.Show("Campaign client contains restriction and user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+                            Exit Sub
                         End If
                     Else
                         'If not go a head as usual
