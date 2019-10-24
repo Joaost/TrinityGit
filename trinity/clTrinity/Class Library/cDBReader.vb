@@ -124,7 +124,7 @@ Namespace Trinity
 
         Public MustOverride Sub addProduct(ByVal Name As String, ByVal ClientID As String, ByVal MarathonClient As String, ByVal MarathonProduct As String, ByVal MarathonCompany As String, ByVal MarathonContract As String, ByVal AdEdgeBrands As List(Of String), ByVal AdTooxAdvertiserID As Long, ByVal AdTooxDivisionID As Long, ByVal AdTooxBrandID As Long, ByVal AdTooxProductType As String)
 
-        Public MustOverride Sub updateClient(ByVal name As String, ByVal id As Integer)
+        Public MustOverride Sub updateClient(ByVal name As String, ByVal id As Integer, Optional ByVal restricted As Integer = 0)
 
         Public MustOverride Sub updateProduct(ByVal ProductID As String, ByVal Name As String, ByVal ClientID As String, ByVal MarathonClient As String, ByVal MarathonProduct As String, ByVal MarathonCompany As String, ByVal MarathonContract As String, ByVal AdEdgeBrands As List(Of String), ByVal AdTooxAdvertiserID As Long, ByVal AdTooxDivisionID As Long, ByVal AdTooxBrandID As Long, ByVal AdTooxProductType As String)
 

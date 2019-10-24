@@ -1,33 +1,24 @@
 ﻿Public Class frmEditClients
 
     'List of restricted clients from DB
-    Dim _restrictedClients As DataTable
-    Dim _clients As DataTable = DBReader.getAllClients()
+    Dim _restrictedClientsDBTable As DataTable
+    Dim clientList As New List(Of Client)
 
-    'Public Sub populateClients()
-    '    PopulateClientList()
 
-    '    'Sets up the table
-    '    Using _clients As DataTable = New DataTable
-    '        Using _conn As New SqlClient.SqlConnection(_connectionString)
-    '            _conn.Open()
-    '            Using com As New SqlClient.SqlCommand("SELECT * FROM Clients", _conn)
-    '                Using rd As SqlClient.SqlDataReader = com.ExecuteReader
-    '                    _clients.Load(rd)
-    '                    rd.Close()
-    '                    _conn.Close()
-    '                    Return _clients
-    '                End Using
-    '            End Using
-    '        End Using
-    '    End Using
-    'End Sub
     Public Sub PopulateClientList()
         grdClients.Rows.Clear()
 
-        _restrictedClients = DBReader.getAllClients()
+        _restrictedClientsDBTable = DBReader.getAllClients()
 
-        grdClients.Rows.Add(_restrictedClients.Rows)
+    End Sub
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        getAllClients()
+        fillGrid()
 
     End Sub
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
@@ -46,60 +37,42 @@
         'tmrKeypress.Enabled = False
     End Sub
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        'txtSearch.TabStop = True
-        'txtSearch.TabIndex = 1
-        'txtSearch.Focus()
-        'Me.DialogResult = Windows.Forms.DialogResult.Cancel
-        'Me.Close()
+        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        Me.Close()
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As System.EventArgs) Handles btnSave.Click
-        'list of Rejected clients'
-        'Dim _list As New List(Of String)
-        'For Each _row As Windows.Forms.DataGridView In grdClients.Rows
-        '    ' If _row.Visible = False AndAlso _restrictedClients(_row.Index).id > 0 Then
-        '    '''''''Remove Restricteed Client
-        '    'ElseIf _row.Visible Then
-        '    '''''''_list.Add(_restrictedClient(_row.Index).id)
-        '    ' End If
-        'Next
-        '' DBReader.addClients(_list)
+        For Each cl As Client In clientList
+            Dim tempRestricted As Integer = 0
+            If cl.restricted Then
+                tempRestricted = 1
+            End If
+            DBReader.updateClient(cl.name, cl.id, tempRestricted)
+        Next
+        'Saving the entire list of clients with their properties
         'Me.DialogResult = Windows.Forms.DialogResult.OK
     End Sub
     Private Sub getAllClients()
-        Dim clients As DataTable = DBReader.getAllClients()
-        For Each dr As DataRow In clients.Rows
-            Dim TmpItem As New CBItem
-            TmpItem.Text = dr.Item("name") 'rd!name
-            TmpItem.Tag = dr.Item("id") 'rd!id
-            ' Added by JOKO
-            ' Important contraint since Norway dont have that value and will then return null and it will break down.
-            If TrinitySettings.DefaultArea <> "NO" Then
-                If Not IsDBNull(dr.Item("restricted")) Then
-                    TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+        PopulateClientList()
+        If grdClients.Rows.Count < 1 Then
+            For Each dr As DataRow In _restrictedClientsDBTable.Rows
+                Dim TmpItem As New Client
+                TmpItem.name = dr.Item("name") 'rd!name
+                TmpItem.id = dr.Item("id") 'rd!id
+                ' Added by JOKO
+                ' Important contraint since Norway dont have that value and will then return null and it will break down.
+                If TrinitySettings.DefaultArea <> "NO" Then
+                    If Not IsDBNull(dr.Item("restricted")) Then
+                        TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+                    End If
                 End If
-            End If
-            grdClients.Rows.Add(TmpItem)
-            'cmbClient.Items.Add(TmpItem)
-        Next
+                clientList.Add(TmpItem)
+                'grdClients.Rows.Add(TmpItem)
+                'cmbClient.Items.Add(TmpItem)
+            Next
+        End If
     End Sub
     Private Sub frmClients_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        '_clients = DBReader.getAllClients
-        'grdClients.Rows.Clear()
-
-        'For Each dr As DataRow In _clients.Rows
-        '    Dim tmpItem As New CBItem
-        '    tmpItem.Text = dr.Item("Name") 'rd!name
-        '    tmpItem.Tag = dr.Item("Id") 'dr!Id
-        '    If Not IsDBNull(dr.Item("restricted")) Then
-        '        tmpItem.restricted = dr.Item("restricted") 'rd!restricted
-        '    End If
-        '    grdClients.Rows.Add(tmpItem)
-        '    If tmpItem.Tag = Campaign.ClientID Then
-        '        ''
-        '    End If
-
-        'Next
     End Sub
 
     Private Class CBItem
@@ -135,11 +108,88 @@
     End Class
 
     Private Sub grdClients_CellValueNeeded(sender As Object, e As Windows.Forms.DataGridViewCellValueEventArgs) Handles grdClients.CellValueNeeded
+        If clientList.Count > 0 Then
+            Dim x As Client = clientList(e.RowIndex)
+            If x Is Nothing Then Exit Sub
+            Select Case e.ColumnIndex
+                Case colId.Index
+                    e.Value = x.id
+                Case colName.Index
+                    e.Value = x.name
+                Case colRestriction.Index
+                    e.Value = x.restricted
+            End Select
+        End If
 
-        getAllClients()
     End Sub
 
-    Private Sub grdClients_CellValuePushed(sender As Object, e As Windows.Forms.DataGridViewCellValueEventArgs) Handles grdClients.CellValuePushed
-        getAllClients()
+    Sub fillGrid()
+        If grdClients.RowCount < 1 Then
+            grdClients.Rows.Clear()
+            For Each cl As Client In clientList
+                Dim newRow As Integer = grdClients.Rows.Add
+                grdClients.Rows(newRow).Tag = cl
+            Next
+        End If
+    End Sub
+
+    Private Sub grdClients_CellEnter(sender As Object, e As Windows.Forms.DataGridViewCellEventArgs) Handles grdClients.CellEnter
+        'If e.ColumnIndex = 2 Then
+
+        '    Dim tmpClient As Client = grdClients.Rows(e.RowIndex).Tag
+        '    For Each cl As Client In clientList
+        '        If cl.id = tmpClient.id Then
+        '            Dim Checked As Boolean = CType(grdClients.Rows(e.RowIndex).Cells(e.ColumnIndex).Value, Boolean)
+        '            If Checked Then
+        '                cl.restricted = True
+        '            Else
+        '                cl.restricted = False
+        '            End If
+        '            'cl.restricted = tmpClient.restricted
+        '        End If
+        '    Next
+        'End If
+    End Sub
+
+    Private Sub grdClients_CellValueChanged(sender As Object, e As Windows.Forms.DataGridViewCellEventArgs) Handles grdClients.CellValueChanged
+        'If e.ColumnIndex = 2 Then
+        '    If grdClients.Rows.Count > 0 Then
+        '        Dim tmpClient As Client = grdClients.Rows(e.RowIndex).Tag
+        '        For Each cl As Client In clientList
+        '            If cl.id = tmpClient.id Then
+        '                cl.restricted = grdClients.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+        '                'cl.restricted = tmpClient.restricted
+        '            End If
+        '        Next
+        '    End If
+        'End If
+    End Sub
+
+    Private Sub grdClients_CellLeave(sender As Object, e As Windows.Forms.DataGridViewCellEventArgs) Handles grdClients.CellLeave
+        'If e.ColumnIndex = 2 Then
+        '    If grdClients.Rows.Count > 0 Then
+        '        Dim tmpClient As Client = grdClients.Rows(e.RowIndex).Tag
+        '        For Each cl As Client In clientList
+        '            If cl.id = tmpClient.id Then
+        '                cl.restricted = e.Value
+        '                'cl.restricted = tmpClient.restricted
+        '            End If
+        '        Next
+        '    End If
+        'End If
+    End Sub
+
+    Private Sub grdClients_CellValuePushed(ByVal sender As Object, e As System.Windows.Forms.DataGridViewCellValueEventArgs) Handles grdClients.CellValuePushed
+        If e.ColumnIndex = 2 Then
+            If grdClients.Rows.Count > 0 Then
+                Dim tmpClient As Client = grdClients.Rows(e.RowIndex).Tag
+                For Each cl As Client In clientList
+                    If cl.id = tmpClient.id Then
+                        cl.restricted = e.Value
+                        'cl.restricted = tmpClient.restricted
+                    End If
+                Next
+            End If
+        End If
     End Sub
 End Class

@@ -178,7 +178,7 @@ Public Class frmDefineChannels
         End Select
     End Sub
 
-    Private Sub grdBT_CellValuePushed(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellValueEventArgs) Handles grdBT.CellValuePushed
+    Private Sub grdBT_CellValuePushed(ByVal sender As Object, e As System.Windows.Forms.DataGridViewCellValueEventArgs) Handles grdBT.CellValuePushed
         Dim TmpBT As Trinity.cBookingType = grdBT.Rows(e.RowIndex).Tag
         If TmpBT.IsUserEditable Then
             Select Case e.ColumnIndex

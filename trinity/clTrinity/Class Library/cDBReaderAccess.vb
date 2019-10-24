@@ -356,7 +356,7 @@ ClientExist_error:
             com.ExecuteNonQuery()
         End Sub
 
-        Public Overrides Sub updateClient(ByVal name As String, ByVal id As Integer)
+        Public Overrides Sub updateClient(ByVal name As String, ByVal id As Integer, Optional ByVal restricted As Integer = 0)
             Dim com As New Odbc.OdbcCommand
             com.Connection = DBConn
             com.CommandText = "UPDATE Clients SET Name='" & name & "' WHERE id=" & id.ToString

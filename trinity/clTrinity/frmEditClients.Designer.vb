@@ -26,8 +26,6 @@ Partial Class frmEditClients
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEditClients))
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.grdClients = New System.Windows.Forms.DataGridView()
-        Me.colDelete = New System.Windows.Forms.DataGridViewImageColumn()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -38,14 +36,10 @@ Partial Class frmEditClients
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colStart = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colEnd = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colRestriction = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPlanner = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colBuyer = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colSaved = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colLocked = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.grdClients = New System.Windows.Forms.DataGridView()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdClients, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -74,41 +68,6 @@ Partial Class frmEditClients
         Me.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSave.UseVisualStyleBackColor = True
         '
-        'grdClients
-        '
-        Me.grdClients.AllowUserToAddRows = False
-        Me.grdClients.AllowUserToDeleteRows = False
-        Me.grdClients.AllowUserToResizeColumns = False
-        Me.grdClients.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.grdClients.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.grdClients.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grdClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.grdClients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.grdClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdClients.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colStart, Me.colEnd, Me.colName, Me.colStatus, Me.colPlanner, Me.colBuyer, Me.colSaved, Me.colLocked, Me.colDelete})
-        Me.grdClients.Location = New System.Drawing.Point(6, 23)
-        Me.grdClients.MultiSelect = False
-        Me.grdClients.Name = "grdClients"
-        Me.grdClients.ReadOnly = True
-        Me.grdClients.RowHeadersVisible = False
-        Me.grdClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdClients.Size = New System.Drawing.Size(581, 331)
-        Me.grdClients.TabIndex = 28
-        Me.grdClients.TabStop = False
-        Me.grdClients.VirtualMode = True
-        '
-        'colDelete
-        '
-        Me.colDelete.FillWeight = 15.0!
-        Me.colDelete.HeaderText = "Delete"
-        Me.colDelete.Image = Global.clTrinity.My.Resources.Resources.delete_2_small
-        Me.colDelete.MinimumWidth = 20
-        Me.colDelete.Name = "colDelete"
-        Me.colDelete.ReadOnly = True
-        Me.colDelete.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
         'btnCancel
         '
         Me.btnCancel.FlatAppearance.BorderSize = 0
@@ -134,9 +93,11 @@ Partial Class frmEditClients
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Visible = False
+        Me.DataGridViewTextBoxColumn1.Width = 445
         '
         'DataGridViewTextBoxColumn2
         '
+        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.DataGridViewTextBoxColumn2.FillWeight = 20.0!
         Me.DataGridViewTextBoxColumn2.HeaderText = "End"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
@@ -200,78 +161,48 @@ Partial Class frmEditClients
         Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn8.Visible = False
         '
-        'colStart
+        'colRestriction
         '
-        Me.colStart.FillWeight = 20.0!
-        Me.colStart.HeaderText = "Start"
-        Me.colStart.Name = "colStart"
-        Me.colStart.ReadOnly = True
-        Me.colStart.Visible = False
-        '
-        'colEnd
-        '
-        Me.colEnd.FillWeight = 20.0!
-        Me.colEnd.HeaderText = "End"
-        Me.colEnd.Name = "colEnd"
-        Me.colEnd.ReadOnly = True
-        Me.colEnd.Visible = False
+        Me.colRestriction.HeaderText = "Restriction"
+        Me.colRestriction.Name = "colRestriction"
         '
         'colName
         '
-        Me.colName.FillWeight = 50.0!
+        Me.colName.FillWeight = 94.7091!
         Me.colName.HeaderText = "Name"
         Me.colName.Name = "colName"
         Me.colName.ReadOnly = True
-        Me.colName.Visible = False
         '
-        'colStatus
+        'colId
         '
-        Me.colStatus.FillWeight = 15.0!
-        Me.colStatus.HeaderText = "Status"
-        Me.colStatus.Name = "colStatus"
-        Me.colStatus.ReadOnly = True
-        Me.colStatus.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colStatus.Visible = False
+        Me.colId.FillWeight = 41.87818!
+        Me.colId.HeaderText = "Id"
+        Me.colId.Name = "colId"
+        Me.colId.ReadOnly = True
         '
-        'colPlanner
+        'grdClients
         '
-        Me.colPlanner.FillWeight = 20.0!
-        Me.colPlanner.HeaderText = "Planner"
-        Me.colPlanner.Name = "colPlanner"
-        Me.colPlanner.ReadOnly = True
-        Me.colPlanner.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colPlanner.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colPlanner.Visible = False
-        '
-        'colBuyer
-        '
-        Me.colBuyer.FillWeight = 20.0!
-        Me.colBuyer.HeaderText = "Buyer"
-        Me.colBuyer.Name = "colBuyer"
-        Me.colBuyer.ReadOnly = True
-        Me.colBuyer.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colBuyer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colBuyer.Visible = False
-        '
-        'colSaved
-        '
-        Me.colSaved.FillWeight = 35.0!
-        Me.colSaved.HeaderText = "Saved"
-        Me.colSaved.Name = "colSaved"
-        Me.colSaved.ReadOnly = True
-        Me.colSaved.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colSaved.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.colSaved.Visible = False
-        '
-        'colLocked
-        '
-        Me.colLocked.FillWeight = 15.0!
-        Me.colLocked.HeaderText = "Locked"
-        Me.colLocked.Name = "colLocked"
-        Me.colLocked.ReadOnly = True
-        Me.colLocked.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colLocked.Visible = False
+        Me.grdClients.AllowUserToAddRows = False
+        Me.grdClients.AllowUserToDeleteRows = False
+        Me.grdClients.AllowUserToResizeColumns = False
+        Me.grdClients.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.grdClients.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.grdClients.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grdClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdClients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdClients.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colId, Me.colName, Me.colRestriction})
+        Me.grdClients.Location = New System.Drawing.Point(6, 23)
+        Me.grdClients.MultiSelect = False
+        Me.grdClients.Name = "grdClients"
+        Me.grdClients.RowHeadersVisible = False
+        Me.grdClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdClients.Size = New System.Drawing.Size(581, 331)
+        Me.grdClients.TabIndex = 28
+        Me.grdClients.TabStop = False
+        Me.grdClients.VirtualMode = True
         '
         'frmEditClients
         '
@@ -297,16 +228,6 @@ Partial Class frmEditClients
 
     Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
     Friend WithEvents btnSave As Windows.Forms.Button
-    Friend WithEvents grdClients As System.Windows.Forms.DataGridView
-    Friend WithEvents colStart As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colEnd As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colName As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colStatus As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colPlanner As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colBuyer As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colSaved As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colLocked As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colDelete As Windows.Forms.DataGridViewImageColumn
     Friend WithEvents btnCancel As Windows.Forms.Button
     Friend WithEvents txtSearch As Windows.Forms.TextBox
     Friend WithEvents tmrKeypress As System.Windows.Forms.Timer
@@ -318,4 +239,8 @@ Partial Class frmEditClients
     Friend WithEvents DataGridViewTextBoxColumn6 As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colRestriction As Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents colName As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colId As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents grdClients As Windows.Forms.DataGridView
 End Class

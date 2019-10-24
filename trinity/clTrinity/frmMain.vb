@@ -4681,6 +4681,8 @@ CreatePlan:
     Private Sub EditClietsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditClietsToolStripMenuItem.Click
         Dim editClietntWindow = New frmEditClients()
         editClietntWindow.show()
+
+
     End Sub
     Private Sub CheckUserClientRestriction()
 

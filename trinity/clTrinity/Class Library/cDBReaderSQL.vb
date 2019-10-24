@@ -1094,7 +1094,7 @@ Namespace Trinity
             If campaignClientID <> 0 Then
                 sqlSearchForSpecificClientID = "SELECT * FROM Clients WHERE ID=" + campaignClientID.ToString
             Else
-                sqlSearchForSpecificClientID = "SELECT * FROM Clients"
+                sqlSearchForSpecificClientID = "SELECT * FROM Clients ORDER BY NAME"
             End If
             Using _clients As DataTable = New DataTable
                 Using _conn As New SqlClient.SqlConnection(_connectionString)
@@ -1431,12 +1431,12 @@ Namespace Trinity
             End Using
         End Sub
 
-        Public Overrides Sub updateClient(ByVal name As String, ByVal id As Integer)
+        Public Overrides Sub updateClient(ByVal name As String, ByVal id As Integer, Optional ByVal restricted As Integer = 0)
             Using _conn As New SqlClient.SqlConnection(_connectionString)
                 _conn.Open()
                 Using com As New SqlClient.SqlCommand
                     com.Connection = _conn
-                    com.CommandText = "UPDATE Clients SET Name='" & name & "' WHERE id=" & id.ToString
+                    com.CommandText = "UPDATE Clients SET Name='" & name & "', restricted='" & restricted & "' WHERE id=" & id.ToString
                     com.ExecuteNonQuery()
                 End Using
                 _conn.Close()
