@@ -75,9 +75,14 @@ Public Class frmSetup
             Dim TmpItem As New CBItem
             TmpItem.Text = dr.Item("name") 'rd!name
             TmpItem.Tag = dr.Item("id") 'rd!id
+
+            Dim tmpRestriction As Boolean = False
+            If TmpItem.restricted Then
+                tmpRestriction = True
+            End If
             ' Added by JOKO
             ' Important contraint since Norway dont have that value and will then return null and it will break down.
-            If TrinitySettings.DefaultArea <> "NO" Then
+            If TrinitySettings.DefaultArea <> "NO" And tmpRestriction Then
                 If Not IsDBNull(dr.Item("restricted")) Then
                     TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
                 End If

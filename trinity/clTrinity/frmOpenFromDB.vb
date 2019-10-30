@@ -2,6 +2,8 @@
 
 Public Class frmOpenFromDB
 
+    Public DBConn As New System.Data.SqlClient.SqlConnection
+
     Dim Clientlist As List(Of Client) = Nothing
     Dim Productlist As List(Of Product) = Nothing
     Dim CampaignList As List(Of CampaignEssentials)
@@ -11,6 +13,7 @@ Public Class frmOpenFromDB
     Dim _ascDesc As String = "DESC"
     Dim _userAccessMC As String = "mc_access"
     Dim _userAccessMS As String = "ms_access"
+    Private connectionString As String
 
 
     Private _doNotLoadCampaign As Boolean = False
@@ -32,7 +35,14 @@ Public Class frmOpenFromDB
             _campaignID = value
         End Set
     End Property
-
+    Public Property _connectionString As String
+        Get
+            Return connectionString
+        End Get
+        Set(ByVal value As String)
+            connectionString = value
+        End Set
+    End Property
 
     Private Function GetMonth(ByVal Month As String) As Integer
         Select Case Month
@@ -75,9 +85,17 @@ Public Class frmOpenFromDB
             Clientlist = New List(Of Client)
             For Each item As Object In dt.Rows
                 Dim tmpClient As New Client
+
                 tmpClient.id = item!id
                 tmpClient.name = item!name
-                If TrinitySettings.DefaultArea <> "NO" Then
+
+                Dim tmpRestriction As Boolean = False
+                If tmpClient.restricted Then
+                    tmpRestriction = True
+                End If
+
+                Debug.Print(Trinity.cDBReader.ConnectionPlace.Local)
+                If TrinitySettings.DefaultArea <> "NO" And tmpRestriction Then
                     If Not IsDBNull(item("restricted")) Then
                         tmpClient.restricted = item("restricted") 'rd!Restricted 
                     End If
@@ -213,7 +231,7 @@ Public Class frmOpenFromDB
         cmbClient.ValueMember = "id"
         cmbProduct.DisplayMember = "name"
         cmbProduct.ValueMember = "id"
-        cmbYear.Items.AddRange(New Object() {"All", 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019})
+        cmbYear.Items.AddRange(New Object() {"All", 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020})
         cmbMonth.Items.AddRange(New Object() {"All", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
         cmbStatus.Items.AddRange(New Object() {"All", "Exclude Cancelled", "Planned", "Running", "Finished", "Cancelled"})
         cmbStatus.SelectedItem = "Exclude Cancelled"

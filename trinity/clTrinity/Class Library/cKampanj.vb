@@ -7945,7 +7945,12 @@ ActualSpots:
                             Dim tempClient As New Client
                             tempClient.name = dr.Item("name") 'rd!name
                             tempClient.id = dr.Item("id") 'rd!id
-                            If TrinitySettings.DefaultArea <> "NO" Then
+                            Dim tmpRestriction As Boolean = False
+                            If tempClient.restricted Then
+                                tmpRestriction = True
+                            End If
+
+                            If TrinitySettings.DefaultArea <> "NO" And tmpRestriction Then
                                 If Not IsDBNull(dr.Item("restricted")) Then
                                     tempClient.restricted = dr.Item("restricted") 'rd!Restricted 
                                     cList.Add(tempClient)
