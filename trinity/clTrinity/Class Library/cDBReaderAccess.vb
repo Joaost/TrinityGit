@@ -810,6 +810,10 @@ addFilm_Error:
 
         End Sub
 
+        Public Overrides Sub deleteClient(id As Integer)
+
+        End Sub
+
         Public Overrides Function getContractName(id As Integer) As String
 
         End Function

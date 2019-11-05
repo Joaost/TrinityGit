@@ -126,6 +126,8 @@ Namespace Trinity
 
         Public MustOverride Sub updateClient(ByVal name As String, ByVal id As Integer, Optional ByVal restricted As Integer = 0)
 
+        Public MustOverride Sub deleteClient(ByVal id As Integer)
+
         Public MustOverride Sub updateProduct(ByVal ProductID As String, ByVal Name As String, ByVal ClientID As String, ByVal MarathonClient As String, ByVal MarathonProduct As String, ByVal MarathonCompany As String, ByVal MarathonContract As String, ByVal AdEdgeBrands As List(Of String), ByVal AdTooxAdvertiserID As Long, ByVal AdTooxDivisionID As Long, ByVal AdTooxBrandID As Long, ByVal AdTooxProductType As String)
 
         Public MustOverride Function findFilmOnProduct(ByVal name As String, ByVal d As Date, ByVal productID As Integer) As DataTable

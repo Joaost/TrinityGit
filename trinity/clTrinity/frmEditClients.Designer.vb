@@ -28,18 +28,19 @@ Partial Class frmEditClients
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.colRestriction = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.grdClients = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colRestriction = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.grdClients = New System.Windows.Forms.DataGridView()
+        Me.cmdDeleteClient = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdClients, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -83,8 +84,37 @@ Partial Class frmEditClients
         '
         Me.txtSearch.Location = New System.Drawing.Point(28, 1)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(559, 20)
+        Me.txtSearch.Size = New System.Drawing.Size(528, 20)
         Me.txtSearch.TabIndex = 26
+        '
+        'colRestriction
+        '
+        Me.colRestriction.HeaderText = "Restriction"
+        Me.colRestriction.Name = "colRestriction"
+        '
+        'grdClients
+        '
+        Me.grdClients.AllowUserToAddRows = False
+        Me.grdClients.AllowUserToDeleteRows = False
+        Me.grdClients.AllowUserToResizeColumns = False
+        Me.grdClients.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.grdClients.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.grdClients.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grdClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdClients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdClients.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colId, Me.colName, Me.colRestriction})
+        Me.grdClients.Location = New System.Drawing.Point(6, 23)
+        Me.grdClients.MultiSelect = False
+        Me.grdClients.Name = "grdClients"
+        Me.grdClients.RowHeadersVisible = False
+        Me.grdClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdClients.Size = New System.Drawing.Size(550, 331)
+        Me.grdClients.TabIndex = 28
+        Me.grdClients.TabStop = False
+        Me.grdClients.VirtualMode = True
         '
         'DataGridViewTextBoxColumn1
         '
@@ -103,6 +133,20 @@ Partial Class frmEditClients
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
         Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'colId
+        '
+        Me.colId.FillWeight = 41.87818!
+        Me.colId.HeaderText = "Id"
+        Me.colId.Name = "colId"
+        Me.colId.ReadOnly = True
+        '
+        'colName
+        '
+        Me.colName.FillWeight = 94.7091!
+        Me.colName.HeaderText = "Name"
+        Me.colName.Name = "colName"
+        Me.colName.ReadOnly = True
         '
         'DataGridViewTextBoxColumn3
         '
@@ -161,62 +205,32 @@ Partial Class frmEditClients
         Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn8.Visible = False
         '
-        'colRestriction
+        'cmdDeleteClient
         '
-        Me.colRestriction.HeaderText = "Restriction"
-        Me.colRestriction.Name = "colRestriction"
-        '
-        'colName
-        '
-        Me.colName.FillWeight = 94.7091!
-        Me.colName.HeaderText = "Name"
-        Me.colName.Name = "colName"
-        Me.colName.ReadOnly = True
-        '
-        'colId
-        '
-        Me.colId.FillWeight = 41.87818!
-        Me.colId.HeaderText = "Id"
-        Me.colId.Name = "colId"
-        Me.colId.ReadOnly = True
-        '
-        'grdClients
-        '
-        Me.grdClients.AllowUserToAddRows = False
-        Me.grdClients.AllowUserToDeleteRows = False
-        Me.grdClients.AllowUserToResizeColumns = False
-        Me.grdClients.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.grdClients.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.grdClients.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grdClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.grdClients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.grdClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdClients.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colId, Me.colName, Me.colRestriction})
-        Me.grdClients.Location = New System.Drawing.Point(6, 23)
-        Me.grdClients.MultiSelect = False
-        Me.grdClients.Name = "grdClients"
-        Me.grdClients.RowHeadersVisible = False
-        Me.grdClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdClients.Size = New System.Drawing.Size(581, 331)
-        Me.grdClients.TabIndex = 28
-        Me.grdClients.TabStop = False
-        Me.grdClients.VirtualMode = True
+        Me.cmdDeleteClient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdDeleteClient.FlatAppearance.BorderSize = 0
+        Me.cmdDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdDeleteClient.Image = Global.clTrinity.My.Resources.Resources.delete_2_small
+        Me.cmdDeleteClient.Location = New System.Drawing.Point(560, 45)
+        Me.cmdDeleteClient.Name = "cmdDeleteClient"
+        Me.cmdDeleteClient.Size = New System.Drawing.Size(22, 20)
+        Me.cmdDeleteClient.TabIndex = 31
+        Me.cmdDeleteClient.UseVisualStyleBackColor = True
         '
         'frmEditClients
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(585, 393)
+        Me.ClientSize = New System.Drawing.Size(624, 393)
+        Me.Controls.Add(Me.cmdDeleteClient)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.grdClients)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.txtSearch)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(601, 432)
-        Me.MinimumSize = New System.Drawing.Size(601, 432)
+        Me.MaximumSize = New System.Drawing.Size(640, 432)
+        Me.MinimumSize = New System.Drawing.Size(640, 432)
         Me.Name = "frmEditClients"
         Me.Text = "Edit clients"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -243,4 +257,5 @@ Partial Class frmEditClients
     Friend WithEvents colName As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colId As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents grdClients As Windows.Forms.DataGridView
+    Friend WithEvents cmdDeleteClient As Windows.Forms.Button
 End Class
