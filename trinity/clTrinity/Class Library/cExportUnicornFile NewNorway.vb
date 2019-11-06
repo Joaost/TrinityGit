@@ -522,7 +522,7 @@ Public Class CExportUnicornFileNewNorway
             If Not .Cells(row, 3) Is Nothing Then
                 If tmpBundle Or printExportAsCampaign Then
                     If groupName = "TV2" Then
-                        .Cells(row, 3).Value = "TV 2 no; TV 2 Zebra; TV 2 Sport; TV2 Nyhetskanalen; TV 2 Bliss; TV 2 Humor; TV 2 Livsstil;"
+                        .Cells(row, 3).Value = "TV 2 no; TV 2 Zebra; TV 2 Sport 1; TV 2 Sport 2; TV2 Nyhetskanalen; TV 2 Humor; TV 2 Livsstil;"
                     ElseIf groupName = "DNN" Then
                         .Cells(row, 3).Value = "TVN; FEM; Eurosport 1 Norge; MAX; Discovery no; TLC Norge; VOX; Eurosport Norge"
                         'ElseIf groupName = "FOXold" Then

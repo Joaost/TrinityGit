@@ -1443,6 +1443,18 @@ Namespace Trinity
             End Using
         End Sub
 
+        Public Overrides Sub deleteClient(ByVal id As Integer)
+            Using _conn As New SqlClient.SqlConnection(_connectionString)
+                _conn.Open()
+                Using com As New SqlClient.SqlCommand
+                    com.Connection = _conn
+                    com.CommandText = "DELETE FROM Clients WHERE id='" & id.ToString & "'"
+                    com.ExecuteNonQuery()
+                End Using
+                _conn.Close()
+            End Using
+        End Sub
+
         Public Overrides Sub updateProduct(ByVal ProductID As String, ByVal Name As String, ByVal ClientID As String, ByVal MarathonClient As String, ByVal MarathonProduct As String, ByVal MarathonCompany As String, ByVal MarathonContract As String, ByVal AdedgeBrands As List(Of String), ByVal AdTooxAdvertiserID As Long, ByVal AdTooxDivisionID As Long, ByVal AdTooxBrandID As Long, ByVal AdTooxProductType As String)
             Using _conn As New SqlClient.SqlConnection(_connectionString)
                 _conn.Open()

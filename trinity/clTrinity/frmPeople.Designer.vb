@@ -25,9 +25,6 @@ Partial Class frmPeople
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPeople))
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.grdPeople = New System.Windows.Forms.DataGridView()
-        Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPhone = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colStatus = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.cmdDeletePeople = New System.Windows.Forms.Button()
         Me.cmdAddPeople = New System.Windows.Forms.Button()
@@ -35,6 +32,9 @@ Partial Class frmPeople
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPhone = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colEmail = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdPeople, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -64,27 +64,6 @@ Partial Class frmPeople
         Me.grdPeople.Size = New System.Drawing.Size(542, 192)
         Me.grdPeople.TabIndex = 1
         Me.grdPeople.VirtualMode = True
-        '
-        'colName
-        '
-        Me.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colName.FillWeight = 72.41962!
-        Me.colName.HeaderText = "Name"
-        Me.colName.Name = "colName"
-        '
-        'colPhone
-        '
-        Me.colPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colPhone.FillWeight = 72.41962!
-        Me.colPhone.HeaderText = "Phone nr"
-        Me.colPhone.Name = "colPhone"
-        '
-        'colEmail
-        '
-        Me.colEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colEmail.FillWeight = 72.41962!
-        Me.colEmail.HeaderText = "Email"
-        Me.colEmail.Name = "colEmail"
         '
         'colStatus
         '
@@ -150,6 +129,27 @@ Partial Class frmPeople
         Me.DataGridViewTextBoxColumn3.FillWeight = 72.41962!
         Me.DataGridViewTextBoxColumn3.HeaderText = "Email"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'colName
+        '
+        Me.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.colName.FillWeight = 72.41962!
+        Me.colName.HeaderText = "Name"
+        Me.colName.Name = "colName"
+        '
+        'colPhone
+        '
+        Me.colPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.colPhone.FillWeight = 72.41962!
+        Me.colPhone.HeaderText = "Phone nr"
+        Me.colPhone.Name = "colPhone"
+        '
+        'colEmail
+        '
+        Me.colEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.colEmail.FillWeight = 72.41962!
+        Me.colEmail.HeaderText = "Email"
+        Me.colEmail.Name = "colEmail"
         '
         'frmPeople
         '

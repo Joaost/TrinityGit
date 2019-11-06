@@ -47,6 +47,11 @@
             If cl.restricted Then
                 tempRestricted = 1
             End If
+            'For Each _row As Windows.Forms.DataGridViewRow In grdClients.Rows
+            '    If _row.Visible = False Then
+            '        DBReader.deleteClient(cl.name, cl.id, tempRestricted)
+            '    End If
+            'Next
             DBReader.updateClient(cl.name, cl.id, tempRestricted)
         Next
         'Saving the entire list of clients with their properties
@@ -191,5 +196,18 @@
                 Next
             End If
         End If
+    End Sub
+
+    Private Sub cmdDeleteClient_Click(sender As System.Object, e As System.EventArgs) Handles cmdDeleteClient.Click
+        '/JOOS
+        For Each _clientRow As Windows.Forms.DataGridViewRow In grdClients.SelectedRows
+            '_clientRow.Visible = False
+            Dim tempId = _clientRow.Tag.id
+            Dim tempName = _clientRow.Selected
+            If Windows.Forms.MessageBox.Show("Are you sure you want to delete the client " & tempName & "?", "Delete?", Windows.Forms.MessageBoxButtons.OKCancel, Windows.Forms.MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK Then
+                DBReader.deleteClient(tempId)
+                _clientRow.Visible = False
+            End If
+        Next
     End Sub
 End Class
