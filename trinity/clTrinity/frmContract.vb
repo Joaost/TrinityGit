@@ -182,11 +182,13 @@ Public Class frmContract
             ' Added by JOKO
             ' Important contraint since Norway dont have that value and will then return null and it will break down.
             If TrinitySettings.DefaultArea <> "NO" Then
-                If Not IsDBNull(dr.Item("restricted")) Then
-                    TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+                If dr.ItemArray.Length > 2 Then
+                    If Not IsDBNull(dr.Item("restricted")) Then
+                        TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+                    End If
                 End If
             End If
-            cmbClient.Items.Add(TmpItem)
+                cmbClient.Items.Add(TmpItem)
             If TmpItem.id = Campaign.ClientID Then
                 cmbClient.Text = TmpItem.name
             End If
