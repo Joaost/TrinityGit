@@ -199,6 +199,7 @@
     End Sub
 
     Private Sub cmdDeleteClient_Click(sender As System.Object, e As System.EventArgs) Handles cmdDeleteClient.Click
+        '/JOOS
         For Each _clientRow As Windows.Forms.DataGridViewRow In grdClients.SelectedRows
             '_clientRow.Visible = False
             Dim tempId = _clientRow.Tag.id
