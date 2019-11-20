@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="urn:se.tv4.online" elementFormDefault="qualified" targetNamespace="urn:se.tv4.online" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" />
-  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TV4.Online.Services.Internal.Contracts" />
-  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV5.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" />
+  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV5.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV5.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TV4.Online.Services.Internal.Contracts" />
+  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV5.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="CreateBooking">
     <xs:complexType>
       <xs:sequence>
@@ -54,6 +54,38 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetClientsForOrganization">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organizationId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientsForOrganizationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetClientsForOrganizationResult" nillable="true" type="q6:CreateBookingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInvoiceContactsForOrganization">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organizationId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInvoiceContactsForOrganizationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetInvoiceContactsForOrganizationResult" nillable="true" type="q7:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetReleasePeriods">
     <xs:complexType>
       <xs:sequence>
@@ -64,7 +96,7 @@
   <xs:element name="GetReleasePeriodsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TV4.Online.Services.Internal.Contracts" minOccurs="0" name="GetReleasePeriodsResult" nillable="true" type="q6:ArrayOfReleasePeriod" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TV4.Online.Services.Internal.Contracts" minOccurs="0" name="GetReleasePeriodsResult" nillable="true" type="q8:ArrayOfReleasePeriod" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -76,7 +108,7 @@
   <xs:element name="GetBookingTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBookingTypesResult" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBookingTypesResult" nillable="true" type="q9:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -88,7 +120,7 @@
   <xs:element name="GetChannelsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetChannelsResult" nillable="true" type="q8:ArrayOfstring" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetChannelsResult" nillable="true" type="q10:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -102,7 +134,7 @@
   <xs:element name="GetTargetsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTargetsResult" nillable="true" type="q9:ArrayOfstring" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTargetsResult" nillable="true" type="q11:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -117,7 +149,7 @@
   <xs:element name="GetTargetsForChannelResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTargetsForChannelResult" nillable="true" type="q10:ArrayOfstring" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTargetsForChannelResult" nillable="true" type="q12:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -129,7 +161,7 @@
   <xs:element name="GetDaypartNamesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetDaypartNamesResult" nillable="true" type="q11:ArrayOfstring" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetDaypartNamesResult" nillable="true" type="q13:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +173,7 @@
   <xs:element name="GetSurchargeNamesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetSurchargeNamesResult" nillable="true" type="q12:ArrayOfstring" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetSurchargeNamesResult" nillable="true" type="q14:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -153,7 +185,7 @@
   <xs:element name="GetIndexNamesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetIndexNamesResult" nillable="true" type="q13:ArrayOfstring" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetIndexNamesResult" nillable="true" type="q15:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -162,7 +194,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="bookingId" type="q14:guid" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="bookingId" type="q16:guid" />
         <xs:element minOccurs="0" name="allVersions" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
@@ -170,7 +202,7 @@
   <xs:element name="GetConfirmationForBookingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationForBookingResult" nillable="true" type="q15:GetConfirmationsResponse" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationForBookingResult" nillable="true" type="q17:GetConfirmationsResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -187,7 +219,7 @@
   <xs:element name="GetConfirmationsForAgencyRefNoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationsForAgencyRefNoResult" nillable="true" type="q16:GetConfirmationsResponse" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationsForAgencyRefNoResult" nillable="true" type="q18:GetConfirmationsResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -199,14 +231,14 @@
         <xs:element minOccurs="0" name="startChangeDateTime" type="xs:dateTime" />
         <xs:element minOccurs="0" name="endChangeDateTime" type="xs:dateTime" />
         <xs:element minOccurs="0" name="allVersions" type="xs:boolean" />
-        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="filterByOrganizationIds" nillable="true" type="q17:ArrayOfstring" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="filterByOrganizationIds" nillable="true" type="q19:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetConfirmationsByChangedDateTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationsByChangedDateTimeResult" nillable="true" type="q18:GetConfirmationsResponse" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationsByChangedDateTimeResult" nillable="true" type="q20:GetConfirmationsResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -218,14 +250,14 @@
         <xs:element minOccurs="0" name="startDateTime" type="xs:dateTime" />
         <xs:element minOccurs="0" name="endDateTime" type="xs:dateTime" />
         <xs:element minOccurs="0" name="allVersions" type="xs:boolean" />
-        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="filterByOrganizationIds" nillable="true" type="q19:ArrayOfstring" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="filterByOrganizationIds" nillable="true" type="q21:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetConfirmationsByBroadcastDateTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationsByBroadcastDateTimeResult" nillable="true" type="q20:GetConfirmationsResponse" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationsByBroadcastDateTimeResult" nillable="true" type="q22:GetConfirmationsResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -243,7 +275,7 @@
   <xs:element name="GetConfirmationDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationDetailsResult" nillable="true" type="q21:GetConfirmationsResponse" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetConfirmationDetailsResult" nillable="true" type="q23:GetConfirmationsResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -261,7 +293,7 @@
   <xs:element name="GetSpotPricesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetSpotPricesResult" nillable="true" type="q22:PricesAndScheduleResponse" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetSpotPricesResult" nillable="true" type="q24:PricesAndScheduleResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -279,7 +311,7 @@
   <xs:element name="GetPeriodPricesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetPeriodPricesResult" nillable="true" type="q23:PricesAndScheduleResponse" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetPeriodPricesResult" nillable="true" type="q25:PricesAndScheduleResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -297,7 +329,7 @@
   <xs:element name="GetScheduleEventsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetScheduleEventsResult" nillable="true" type="q24:PricesAndScheduleResponse" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetScheduleEventsResult" nillable="true" type="q26:PricesAndScheduleResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -313,7 +345,7 @@
   <xs:element name="GetProgramDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetProgramDetailsResult" nillable="true" type="q25:PricesAndScheduleResponse" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" minOccurs="0" name="GetProgramDetailsResult" nillable="true" type="q27:PricesAndScheduleResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

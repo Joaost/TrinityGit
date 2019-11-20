@@ -231,7 +231,7 @@ Public Class frmOpenFromDB
         cmbClient.ValueMember = "id"
         cmbProduct.DisplayMember = "name"
         cmbProduct.ValueMember = "id"
-        cmbYear.Items.AddRange(New Object() {"All", 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020})
+        cmbYear.Items.AddRange(New Object() {"All", 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020})
         cmbMonth.Items.AddRange(New Object() {"All", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
         cmbStatus.Items.AddRange(New Object() {"All", "Exclude Cancelled", "Planned", "Running", "Finished", "Cancelled"})
         cmbStatus.SelectedItem = "Exclude Cancelled"

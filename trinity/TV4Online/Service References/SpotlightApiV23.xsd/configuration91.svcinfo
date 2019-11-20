@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="owM0ogAfHlUOQIckceLfiQ1Ddbc=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="coWqqDUlTesbb4J9xlY6Pt0CUx0=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="wsHttpBinding" name="SpotlightApiV3">
+    <bindingConfiguration bindingType="wsHttpBinding" name="SpotlightApiV5">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>SpotlightApiV3</serializedValue>
+          <serializedValue>SpotlightApiV5</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -127,10 +127,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="SpotlightApiV3" contract="SpotlightApiV23.xsd.ISpotlightApiV3" bindingType="wsHttpBinding" address="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc" bindingConfiguration="SpotlightApiV3">
+    <endpoint name="SpotlightApiV5" contract="SpotlightApiV23.xsd.ISpotlightApiV5" bindingType="wsHttpBinding" address="https://spotlightbookings.tv4.se/webservices/SpotlightApiV5.svc" bindingConfiguration="SpotlightApiV5">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc</serializedValue>
+          <serializedValue>https://spotlightbookings.tv4.se/webservices/SpotlightApiV5.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -139,10 +139,10 @@
           <serializedValue>wsHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>SpotlightApiV3</serializedValue>
+          <serializedValue>SpotlightApiV5</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>SpotlightApiV23.xsd.ISpotlightApiV3</serializedValue>
+          <serializedValue>SpotlightApiV23.xsd.ISpotlightApiV5</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -202,7 +202,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>SpotlightApiV3</serializedValue>
+          <serializedValue>SpotlightApiV5</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

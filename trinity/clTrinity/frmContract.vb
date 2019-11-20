@@ -2234,7 +2234,13 @@ Public Class frmContract
     End Sub
 
     Private Sub cmbClient_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbClient.SelectedIndexChanged
+        Dim contractClientID = ""
+        Dim contractClientName = ""
+        contractClientID = DirectCast(cmbClient.SelectedItem, Client).id
+        contractClientName = DBReader.getClient(contractClientID)
+
         Campaign.Contract.client = DirectCast(cmbClient.SelectedItem, Client).id
+
     End Sub
 End Class
 
