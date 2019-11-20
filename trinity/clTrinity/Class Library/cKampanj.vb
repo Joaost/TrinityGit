@@ -8062,9 +8062,9 @@ ActualSpots:
                         For q As Integer = 0 To listOfClients(i).listOfRestrictedUsers.Count - 1
                             If listOfClients(i).listOfRestrictedUsers(q).name = loggedIndUser And listOfClients(i).listOfRestrictedUsers(q).restricted Then
                                 If listOfClients(i).listOfRestrictedUsers(q).restricted Then
-                                    Return False
-                                Else
                                     Return True
+                                Else
+                                    Return False
                                 End If
                             End If
                         Next
