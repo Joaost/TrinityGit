@@ -181,7 +181,7 @@ Public Class frmContract
             TmpItem.id = dr.Item("id") 'rd!id
             ' Added by JOKO
             ' Important contraint since Norway dont have that value and will then return null and it will break down.
-            If TrinitySettings.DefaultArea <> "NO" Then
+            If TrinitySettings.DefaultArea <> "NO" And dr.ItemArray.Length > 2 Then
                 If Not IsDBNull(dr.Item("restricted")) Then
                     TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
                 End If
