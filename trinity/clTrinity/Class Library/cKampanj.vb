@@ -7950,10 +7950,12 @@ ActualSpots:
                                 tmpRestriction = True
                             End If
 
-                            If TrinitySettings.DefaultArea <> "NO" And tmpRestriction Then
-                                If Not IsDBNull(dr.Item("restricted")) Then
-                                    tempClient.restricted = dr.Item("restricted") 'rd!Restricted 
-                                    cList.Add(tempClient)
+                            If TrinitySettings.DefaultArea <> "NO" Then
+                                If dr.ItemArray.Count > 2 Then
+                                    If Not IsDBNull(dr.Item("restricted")) Then
+                                        tempClient.restricted = dr.Item("restricted") 'rd!Restricted 
+                                        cList.Add(tempClient)
+                                    End If
                                 End If
                             End If
                         Next
@@ -8059,7 +8061,11 @@ ActualSpots:
                         clientRestrictionFound = True
                         For q As Integer = 0 To listOfClients(i).listOfRestrictedUsers.Count - 1
                             If listOfClients(i).listOfRestrictedUsers(q).name = loggedIndUser And listOfClients(i).listOfRestrictedUsers(q).restricted Then
-                                Return True
+                                If listOfClients(i).listOfRestrictedUsers(q).restricted Then
+                                    Return True
+                                Else
+                                    Return False
+                                End If
                             End If
                         Next
                     End If

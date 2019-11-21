@@ -181,12 +181,20 @@ Public Class frmContract
             TmpItem.id = dr.Item("id") 'rd!id
             ' Added by JOKO
             ' Important contraint since Norway dont have that value and will then return null and it will break down.
+<<<<<<< HEAD
             If TrinitySettings.DefaultArea <> "NO" And dr.ItemArray.Length > 2 Then
                 If Not IsDBNull(dr.Item("restricted")) Then
                     TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+=======
+            If TrinitySettings.DefaultArea <> "NO" Then
+                If dr.ItemArray.Length > 2 Then
+                    If Not IsDBNull(dr.Item("restricted")) Then
+                        TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
+                    End If
+>>>>>>> f647b3c9ae32fce817ae49eeff9ed37047413848
                 End If
             End If
-            cmbClient.Items.Add(TmpItem)
+                cmbClient.Items.Add(TmpItem)
             If TmpItem.id = Campaign.ClientID Then
                 cmbClient.Text = TmpItem.name
             End If
@@ -2232,7 +2240,13 @@ Public Class frmContract
     End Sub
 
     Private Sub cmbClient_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbClient.SelectedIndexChanged
+        Dim contractClientID = ""
+        Dim contractClientName = ""
+        contractClientID = DirectCast(cmbClient.SelectedItem, Client).id
+        contractClientName = DBReader.getClient(contractClientID)
+
         Campaign.Contract.client = DirectCast(cmbClient.SelectedItem, Client).id
+
     End Sub
 End Class
 

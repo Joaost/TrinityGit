@@ -710,9 +710,35 @@ Public Class frmSetup
             'Function to check if contract client is restricted or not
             Dim contractId = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
             Dim res As DataTable = DBReader.getContractAsDatatable(contractId)
-            Dim contractClientName = DBReader.getClient(res.Rows(0).Item(10))
+            Dim contractClientID = ""
+            Dim contractClientName = ""
+            If res.Rows(0).ItemArray.Count > 10 Then
+                contractClientID = res.Rows(0).Item(10).ToString()
+                If contractClientID <> "" Then
+                    contractClientName = DBReader.getClient(contractClientID)
+                    If Campaign.checkIfUserIsValid(contractClientName) Then
+                        ActiveCampaign.Contract = New Trinity.cContract(Campaign)
+                        ActiveCampaign.Contract.restriced = True
+                        ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
+                        ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
 
-            If Campaign.checkIfUserIsValid(contractClientName) Then
+                        ActiveCampaign.Contract.ApplyToCampaign()
+
+                        lblContract.Text = ActiveCampaign.Contract.Name
+                    Else
+                        Windows.Forms.MessageBox.Show("Campaign client contains restriction and user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+
+                    End If
+                Else
+                    ActiveCampaign.Contract = New Trinity.cContract(Campaign)
+                    ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
+                    ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
+
+                    ActiveCampaign.Contract.ApplyToCampaign()
+
+                    lblContract.Text = ActiveCampaign.Contract.Name
+                End If
+            Else
                 ActiveCampaign.Contract = New Trinity.cContract(Campaign)
                 ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
                 ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
@@ -720,10 +746,9 @@ Public Class frmSetup
                 ActiveCampaign.Contract.ApplyToCampaign()
 
                 lblContract.Text = ActiveCampaign.Contract.Name
-            Else
-                Windows.Forms.MessageBox.Show("Campaign client contains restriction and user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
-
             End If
+
+
 
 
             'Old way with rescrition as a column from the DB

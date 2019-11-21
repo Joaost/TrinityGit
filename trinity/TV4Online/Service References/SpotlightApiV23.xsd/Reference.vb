@@ -42,10 +42,16 @@ Namespace SpotlightApiV23.xsd
         Private ClientField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClientIdField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private CommentsField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private CountryField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InvoiceContactField As String
         
         Private NameField As String
         
@@ -56,7 +62,7 @@ Namespace SpotlightApiV23.xsd
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private SystemField As String
-
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -118,20 +124,20 @@ Namespace SpotlightApiV23.xsd
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=True)>
+        
+        <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
         Public Property ChannelContactName() As String
             Get
                 Return Me.ChannelContactNameField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ChannelContactNameField, value) <> True) Then
+                If (Object.ReferenceEquals(Me.ChannelContactNameField, value) <> true) Then
                     Me.ChannelContactNameField = value
                     Me.RaisePropertyChanged("ChannelContactName")
                 End If
             End Set
         End Property
-
+        
         <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
         Public Property Client() As String
             Get
@@ -141,6 +147,19 @@ Namespace SpotlightApiV23.xsd
                 If (Object.ReferenceEquals(Me.ClientField, value) <> true) Then
                     Me.ClientField = value
                     Me.RaisePropertyChanged("Client")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ClientId() As String
+            Get
+                Return Me.ClientIdField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClientIdField, value) <> true) Then
+                    Me.ClientIdField = value
+                    Me.RaisePropertyChanged("ClientId")
                 End If
             End Set
         End Property
@@ -167,6 +186,19 @@ Namespace SpotlightApiV23.xsd
                 If (Object.ReferenceEquals(Me.CountryField, value) <> true) Then
                     Me.CountryField = value
                     Me.RaisePropertyChanged("Country")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property InvoiceContact() As String
+            Get
+                Return Me.InvoiceContactField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.InvoiceContactField, value) <> true) Then
+                    Me.InvoiceContactField = value
+                    Me.RaisePropertyChanged("InvoiceContact")
                 End If
             End Set
         End Property
@@ -248,28 +280,13 @@ Namespace SpotlightApiV23.xsd
         Private AgencyBookingRefNoField As String
         
         Private ChannelField As String
-
-        Private SelectedField As Boolean
-
-        Private BookingAvailConfirmationField As Boolean
-
-        Private TrinityTypeField As String
-
-        Private BookingUrlSpotlightField As String
-
-        Private BookingIdSpotlightField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
-        Private CampaignRefNoField As Long
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ChannelBookingRefNoField As String
-
-        Private BookingConfirmationVersionField As Long
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private CommentsField As String
-
+        
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private EndDateField As Date
         
@@ -284,92 +301,14 @@ Namespace SpotlightApiV23.xsd
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private StartDateField As Date
-
-        Private TypeField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
-        Private UniverseSizeField As Long
-
+        
         Private TargetField As String
-
-        Private TargetsField As String()
-
-        Public Property Targets() As String()
-            Get
-                Return TargetsField
-            End Get
-            Set
-                Me.TargetsField = Value
-            End Set
-        End Property
-        Public Property BookingConfirmationVersion() As Long
-            Get
-                Return BookingConfirmationVersionField
-            End Get
-            Set
-                Me.BookingConfirmationVersionField = Value
-            End Set
-        End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
-        Public Property BookingIdSpotlight() As String
-            Get
-                Return BookingIdSpotlightField
-            End Get
-            Set
-                Me.BookingIdSpotlightField = Value
-            End Set
-        End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
-        Public Property CampaignRefNo() As Long
-            Get
-                Return CampaignRefNoField
-            End Get
-            Set
-                Me.CampaignRefNoField = Value
-            End Set
-        End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
-        Public Property BookingUrlSpotlight() As String
-            Get
-                Return BookingUrlSpotlightField
-            End Get
-            Set
-                Me.BookingUrlSpotlightField = Value
-            End Set
-        End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
-        Public Property TrinityType() As String
-            Get
-                Return TrinityTypeField
-            End Get
-            Set
-                Me.TrinityTypeField = Value
-            End Set
-        End Property
-
-
-        Public Property Selected() As Boolean
-            Get
-                Return SelectedField
-            End Get
-            Set
-                Me.SelectedField = Value
-            End Set
-        End Property
-
-        Public Property BookingAvailConfirmation() As Boolean
-            Get
-                Return BookingAvailConfirmationField
-            End Get
-            Set
-                Me.BookingAvailConfirmationField = Value
-            End Set
-        End Property
-
+        
+        Private TypeField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UniverseSizeField As Long
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -560,22 +499,9 @@ Namespace SpotlightApiV23.xsd
         Private EndDateField As Date
         
         Private RbsDaypartsField() As SpotlightApiV23.xsd.RbsDaypart
-
+        
         Private StartDateField As Date
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
-        Private ChannelField As String
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
-        Public Property Channel() As String
-            Get
-                Return ChannelField
-            End Get
-            Set
-                Me.ChannelField = Value
-            End Set
-        End Property
-
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -1843,10 +1769,16 @@ Namespace SpotlightApiV23.xsd
         Private CreatedDateTimeField As Date
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DigitalSpotsField() As SpotlightApiV23.xsd.ConfirmationDigitalSpot
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private DiscountsField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private GrossPriceField As Double
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private InvoiceableField As Double
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private MinimumTRPField As Double
@@ -1868,23 +1800,10 @@ Namespace SpotlightApiV23.xsd
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private TargetField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private VersionNoField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
-        Private btTypeField As String
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
-        Public Property btType() As String
-            Get
-                Return btTypeField
-            End Get
-            Set
-                Me.btTypeField = Value
-            End Set
-        End Property
-
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -1935,6 +1854,19 @@ Namespace SpotlightApiV23.xsd
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property DigitalSpots() As SpotlightApiV23.xsd.ConfirmationDigitalSpot()
+            Get
+                Return Me.DigitalSpotsField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DigitalSpotsField, value) <> true) Then
+                    Me.DigitalSpotsField = value
+                    Me.RaisePropertyChanged("DigitalSpots")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property Discounts() As String
             Get
                 Return Me.DiscountsField
@@ -1956,6 +1888,19 @@ Namespace SpotlightApiV23.xsd
                 If (Me.GrossPriceField.Equals(value) <> true) Then
                     Me.GrossPriceField = value
                     Me.RaisePropertyChanged("GrossPrice")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Invoiceable() As Double
+            Get
+                Return Me.InvoiceableField
+            End Get
+            Set
+                If (Me.InvoiceableField.Equals(value) <> true) Then
+                    Me.InvoiceableField = value
+                    Me.RaisePropertyChanged("Invoiceable")
                 End If
             End Set
         End Property
@@ -2076,6 +2021,69 @@ Namespace SpotlightApiV23.xsd
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ConfirmationDigitalSpot", [Namespace]:="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ConfirmationDigitalSpot
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ShareField As Double
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Name() As String
+            Get
+                Return Me.NameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NameField, value) <> true) Then
+                    Me.NameField = value
+                    Me.RaisePropertyChanged("Name")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Share() As Double
+            Get
+                Return Me.ShareField
+            End Get
+            Set
+                If (Me.ShareField.Equals(value) <> true) Then
+                    Me.ShareField = value
+                    Me.RaisePropertyChanged("Share")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
      System.Runtime.Serialization.DataContractAttribute(Name:="ConfirmationRbsSpot", [Namespace]:="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices"),  _
      System.SerializableAttribute()>  _
     Partial Public Class ConfirmationRbsSpot
@@ -2096,151 +2104,151 @@ Namespace SpotlightApiV23.xsd
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private BroadcastTimeField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ChannelField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private FilmCodeField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private FilmLengthField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProgramNameField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private SpotIdField As Integer
-
-        <Global.System.ComponentModel.BrowsableAttribute(False)>
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
                 Return Me.extensionDataField
             End Get
             Set
-                Me.extensionDataField = Value
+                Me.extensionDataField = value
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ActualTRP() As Double
             Get
                 Return Me.ActualTRPField
             End Get
             Set
-                If (Me.ActualTRPField.Equals(Value) <> True) Then
-                    Me.ActualTRPField = Value
+                If (Me.ActualTRPField.Equals(value) <> true) Then
+                    Me.ActualTRPField = value
                     Me.RaisePropertyChanged("ActualTRP")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property BreakId() As Integer
             Get
                 Return Me.BreakIdField
             End Get
             Set
-                If (Me.BreakIdField.Equals(Value) <> True) Then
-                    Me.BreakIdField = Value
+                If (Me.BreakIdField.Equals(value) <> true) Then
+                    Me.BreakIdField = value
                     Me.RaisePropertyChanged("BreakId")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property BroadcastDate() As Date
             Get
                 Return Me.BroadcastDateField
             End Get
             Set
-                If (Me.BroadcastDateField.Equals(Value) <> True) Then
-                    Me.BroadcastDateField = Value
+                If (Me.BroadcastDateField.Equals(value) <> true) Then
+                    Me.BroadcastDateField = value
                     Me.RaisePropertyChanged("BroadcastDate")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property BroadcastTime() As Integer
             Get
                 Return Me.BroadcastTimeField
             End Get
             Set
-                If (Me.BroadcastTimeField.Equals(Value) <> True) Then
-                    Me.BroadcastTimeField = Value
+                If (Me.BroadcastTimeField.Equals(value) <> true) Then
+                    Me.BroadcastTimeField = value
                     Me.RaisePropertyChanged("BroadcastTime")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property Channel() As String
             Get
                 Return Me.ChannelField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ChannelField, Value) <> True) Then
-                    Me.ChannelField = Value
+                If (Object.ReferenceEquals(Me.ChannelField, value) <> true) Then
+                    Me.ChannelField = value
                     Me.RaisePropertyChanged("Channel")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property FilmCode() As String
             Get
                 Return Me.FilmCodeField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.FilmCodeField, Value) <> True) Then
-                    Me.FilmCodeField = Value
+                If (Object.ReferenceEquals(Me.FilmCodeField, value) <> true) Then
+                    Me.FilmCodeField = value
                     Me.RaisePropertyChanged("FilmCode")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property FilmLength() As Integer
             Get
                 Return Me.FilmLengthField
             End Get
             Set
-                If (Me.FilmLengthField.Equals(Value) <> True) Then
-                    Me.FilmLengthField = Value
+                If (Me.FilmLengthField.Equals(value) <> true) Then
+                    Me.FilmLengthField = value
                     Me.RaisePropertyChanged("FilmLength")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ProgramName() As String
             Get
                 Return Me.ProgramNameField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ProgramNameField, Value) <> True) Then
-                    Me.ProgramNameField = Value
+                If (Object.ReferenceEquals(Me.ProgramNameField, value) <> true) Then
+                    Me.ProgramNameField = value
                     Me.RaisePropertyChanged("ProgramName")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property SpotId() As Integer
             Get
                 Return Me.SpotIdField
             End Get
             Set
-                If (Me.SpotIdField.Equals(Value) <> True) Then
-                    Me.SpotIdField = Value
+                If (Me.SpotIdField.Equals(value) <> true) Then
+                    Me.SpotIdField = value
                     Me.RaisePropertyChanged("SpotId")
                 End If
             End Set
         End Property
-
+        
         Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-
+        
         Protected Sub RaisePropertyChanged(ByVal propertyName As String)
             Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
             If (Not (propertyChanged) Is Nothing) Then
@@ -2248,179 +2256,179 @@ Namespace SpotlightApiV23.xsd
             End If
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),
-     System.Runtime.Serialization.DataContractAttribute(Name:="ConfirmationSpecificSpot", [Namespace]:="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices"),
-     System.SerializableAttribute()>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ConfirmationSpecificSpot", [Namespace]:="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices"),  _
+     System.SerializableAttribute()>  _
     Partial Public Class ConfirmationSpecificSpot
         Inherits Object
         Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-
-        <System.NonSerializedAttribute()>
+        
+        <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ActualTRPField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ActualTargetTRPField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private BreakIdField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private BroadcastDateField As Date
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private BroadcastTimeField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ChannelField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private EstimatedTRPField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private FilmCodeField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private FilmLengthField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private GrossPriceField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private IndexedCPPField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private IndexedGrossCPPField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private NetPriceField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private PlacementField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private PlacementSurchargeField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private PriorityField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private PrioritySurchargeField As Double
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProgramNameField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private RemarkField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private SpotIdField As Integer
-
-        <Global.System.ComponentModel.BrowsableAttribute(False)>
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
                 Return Me.extensionDataField
             End Get
             Set
-                Me.extensionDataField = Value
+                Me.extensionDataField = value
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ActualTRP() As Double
             Get
                 Return Me.ActualTRPField
             End Get
             Set
-                If (Me.ActualTRPField.Equals(Value) <> True) Then
-                    Me.ActualTRPField = Value
+                If (Me.ActualTRPField.Equals(value) <> true) Then
+                    Me.ActualTRPField = value
                     Me.RaisePropertyChanged("ActualTRP")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ActualTargetTRP() As Double
             Get
                 Return Me.ActualTargetTRPField
             End Get
             Set
-                If (Me.ActualTargetTRPField.Equals(Value) <> True) Then
-                    Me.ActualTargetTRPField = Value
+                If (Me.ActualTargetTRPField.Equals(value) <> true) Then
+                    Me.ActualTargetTRPField = value
                     Me.RaisePropertyChanged("ActualTargetTRP")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property BreakId() As Integer
             Get
                 Return Me.BreakIdField
             End Get
             Set
-                If (Me.BreakIdField.Equals(Value) <> True) Then
-                    Me.BreakIdField = Value
+                If (Me.BreakIdField.Equals(value) <> true) Then
+                    Me.BreakIdField = value
                     Me.RaisePropertyChanged("BreakId")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property BroadcastDate() As Date
             Get
                 Return Me.BroadcastDateField
             End Get
             Set
-                If (Me.BroadcastDateField.Equals(Value) <> True) Then
-                    Me.BroadcastDateField = Value
+                If (Me.BroadcastDateField.Equals(value) <> true) Then
+                    Me.BroadcastDateField = value
                     Me.RaisePropertyChanged("BroadcastDate")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property BroadcastTime() As Integer
             Get
                 Return Me.BroadcastTimeField
             End Get
             Set
-                If (Me.BroadcastTimeField.Equals(Value) <> True) Then
-                    Me.BroadcastTimeField = Value
+                If (Me.BroadcastTimeField.Equals(value) <> true) Then
+                    Me.BroadcastTimeField = value
                     Me.RaisePropertyChanged("BroadcastTime")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property Channel() As String
             Get
                 Return Me.ChannelField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ChannelField, Value) <> True) Then
-                    Me.ChannelField = Value
+                If (Object.ReferenceEquals(Me.ChannelField, value) <> true) Then
+                    Me.ChannelField = value
                     Me.RaisePropertyChanged("Channel")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property EstimatedTRP() As Double
             Get
                 Return Me.EstimatedTRPField
             End Get
             Set
-                If (Me.EstimatedTRPField.Equals(Value) <> True) Then
-                    Me.EstimatedTRPField = Value
+                If (Me.EstimatedTRPField.Equals(value) <> true) Then
+                    Me.EstimatedTRPField = value
                     Me.RaisePropertyChanged("EstimatedTRP")
                 End If
             End Set
         End Property
-
+        
         <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property FilmCode() As String
             Get
@@ -3285,80 +3293,86 @@ Namespace SpotlightApiV23.xsd
     End Class
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.ServiceContractAttribute([Namespace]:="urn:se.tv4.online", ConfigurationName:="SpotlightApiV23.xsd.ISpotlightApiV3")>  _
-    Public Interface ISpotlightApiV3
+     System.ServiceModel.ServiceContractAttribute([Namespace]:="urn:se.tv4.online", ConfigurationName:="SpotlightApiV23.xsd.ISpotlightApiV5")>  _
+    Public Interface ISpotlightApiV5
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/CreateBooking", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/CreateBookingResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/CreateBooking", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/CreateBookingResponse")>  _
         Function CreateBooking(ByVal username As String, ByVal password As String, ByVal campaign As SpotlightApiV23.xsd.Campaign, ByVal ignoreWarnings As Boolean) As SpotlightApiV23.xsd.CreateBookingResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/CreateBookingForOrganization", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/CreateBookingForOrganizationResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/CreateBookingForOrganization", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/CreateBookingForOrganizationResponse")>  _
         Function CreateBookingForOrganization(ByVal username As String, ByVal password As String, ByVal organizationId As String, ByVal campaign As SpotlightApiV23.xsd.Campaign, ByVal ignoreWarnings As Boolean) As SpotlightApiV23.xsd.CreateBookingResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetUserOrganizations", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetUserOrganizationsResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetUserOrganizations", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetUserOrganizationsResponse")>  _
         Function GetUserOrganizations(ByVal username As String, ByVal password As String) As SpotlightApiV23.xsd.CreateBookingResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetReleasePeriods", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetReleasePeriodsResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetClientsForOrganization", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetClientsForOrganizationResponse")>  _
+        Function GetClientsForOrganization(ByVal username As String, ByVal password As String, ByVal organizationId As String) As SpotlightApiV23.xsd.CreateBookingResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetInvoiceContactsForOrganization", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetInvoiceContactsForOrganizationResponse")>  _
+        Function GetInvoiceContactsForOrganization(ByVal username As String, ByVal password As String, ByVal organizationId As String) As String()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetReleasePeriods", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetReleasePeriodsResponse")>  _
         Function GetReleasePeriods(ByVal onlyActive As Boolean) As SpotlightApiV23.xsd.ReleasePeriod()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetBookingTypes", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetBookingTypesResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetBookingTypes", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetBookingTypesResponse")>  _
         Function GetBookingTypes() As String()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetChannels", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetChannelsResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetChannels", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetChannelsResponse")>  _
         Function GetChannels() As String()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetTargets", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetTargetsResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetTargets", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetTargetsResponse")>  _
         Function GetTargets(ByVal [date] As System.Nullable(Of Date)) As String()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetTargetsForChannel", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetTargetsForChannelResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetTargetsForChannel", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetTargetsForChannelResponse")>  _
         Function GetTargetsForChannel(ByVal channel As String, ByVal [date] As System.Nullable(Of Date)) As String()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetDaypartNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetDaypartNamesResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetDaypartNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetDaypartNamesResponse")>  _
         Function GetDaypartNames() As String()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetSurchargeNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetSurchargeNamesResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetSurchargeNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetSurchargeNamesResponse")>  _
         Function GetSurchargeNames() As String()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetIndexNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetIndexNamesResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetIndexNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetIndexNamesResponse")>  _
         Function GetIndexNames() As String()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationForBooking", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationForBookingResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationForBooking", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationForBookingResponse")>  _
         Function GetConfirmationForBooking(ByVal username As String, ByVal password As String, ByVal bookingId As System.Guid, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationsForAgencyRefNo", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationsForAgencyRefNoResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationsForAgencyRefNo", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationsForAgencyRefNoResponse")>  _
         Function GetConfirmationsForAgencyRefNo(ByVal username As String, ByVal password As String, ByVal agencyRefNo As String, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationsByChangedDateTime", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationsByChangedDateTimeResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationsByChangedDateTime", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationsByChangedDateTimeResponse")>  _
         Function GetConfirmationsByChangedDateTime(ByVal username As String, ByVal password As String, ByVal startChangeDateTime As Date, ByVal endChangeDateTime As Date, ByVal allVersions As Boolean, ByVal filterByOrganizationIds() As String) As SpotlightApiV23.xsd.GetConfirmationsResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationsByBroadcastDateTime", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationsByBroadcastDateTimeResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationsByBroadcastDateTime", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationsByBroadcastDateTimeResponse")>  _
         Function GetConfirmationsByBroadcastDateTime(ByVal username As String, ByVal password As String, ByVal startDateTime As Date, ByVal endDateTime As Date, ByVal allVersions As Boolean, ByVal filterByOrganizationIds() As String) As SpotlightApiV23.xsd.GetConfirmationsResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationDetails", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetConfirmationDetailsResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationDetails", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetConfirmationDetailsResponse")>  _
         Function GetConfirmationDetails(ByVal username As String, ByVal password As String, ByVal campaignRefNo As String, ByVal confirmationId As Integer, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetSpotPrices", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetSpotPricesResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetSpotPrices", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetSpotPricesResponse")>  _
         Function GetSpotPrices(ByVal username As String, ByVal password As String, ByVal startBroadcastDate As Date, ByVal endBroadcastDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetPeriodPrices", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetPeriodPricesResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetPeriodPrices", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetPeriodPricesResponse")>  _
         Function GetPeriodPrices(ByVal username As String, ByVal password As String, ByVal startBroadcastDate As Date, ByVal endBroadcastDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetScheduleEvents", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetScheduleEventsResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetScheduleEvents", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetScheduleEventsResponse")>  _
         Function GetScheduleEvents(ByVal username As String, ByVal password As String, ByVal broadcastStartDate As Date, ByVal broadcastEndDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse
         
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV3/GetProgramDetails", ReplyAction:="urn:se.tv4.online/ISpotlightApiV3/GetProgramDetailsResponse")>  _
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetProgramDetails", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetProgramDetailsResponse")>  _
         Function GetProgramDetails(ByVal username As String, ByVal password As String, ByVal programId As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse
     End Interface
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
-    Public Interface ISpotlightApiV3Channel
-        Inherits SpotlightApiV23.xsd.ISpotlightApiV3, System.ServiceModel.IClientChannel
+    Public Interface ISpotlightApiV5Channel
+        Inherits SpotlightApiV23.xsd.ISpotlightApiV5, System.ServiceModel.IClientChannel
     End Interface
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
-    Partial Public Class SpotlightApiV3Client
-        Inherits System.ServiceModel.ClientBase(Of SpotlightApiV23.xsd.ISpotlightApiV3)
-        Implements SpotlightApiV23.xsd.ISpotlightApiV3
+    Partial Public Class SpotlightApiV5Client
+        Inherits System.ServiceModel.ClientBase(Of SpotlightApiV23.xsd.ISpotlightApiV5)
+        Implements SpotlightApiV23.xsd.ISpotlightApiV5
         
         Public Sub New()
             MyBase.New
@@ -3380,83 +3394,91 @@ Namespace SpotlightApiV23.xsd
             MyBase.New(binding, remoteAddress)
         End Sub
         
-        Public Function CreateBooking(ByVal username As String, ByVal password As String, ByVal campaign As SpotlightApiV23.xsd.Campaign, ByVal ignoreWarnings As Boolean) As SpotlightApiV23.xsd.CreateBookingResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.CreateBooking
+        Public Function CreateBooking(ByVal username As String, ByVal password As String, ByVal campaign As SpotlightApiV23.xsd.Campaign, ByVal ignoreWarnings As Boolean) As SpotlightApiV23.xsd.CreateBookingResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.CreateBooking
             Return MyBase.Channel.CreateBooking(username, password, campaign, ignoreWarnings)
         End Function
         
-        Public Function CreateBookingForOrganization(ByVal username As String, ByVal password As String, ByVal organizationId As String, ByVal campaign As SpotlightApiV23.xsd.Campaign, ByVal ignoreWarnings As Boolean) As SpotlightApiV23.xsd.CreateBookingResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.CreateBookingForOrganization
+        Public Function CreateBookingForOrganization(ByVal username As String, ByVal password As String, ByVal organizationId As String, ByVal campaign As SpotlightApiV23.xsd.Campaign, ByVal ignoreWarnings As Boolean) As SpotlightApiV23.xsd.CreateBookingResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.CreateBookingForOrganization
             Return MyBase.Channel.CreateBookingForOrganization(username, password, organizationId, campaign, ignoreWarnings)
         End Function
         
-        Public Function GetUserOrganizations(ByVal username As String, ByVal password As String) As SpotlightApiV23.xsd.CreateBookingResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetUserOrganizations
+        Public Function GetUserOrganizations(ByVal username As String, ByVal password As String) As SpotlightApiV23.xsd.CreateBookingResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetUserOrganizations
             Return MyBase.Channel.GetUserOrganizations(username, password)
         End Function
         
-        Public Function GetReleasePeriods(ByVal onlyActive As Boolean) As SpotlightApiV23.xsd.ReleasePeriod() Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetReleasePeriods
+        Public Function GetClientsForOrganization(ByVal username As String, ByVal password As String, ByVal organizationId As String) As SpotlightApiV23.xsd.CreateBookingResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetClientsForOrganization
+            Return MyBase.Channel.GetClientsForOrganization(username, password, organizationId)
+        End Function
+        
+        Public Function GetInvoiceContactsForOrganization(ByVal username As String, ByVal password As String, ByVal organizationId As String) As String() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetInvoiceContactsForOrganization
+            Return MyBase.Channel.GetInvoiceContactsForOrganization(username, password, organizationId)
+        End Function
+        
+        Public Function GetReleasePeriods(ByVal onlyActive As Boolean) As SpotlightApiV23.xsd.ReleasePeriod() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetReleasePeriods
             Return MyBase.Channel.GetReleasePeriods(onlyActive)
         End Function
         
-        Public Function GetBookingTypes() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetBookingTypes
+        Public Function GetBookingTypes() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetBookingTypes
             Return MyBase.Channel.GetBookingTypes
         End Function
         
-        Public Function GetChannels() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetChannels
+        Public Function GetChannels() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetChannels
             Return MyBase.Channel.GetChannels
         End Function
         
-        Public Function GetTargets(ByVal [date] As System.Nullable(Of Date)) As String() Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetTargets
+        Public Function GetTargets(ByVal [date] As System.Nullable(Of Date)) As String() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetTargets
             Return MyBase.Channel.GetTargets([date])
         End Function
         
-        Public Function GetTargetsForChannel(ByVal channel As String, ByVal [date] As System.Nullable(Of Date)) As String() Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetTargetsForChannel
+        Public Function GetTargetsForChannel(ByVal channel As String, ByVal [date] As System.Nullable(Of Date)) As String() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetTargetsForChannel
             Return MyBase.Channel.GetTargetsForChannel(channel, [date])
         End Function
         
-        Public Function GetDaypartNames() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetDaypartNames
+        Public Function GetDaypartNames() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetDaypartNames
             Return MyBase.Channel.GetDaypartNames
         End Function
         
-        Public Function GetSurchargeNames() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetSurchargeNames
+        Public Function GetSurchargeNames() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetSurchargeNames
             Return MyBase.Channel.GetSurchargeNames
         End Function
         
-        Public Function GetIndexNames() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetIndexNames
+        Public Function GetIndexNames() As String() Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetIndexNames
             Return MyBase.Channel.GetIndexNames
         End Function
         
-        Public Function GetConfirmationForBooking(ByVal username As String, ByVal password As String, ByVal bookingId As System.Guid, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetConfirmationForBooking
+        Public Function GetConfirmationForBooking(ByVal username As String, ByVal password As String, ByVal bookingId As System.Guid, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetConfirmationForBooking
             Return MyBase.Channel.GetConfirmationForBooking(username, password, bookingId, allVersions)
         End Function
         
-        Public Function GetConfirmationsForAgencyRefNo(ByVal username As String, ByVal password As String, ByVal agencyRefNo As String, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetConfirmationsForAgencyRefNo
+        Public Function GetConfirmationsForAgencyRefNo(ByVal username As String, ByVal password As String, ByVal agencyRefNo As String, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetConfirmationsForAgencyRefNo
             Return MyBase.Channel.GetConfirmationsForAgencyRefNo(username, password, agencyRefNo, allVersions)
         End Function
         
-        Public Function GetConfirmationsByChangedDateTime(ByVal username As String, ByVal password As String, ByVal startChangeDateTime As Date, ByVal endChangeDateTime As Date, ByVal allVersions As Boolean, ByVal filterByOrganizationIds() As String) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetConfirmationsByChangedDateTime
+        Public Function GetConfirmationsByChangedDateTime(ByVal username As String, ByVal password As String, ByVal startChangeDateTime As Date, ByVal endChangeDateTime As Date, ByVal allVersions As Boolean, ByVal filterByOrganizationIds() As String) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetConfirmationsByChangedDateTime
             Return MyBase.Channel.GetConfirmationsByChangedDateTime(username, password, startChangeDateTime, endChangeDateTime, allVersions, filterByOrganizationIds)
         End Function
         
-        Public Function GetConfirmationsByBroadcastDateTime(ByVal username As String, ByVal password As String, ByVal startDateTime As Date, ByVal endDateTime As Date, ByVal allVersions As Boolean, ByVal filterByOrganizationIds() As String) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetConfirmationsByBroadcastDateTime
+        Public Function GetConfirmationsByBroadcastDateTime(ByVal username As String, ByVal password As String, ByVal startDateTime As Date, ByVal endDateTime As Date, ByVal allVersions As Boolean, ByVal filterByOrganizationIds() As String) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetConfirmationsByBroadcastDateTime
             Return MyBase.Channel.GetConfirmationsByBroadcastDateTime(username, password, startDateTime, endDateTime, allVersions, filterByOrganizationIds)
         End Function
         
-        Public Function GetConfirmationDetails(ByVal username As String, ByVal password As String, ByVal campaignRefNo As String, ByVal confirmationId As Integer, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetConfirmationDetails
+        Public Function GetConfirmationDetails(ByVal username As String, ByVal password As String, ByVal campaignRefNo As String, ByVal confirmationId As Integer, ByVal allVersions As Boolean) As SpotlightApiV23.xsd.GetConfirmationsResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetConfirmationDetails
             Return MyBase.Channel.GetConfirmationDetails(username, password, campaignRefNo, confirmationId, allVersions)
         End Function
         
-        Public Function GetSpotPrices(ByVal username As String, ByVal password As String, ByVal startBroadcastDate As Date, ByVal endBroadcastDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetSpotPrices
+        Public Function GetSpotPrices(ByVal username As String, ByVal password As String, ByVal startBroadcastDate As Date, ByVal endBroadcastDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetSpotPrices
             Return MyBase.Channel.GetSpotPrices(username, password, startBroadcastDate, endBroadcastDate, channelName)
         End Function
         
-        Public Function GetPeriodPrices(ByVal username As String, ByVal password As String, ByVal startBroadcastDate As Date, ByVal endBroadcastDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetPeriodPrices
+        Public Function GetPeriodPrices(ByVal username As String, ByVal password As String, ByVal startBroadcastDate As Date, ByVal endBroadcastDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetPeriodPrices
             Return MyBase.Channel.GetPeriodPrices(username, password, startBroadcastDate, endBroadcastDate, channelName)
         End Function
         
-        Public Function GetScheduleEvents(ByVal username As String, ByVal password As String, ByVal broadcastStartDate As Date, ByVal broadcastEndDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetScheduleEvents
+        Public Function GetScheduleEvents(ByVal username As String, ByVal password As String, ByVal broadcastStartDate As Date, ByVal broadcastEndDate As Date, ByVal channelName As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetScheduleEvents
             Return MyBase.Channel.GetScheduleEvents(username, password, broadcastStartDate, broadcastEndDate, channelName)
         End Function
         
-        Public Function GetProgramDetails(ByVal username As String, ByVal password As String, ByVal programId As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse Implements SpotlightApiV23.xsd.ISpotlightApiV3.GetProgramDetails
+        Public Function GetProgramDetails(ByVal username As String, ByVal password As String, ByVal programId As String) As SpotlightApiV23.xsd.PricesAndScheduleResponse Implements SpotlightApiV23.xsd.ISpotlightApiV5.GetProgramDetails
             Return MyBase.Channel.GetProgramDetails(username, password, programId)
         End Function
     End Class

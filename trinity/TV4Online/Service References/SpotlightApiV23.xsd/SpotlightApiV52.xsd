@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TV4.Online.Web.WebServices" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV3.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV5.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://spotlightbookings.tv4.se/webservices/SpotlightApiV5.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Campaign">
     <xs:sequence>
       <xs:element minOccurs="0" name="AgencyCampaignRefNo" nillable="true" type="xs:string" />
@@ -10,8 +10,10 @@
       <xs:element minOccurs="0" name="ChannelCampaignRefNo" nillable="true" type="xs:string" />
       <xs:element name="ChannelContactName" nillable="true" type="xs:string" />
       <xs:element name="Client" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InvoiceContact" nillable="true" type="xs:string" />
       <xs:element name="Name" nillable="true" type="xs:string" />
       <xs:element name="Product" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
@@ -229,8 +231,10 @@
       <xs:element minOccurs="0" name="ChangedDateTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ClientName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DigitalSpots" nillable="true" type="tns:ArrayOfConfirmationDigitalSpot" />
       <xs:element minOccurs="0" name="Discounts" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="GrossPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="Invoiceable" type="xs:double" />
       <xs:element minOccurs="0" name="MinimumTRP" type="xs:double" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NetPrice" type="xs:double" />
@@ -242,6 +246,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ConfirmationVersion" nillable="true" type="tns:ConfirmationVersion" />
+  <xs:complexType name="ArrayOfConfirmationDigitalSpot">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConfirmationDigitalSpot" nillable="true" type="tns:ConfirmationDigitalSpot" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConfirmationDigitalSpot" nillable="true" type="tns:ArrayOfConfirmationDigitalSpot" />
+  <xs:complexType name="ConfirmationDigitalSpot">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Share" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfirmationDigitalSpot" nillable="true" type="tns:ConfirmationDigitalSpot" />
   <xs:complexType name="ArrayOfConfirmationRbsSpot">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ConfirmationRbsSpot" nillable="true" type="tns:ConfirmationRbsSpot" />
