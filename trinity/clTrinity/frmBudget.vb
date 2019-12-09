@@ -326,9 +326,6 @@ Public Class frmBudget
             DirectCast(grdBudget.Rows(e.RowIndex).Tag, Trinity.cBookingType).OrderNumber = e.Value
         ElseIf e.ColumnIndex = 6 Then 'Confirmed gross
             DirectCast(grdBudget.Rows(e.RowIndex).Tag, Trinity.cBookingType).ConfirmedGrossBudget = e.Value
-            Dim tempVal As Decimal
-            tempVal = e.Value
-            Debug.Print(tempVal)
             grdBudget.Invalidate()
         ElseIf e.ColumnIndex = 9 Then
             If Not grdBudget.Rows(e.RowIndex).Tag Is Nothing AndAlso Not grdBudget.Rows(e.RowIndex).Tag.GetType.FullName = "clTrinity.Trinity.cCombination" Then

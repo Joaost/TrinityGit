@@ -29,17 +29,14 @@ Partial Class frmPostCampaignAnalysis
         Me.chkInclude = New System.Windows.Forms.CheckBox()
         Me.chkAdvanced = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmdDeleteCompetitor = New System.Windows.Forms.Button()
+        Me.cmdAddCompetitor = New System.Windows.Forms.Button()
         Me.grdChosen = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.grdProducts = New System.Windows.Forms.DataGridView()
-        Me.colProduct = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colRating = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmdFind = New System.Windows.Forms.Button()
-        Me.dtTo = New clTrinity.ExtendedDateTimePicker()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.dtFrom = New clTrinity.ExtendedDateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dlgOpen = New System.Windows.Forms.OpenFileDialog()
@@ -52,31 +49,34 @@ Partial Class frmPostCampaignAnalysis
         Me.chkPlannedNet = New System.Windows.Forms.CheckBox()
         Me.chkConfirmedNet = New System.Windows.Forms.CheckBox()
         Me.chkPlannedGrossConfirmedNet = New System.Windows.Forms.CheckBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cmdDeleteCompetitor = New System.Windows.Forms.Button()
-        Me.cmdAddCompetitor = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.TableLayoutPanel1.SuspendLayout
-        Me.GroupBox1.SuspendLayout
-        CType(Me.grdChosen,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.grdProducts,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colProduct = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colRating = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dtTo = New clTrinity.ExtendedDateTimePicker()
+        Me.dtFrom = New clTrinity.ExtendedDateTimePicker()
+        Me.TableLayoutPanel1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.grdChosen, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdProducts, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(145, 360)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(149, 365)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(146, 31)
         Me.TableLayoutPanel1.TabIndex = 0
         '
@@ -105,20 +105,20 @@ Partial Class frmPostCampaignAnalysis
         '
         'chkHide
         '
-        Me.chkHide.AutoSize = true
-        Me.chkHide.Checked = true
+        Me.chkHide.AutoSize = True
+        Me.chkHide.Checked = True
         Me.chkHide.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkHide.Location = New System.Drawing.Point(15, 209)
         Me.chkHide.Name = "chkHide"
         Me.chkHide.Size = New System.Drawing.Size(112, 17)
         Me.chkHide.TabIndex = 15
         Me.chkHide.Text = "Hide data sheets"
-        Me.chkHide.UseVisualStyleBackColor = true
+        Me.chkHide.UseVisualStyleBackColor = True
         '
         'cmbTemplate
         '
         Me.cmbTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTemplate.FormattingEnabled = true
+        Me.cmbTemplate.FormattingEnabled = True
         Me.cmbTemplate.Location = New System.Drawing.Point(12, 69)
         Me.cmbTemplate.Name = "cmbTemplate"
         Me.cmbTemplate.Size = New System.Drawing.Size(275, 21)
@@ -126,7 +126,7 @@ Partial Class frmPostCampaignAnalysis
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
+        Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 51)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(52, 13)
@@ -135,30 +135,30 @@ Partial Class frmPostCampaignAnalysis
         '
         'chkInclude
         '
-        Me.chkInclude.AutoSize = true
-        Me.chkInclude.Checked = true
+        Me.chkInclude.AutoSize = True
+        Me.chkInclude.Checked = True
         Me.chkInclude.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkInclude.Location = New System.Drawing.Point(15, 234)
         Me.chkInclude.Name = "chkInclude"
         Me.chkInclude.Size = New System.Drawing.Size(110, 17)
         Me.chkInclude.TabIndex = 16
         Me.chkInclude.Text = "Include planned"
-        Me.chkInclude.UseVisualStyleBackColor = true
+        Me.chkInclude.UseVisualStyleBackColor = True
         '
         'chkAdvanced
         '
-        Me.chkAdvanced.AutoSize = true
+        Me.chkAdvanced.AutoSize = True
         Me.chkAdvanced.Location = New System.Drawing.Point(15, 258)
         Me.chkAdvanced.Name = "chkAdvanced"
         Me.chkAdvanced.Size = New System.Drawing.Size(76, 17)
         Me.chkAdvanced.TabIndex = 17
         Me.chkAdvanced.Text = "Advanced"
-        Me.chkAdvanced.UseVisualStyleBackColor = true
+        Me.chkAdvanced.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.cmdDeleteCompetitor)
         Me.GroupBox1.Controls.Add(Me.cmdAddCompetitor)
         Me.GroupBox1.Controls.Add(Me.grdChosen)
@@ -173,38 +173,48 @@ Partial Class frmPostCampaignAnalysis
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(15, 455)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(276, 328)
+        Me.GroupBox1.Size = New System.Drawing.Size(280, 328)
         Me.GroupBox1.TabIndex = 18
-        Me.GroupBox1.TabStop = false
+        Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Competition"
+        '
+        'cmdDeleteCompetitor
+        '
+        Me.cmdDeleteCompetitor.Image = CType(resources.GetObject("cmdDeleteCompetitor.Image"), System.Drawing.Image)
+        Me.cmdDeleteCompetitor.Location = New System.Drawing.Point(232, 232)
+        Me.cmdDeleteCompetitor.Name = "cmdDeleteCompetitor"
+        Me.cmdDeleteCompetitor.Size = New System.Drawing.Size(22, 22)
+        Me.cmdDeleteCompetitor.TabIndex = 14
+        Me.cmdDeleteCompetitor.UseVisualStyleBackColor = True
+        '
+        'cmdAddCompetitor
+        '
+        Me.cmdAddCompetitor.Image = CType(resources.GetObject("cmdAddCompetitor.Image"), System.Drawing.Image)
+        Me.cmdAddCompetitor.Location = New System.Drawing.Point(232, 204)
+        Me.cmdAddCompetitor.Name = "cmdAddCompetitor"
+        Me.cmdAddCompetitor.Size = New System.Drawing.Size(22, 22)
+        Me.cmdAddCompetitor.TabIndex = 13
+        Me.cmdAddCompetitor.UseVisualStyleBackColor = True
         '
         'grdChosen
         '
-        Me.grdChosen.AllowUserToAddRows = false
-        Me.grdChosen.AllowUserToDeleteRows = false
-        Me.grdChosen.AllowUserToResizeColumns = false
-        Me.grdChosen.AllowUserToResizeRows = false
+        Me.grdChosen.AllowUserToAddRows = False
+        Me.grdChosen.AllowUserToDeleteRows = False
+        Me.grdChosen.AllowUserToResizeColumns = False
+        Me.grdChosen.AllowUserToResizeRows = False
         Me.grdChosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdChosen.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4})
         Me.grdChosen.Location = New System.Drawing.Point(260, 145)
         Me.grdChosen.Name = "grdChosen"
-        Me.grdChosen.ReadOnly = true
-        Me.grdChosen.RowHeadersVisible = false
+        Me.grdChosen.ReadOnly = True
+        Me.grdChosen.RowHeadersVisible = False
         Me.grdChosen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdChosen.Size = New System.Drawing.Size(144, 138)
         Me.grdChosen.TabIndex = 9
         '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.Frozen = true
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Product"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = true
-        Me.DataGridViewTextBoxColumn4.Width = 140
-        '
         'Label5
         '
-        Me.Label5.AutoSize = true
+        Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(8, 122)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(36, 13)
@@ -220,35 +230,19 @@ Partial Class frmPostCampaignAnalysis
         '
         'grdProducts
         '
-        Me.grdProducts.AllowUserToAddRows = false
-        Me.grdProducts.AllowUserToDeleteRows = false
-        Me.grdProducts.AllowUserToResizeColumns = false
-        Me.grdProducts.AllowUserToResizeRows = false
+        Me.grdProducts.AllowUserToAddRows = False
+        Me.grdProducts.AllowUserToDeleteRows = False
+        Me.grdProducts.AllowUserToResizeColumns = False
+        Me.grdProducts.AllowUserToResizeRows = False
         Me.grdProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdProducts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colProduct, Me.colRating})
         Me.grdProducts.Location = New System.Drawing.Point(9, 145)
         Me.grdProducts.Name = "grdProducts"
-        Me.grdProducts.ReadOnly = true
-        Me.grdProducts.RowHeadersVisible = false
+        Me.grdProducts.ReadOnly = True
+        Me.grdProducts.RowHeadersVisible = False
         Me.grdProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdProducts.Size = New System.Drawing.Size(217, 176)
         Me.grdProducts.TabIndex = 6
-        '
-        'colProduct
-        '
-        Me.colProduct.Frozen = true
-        Me.colProduct.HeaderText = "Product"
-        Me.colProduct.Name = "colProduct"
-        Me.colProduct.ReadOnly = true
-        Me.colProduct.Width = 140
-        '
-        'colRating
-        '
-        Me.colRating.Frozen = true
-        Me.colRating.HeaderText = "Rating"
-        Me.colRating.Name = "colRating"
-        Me.colRating.ReadOnly = true
-        Me.colRating.Width = 50
         '
         'cmdFind
         '
@@ -257,38 +251,20 @@ Partial Class frmPostCampaignAnalysis
         Me.cmdFind.Size = New System.Drawing.Size(75, 23)
         Me.cmdFind.TabIndex = 5
         Me.cmdFind.Text = "Find"
-        Me.cmdFind.UseVisualStyleBackColor = true
-        '
-        'dtTo
-        '
-        Me.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtTo.Location = New System.Drawing.Point(133, 33)
-        Me.dtTo.Name = "dtTo"
-        Me.dtTo.ShowWeekNumbers = true
-        Me.dtTo.Size = New System.Drawing.Size(87, 22)
-        Me.dtTo.TabIndex = 4
+        Me.cmdFind.UseVisualStyleBackColor = True
         '
         'Label4
         '
-        Me.Label4.AutoSize = true
+        Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(102, 36)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(27, 13)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "and"
         '
-        'dtFrom
-        '
-        Me.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtFrom.Location = New System.Drawing.Point(9, 33)
-        Me.dtFrom.Name = "dtFrom"
-        Me.dtFrom.ShowWeekNumbers = true
-        Me.dtFrom.Size = New System.Drawing.Size(87, 22)
-        Me.dtFrom.TabIndex = 2
-        '
         'Label3
         '
-        Me.Label3.AutoSize = true
+        Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(6, 16)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(146, 13)
@@ -301,8 +277,8 @@ Partial Class frmPostCampaignAnalysis
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(250, 31)
         Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Please specify up to 5 products to be considered as the main competitors in this "& _ 
-    "campaign"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label2.Text = "Please specify up to 5 products to be considered as the main competitors in this " &
+    "campaign" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'dlgOpen
         '
@@ -315,23 +291,23 @@ Partial Class frmPostCampaignAnalysis
         Me.pbStatus.Name = "pbStatus"
         Me.pbStatus.Size = New System.Drawing.Size(220, 22)
         Me.pbStatus.TabIndex = 19
-        Me.pbStatus.Visible = false
+        Me.pbStatus.Visible = False
         '
         'chkPrintCombinations
         '
-        Me.chkPrintCombinations.AutoSize = true
+        Me.chkPrintCombinations.AutoSize = True
         Me.chkPrintCombinations.Location = New System.Drawing.Point(15, 183)
         Me.chkPrintCombinations.Name = "chkPrintCombinations"
         Me.chkPrintCombinations.Size = New System.Drawing.Size(227, 17)
         Me.chkPrintCombinations.TabIndex = 20
         Me.chkPrintCombinations.Text = "Add combinations with joint allocation"
-        Me.chkPrintCombinations.UseVisualStyleBackColor = true
+        Me.chkPrintCombinations.UseVisualStyleBackColor = True
         '
         'cmbHistoric
         '
         Me.cmbHistoric.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbHistoric.Enabled = false
-        Me.cmbHistoric.FormattingEnabled = true
+        Me.cmbHistoric.Enabled = False
+        Me.cmbHistoric.FormattingEnabled = True
         Me.cmbHistoric.Location = New System.Drawing.Point(12, 112)
         Me.cmbHistoric.Name = "cmbHistoric"
         Me.cmbHistoric.Size = New System.Drawing.Size(275, 21)
@@ -339,7 +315,7 @@ Partial Class frmPostCampaignAnalysis
         '
         'Label6
         '
-        Me.Label6.AutoSize = true
+        Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(14, 94)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(139, 13)
@@ -349,7 +325,7 @@ Partial Class frmPostCampaignAnalysis
         'cmbTimeshift
         '
         Me.cmbTimeshift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTimeshift.FormattingEnabled = true
+        Me.cmbTimeshift.FormattingEnabled = True
         Me.cmbTimeshift.Items.AddRange(New Object() {"Default", "Live", "VOSDAL+7"})
         Me.cmbTimeshift.Location = New System.Drawing.Point(12, 155)
         Me.cmbTimeshift.Name = "cmbTimeshift"
@@ -358,7 +334,7 @@ Partial Class frmPostCampaignAnalysis
         '
         'Label7
         '
-        Me.Label7.AutoSize = true
+        Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(14, 137)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(56, 13)
@@ -367,77 +343,35 @@ Partial Class frmPostCampaignAnalysis
         '
         'chkPlannedNet
         '
-        Me.chkPlannedNet.AutoSize = true
-        Me.chkPlannedNet.Checked = true
+        Me.chkPlannedNet.AutoSize = True
+        Me.chkPlannedNet.Checked = True
         Me.chkPlannedNet.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkPlannedNet.Location = New System.Drawing.Point(15, 280)
         Me.chkPlannedNet.Name = "chkPlannedNet"
         Me.chkPlannedNet.Size = New System.Drawing.Size(88, 17)
         Me.chkPlannedNet.TabIndex = 25
         Me.chkPlannedNet.Text = "Planned net"
-        Me.chkPlannedNet.UseVisualStyleBackColor = true
+        Me.chkPlannedNet.UseVisualStyleBackColor = True
         '
         'chkConfirmedNet
         '
-        Me.chkConfirmedNet.AutoSize = true
+        Me.chkConfirmedNet.AutoSize = True
         Me.chkConfirmedNet.Location = New System.Drawing.Point(15, 303)
         Me.chkConfirmedNet.Name = "chkConfirmedNet"
         Me.chkConfirmedNet.Size = New System.Drawing.Size(100, 17)
         Me.chkConfirmedNet.TabIndex = 26
         Me.chkConfirmedNet.Text = "Confirmed net"
-        Me.chkConfirmedNet.UseVisualStyleBackColor = true
+        Me.chkConfirmedNet.UseVisualStyleBackColor = True
         '
         'chkPlannedGrossConfirmedNet
         '
-        Me.chkPlannedGrossConfirmedNet.AutoSize = true
+        Me.chkPlannedGrossConfirmedNet.AutoSize = True
         Me.chkPlannedGrossConfirmedNet.Location = New System.Drawing.Point(15, 326)
         Me.chkPlannedGrossConfirmedNet.Name = "chkPlannedGrossConfirmedNet"
         Me.chkPlannedGrossConfirmedNet.Size = New System.Drawing.Size(177, 17)
         Me.chkPlannedGrossConfirmedNet.TabIndex = 27
         Me.chkPlannedGrossConfirmedNet.Text = "Planned gross, confirmed net"
-        Me.chkPlannedGrossConfirmedNet.UseVisualStyleBackColor = true
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.Frozen = true
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Advertiser"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = true
-        Me.DataGridViewTextBoxColumn1.Width = 115
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.Frozen = true
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Product"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = true
-        Me.DataGridViewTextBoxColumn2.Width = 115
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.Frozen = true
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Rating"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = true
-        Me.DataGridViewTextBoxColumn3.Width = 50
-        '
-        'cmdDeleteCompetitor
-        '
-        Me.cmdDeleteCompetitor.Image = CType(resources.GetObject("cmdDeleteCompetitor.Image"),System.Drawing.Image)
-        Me.cmdDeleteCompetitor.Location = New System.Drawing.Point(232, 232)
-        Me.cmdDeleteCompetitor.Name = "cmdDeleteCompetitor"
-        Me.cmdDeleteCompetitor.Size = New System.Drawing.Size(22, 22)
-        Me.cmdDeleteCompetitor.TabIndex = 14
-        Me.cmdDeleteCompetitor.UseVisualStyleBackColor = true
-        '
-        'cmdAddCompetitor
-        '
-        Me.cmdAddCompetitor.Image = CType(resources.GetObject("cmdAddCompetitor.Image"),System.Drawing.Image)
-        Me.cmdAddCompetitor.Location = New System.Drawing.Point(232, 204)
-        Me.cmdAddCompetitor.Name = "cmdAddCompetitor"
-        Me.cmdAddCompetitor.Size = New System.Drawing.Size(22, 22)
-        Me.cmdAddCompetitor.TabIndex = 13
-        Me.cmdAddCompetitor.UseVisualStyleBackColor = true
+        Me.chkPlannedGrossConfirmedNet.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -447,15 +381,81 @@ Partial Class frmPostCampaignAnalysis
         Me.PictureBox1.Size = New System.Drawing.Size(32, 32)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox1.TabIndex = 12
-        Me.PictureBox1.TabStop = false
+        Me.PictureBox1.TabStop = False
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.Frozen = True
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Advertiser"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 115
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.Frozen = True
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Product"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 115
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.Frozen = True
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Rating"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 50
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.Frozen = True
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Product"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 140
+        '
+        'colProduct
+        '
+        Me.colProduct.Frozen = True
+        Me.colProduct.HeaderText = "Product"
+        Me.colProduct.Name = "colProduct"
+        Me.colProduct.ReadOnly = True
+        Me.colProduct.Width = 140
+        '
+        'colRating
+        '
+        Me.colRating.Frozen = True
+        Me.colRating.HeaderText = "Rating"
+        Me.colRating.Name = "colRating"
+        Me.colRating.ReadOnly = True
+        Me.colRating.Width = 50
+        '
+        'dtTo
+        '
+        Me.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtTo.Location = New System.Drawing.Point(133, 33)
+        Me.dtTo.Name = "dtTo"
+        Me.dtTo.ShowWeekNumbers = True
+        Me.dtTo.Size = New System.Drawing.Size(87, 22)
+        Me.dtTo.TabIndex = 4
+        '
+        'dtFrom
+        '
+        Me.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtFrom.Location = New System.Drawing.Point(9, 33)
+        Me.dtFrom.Name = "dtFrom"
+        Me.dtFrom.ShowWeekNumbers = True
+        Me.dtFrom.Size = New System.Drawing.Size(87, 22)
+        Me.dtFrom.TabIndex = 2
         '
         'frmPostCampaignAnalysis
         '
         Me.AcceptButton = Me.OK_Button
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(300, 398)
+        Me.ClientSize = New System.Drawing.Size(304, 403)
         Me.Controls.Add(Me.chkPlannedGrossConfirmedNet)
         Me.Controls.Add(Me.chkConfirmedNet)
         Me.Controls.Add(Me.chkPlannedNet)
