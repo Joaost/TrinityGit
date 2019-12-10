@@ -873,7 +873,7 @@ Public Class frmPrintInvoice
                 End With
                 r += 2
             End If
-            If chkBudgetFilm.Checked Then
+            If chkBudgetFilm.Checked Then 'TODO: Extend the Range further than Z. Possible to print "AA:23"
                 With .Range("A" & r & ":" & Char.ConvertFromUtf32(64 + Campaign.Channels(1).BookingTypes(1).Weeks(1).Films.Count * 2 + 3) & r)
                     .Merge()
                     .Interior.Color = 0

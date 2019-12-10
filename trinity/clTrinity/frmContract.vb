@@ -159,7 +159,8 @@ Public Class frmContract
         If Campaign.Contract.restriced Then
             chkContractRestriction.Checked = True
         Else
-            chkContractRestriction.Checked = False
+            'Display to the user that the contract is restricted
+            chkContractRestriction.Checked = True
         End If
 
         colMarathonID.Visible = TrinitySettings.MarathonEnabled
@@ -181,14 +182,12 @@ Public Class frmContract
             TmpItem.id = dr.Item("id") 'rd!id
             ' Added by JOKO
             ' Important contraint since Norway dont have that value and will then return null and it will break down.
-            If TrinitySettings.DefaultArea <> "NO" Then
-                If dr.ItemArray.Length > 2 Then
-                    If Not IsDBNull(dr.Item("restricted")) Then
-                        TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
-                    End If
+            If TrinitySettings.DefaultArea <> "NO" And dr.ItemArray.Length > 2 Then
+                If Not IsDBNull(dr.Item("restricted")) Then
+                    TmpItem.restricted = dr.Item("restricted") 'rd!Restricted 
                 End If
             End If
-                cmbClient.Items.Add(TmpItem)
+            cmbClient.Items.Add(TmpItem)
             If TmpItem.id = Campaign.ClientID Then
                 cmbClient.Text = TmpItem.name
             End If

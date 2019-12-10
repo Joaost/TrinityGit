@@ -201,8 +201,8 @@ _End:
 
     Private Sub chkAdvanced_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkAdvanced.CheckedChanged
         If chkAdvanced.Checked Then
-            Me.Height = 695
-            Me.Width = 440
+            Me.Height = 880
+            Me.Width = 500
         Else
             Me.Height = 315
             Me.Width = 305
