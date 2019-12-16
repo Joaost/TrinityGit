@@ -512,7 +512,7 @@ Namespace My
                 '    /JOOS 2019-01-22
                 '   Changed If-Statement: If Ini.Text("Server", "Address").Substring(0, 3).ToUpper = "WWW" Then
                 '   due to problems with connection to STO-DMZ and downloading latest version and LaunchTrinity
-                If Ini.Text("Server", "Address") = "apps.mecglobal.se" Then
+                If Ini.Text("Server", "Address") = "mstudiosweden.se" Then
                     Try
                         WriteToLogFile("Connecting to HTTP")
                         Dim fileList As New List(Of String)
