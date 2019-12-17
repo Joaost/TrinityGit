@@ -1379,7 +1379,13 @@ Namespace Trinity
                 _conn.Open()
                 Using com As New SqlClient.SqlCommand
                     com.Connection = _conn
-                    com.CommandText = "INSERT INTO clients(Name, restricted) VALUES ('" + newClient.name + newClient.restricted + "')"
+                    'com.CommandText = "INSERT INTO clients(Name, restricted) VALUES ('" + newClient.name + newClient.restricted + "')"
+                    'JOOS improtant due to Norway does not use the restricted column
+                    If TrinitySettings.DefaultArea = "NO" Then
+                        com.CommandText = "INSERT INTO clients(Name) VALUES ('" + newClient.name + "')"
+                    Else
+                        com.CommandText = "INSERT INTO clients(Name, restricted) VALUES ('" + newClient.name + newClient.restricted + "')"
+                    End If
                     com.ExecuteNonQuery()
                     _conn.Close()
                 End Using
