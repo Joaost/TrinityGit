@@ -2225,6 +2225,11 @@ Public Class frmContract
     End Sub
 
     Private Sub chkContractRestriction_CheckedChanged(sender As Object, e As EventArgs) Handles chkContractRestriction.CheckedChanged
+        'Disable the checkbox for Norway'
+        If TrinitySettings.DefaultArea = "NO" Then
+            chkContractRestriction.Hide()
+        End If
+
         If chkContractRestriction.Checked Then
             Campaign.Contract.restriced = True
         Else

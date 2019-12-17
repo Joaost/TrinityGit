@@ -3,8 +3,8 @@ Imports System.Windows.Forms
 Public Class frmAddClient
     'This class either adds or updates a Client name
     Dim rd As Odbc.OdbcDataReader
-
     Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
+       
         'Dim com As New Odbc.OdbcCommand("SELECT * FROM Clients", DBConn)
         If txtName.Text <> "" Then ' there need to be a text in hte field
             If Me.Tag = "" Then
@@ -23,6 +23,10 @@ Public Class frmAddClient
                 'rd.Close()
                 'if all is ok then we add the new CLient
                 Dim newClientTemp As New Client
+                If TrinitySettings.DefaultArea = "NO" Then
+                    chkBoxRestrictedBool.Enabled = False
+                    chkBoxRestrictedBool.Hide()
+                End If
                 If chkBoxRestrictedBool.Checked Then
                     newClientTemp.restricted = True
                 End If
@@ -41,6 +45,10 @@ Public Class frmAddClient
     End Sub
 
     Private Sub frmAddClient_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If TrinitySettings.DefaultArea = "NO" Then
+            chkBoxRestrictedBool.Enabled = False
+            chkBoxRestrictedBool.Hide()
+        End If
         'if edit we load the current name into the text field
         If Me.Tag = "EDIT" Then
             txtName.Text = Campaign.Client

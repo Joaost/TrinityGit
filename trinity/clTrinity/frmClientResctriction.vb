@@ -12,7 +12,7 @@
                 'cmbClient.Items.Add(TmpItem)
                 'If TmpItem.Tag = Campaign.ClientID Then
                 'cmbClient.Text = TmpItem.Text
-                End If
+                'End If
             Next
         Catch ex As Exception
             Windows.Forms.MessageBox.Show("There was an error while populating the Client dropdown list:" & vbCrLf & vbCrLf & "'" & ex.Message & "'")

@@ -71,7 +71,7 @@
             End If
 
         Next
-
+        Dim numberOfContracts As String = grdContracts.Rows.Count.ToString()
     End Sub
 
     Private Sub txtSearchBox_TextChanged(sender As Object, e As EventArgs) Handles txtSearchBox.TextChanged

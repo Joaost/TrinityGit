@@ -30,7 +30,7 @@ Namespace My
 
         Public Function checkDeveloper()
             If TrinitySettings.UserEmail = "joakim.koch@groupm.com" Then
-                _startTrinityFast = False
+                _startTrinityFast = True
             End If
         End Function
         Private Sub MyApplication_Startup(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
