@@ -466,7 +466,7 @@ Namespace My
             Dim Ini As New clsIni
             'Ini.Create(My.Application.Info.DirectoryPath & "\launch.ini")
 
-            Ini.Create(My.Application.Info.DirectoryPath & "\launch.ini")
+            Ini.Create(My.Application.Info.DirectoryPath + "\launch.ini")
 
             If Not Ini.Text("Launcher", "Debug") = "" Then
                 LoggingIsOn = True
@@ -486,7 +486,7 @@ Namespace My
 
                 'check if the Dll is registered or not
                 Try
-                    If Not System.IO.File.Exists(GetSpecialFolder(CSIDLEnum.UserProfile) & "Trinity 4.0\Trinity.ini") Then
+                    If Not File.Exists(GetSpecialFolder(CSIDLEnum.UserProfile) & "Trinity 4.0\Trinity.ini") Then
                         'we need to register the dll
                         Dim pInfo As New ProcessStartInfo
                         pInfo.FileName = "regsvr32"
@@ -512,7 +512,7 @@ Namespace My
                 '    /JOOS 2019-01-22
                 '   Changed If-Statement: If Ini.Text("Server", "Address").Substring(0, 3).ToUpper = "WWW" Then
                 '   due to problems with connection to STO-DMZ and downloading latest version and LaunchTrinity
-                If Ini.Text("Server", "Address") = "apps.mecglobal.se" Then
+                If Ini.Text("Server", "Address") = "mstudiosweden.se" Then
                     Try
                         WriteToLogFile("Connecting to HTTP")
                         Dim fileList As New List(Of String)
@@ -520,7 +520,7 @@ Namespace My
                         Dim client As New System.Net.WebClient
 
                         'download the file
-                        client.DownloadFile(New Uri("http://" & Ini.Text("Server", "Address") & "/trinity/versions.xml"), My.Application.Info.DirectoryPath & "\versions.xml")
+                        client.DownloadFile(New Uri("https://" & Ini.Text("Server", "Address") & "/trinity/versions.xml"), My.Application.Info.DirectoryPath & "\versions.xml")
 
                         WriteToLogFile("Reading version")
 
@@ -528,13 +528,16 @@ Namespace My
                         '/JOOS
                         'Changed My.Application.Info.DirectoryPath & "\versions.xml") cause it was not working
                         Dim xmlDocServer As New Xml.XmlDocument
-                        xmlDocServer.Load(IO.Directory.Exists(IO.Path.Combine(My.Application.Info.DirectoryPath, "\versions.xml")))
+                        'xmlDocServer.Load(My.Application.Info.DirectoryPath + "\versions.xml")
+                        Dim path = My.Application.Info.DirectoryPath + "\versions.xml"
+                        'Dim isEsxisting As Boolean = File.Exists(My.Application.Info.DirectoryPath + "\versions.xml")
+                        xmlDocServer.Load(path)
 
                         Dim xmlServerList As Xml.XmlElement
                         xmlServerList = xmlDocServer.SelectSingleNode("//LauncherFiles")
 
                         'if we have no old we download all files, if not we check for versions
-                        If System.IO.File.Exists(My.Application.Info.DirectoryPath & "\version.xml") Then
+                        If File.Exists(My.Application.Info.DirectoryPath & "\version.xml") Then
 
                             'get the current version on the client
                             Dim xmlDocClient As New Xml.XmlDocument
@@ -592,7 +595,7 @@ Namespace My
                         '        Shell(My.Application.Info.DirectoryPath & "\Trinity.exe", AppWinStyle.MaximizedFocus, False, -1)
                         '        End
                         '    End If
-                    Catch
+                    Catch ex As Exception
                         WriteToLogFile("ERROR connecting to the web server")
                         Windows.Forms.MessageBox.Show("There was an error while connecting to the server." & vbCrLf & "Could not check for new versions. + 1", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Shell(My.Application.Info.DirectoryPath & "\Trinity.exe", AppWinStyle.MaximizedFocus, False, -1)
