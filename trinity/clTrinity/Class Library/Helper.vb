@@ -1113,16 +1113,19 @@ Estimate_Error:
             Dim DLLPath As String = Trinity.Helper.Pathify(RegdDLL.Substring(0, RegdDLL.LastIndexOf("\")))
             Dim HighestVersion As Integer = 0
             Dim Path As String = ""
+            Dim countDLLs As Integer = 0
 
-            For Each TmpFile As String In My.Computer.FileSystem.GetFiles(DLLPath, FileIO.SearchOption.SearchTopLevelOnly, "Connect*.dll")
+            For Each TmpFile As String In My.Computer.FileSystem.GetFiles(DLLPath, FileIO.SearchOption.SearchTopLevelOnly, "Connect.4.0.1*.dll")
                 If System.Diagnostics.FileVersionInfo.GetVersionInfo(TmpFile).FileVersion IsNot Nothing Then
                     Dim Version As Integer = System.Diagnostics.FileVersionInfo.GetVersionInfo(TmpFile).FileVersion.Substring(System.Diagnostics.FileVersionInfo.GetVersionInfo(TmpFile).FileVersion.LastIndexOf(".") + 1)
                     If Version > HighestVersion Then
                         HighestVersion = Version
+                        countDLLs = countDLLs + 1
                         Path = TmpFile
                     End If
                 End If
             Next
+            countDLLs = countDLLs
             Return Path
         End Function
 
