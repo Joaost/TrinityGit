@@ -712,7 +712,7 @@ Public Class frmSetup
             Dim res As DataTable = DBReader.getContractAsDatatable(contractId)
             Dim contractClientID = ""
             Dim contractClientName = ""
-            If res.Rows(0).ItemArray.Count > 10 Then
+            If res.Rows(0).ItemArray.Count > 10 And TrinitySettings.DefaultArea <> "NO" Then
                 contractClientID = res.Rows(0).Item(10).ToString()
                 If contractClientID <> "" Then
                     contractClientName = DBReader.getClient(contractClientID)

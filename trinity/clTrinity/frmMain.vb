@@ -1534,42 +1534,42 @@ CreatePlan:
                 ''JOHAN REMOVED THE ROWS BELOW BECAUSE THEY CAUSE ALL ORDERS TO BE ADDED MULTIPLE TIMES
                 ''
 
-                'If TmpBT.BookIt And Campaign.Combinations.Count > 0 Then
-                '    For Each c As Trinity.cCombination In Campaign.Combinations
-                '        For i As Integer = 1 To c.Relations.count
-                '            If Not c.Relations(i).Bookingtype Is TmpBT Then
-                '                _order.PlanNumber = Campaign.MarathonPlanNr
-                '                _order.MediaID = TmpChan.MarathonName
+                If TmpBT.BookIt And Campaign.Combinations.Count > 0 Then
+                    For Each c As Trinity.cCombination In Campaign.Combinations
+                        For i As Integer = 1 To c.Relations.count
+                            If Not c.Relations(i).Bookingtype Is TmpBT Then
+                                _order.PlanNumber = Campaign.MarathonPlanNr
+                                _order.MediaID = TmpChan.MarathonName
 
-                '                _order.CompanyID = info.Rows(0)!MarathonCompany
+                                _order.CompanyID = info.Rows(0)!MarathonCompany
 
-                '                Try
-                '                    _orderNo = _marathon.CreateOrder(_order)
-                '                    TmpBT.OrderNumber = _orderNo
-                '                Catch ex As Exception
-                '                    Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                '                End Try
-                '            End If
-                '        Next
-                '    Next
-                'End If
-
-
-
-                If TmpBT.BookIt And TmpBT.Combination.sendAsOneUnitTOMarathon = False Then
-                    _order.PlanNumber = Campaign.MarathonPlanNr
-                    _order.MediaID = TmpChan.MarathonName
-                    _order.CompanyID = info.Rows(0)!MarathonCompany
-
-                    Try
-                        If TmpBT.OrderNumber = "" Then
-                            _orderNo = _marathon.CreateOrder(_order)
-                            TmpBT.OrderNumber = _orderNo
-                        End If
-                    Catch ex As Exception
-                        Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                    End Try
+                                Try
+                                    _orderNo = _marathon.CreateOrder(_order)
+                                    TmpBT.OrderNumber = _orderNo
+                                Catch ex As Exception
+                                    Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                                End Try
+                            End If
+                        Next
+                    Next
                 End If
+
+
+
+                'If TmpBT.BookIt And TmpBT.Combination.sendAsOneUnitTOMarathon = False Then
+                '    _order.PlanNumber = Campaign.MarathonPlanNr
+                '    _order.MediaID = TmpChan.MarathonName
+                '    _order.CompanyID = info.Rows(0)!MarathonCompany
+
+                '    Try
+                '        If TmpBT.OrderNumber = "" Then
+                '            _orderNo = _marathon.CreateOrder(_order)
+                '            TmpBT.OrderNumber = _orderNo
+                '        End If
+                '    Catch ex As Exception
+                '        Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                '    End Try
+                'End If
 
             Next
         Next

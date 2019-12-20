@@ -7965,7 +7965,22 @@ ActualSpots:
                 End If
                 Return cList
             End If
+        End Function
+        Public Function checkIfCLientIsLocked(ByVal tmpClientId As Integer) As Boolean
 
+            Dim clientList As DataTable = DBReader.getAllClients("", tmpClientId)
+            For Each dr As DataRow In clientList.Rows
+                Dim tempClient As New Client
+                tempClient.name = dr.Item("name") 'rd!name
+                tempClient.id = dr.Item("id") 'rd!id
+                Dim tmpRestriction As Boolean = False
+                If tempClient.restricted Then
+                    tmpRestriction = True
+                End If
+
+            Next
+
+            Return False
         End Function
         Public Class restrictedUsers
             Private _id As Integer
