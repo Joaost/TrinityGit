@@ -714,7 +714,8 @@ Public Class frmSetup
             Dim contractClientName = ""
             If res.Rows(0).ItemArray.Count > 10 And TrinitySettings.DefaultArea <> "NO" Then
                 contractClientID = res.Rows(0).Item(10).ToString()
-                If contractClientID <> "" Then
+                ' Changed the if statement from nohting to 0 since nohting wont exist is this is a more defensive statement.
+                If contractClientID <> 0 Then
                     contractClientName = DBReader.getClient(contractClientID)
                     If Campaign.checkIfUserIsValid(contractClientName) Then
                         ActiveCampaign.Contract = New Trinity.cContract(Campaign)
