@@ -528,7 +528,7 @@ Namespace My
                         '/JOOS
                         'Changed My.Application.Info.DirectoryPath & "\versions.xml") cause it was not working
                         Dim xmlDocServer As New Xml.XmlDocument
-                        'xmlDocServer.Load(My.Application.Info.DirectoryPath + "\versions.xml")
+                        xmlDocServer.Load(My.Application.Info.DirectoryPath + "\versions.xml")
                         Dim path = My.Application.Info.DirectoryPath + "\versions.xml"
                         'Dim isEsxisting As Boolean = File.Exists(My.Application.Info.DirectoryPath + "\versions.xml")
                         xmlDocServer.Load(path)

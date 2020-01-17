@@ -656,7 +656,7 @@ Public Class frmDefineChannels
     Private Sub cmdSaveUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSaveUser.Click
         If MsgBox("This will only affect non standard bookingtypes. Proceed?", MsgBoxStyle.YesNo, "") = MsgBoxResult.No Then Exit Sub
 
-        If InputBox("This function is protected with a password." & vbCrLf & "Please enter the password required:", "T R I N I T Y") <> "orange2010" Then
+        If InputBox("This function is protected with a password." & vbCrLf & "Please enter the password required:", "T R I N I T Y") <> "orange2020" Then
             System.Windows.Forms.MessageBox.Show("Wrong password!", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
             Exit Sub
         End If
