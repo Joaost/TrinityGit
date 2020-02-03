@@ -252,6 +252,23 @@
     <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV34.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV5.wsdl" />
+    <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV51.wsdl" />
+    <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV54.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SpotlightApiV23.xsd\TV4Online.SpotlightApiV23.xsd.CreateBookingResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -293,6 +310,7 @@
     <None Include="Resources\refresh.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\SpotlightApiV23.xsd\SpotlightApiV5.disco" />
     <None Include="Resources\preview_2_24x24.png" />
     <None Include="Resources\search_2_20x20.png" />
     <None Include="Resources\attention_2_16x16.png" />
@@ -313,10 +331,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)TV4Online.dll" "C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"
-copy "$(TargetDir)TV4Online.pdb" "C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"
-
-copy "$(TargetDir)TV4Online.dll" "C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"
-copy "$(TargetDir)TV4Online.pdb" "C:\Users\joakim.koch\Documents\Visual Studio 2017\Projects\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"</PostBuildEvent>
+copy "$(TargetDir)TV4Online.pdb" "C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

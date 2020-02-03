@@ -153,8 +153,8 @@ Public Class TV4OnlinePlugin
     Sub connectToSpotlight()
         _internalApplication = Application
 
-        If Application.GetSharedNetworkPreference("TV4Spotlight", "Endpoint") = "" Then
-            Windows.Forms.MessageBox.Show("No server address has been specified, please contact the server administrator.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+        If Application.GetSharedNetworkPreference("TV4Spotlight_V5", "Endpoint") = "" Then
+            Windows.Forms.MessageBox.Show("No server address has been specified for TV4Spotlight in database.ini, please contact the server administrator.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
             Exit Sub
         End If
 
@@ -197,11 +197,11 @@ Public Class TV4OnlinePlugin
             .Message.NegotiateServiceCredential = True
         End With
 
-        _endpoint = New EndpointAddressBuilder(New EndpointAddress(New Uri(Application.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint"))))
+        _endpoint = New EndpointAddressBuilder(New EndpointAddress(New Uri(Application.GetSharedNetworkPreference("TV4Spotlight_V5", "Endpoint"))))
 
-        _client = New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        _client = New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
-        'Test'
+        'Test
         'Dim tmpListCh As String()
         _availableChannels = _client.GetChannels()
 
@@ -217,7 +217,7 @@ Public Class TV4OnlinePlugin
 
 
 
-        Dim _client2 As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(New WSHttpBinding(SecurityMode.Transport), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint")))
+        Dim _client2 As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(New WSHttpBinding(SecurityMode.Transport), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_V5", "Endpoint")))
         _surcharges = _client2.GetSurchargeNames.ToList()
 
     End Sub
@@ -234,7 +234,7 @@ Public Class TV4OnlinePlugin
         Return True
     End Function
     Function preferenceSuccess()
-        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
         Dim res = _client.GetUserOrganizations(Preferences.Username, Preferences.GetPlainTextPassword)
         If res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Error Then
             Dim message = res.ErrorMessages.Values(0).ToString()
@@ -259,7 +259,7 @@ Public Class TV4OnlinePlugin
 
 
     Public Function GetOrg()
-        Dim tmpClient As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        Dim tmpClient As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
         Dim test = tmpClient.GetUserOrganizations(Preferences.Username, Preferences.GetPlainTextPassword)
         If test.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
             Return True
@@ -290,7 +290,7 @@ Public Class TV4OnlinePlugin
 
     Public Function UploadBooking(tmpBook As TV4Online.SpotlightApiV23.xsd.Booking, ByRef _ro As Integer, Optional ByVal otherOrganizations As Boolean = False, Optional ByVal orgID As String = "")
 
-        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
         Dim _campaign As New TV4Online.SpotlightApiV23.xsd.Campaign
         Dim _bookings As New List(Of TV4Online.SpotlightApiV23.xsd.Booking)
@@ -363,7 +363,7 @@ Public Class TV4OnlinePlugin
 
         Dim guidParseRes = New Guid(b.BookingIdSpotlight)
 
-        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
         If b IsNot Nothing Then
             Dim res As TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse = _client.GetConfirmationForBooking(Preferences.Username, Preferences.GetPlainTextPassword, guidParseRes, False)
@@ -395,7 +395,7 @@ Public Class TV4OnlinePlugin
 
     Function checkAvailableSchedule(ByVal fromDate As Date, ByVal toDate As Date, ByVal channel As String) As TV4Online.SpotlightApiV23.xsd.PricesAndScheduleResponse
 
-        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
         Try
             Dim ret = _client.GetSpotPrices(Preferences.Username, Preferences.GetPlainTextPassword, fromDate, toDate, channel)
 
@@ -410,7 +410,7 @@ Public Class TV4OnlinePlugin
     End Function
     Function getChannels()
 
-        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
         Try
             Dim ret = _client.GetChannels()
@@ -430,7 +430,7 @@ Public Class TV4OnlinePlugin
     End Sub
     Function checkConfirmationForBookingByRef(ByRef b As TV4Online.SpotlightApiV23.xsd.Booking, ByVal startUp As Boolean, Optional ByRef onlyConfirmations As Boolean = False)
 
-        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
         If b IsNot Nothing Then
             Dim res As TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse = _client.GetConfirmationsForAgencyRefNo(Preferences.Username, Preferences.GetPlainTextPassword, b.AgencyBookingRefNo, False)
@@ -934,7 +934,7 @@ Public Class TV4OnlinePlugin
         End With
         Dim _endpoint As New EndpointAddressBuilder(New EndpointAddress(New Uri(Application.GetSharedNetworkPreference("TV4Spotlight", "Endpoint"))))
 
-        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
         Dim _availableChannels As String() = _client.GetChannels()
 

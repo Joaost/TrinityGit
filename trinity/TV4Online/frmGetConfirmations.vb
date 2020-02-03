@@ -18,7 +18,7 @@ Public Class frmGetConfirmations
     Dim _camp As Object
     Dim startUp As Boolean = True
 
-    Private _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(DirectCast(IIf(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint").StartsWith("https"), New WSHttpBinding(SecurityMode.Transport), New BasicHttpBinding), System.ServiceModel.Channels.Binding), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint")))
+    Private _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint").StartsWith("https"), New WSHttpBinding(SecurityMode.Transport), New BasicHttpBinding), System.ServiceModel.Channels.Binding), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint")))
     Dim res As New TV4OnlinePlugin
 
     Private _surcharges As New List(Of String)

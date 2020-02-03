@@ -6,7 +6,7 @@ Imports System.Drawing
 Public Class frmSpecifics
 
     Private _specifics As IEnumerable(Of TV4Online.SpotlightApiV23.xsd.SpecificSpot)
-    Private _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV3Client(New WSHttpBinding(SecurityMode.Transport), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint")))
+    Private _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(New WSHttpBinding(SecurityMode.Transport), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_V5", "Endpoint")))
     Private _surcharges As New List(Of String)
     Private _tv4Indices As New List(Of String)
     Dim _releases As TV4Online.SpotlightApiV23.xsd.ReleasePeriod
