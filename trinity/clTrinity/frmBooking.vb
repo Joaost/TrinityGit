@@ -5489,7 +5489,7 @@ grdSchedule_DblClick_Error:
         WB = Excel.OpenWorkbook(Filename:=dlgOpen.FileName, CorruptLoad:=2)
 
         With WB.Sheets(1)
-            If InStr(.Cells(1, 1).Value, "breaks förenklad") > 0 Or InStr(.Cells(1, 1).Value, "Lediga breaks") > 0 Then
+            If InStr(.Cells(1, 1).Value, "breaks förenklad") > 0 Or InStr(.Cells(1, 1).Value, "Avail") > 0 Then
 
                 'Read in a TV4 (se) avail
 
