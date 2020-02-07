@@ -208,7 +208,7 @@ Public Class CExportUnicornFileNew
         Return False
     End Function
     Public Function checkNameSBS(ByVal tmpChannelName As String)
-        If tmpChannelName = "Kanal5" Or tmpChannelName = "Kanal9" Or tmpChannelName = "Kanal 11" Or tmpChannelName = "Kanal11" Or tmpChannelName = "TV11" Or tmpChannelName = "Eurosport" Or tmpChannelName = "Discovery" Or tmpChannelName = "TLC" Or tmpChannelName = "ID" Or tmpChannelName = "Investigation Discovery" Then
+        If tmpChannelName = "Kanal 5" Or tmpChannelName = "Kanal 9" Or tmpChannelName = "Kanal 11" Or tmpChannelName = "Kanal11" Or tmpChannelName = "TV11" Or tmpChannelName = "Eurosport" Or tmpChannelName = "Discovery" Or tmpChannelName = "TLC" Or tmpChannelName = "ID" Or tmpChannelName = "Investigation Discovery" Then
             Return True
         End If
         Return False

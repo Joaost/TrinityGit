@@ -1414,23 +1414,6 @@ CreatePlan:
             Campaign.MarathonPlanNr = _planNo
         End If
 
-        'If Campaign.Costs.Count > 0 Then
-        '    If TrinitySettings.GeneralMedia <> "" Then
-        '        'Create the first order of the campaign, make the media type "General Media"
-        '        Dim _order As New Marathon.Order
-        '        _order.PlanNumber = Campaign.MarathonPlanNr
-        '        _order.MediaID = Campaign.Costs.Item(3).MarathonID
-        '        _order.CompanyID = info.Rows(0) !MarathonCompany
-
-        '        Dim _orderNo As String
-        '        Try
-        '            _orderNo = _marathon.CreateOrder(_order)
-        '            Campaign.MarathonOtherOrder = _orderNo
-        '        Catch ex As Exception
-        '            Windows.Forms.MessageBox.Show("There was an error while creating the order for the general channel." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-        '        End Try
-        '    End If
-        'End If
 
         If Campaign.Costs.Count > 0 Then
             For Each tmpCost As Trinity.cCost In Campaign.Costs
@@ -1450,130 +1433,70 @@ CreatePlan:
                 End If
             Next
         End If
-        'If Campaign.Combinations.Count > 0 Then
-
-        '    For Each tmpCombo As Trinity.cCombination In Campaign.Combinations
-        '        Dim _orderNo As String = ""
-        '        For Each cc As Trinity.cCombinationChannel In tmpCombo.Relations
-        '            If cc.Bookingtype.BookIt And tmpCombo.sendAsOneUnitTOMarathon Then
-        '                Dim _order As New Marathon.Order
-        '                _order.PlanNumber = Campaign.MarathonPlanNr
-        '                _order.MediaID = tmpCombo.MarathonIDCombination
-        '                _order.CompanyID = info.Rows(0)!MarathonCompany
-
-        '                Try
-        '                    If _orderNo <> "" Then
-        '                        _orderNo = _marathon.CreateOrder(_order)
-        '                    End If
-        '                    cc.Bookingtype.OrderNumber = _orderNo
-        '                Catch ex As Exception
-        '                    Windows.Forms.MessageBox.Show("There was an error while creating the order for " & cc.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-        '                End Try
-        '            End If
-        '        Next
-        '    Next
-        'End If
-
-        'For Each TmpCombination As Trinity.cCombination In Campaign.Combinations
-        '    For Each TmpChannel As Trinity.cChannel In Campaign.Channels
-        '        For Each TmpBT2 As Trinity.cBookingType In TmpChannel.BookingTypes
-        '            Dim _order2 As New Marathon.Order
-        '            Dim _orderNumber As String
-
-        '            If TmpBT2.BookIt And TmpCombination.sendAsOneUnitTOMarathon = True Then
-        '                _order2.PlanNumber = Campaign.MarathonPlanNr
-        '                _order2.MediaID = TmpCombination.MarathonIDCombination
-        '                _order2.CompanyID = info.Rows(0)!MarathonCompany
-
-        '                Try
-        '                    If _orderNumber = "" Then
-        '                        _orderNumber = _marathon.CreateOrder(_order2)
-        '                        TmpBT2.OrderNumber = _orderNumber
-
-        '                    End If
-        '                Catch ex As Exception
-        '                    Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChannel.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-        '                End Try
-        '            End If
-        '        Next
-        '    Next
-        'Next
-
-        'Create orders for each of the channels and each of the booking types in the campaign. We should get an order number from each
+        ' Create orders for each of the channels and each of the booking types in the campaign. We should get an order number from each
+        ' Should only transfer "regular" channels which is not a combination channel
         For Each TmpChan As Trinity.cChannel In Campaign.Channels
             For Each TmpBT As Trinity.cBookingType In TmpChan.BookingTypes
-                Dim _order As New Marathon.Order
-                Dim _orderNo As String
 
+                'Specfis, regular insertion
+                If TmpBT.BookIt Then
+                    If TmpBT.Combination Is Nothing Then
+                        Dim _order As New Marathon.Order
+                        Dim _orderNo As String
+                        _order.PlanNumber = Campaign.MarathonPlanNr
+                        _order.MediaID = TmpChan.MarathonName
+                        _order.CompanyID = info.Rows(0)!MarathonCompany
 
-                'JOOS test Marathon combination
-                '
-
-                If TmpBT.BookIt And Campaign.Combinations.Count > 0 Then
-                    For Each c As Trinity.cCombination In Campaign.Combinations
-
-                        If c.sendAsOneUnitTOMarathon Then
-
+                        Try
+                            If TmpBT.OrderNumber = "" Then
+                                _orderNo = _marathon.CreateOrder(_order)
+                                TmpBT.OrderNumber = _orderNo
+                            End If
+                        Catch ex As Exception
+                            Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                        End Try
+                    End If
+                End If
+            Next
+        Next
+        ' Second part where we transfer combination channels
+        ' First we check if channel 
+        For Each c As Trinity.cCombination In Campaign.Combinations
+            Dim _order As New Marathon.Order
+            Dim _orderNo As String
+            For Each cc As Trinity.cCombinationChannel In c.Relations
+                If c.sendAsOneUnitTOMarathon Then
+                    If c.MarathonIDCombination <> "" Then
+                        If cc.Bookingtype.OrderNumber = "" And _orderNo = "" Then
                             _order.PlanNumber = Campaign.MarathonPlanNr
                             _order.MediaID = c.MarathonIDCombination
                             _order.CompanyID = info.Rows(0)!MarathonCompany
-
                             Try
                                 If _orderNo = "" Then
                                     _orderNo = _marathon.CreateOrder(_order)
-                                    TmpBT.OrderNumber = _orderNo
+                                    cc.Bookingtype.OrderNumber = _orderNo
                                     Debug.Print(_orderNo)
-
                                 End If
+                                Debug.Print(cc.Bookingtype.ToString & " " & _order.PlanNumber & " " & _order.MediaID & " " & _orderNo)
                             Catch ex As Exception
-                                Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                                'Windows.Forms.MessageBox.Show("There was an error while creating the order for " & tmpchan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
                             End Try
+                        Else
+                            'When cc.Bookingtype.OrderNumber  is empty
+                            cc.Bookingtype.OrderNumber = _orderNo
                         End If
-                    Next
+                    Else
+                        ' Marathon ID combination should be submitted, since Trinity can not send bookings to Mareathon without a marathon ID.
+                        Windows.Forms.MessageBox.Show("There was an error while creating the order for " & c.Name & ".", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                    End If
+
+                Else
+                    ' Regular combination channels which wil be handle as a regular channel with uniq ID and order number
+
                 End If
-
-                ''JOHAN REMOVED THE ROWS BELOW BECAUSE THEY CAUSE ALL ORDERS TO BE ADDED MULTIPLE TIMES
-                ''
-
-                'If TmpBT.BookIt And Campaign.Combinations.Count > 0 Then
-                '    For Each c As Trinity.cCombination In Campaign.Combinations
-                '        For i As Integer = 1 To c.Relations.count
-                '            If Not c.Relations(i).Bookingtype Is TmpBT Then
-                '                _order.PlanNumber = Campaign.MarathonPlanNr
-                '                _order.MediaID = TmpChan.MarathonName
-
-                '                _order.CompanyID = info.Rows(0)!MarathonCompany
-
-                '                Try
-                '                    _orderNo = _marathon.CreateOrder(_order)
-                '                    TmpBT.OrderNumber = _orderNo
-                '                Catch ex As Exception
-                '                    Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                '                End Try
-                '            End If
-                '        Next
-                '    Next
-                'End If
-
-
-
-                If TmpBT.BookIt And TmpBT.Combination.sendAsOneUnitTOMarathon = False Then
-                    _order.PlanNumber = Campaign.MarathonPlanNr
-                    _order.MediaID = TmpChan.MarathonName
-                    _order.CompanyID = info.Rows(0)!MarathonCompany
-
-                    Try
-                        If TmpBT.OrderNumber = "" Then
-                            _orderNo = _marathon.CreateOrder(_order)
-                            TmpBT.OrderNumber = _orderNo
-                        End If
-                    Catch ex As Exception
-                        Windows.Forms.MessageBox.Show("There was an error while creating the order for " & TmpChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                    End Try
-                End If
-
             Next
         Next
+
         'Campaign.MarathonOtherOrder = 1
         'We have now created a plan containing orders for all booking types
         'We have not created any insertions yet, that is done later.
