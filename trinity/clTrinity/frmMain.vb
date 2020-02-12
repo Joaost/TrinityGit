@@ -1461,9 +1461,11 @@ CreatePlan:
         Next
         ' Second part where we transfer combination channels
         ' First we check if channel 
+        Dim printMarathonOrders As String = ""
         For Each c As Trinity.cCombination In Campaign.Combinations
             Dim _order As New Marathon.Order
             Dim _orderNo As String
+
             For Each cc As Trinity.cCombinationChannel In c.Relations
                 If c.sendAsOneUnitTOMarathon Then
                     If c.MarathonIDCombination <> "" Then
@@ -1479,15 +1481,17 @@ CreatePlan:
                                 End If
                                 Debug.Print(cc.Bookingtype.ToString & " " & _order.PlanNumber & " " & _order.MediaID & " " & _orderNo)
                             Catch ex As Exception
-                                'Windows.Forms.MessageBox.Show("There was an error while creating the order for " & tmpchan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                                ' Error message
+                                Windows.Forms.MessageBox.Show("There was an error while creating the order for the combinationChannel: " & cc.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
                             End Try
                         Else
                             'When cc.Bookingtype.OrderNumber  is empty
                             cc.Bookingtype.OrderNumber = _orderNo
+
                         End If
                     Else
                         ' Marathon ID combination should be submitted, since Trinity can not send bookings to Mareathon without a marathon ID.
-                        Windows.Forms.MessageBox.Show("There was an error while creating the order for " & c.Name & ".", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                        Windows.Forms.MessageBox.Show("You have chosen senAsOneUnitToMarathon but forgot to fill a MarathonID for the combination " & c.Name & ".", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
                     End If
 
                 Else
@@ -1495,12 +1499,15 @@ CreatePlan:
 
                 End If
             Next
+            printMarathonOrders = c.Name & " " & c.MarathonIDCombination & " "
         Next
+        Windows.Forms.MessageBox.Show("You have now created a plan for Marathon for following combinations: " & printMarathonOrders & ".", "Trinity - Marathon", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
 
         'Campaign.MarathonOtherOrder = 1
         'We have now created a plan containing orders for all booking types
         'We have not created any insertions yet, that is done later.
         Me.Cursor = Windows.Forms.Cursors.Default
+        printMarathonOrders = ""
     End Sub
 
     Private Sub cmdBudget_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdBudget.Click
@@ -2198,6 +2205,8 @@ CreatePlan:
                 TmpBT.MarathonNetBudget = 0
             Next
         Next
+        Me.Cursor = Windows.Forms.Cursors.Default
+        Windows.Forms.MessageBox.Show("Marathon settings has now been reset", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
     End Sub
 
     Private Sub exitWindow(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
