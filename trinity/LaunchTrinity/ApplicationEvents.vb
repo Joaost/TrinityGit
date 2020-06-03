@@ -400,18 +400,18 @@ Namespace My
         End Sub
 
         Private Sub WriteToLogFile(ByVal Str As String)
-            If LoggingIsOn Then
-                Dim TmpNode As XmlElement
-                If XmlLog Is Nothing Then
-                    XmlLog = New Xml.XmlDocument
-                    XmlLog.AppendChild(XmlLog.CreateElement("Log"))
-                End If
-                TmpNode = XmlLog.CreateElement("Entry")
-                TmpNode.SetAttribute("DateTime", Now)
-                TmpNode.AppendChild(XmlLog.CreateTextNode(Str))
-                XmlLog.ChildNodes.Item(0).AppendChild(TmpNode)
-                XmlLog.Save("C:\debugLauncher.xml")
-            End If
+            'If LoggingIsOn Then
+            '    Dim TmpNode As XmlElement
+            '    If XmlLog Is Nothing Then
+            '        XmlLog = New Xml.XmlDocument
+            '        XmlLog.AppendChild(XmlLog.CreateElement("Log"))
+            '    End If
+            '    TmpNode = XmlLog.CreateElement("Entry")
+            '    TmpNode.SetAttribute("DateTime", Now)
+            '    TmpNode.AppendChild(XmlLog.CreateTextNode(Str))
+            '    XmlLog.ChildNodes.Item(0).AppendChild(TmpNode)
+            '    XmlLog.Save("C:\debugLauncher.xml")
+            'End If
         End Sub
 
         Private Function HasWriteAccess(ByVal directory As DirectoryInfo) As Boolean

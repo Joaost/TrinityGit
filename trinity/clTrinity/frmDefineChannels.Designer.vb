@@ -523,7 +523,7 @@ Partial Class frmDefineChannels
         Me.cmdOk.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdOk.FlatAppearance.BorderSize = 0
         Me.cmdOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdOk.Location = New System.Drawing.Point(456, 362)
+        Me.cmdOk.Location = New System.Drawing.Point(456, 339)
         Me.cmdOk.Name = "cmdOk"
         Me.cmdOk.Size = New System.Drawing.Size(90, 32)
         Me.cmdOk.TabIndex = 17
@@ -648,7 +648,7 @@ Partial Class frmDefineChannels
         Me.cmdCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdCancel.FlatAppearance.BorderSize = 0
         Me.cmdCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdCancel.Location = New System.Drawing.Point(369, 362)
+        Me.cmdCancel.Location = New System.Drawing.Point(369, 339)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(90, 32)
         Me.cmdCancel.TabIndex = 24

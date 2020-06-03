@@ -130,7 +130,7 @@ Public Class frmRemoveSpotts
         Dim removedAcSpotts As Integer = 0
         Dim removedBSpotts As Integer = 0
         Campaign.ActualSpots.Collection.Clear()
-        For i As Integer = 0 To Campaign.BookedSpots.Count
+        For i As Integer = 1 To Campaign.BookedSpots.Count
             Campaign.BookedSpots.Remove(i)
         Next
         Windows.Forms.MessageBox.Show("Removed " & removedBSpotts & " booked sptts and " & removedAcSpotts, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)

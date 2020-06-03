@@ -641,7 +641,7 @@ Public Class CExportUnicornFileNew
                 If groupName = "MTG" Then
                     .Cells(row, 2).Value = "MTG TV"
                 ElseIf groupName = "SBS" Then
-                    .Cells(row, 2).Value = "SBS Combo"
+                    .Cells(row, 2).Value = "Discovery"
                 ElseIf groupName = "FOX" Then
                     .Cells(row, 2).Value = "FOX Combo"
                 ElseIf groupName = "Cartoon" Then

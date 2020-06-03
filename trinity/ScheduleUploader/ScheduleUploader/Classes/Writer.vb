@@ -13,6 +13,7 @@ Public Class Writer
                 Try
                     For Each _channel As String In (From _break As Break In Breaks Select _break.Channel).Distinct
                         Dim _tmpChannel = _channel
+
                         Dim _dates = From _break As Break In Breaks Where _break.Channel = _tmpChannel Select _break.Date
                         Dim _from As Long = _dates.Min.ToOADate
                         Dim _to As Long = _dates.Max.ToOADate

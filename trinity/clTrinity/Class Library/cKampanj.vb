@@ -7925,7 +7925,7 @@ ActualSpots:
 
         Public Event ProblemsFound(problems As System.Collections.Generic.List(Of cProblem)) Implements IDetectsProblems.ProblemsFound
 
-        Public Function checkIfCampaignHasRescritions(ByVal userName As String, ByVal campaignID As Integer) As List(Of Client)
+        Public Function checkIfCampaignHasRescritions(ByVal userName As String, ByVal campaignID As Integer, Optional ByVal clientID As Integer = 0) As List(Of Client)
 
             userName = Environment.UserName
 
@@ -7960,7 +7960,25 @@ ActualSpots:
                             End If
                         Next
                     Else
+                        Dim clientList As DataTable = DBReader.getAllClients(clientID)
+                        For Each dr As DataRow In clientList.Rows
+                            Dim tempClient As New Client
+                            tempClient.name = dr.Item("name") 'rd!name
+                            tempClient.id = dr.Item("id") 'rd!id
+                            Dim tmpRestriction As Boolean = False
+                            If tempClient.restricted Then
+                                tmpRestriction = True
+                            End If
 
+                            If TrinitySettings.DefaultArea <> "NO" Then
+                                If dr.ItemArray.Count > 2 Then
+                                    If Not IsDBNull(dr.Item("restricted")) Then
+                                        tempClient.restricted = dr.Item("restricted") 'rd!Restricted 
+                                        cList.Add(tempClient)
+                                    End If
+                                End If
+                            End If
+                        Next
                     End If
                 End If
                 Return cList

@@ -715,38 +715,45 @@ Public Class frmSetup
             If res.Rows(0).ItemArray.Count > 10 And TrinitySettings.DefaultArea <> "NO" Then
                 contractClientID = res.Rows(0).Item(10).ToString()
                 ' Changed the if statement from nohting to 0 since nohting wont exist is this is a more defensive statement.
-                If contractClientID <> 0 Then
-                    contractClientName = DBReader.getClient(contractClientID)
-                    If Campaign.checkIfUserIsValid(contractClientName) Then
+                Dim returnClient As List(Of Client) = Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName, Campaign.DatabaseID, contractClientID)
+                If returnClient.Count <> 0 Then
+                    If returnClient(0).restricted Then
+                        If contractClientID <> 0 Then
+                            contractClientName = DBReader.getClient(contractClientID)
+                            ' CHeck if client contains restriction from DB
+
+                            If Campaign.checkIfUserIsValid(returnClient(0).name) Then
+                                ActiveCampaign.Contract = New Trinity.cContract(Campaign)
+                                ActiveCampaign.Contract.restriced = True
+                                ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
+                                ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
+
+                                ActiveCampaign.Contract.ApplyToCampaign()
+
+                                lblContract.Text = ActiveCampaign.Contract.Name
+                            Else
+                                Windows.Forms.MessageBox.Show("Campaign client contains restriction and user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+
+                            End If
+                        Else
+                            ActiveCampaign.Contract = New Trinity.cContract(Campaign)
+                            ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
+                            ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
+
+                            ActiveCampaign.Contract.ApplyToCampaign()
+
+                            lblContract.Text = ActiveCampaign.Contract.Name
+                        End If
+                    Else
                         ActiveCampaign.Contract = New Trinity.cContract(Campaign)
-                        ActiveCampaign.Contract.restriced = True
                         ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
                         ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
 
                         ActiveCampaign.Contract.ApplyToCampaign()
 
                         lblContract.Text = ActiveCampaign.Contract.Name
-                    Else
-                        Windows.Forms.MessageBox.Show("Campaign client contains restriction and user is incorrect", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
-
                     End If
-                Else
-                    ActiveCampaign.Contract = New Trinity.cContract(Campaign)
-                    ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
-                    ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
-
-                    ActiveCampaign.Contract.ApplyToCampaign()
-
-                    lblContract.Text = ActiveCampaign.Contract.Name
                 End If
-            Else
-                ActiveCampaign.Contract = New Trinity.cContract(Campaign)
-                ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
-                ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
-
-                ActiveCampaign.Contract.ApplyToCampaign()
-
-                lblContract.Text = ActiveCampaign.Contract.Name
             End If
 
 

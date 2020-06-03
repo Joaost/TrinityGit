@@ -241,6 +241,7 @@ Public Class TV4OnlinePlugin
             Windows.Forms.MessageBox.Show(String.Format(message), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
             Return False
         End If
+        _client.Close()
         Return True
     End Function
     Sub openTV4Main()

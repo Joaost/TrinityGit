@@ -1091,15 +1091,18 @@ Namespace Trinity
 
         Public Overrides Function getAllClients(Optional ByVal sqlSearchForSpecificClientID As String = "", Optional ByVal campaignClientID As Integer = 0) As DataTable
             'Sets up the table
+            Dim sqlQueryString = ""
             If campaignClientID <> 0 Then
-                sqlSearchForSpecificClientID = "SELECT * FROM Clients WHERE ID=" + campaignClientID.ToString
+                sqlQueryString = "SELECT * FROM Clients WHERE ID=" + campaignClientID.ToString
+            ElseIf sqlSearchForSpecificClientID <> "" Then
+                sqlQueryString = "SELECT * FROM Clients WHERE ID=" + sqlSearchForSpecificClientID
             Else
-                sqlSearchForSpecificClientID = "SELECT * FROM Clients ORDER BY NAME"
+                sqlQueryString = "SELECT * FROM Clients ORDER BY NAME"
             End If
             Using _clients As DataTable = New DataTable
                 Using _conn As New SqlClient.SqlConnection(_connectionString)
                     _conn.Open()
-                    Using com As New SqlClient.SqlCommand(sqlSearchForSpecificClientID, _conn)
+                    Using com As New SqlClient.SqlCommand(sqlQueryString, _conn)
                         Using rd As SqlClient.SqlDataReader = com.ExecuteReader
                             _clients.Load(rd)
                             rd.Close()
@@ -1384,7 +1387,16 @@ Namespace Trinity
                     If TrinitySettings.DefaultArea = "NO" Then
                         com.CommandText = "INSERT INTO clients(Name) VALUES ('" + newClient.name + "')"
                     Else
-                        com.CommandText = "INSERT INTO clients(Name, restricted) VALUES ('" + newClient.name + newClient.restricted + "')"
+                        'com.CommandText = "INSERT INTO clients(Name, restricted) VALUES ('" + newClient.name + ", " + newClient.restricted + "')"
+                        Dim restrictedResult As Double = 0
+                        If newClient.restricted Then
+                            restrictedResult = 1
+                        End If
+
+                        'com.CommandText = "INSERT INTO paths(UserID,path) VALUES ('" + UserID.ToString + "','" + path + "')"
+
+                        com.CommandText = "INSERT INTO clients(Name) VALUES ('" + newClient.name + "')"
+
                     End If
                     com.ExecuteNonQuery()
                     _conn.Close()
@@ -1832,7 +1844,11 @@ Namespace Trinity
             Dim _periodStr As String = _periodStrB.ToString.Substring(0, _periodStrB.Length - 3) & ")"
             Using _conn As New SqlClient.SqlConnection(_conStr)
                 _conn.Open()
-                Using com As New SqlClient.SqlCommand("SELECT * FROM " & events & " WHERE channel ='" + TargetChannel + "' AND " & _periodStr & " AND Type=" & Type & " ORDER BY Date,Time", _conn)
+                Dim TargetChannel2 As String = ""
+                'If TargetChannel = "Kanal 5" Then
+                '    TargetChannel2 = "Kanal5"
+                'End If
+                Using com As New SqlClient.SqlCommand("SELECT * FROM " & events & " WHERE channel ='" + TargetChannel + "' OR channel = '" + TargetChannel2 + "' AND " & _periodStr & " AND Type=" & Type & " ORDER BY Date,Time", _conn)
                     Using rd As SqlClient.SqlDataReader = com.ExecuteReader
                         Using _events As DataTable = New DataTable
                             _events.Load(rd)

@@ -5932,7 +5932,7 @@ grdSchedule_DblClick_Error:
         Next
         If comboboxRun Then
             grdSpotlist.Invalidate()
-            UpdateSchedule(False, False)
+            UpdateSchedule(True, True)
             UpdatePlannedTRP()
             UpdateBookedTRP()
             UpdateLeftToBook()
