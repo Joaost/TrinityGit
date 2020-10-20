@@ -73,17 +73,17 @@
       <HintPath>..\ConnectWrapper\bin\Debug\Interop.Connect.dll</HintPath>
     </Reference>
     <Reference Include="Interop.Domino">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.Domino.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.Domino.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.HelpServiceTypeLib">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.HelpServiceTypeLib.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.HelpServiceTypeLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="System" />

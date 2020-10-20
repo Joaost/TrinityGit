@@ -28,7 +28,6 @@
     </SccProvider>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
@@ -143,57 +142,58 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.OWC11">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\AxInterop.OWC11.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\AxInterop.OWC11.dll</HintPath>
     </Reference>
     <Reference Include="AxInterop.ShockwaveFlashObjects">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\AxInterop.ShockwaveFlashObjects.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\AxInterop.ShockwaveFlashObjects.dll</HintPath>
     </Reference>
     <Reference Include="BalloonToolTip, Version=2005.4.17.4617, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\BalloonToolTip.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\BalloonToolTip.dll</HintPath>
     </Reference>
     <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.AgData.v9.2">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.Data.v9.2.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.Data.v9.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.Utils.v9.2.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.Utils.v9.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraEditors.v9.2.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraEditors.v9.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPivotGrid.v9.2, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPivotGrid.v9.2.Core, Version=9.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.Core.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPivotGrid.v9.2.Design">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.Design.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraPivotGrid.v9.2.Design.dll</HintPath>
     </Reference>
     <Reference Include="Interop.Domino, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.Domino.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.Domino.dll</HintPath>
     </Reference>
     <Reference Include="Interop.HelpServiceTypeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.HelpServiceTypeLib.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Interop.HelpServiceTypeLib.dll</HintPath>
     </Reference>
     <Reference Include="Matrix40, Version=1.0.0.0, Culture=neutral, PublicKeyToken=493336f937f312e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Matrix40.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Matrix40.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -202,7 +202,7 @@
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Owc11, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Microsoft.Office.Interop.Owc11.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Microsoft.Office.Interop.Owc11.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -212,7 +212,7 @@
     <Reference Include="mscomctl, Version=10.0.4504.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\mscomctl.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\mscomctl.dll</HintPath>
     </Reference>
     <Reference Include="msdatasrc, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
@@ -221,7 +221,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\System.ComponentModel.Composition.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\System.ComponentModel.Composition.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations">
       <Private>False</Private>
@@ -254,7 +254,7 @@
     </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\System.Windows.Forms.DataVisualization.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\System.Windows.Forms.DataVisualization.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml">
@@ -264,7 +264,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="TrinityPlugin">
-      <HintPath>\\stofpcp01101z\GroupM Finance\Shared\Business Development\Software Developer\Referenser\TrinityPlugin.dll</HintPath>
+      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\TrinityPlugin.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

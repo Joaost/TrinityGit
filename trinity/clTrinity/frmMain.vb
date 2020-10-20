@@ -1468,8 +1468,8 @@ CreatePlan:
 
             For Each cc As Trinity.cCombinationChannel In c.Relations
                 If c.sendAsOneUnitTOMarathon Then
-                    If c.MarathonIDCombination <> "" Then
-                        If cc.Bookingtype.OrderNumber = "" And _orderNo = "" Then
+                    If c.MarathonIDCombination IsNot Nothing Then
+                        If cc.Bookingtype.OrderNumber = "" And _orderNo Is Nothing Then
                             _order.PlanNumber = Campaign.MarathonPlanNr
                             _order.MediaID = c.MarathonIDCombination
                             _order.CompanyID = info.Rows(0)!MarathonCompany
@@ -1496,7 +1496,26 @@ CreatePlan:
 
                 Else
                     ' Regular combination channels which wil be handle as a regular channel with uniq ID and order number
+                    If cc.Bookingtype.OrderNumber = "" And _orderNo Is Nothing Then
+                        _order.PlanNumber = Campaign.MarathonPlanNr
+                        _order.MediaID = c.MarathonIDCombination
+                        _order.CompanyID = info.Rows(0)!MarathonCompany
+                        Try
+                            If _orderNo = "" Then
+                                _orderNo = _marathon.CreateOrder(_order)
+                                cc.Bookingtype.OrderNumber = _orderNo
+                                Debug.Print(_orderNo)
+                            End If
+                            Debug.Print(cc.Bookingtype.ToString & " " & _order.PlanNumber & " " & _order.MediaID & " " & _orderNo)
+                        Catch ex As Exception
+                            ' Error message
+                            Windows.Forms.MessageBox.Show("There was an error while creating the order for the combinationChannel: " & cc.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                        End Try
+                    Else
+                        'When cc.Bookingtype.OrderNumber  is empty
+                        cc.Bookingtype.OrderNumber = _orderNo
 
+                    End If
                 End If
             Next
             printMarathonOrders = c.Name & " " & c.MarathonIDCombination & " "
