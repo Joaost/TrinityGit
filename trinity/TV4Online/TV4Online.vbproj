@@ -330,8 +330,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)TV4Online.dll" "C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"
-copy "$(TargetDir)TV4Online.pdb" "C:\Users\joakim.ostling\Documents\Visual Studio 2017\TrinityGit\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)TV4Online.dll" "C:\Users\joakim.koch\OneDrive - insidemedia.net\Documents\Visual Studio 2017\Projects\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"
+copy "$(TargetDir)TV4Online.pdb" "C:\Users\joakim.koch\OneDrive - insidemedia.net\Documents\Visual Studio 2017\Projects\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

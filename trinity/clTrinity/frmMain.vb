@@ -1464,12 +1464,12 @@ CreatePlan:
         Dim printMarathonOrders As String = ""
         For Each c As Trinity.cCombination In Campaign.Combinations
             Dim _order As New Marathon.Order
-            Dim _orderNo As String
+            Dim _orderNo As String = ""
 
             For Each cc As Trinity.cCombinationChannel In c.Relations
                 If c.sendAsOneUnitTOMarathon Then
                     If c.MarathonIDCombination IsNot Nothing Then
-                        If cc.Bookingtype.OrderNumber = "" And _orderNo Is Nothing Then
+                        If cc.Bookingtype.OrderNumber = "" And _orderNo = "" Then
                             _order.PlanNumber = Campaign.MarathonPlanNr
                             _order.MediaID = c.MarathonIDCombination
                             _order.CompanyID = info.Rows(0)!MarathonCompany
