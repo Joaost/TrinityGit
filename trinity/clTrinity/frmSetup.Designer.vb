@@ -21,9 +21,9 @@ Partial Class frmSetup
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSetup))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.mnuArea = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuContract = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnuNoContract = New System.Windows.Forms.ToolStripMenuItem()
@@ -318,7 +318,7 @@ Partial Class frmSetup
         Me.cmdDeleteCost.FlatAppearance.BorderSize = 0
         Me.cmdDeleteCost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdDeleteCost.Image = Global.clTrinity.My.Resources.Resources.delete_3
-        Me.cmdDeleteCost.Location = New System.Drawing.Point(567, 81)
+        Me.cmdDeleteCost.Location = New System.Drawing.Point(588, 81)
         Me.cmdDeleteCost.Name = "cmdDeleteCost"
         Me.cmdDeleteCost.Size = New System.Drawing.Size(24, 28)
         Me.cmdDeleteCost.TabIndex = 12
@@ -331,7 +331,7 @@ Partial Class frmSetup
         Me.cmdAddCost.FlatAppearance.BorderSize = 0
         Me.cmdAddCost.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdAddCost.Image = CType(resources.GetObject("cmdAddCost.Image"), System.Drawing.Image)
-        Me.cmdAddCost.Location = New System.Drawing.Point(571, 58)
+        Me.cmdAddCost.Location = New System.Drawing.Point(592, 58)
         Me.cmdAddCost.Name = "cmdAddCost"
         Me.cmdAddCost.Size = New System.Drawing.Size(18, 17)
         Me.cmdAddCost.TabIndex = 11
@@ -344,7 +344,7 @@ Partial Class frmSetup
         Me.cmdEditProduct.FlatAppearance.BorderSize = 0
         Me.cmdEditProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdEditProduct.Image = CType(resources.GetObject("cmdEditProduct.Image"), System.Drawing.Image)
-        Me.cmdEditProduct.Location = New System.Drawing.Point(580, 102)
+        Me.cmdEditProduct.Location = New System.Drawing.Point(611, 101)
         Me.cmdEditProduct.Name = "cmdEditProduct"
         Me.cmdEditProduct.Size = New System.Drawing.Size(22, 20)
         Me.cmdEditProduct.TabIndex = 15
@@ -357,7 +357,7 @@ Partial Class frmSetup
         Me.cmdAddProduct.FlatAppearance.BorderSize = 0
         Me.cmdAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdAddProduct.Image = CType(resources.GetObject("cmdAddProduct.Image"), System.Drawing.Image)
-        Me.cmdAddProduct.Location = New System.Drawing.Point(557, 106)
+        Me.cmdAddProduct.Location = New System.Drawing.Point(588, 105)
         Me.cmdAddProduct.Name = "cmdAddProduct"
         Me.cmdAddProduct.Size = New System.Drawing.Size(18, 17)
         Me.cmdAddProduct.TabIndex = 14
@@ -370,7 +370,7 @@ Partial Class frmSetup
         Me.cmdEditClient.FlatAppearance.BorderSize = 0
         Me.cmdEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdEditClient.Image = CType(resources.GetObject("cmdEditClient.Image"), System.Drawing.Image)
-        Me.cmdEditClient.Location = New System.Drawing.Point(581, 62)
+        Me.cmdEditClient.Location = New System.Drawing.Point(612, 61)
         Me.cmdEditClient.Name = "cmdEditClient"
         Me.cmdEditClient.Size = New System.Drawing.Size(22, 20)
         Me.cmdEditClient.TabIndex = 11
@@ -383,7 +383,7 @@ Partial Class frmSetup
         Me.cmdAddClient.FlatAppearance.BorderSize = 0
         Me.cmdAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdAddClient.Image = CType(resources.GetObject("cmdAddClient.Image"), System.Drawing.Image)
-        Me.cmdAddClient.Location = New System.Drawing.Point(557, 66)
+        Me.cmdAddClient.Location = New System.Drawing.Point(588, 65)
         Me.cmdAddClient.Name = "cmdAddClient"
         Me.cmdAddClient.Size = New System.Drawing.Size(18, 17)
         Me.cmdAddClient.TabIndex = 10
@@ -549,7 +549,7 @@ Partial Class frmSetup
         Me.chkAutoFilmCode.AutoSize = True
         Me.chkAutoFilmCode.Checked = True
         Me.chkAutoFilmCode.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkAutoFilmCode.Location = New System.Drawing.Point(478, 147)
+        Me.chkAutoFilmCode.Location = New System.Drawing.Point(478, 154)
         Me.chkAutoFilmCode.Name = "chkAutoFilmCode"
         Me.chkAutoFilmCode.Size = New System.Drawing.Size(130, 17)
         Me.chkAutoFilmCode.TabIndex = 16
@@ -561,7 +561,7 @@ Partial Class frmSetup
         '
         Me.chkFilmIdxAsDiscount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkFilmIdxAsDiscount.AutoSize = True
-        Me.chkFilmIdxAsDiscount.Location = New System.Drawing.Point(301, 148)
+        Me.chkFilmIdxAsDiscount.Location = New System.Drawing.Point(301, 155)
         Me.chkFilmIdxAsDiscount.Name = "chkFilmIdxAsDiscount"
         Me.chkFilmIdxAsDiscount.Size = New System.Drawing.Size(170, 17)
         Me.chkFilmIdxAsDiscount.TabIndex = 13
@@ -919,7 +919,7 @@ Partial Class frmSetup
         Me.cmdGeneralNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdGeneralNext.FlatAppearance.BorderSize = 0
         Me.cmdGeneralNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdGeneralNext.Location = New System.Drawing.Point(537, 373)
+        Me.cmdGeneralNext.Location = New System.Drawing.Point(558, 381)
         Me.cmdGeneralNext.Name = "cmdGeneralNext"
         Me.cmdGeneralNext.Size = New System.Drawing.Size(75, 29)
         Me.cmdGeneralNext.TabIndex = 25
@@ -940,7 +940,7 @@ Partial Class frmSetup
         Me.GroupBox2.Controls.Add(Me.PictureBox4)
         Me.GroupBox2.Location = New System.Drawing.Point(8, 207)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(604, 158)
+        Me.GroupBox2.Size = New System.Drawing.Size(625, 158)
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Budget"
@@ -964,7 +964,7 @@ Partial Class frmSetup
         Me.grdCosts.Name = "grdCosts"
         Me.grdCosts.RowHeadersVisible = False
         Me.grdCosts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdCosts.Size = New System.Drawing.Size(554, 86)
+        Me.grdCosts.Size = New System.Drawing.Size(575, 86)
         Me.grdCosts.TabIndex = 4
         Me.grdCosts.VirtualMode = True
         '
@@ -984,9 +984,9 @@ Partial Class frmSetup
         '
         'colAmount
         '
-        DataGridViewCellStyle1.Format = "C0"
-        DataGridViewCellStyle1.NullValue = "0"
-        Me.colAmount.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Format = "C0"
+        DataGridViewCellStyle4.NullValue = "0"
+        Me.colAmount.DefaultCellStyle = DataGridViewCellStyle4
         Me.colAmount.HeaderText = "Amount"
         Me.colAmount.Name = "colAmount"
         Me.colAmount.Width = 93
@@ -1217,7 +1217,7 @@ Partial Class frmSetup
         Me.cmbPlanner.FormattingEnabled = True
         Me.cmbPlanner.Location = New System.Drawing.Point(337, 180)
         Me.cmbPlanner.Name = "cmbPlanner"
-        Me.cmbPlanner.Size = New System.Drawing.Size(275, 21)
+        Me.cmbPlanner.Size = New System.Drawing.Size(296, 21)
         Me.cmbPlanner.Sorted = True
         Me.cmbPlanner.TabIndex = 19
         '
@@ -1238,7 +1238,7 @@ Partial Class frmSetup
         Me.cmbBuyer.FormattingEnabled = True
         Me.cmbBuyer.Location = New System.Drawing.Point(337, 141)
         Me.cmbBuyer.Name = "cmbBuyer"
-        Me.cmbBuyer.Size = New System.Drawing.Size(275, 21)
+        Me.cmbBuyer.Size = New System.Drawing.Size(296, 21)
         Me.cmbBuyer.Sorted = True
         Me.cmbBuyer.TabIndex = 17
         '
@@ -1372,7 +1372,7 @@ Partial Class frmSetup
         '
         Me.cmdChannelsNext.FlatAppearance.BorderSize = 0
         Me.cmdChannelsNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdChannelsNext.Location = New System.Drawing.Point(555, 381)
+        Me.cmdChannelsNext.Location = New System.Drawing.Point(558, 381)
         Me.cmdChannelsNext.Name = "cmdChannelsNext"
         Me.cmdChannelsNext.Size = New System.Drawing.Size(75, 29)
         Me.cmdChannelsNext.TabIndex = 26
@@ -1389,7 +1389,7 @@ Partial Class frmSetup
         Me.GroupBox4.Controls.Add(Me.grdChannelInfo)
         Me.GroupBox4.Location = New System.Drawing.Point(3, 214)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(636, 172)
+        Me.GroupBox4.Size = New System.Drawing.Size(636, 161)
         Me.GroupBox4.TabIndex = 2
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Channel info"
@@ -1429,7 +1429,7 @@ Partial Class frmSetup
         Me.grdChannelInfo.Name = "grdChannelInfo"
         Me.grdChannelInfo.ReadOnly = True
         Me.grdChannelInfo.RowHeadersVisible = False
-        Me.grdChannelInfo.Size = New System.Drawing.Size(624, 137)
+        Me.grdChannelInfo.Size = New System.Drawing.Size(624, 125)
         Me.grdChannelInfo.TabIndex = 15
         '
         'colInfoChannel
@@ -1542,9 +1542,9 @@ Partial Class frmSetup
         '
         'colMax
         '
-        DataGridViewCellStyle2.Format = "P"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.colMax.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Format = "P"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.colMax.DefaultCellStyle = DataGridViewCellStyle5
         Me.colMax.HeaderText = "Max"
         Me.colMax.Name = "colMax"
         Me.colMax.Width = 60
@@ -1585,7 +1585,7 @@ Partial Class frmSetup
         Me.cmdCombinationsNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdCombinationsNext.FlatAppearance.BorderSize = 0
         Me.cmdCombinationsNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdCombinationsNext.Location = New System.Drawing.Point(564, 390)
+        Me.cmdCombinationsNext.Location = New System.Drawing.Point(558, 381)
         Me.cmdCombinationsNext.Name = "cmdCombinationsNext"
         Me.cmdCombinationsNext.Size = New System.Drawing.Size(75, 29)
         Me.cmdCombinationsNext.TabIndex = 27
@@ -1818,7 +1818,7 @@ Partial Class frmSetup
         Me.cmdFilmsNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdFilmsNext.FlatAppearance.BorderSize = 0
         Me.cmdFilmsNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdFilmsNext.Location = New System.Drawing.Point(564, 389)
+        Me.cmdFilmsNext.Location = New System.Drawing.Point(558, 381)
         Me.cmdFilmsNext.Name = "cmdFilmsNext"
         Me.cmdFilmsNext.Size = New System.Drawing.Size(75, 29)
         Me.cmdFilmsNext.TabIndex = 27
@@ -1844,9 +1844,9 @@ Partial Class frmSetup
         Me.grpFilm.Controls.Add(Me.Label9)
         Me.grpFilm.Controls.Add(Me.txtFilmName)
         Me.grpFilm.Controls.Add(Me.Label8)
-        Me.grpFilm.Location = New System.Drawing.Point(3, 214)
+        Me.grpFilm.Location = New System.Drawing.Point(3, 198)
         Me.grpFilm.Name = "grpFilm"
-        Me.grpFilm.Size = New System.Drawing.Size(642, 170)
+        Me.grpFilm.Size = New System.Drawing.Size(642, 177)
         Me.grpFilm.TabIndex = 2
         Me.grpFilm.TabStop = False
         Me.grpFilm.Text = "Film"
@@ -1879,7 +1879,7 @@ Partial Class frmSetup
         Me.grdFilmDetails.Location = New System.Drawing.Point(221, 30)
         Me.grdFilmDetails.Name = "grdFilmDetails"
         Me.grdFilmDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.grdFilmDetails.Size = New System.Drawing.Size(415, 112)
+        Me.grdFilmDetails.Size = New System.Drawing.Size(415, 119)
         Me.grdFilmDetails.TabIndex = 8
         Me.grdFilmDetails.VirtualMode = True
         '
@@ -1987,7 +1987,7 @@ Partial Class frmSetup
         Me.GroupBox5.Controls.Add(Me.grdFilms)
         Me.GroupBox5.Location = New System.Drawing.Point(3, 41)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(642, 168)
+        Me.GroupBox5.Size = New System.Drawing.Size(642, 151)
         Me.GroupBox5.TabIndex = 1
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Films"
@@ -2008,7 +2008,7 @@ Partial Class frmSetup
         Me.grdFilms.ReadOnly = True
         Me.grdFilms.RowHeadersVisible = False
         Me.grdFilms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdFilms.Size = New System.Drawing.Size(602, 145)
+        Me.grdFilms.Size = New System.Drawing.Size(602, 127)
         Me.grdFilms.TabIndex = 0
         '
         'colFilmName
@@ -2084,7 +2084,7 @@ Partial Class frmSetup
         Me.cmdApply.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdApply.FlatAppearance.BorderSize = 0
         Me.cmdApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdApply.Location = New System.Drawing.Point(564, 389)
+        Me.cmdApply.Location = New System.Drawing.Point(558, 381)
         Me.cmdApply.Name = "cmdApply"
         Me.cmdApply.Size = New System.Drawing.Size(75, 29)
         Me.cmdApply.TabIndex = 28
@@ -2102,7 +2102,7 @@ Partial Class frmSetup
         Me.GroupBox7.Controls.Add(Me.grdIndexes)
         Me.GroupBox7.Controls.Add(Me.cmdRemoveIndex)
         Me.GroupBox7.Controls.Add(Me.cmdAddIndex)
-        Me.GroupBox7.Location = New System.Drawing.Point(3, 233)
+        Me.GroupBox7.Location = New System.Drawing.Point(3, 223)
         Me.GroupBox7.Name = "GroupBox7"
         Me.GroupBox7.Size = New System.Drawing.Size(642, 150)
         Me.GroupBox7.TabIndex = 3
@@ -2177,7 +2177,7 @@ Partial Class frmSetup
         Me.GroupBox6.Controls.Add(Me.cmdAddAV)
         Me.GroupBox6.Location = New System.Drawing.Point(3, 67)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(642, 162)
+        Me.GroupBox6.Size = New System.Drawing.Size(642, 150)
         Me.GroupBox6.TabIndex = 2
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Added Value"
@@ -2185,7 +2185,7 @@ Partial Class frmSetup
         'chkMultiply
         '
         Me.chkMultiply.AutoSize = True
-        Me.chkMultiply.Location = New System.Drawing.Point(6, 138)
+        Me.chkMultiply.Location = New System.Drawing.Point(6, 125)
         Me.chkMultiply.Name = "chkMultiply"
         Me.chkMultiply.Size = New System.Drawing.Size(141, 17)
         Me.chkMultiply.TabIndex = 31
@@ -2208,7 +2208,7 @@ Partial Class frmSetup
         Me.grdAddedValues.RowHeadersVisible = False
         Me.grdAddedValues.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.grdAddedValues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdAddedValues.Size = New System.Drawing.Size(600, 120)
+        Me.grdAddedValues.Size = New System.Drawing.Size(600, 90)
         Me.grdAddedValues.TabIndex = 19
         '
         'colAVName
@@ -2268,9 +2268,9 @@ Partial Class frmSetup
         '
         'DataGridViewTextBoxColumn2
         '
-        DataGridViewCellStyle3.Format = "C0"
-        DataGridViewCellStyle3.NullValue = "0"
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Format = "C0"
+        DataGridViewCellStyle6.NullValue = "0"
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn2.HeaderText = "Amount"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.Width = 70

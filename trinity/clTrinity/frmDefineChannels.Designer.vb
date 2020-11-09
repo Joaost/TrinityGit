@@ -523,7 +523,7 @@ Partial Class frmDefineChannels
         Me.cmdOk.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdOk.FlatAppearance.BorderSize = 0
         Me.cmdOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdOk.Location = New System.Drawing.Point(456, 339)
+        Me.cmdOk.Location = New System.Drawing.Point(456, 408)
         Me.cmdOk.Name = "cmdOk"
         Me.cmdOk.Size = New System.Drawing.Size(90, 32)
         Me.cmdOk.TabIndex = 17
@@ -634,7 +634,7 @@ Partial Class frmDefineChannels
         Me.grbBookingType.Controls.Add(Me.grdBT)
         Me.grbBookingType.Location = New System.Drawing.Point(12, 177)
         Me.grbBookingType.Name = "grbBookingType"
-        Me.grbBookingType.Size = New System.Drawing.Size(534, 240)
+        Me.grbBookingType.Size = New System.Drawing.Size(534, 248)
         Me.grbBookingType.TabIndex = 20
         Me.grbBookingType.TabStop = False
         Me.grbBookingType.Text = "Booking Types"
@@ -648,7 +648,7 @@ Partial Class frmDefineChannels
         Me.cmdCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdCancel.FlatAppearance.BorderSize = 0
         Me.cmdCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdCancel.Location = New System.Drawing.Point(369, 339)
+        Me.cmdCancel.Location = New System.Drawing.Point(369, 408)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(90, 32)
         Me.cmdCancel.TabIndex = 24

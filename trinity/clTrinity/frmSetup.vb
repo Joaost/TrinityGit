@@ -762,6 +762,15 @@ Public Class frmSetup
 
                     lblContract.Text = ActiveCampaign.Contract.Name
                 End If
+            Else
+
+                ActiveCampaign.Contract = New Trinity.cContract(Campaign)
+                ActiveCampaign.Contract.Load("", True, DBReader.getContract(frmSelectContract.grdContracts.SelectedRows(0).Tag!id).OuterXml.ToString)
+                ActiveCampaign.ContractID = frmSelectContract.grdContracts.SelectedRows(0).Tag!id
+
+                ActiveCampaign.Contract.ApplyToCampaign()
+
+                lblContract.Text = ActiveCampaign.Contract.Name
 
             End If
 

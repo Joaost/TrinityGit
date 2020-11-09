@@ -21,7 +21,7 @@ Public Class frmMarathon
         'for each channel and booking type we list the costs
         For Each TmpChan As Trinity.cChannel In Campaign.Channels
             For Each TmpBT As Trinity.cBookingType In TmpChan.BookingTypes
-                If TmpBT.BookIt Then
+                If TmpBT.BookIt And TmpBT.Combination Is Nothing Then
                     Dim TmpCT As CostTag
                     TmpCT.BookingType = TmpBT
                     TmpCT.Cost = Nothing
@@ -38,20 +38,45 @@ Public Class frmMarathon
                     'Edited by Joakim Koch 2016-05-13
                     'The bureaus probably dont use this cost any more since they want the Spotcheck
                     'For Each TmpCost As Trinity.cCost In Campaign.Costs
-                        'If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePerUnit Then
-                        '    TmpCT = New CostTag
-                        '    TmpCT.BookingType = TmpBT
-                        '    TmpCT.Cost = TmpCost
-                        '    grdMarathon.Rows.Add()
-                        '    grdMarathon.Rows(grdMarathon.Rows.Count - 1).Tag = TmpCT
-                        '    grdMarathon.Rows(grdMarathon.Rows.Count - 1).Cells(3).Tag = (TmpCT.BookingType.EstimatedSpotCount * TmpCT.Cost.Amount)
-                        '    'grdMarathon.Rows(grdMarathon.Rows.Count - 1).Cells(3).Tag = (TmpCT.BookingType.ConfirmedSpotCount * TmpCT.Cost.Amount)
-                        'End If
+                    'If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePerUnit Then
+                    '    TmpCT = New CostTag
+                    '    TmpCT.BookingType = TmpBT
+                    '    TmpCT.Cost = TmpCost
+                    '    grdMarathon.Rows.Add()
+                    '    grdMarathon.Rows(grdMarathon.Rows.Count - 1).Tag = TmpCT
+                    '    grdMarathon.Rows(grdMarathon.Rows.Count - 1).Cells(3).Tag = (TmpCT.BookingType.EstimatedSpotCount * TmpCT.Cost.Amount)
+                    '    'grdMarathon.Rows(grdMarathon.Rows.Count - 1).Cells(3).Tag = (TmpCT.BookingType.ConfirmedSpotCount * TmpCT.Cost.Amount)
+                    'End If
                     'Next
                     TmpLabel.Height = grdMarathon.Top + grdMarathon.GetRowDisplayRectangle(grdMarathon.Rows.Count - 1, False).Bottom - TmpLabel.Top - 1
                 End If
             Next
         Next
+        'iterates through each combination channel
+        For Each tmpC As Trinity.cCombination In Campaign.Combinations
+            Dim TmpCT As CostTag = Nothing
+            For Each tmpCC As Trinity.cCombinationChannel In tmpC.Relations
+                If tmpCC.Bookingtype IsNot Nothing Then
+                    TmpCT.BookingType = tmpCC.Bookingtype
+                    TmpCT.Cost = Nothing
+
+                End If
+            Next
+
+            grdMarathon.Rows.Add()
+            grdMarathon.Rows(grdMarathon.Rows.Count - 1).Tag = TmpCT
+            Dim TmpLabel As New Windows.Forms.Label
+            TmpLabel.Parent = grpMarathon
+            TmpLabel.Top = grdMarathon.GetRowDisplayRectangle(grdMarathon.Rows.Count - 1, False).Top + grdMarathon.Top - 1
+            TmpLabel.Left = 6
+            TmpLabel.Width = grdMarathon.Left - 6
+            TmpLabel.TextAlign = Drawing.ContentAlignment.MiddleLeft
+            TmpLabel.Text = tmpC.Name
+            TmpLabel.BorderStyle = Windows.Forms.BorderStyle.Fixed3D
+            TmpLabel.Height = grdMarathon.Top + grdMarathon.GetRowDisplayRectangle(grdMarathon.Rows.Count - 1, False).Bottom - TmpLabel.Top - 1
+        Next
+
+
         grdMarathon.Height = grdMarathon.GetRowDisplayRectangle(grdMarathon.Rows.Count - 1, False).Bottom + 1
         grpMarathon.Height = grdMarathon.Bottom + 6
         grpSummary.Top = grpMarathon.Bottom + 6
@@ -122,7 +147,15 @@ Public Class frmMarathon
             End If
         ElseIf e.ColumnIndex = 1 Then
             If TmpCT.Cost Is Nothing Then
-                e.Value = Format(TmpCT.BookingType.PlannedNetBudget, "N0")
+                If TmpCT.BookingType.Combination Is Nothing Then
+                    e.Value = Format(TmpCT.BookingType.PlannedNetBudget, "N0")
+                Else
+                    Dim plannedNetBudget As Integer = 0
+                    For Each TmpCC As Trinity.cCombinationChannel In TmpCT.BookingType.Combination.Relations
+                        plannedNetBudget += TmpCC.Bookingtype.PlannedNetBudget
+                    Next
+                    e.Value = Format(plannedNetBudget, "N0")
+                End If
             ElseIf TmpCT.Cost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnSpots Then
                 e.Value = Format(TmpCT.BookingType.EstimatedSpotCount * TmpCT.Cost.Amount, "N0")
             End If
@@ -134,14 +167,21 @@ Public Class frmMarathon
             End If
         ElseIf e.ColumnIndex = 3 Then
             If TmpCT.Cost Is Nothing Then
-                If TmpCT.BookingType.MarathonNetBudget > 0 Then
-                    e.Value = TmpCT.BookingType.MarathonNetBudget
-                ElseIf TmpCT.BookingType.ConfirmedNetBudget > 0 Then
-                    e.Value = TmpCT.BookingType.ConfirmedNetBudget
+                If TmpCT.BookingType.Combination Is Nothing Then
+                    If TmpCT.BookingType.MarathonNetBudget > 0 Then
+                        e.Value = TmpCT.BookingType.MarathonNetBudget
+                    ElseIf TmpCT.BookingType.ConfirmedNetBudget > 0 Then
+                        e.Value = TmpCT.BookingType.ConfirmedNetBudget
+                    Else
+                        e.Value = TmpCT.BookingType.PlannedNetBudget
+                    End If
                 Else
-                    e.Value = TmpCT.BookingType.PlannedNetBudget
+                    Dim plannedNetBudget As Integer = 0
+                    For Each TmpCC As Trinity.cCombinationChannel In TmpCT.BookingType.Combination.Relations
+                        plannedNetBudget += TmpCC.Bookingtype.PlannedNetBudget
+                    Next
+                    e.Value = plannedNetBudget
                 End If
-
             ElseIf TmpCT.Cost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnSpots Then
                 e.Value = Val(grdMarathon.Rows(e.RowIndex).Cells(e.ColumnIndex).Tag)
             End If
@@ -305,6 +345,7 @@ Public Class frmMarathon
                 Dim _insertion As New Marathon.Insertion
                 _insertion.CompanyID = product.Rows(0)!MarathonCompany
                 _insertion.OrderNumber = TmpBT.OrderNumber
+
                 _insertion.InsertionDate = Date.FromOADate(Campaign.StartDate)
                 _insertion.EndDate = Date.FromOADate(Campaign.EndDate)
 

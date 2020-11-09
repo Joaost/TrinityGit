@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <settings>
-  <schedules path="\\stofpcp01101z\groupm finance\Trinity\Tablåer"></schedules>
+  <schedules path="C:\Users\joakim.koch\Downloads"></schedules>
   <servers>
     <server>stosqlp01101/trinity_sweden</server>
   </servers>

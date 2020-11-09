@@ -22,9 +22,10 @@ Public Class frmDefineChannels
         'cmdSaveToFile.Enabled = True
         colEFactor.Visible = (Campaign.Area = "DK")
 
-        'validChannels.setArea("Norway PPM")
-        'validChannels.setArea("SR")
         validChannels.setArea(TrinitySettings.DefaultArea)
+
+        'validChannels.setArea("NN")
+        'validChannels.setArea("SR")
 
         validChannels.setPeriod("-1d")
         validChannels.setTargetMnemonic("3+", False)
