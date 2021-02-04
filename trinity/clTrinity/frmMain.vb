@@ -897,11 +897,11 @@ cmdSave_Click_Error:
                 'cmdReports.DropDownItems.Add("Export BSH datorama", Nothing, AddressOf getSpotlog).Enabled = True
 
             End If
-        ElseIf TrinitySettings.ActiveDataPath.Contains("Oslfpcp01101z") Then
+        ElseIf TrinitySettings.ActiveDataPath.Contains("Oslfpcp01102") Then
             cmdReports.DropDownItems.Add("Export campaign Unicorn-file", Nothing, AddressOf ExportCampaignToUnicornFileNorway).Enabled = True
             cmdReports.DropDownItems.Add("Export to datorama-file", Nothing, AddressOf ExportCampaignToDatorama).Enabled = True
-        Else
-
+        ElseIf TrinitySettings.DefaultArea = "NN" Then
+            cmdReports.DropDownItems.Add("Export campaign Unicorn-file", Nothing, AddressOf ExportCampaignToUnicornFileNorway).Enabled = True
         End If
 
     End Sub

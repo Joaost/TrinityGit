@@ -35,6 +35,8 @@ Partial Class frmExportCampaignUnicornNorway
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cmbCampaignType2 = New System.Windows.Forms.ComboBox()
+        Me.chkBundleP4Plus = New System.Windows.Forms.CheckBox()
+        Me.chkBundleBauer = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'btnExport
@@ -169,11 +171,37 @@ Partial Class frmExportCampaignUnicornNorway
         Me.cmbCampaignType2.Size = New System.Drawing.Size(121, 21)
         Me.cmbCampaignType2.TabIndex = 18
         '
+        'chkBundleP4Plus
+        '
+        Me.chkBundleP4Plus.AutoSize = True
+        Me.chkBundleP4Plus.Checked = True
+        Me.chkBundleP4Plus.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkBundleP4Plus.Location = New System.Drawing.Point(293, 118)
+        Me.chkBundleP4Plus.Name = "chkBundleP4Plus"
+        Me.chkBundleP4Plus.Size = New System.Drawing.Size(86, 17)
+        Me.chkBundleP4Plus.TabIndex = 20
+        Me.chkBundleP4Plus.Text = "Bundle P4+"
+        Me.chkBundleP4Plus.UseVisualStyleBackColor = True
+        '
+        'chkBundleBauer
+        '
+        Me.chkBundleBauer.AutoSize = True
+        Me.chkBundleBauer.Checked = True
+        Me.chkBundleBauer.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkBundleBauer.Location = New System.Drawing.Point(385, 118)
+        Me.chkBundleBauer.Name = "chkBundleBauer"
+        Me.chkBundleBauer.Size = New System.Drawing.Size(96, 17)
+        Me.chkBundleBauer.TabIndex = 21
+        Me.chkBundleBauer.Text = "Bundle Bauer"
+        Me.chkBundleBauer.UseVisualStyleBackColor = True
+        '
         'frmExportCampaignUnicornNorway
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(492, 221)
+        Me.Controls.Add(Me.chkBundleBauer)
+        Me.Controls.Add(Me.chkBundleP4Plus)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cmbCampaignType2)
         Me.Controls.Add(Me.Label1)
@@ -209,4 +237,6 @@ End Sub
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents Label2 As Windows.Forms.Label
     Friend WithEvents cmbCampaignType2 As Windows.Forms.ComboBox
+    Friend WithEvents chkBundleP4Plus As Windows.Forms.CheckBox
+    Friend WithEvents chkBundleBauer As Windows.Forms.CheckBox
 End Class

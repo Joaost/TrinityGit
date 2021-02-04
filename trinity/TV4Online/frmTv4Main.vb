@@ -121,12 +121,130 @@ Public Class frmTv4Main
 
 
         Dim _availableChannels = availableChannels
+        Dim combinationsChannels As New List(Of String)
+        For Each _tmpComb In _camp.combinations
+            If _tmpComb.ShowAsOne And _tmpComb.Relations.Count > 0 Then
+                Dim b As New TV4Online.SpotlightApiV23.xsd.Booking
+                For Each _tmpCC In _tmpComb.Relations
+                    If _availableChannels.Contains(_tmpCC.ChannelName) Then
+                        For Each _week In _tmpCC.Bookingtype.Weeks
+                            Dim _period As New TV4Online.SpotlightApiV23.xsd.RbsPeriod
+                            Dim _dayparts As New List(Of TV4Online.SpotlightApiV23.xsd.RbsDaypart)
 
+                            _period.StartDate = Date.FromOADate(_week.StartDate)
+                            _period.EndDate = Date.FromOADate(_week.EndDate)
+
+                            For Each _dp In _tmpCC.Bookingtype.Dayparts
+                                Dim _dayp As New TV4Online.SpotlightApiV23.xsd.RbsDaypart
+                                _dayp.NegotiatedDiscount = Math.Round(_tmpCC.Bookingtype.BuyingTarget.Discount, 4)
+                                If _dp.IsPrime Then
+                                    _dayp.Name = "Prime"
+                                Else
+                                    _dayp.Name = "Offprime"
+                                End If
+                                _dayp.GrossCPP30 = _week.GrossCPP30(_dp.MyIndex - 1)
+                                Dim _films As New List(Of TV4Online.SpotlightApiV23.xsd.RbsFilm)
+                                For Each _f In _week.Films
+                                    Dim _film As New TV4Online.SpotlightApiV23.xsd.RbsFilm
+                                    If String.IsNullOrEmpty(_f.Filmcode) Then
+                                        _film.FilmCode = _f.Name
+                                    Else
+                                        _film.FilmCode = _f.Filmcode
+                                    End If
+                                    _film.FilmLength = _f.FilmLength
+                                    _film.FilmIndex = _f.Index
+                                    _film.TRP = _week.TRPBuyingTarget * (_f.Share / 100) * (_dp.Share / 100)
+                                    _film.NetBudget = _film.TRP * _week.NetCPP30(_dp.MyIndex - 1) * (_f.Index / 100)
+                                    Dim _indices As New List(Of TV4Online.SpotlightApiV23.xsd.Index)
+                                    For Each _idx In _tmpCC.Bookingtype.Indexes
+                                        If _idx.FromDate <= _period.EndDate AndAlso _idx.ToDate >= _period.StartDate Then
+                                            Dim _index As New TV4Online.SpotlightApiV23.xsd.Index
+                                            _index.Modifier = _idx.Index / 100
+                                            _index.Name = _idx.Name
+                                            _indices.Add(_index)
+                                        End If
+                                    Next
+                                    For Each _idx In _tmpCC.Bookingtype.BuyingTarget.Indexes
+                                        If _idx.FromDate <= _period.EndDate AndAlso _idx.ToDate >= _period.StartDate Then
+                                            Dim _index As New TV4Online.SpotlightApiV23.xsd.Index
+                                            _index.Modifier = _idx.Index / 100
+                                            _index.Name = _idx.Name
+                                            _indices.Add(_index)
+                                        End If
+                                    Next
+                                    _film.Indices = _indices.ToArray
+                                    If _film.TRP > 0 OrElse _film.NetBudget > 0 Then
+                                        _films.Add(_film)
+                                    End If
+                                Next
+                                _dayp.RbsFilms = _films.ToArray
+                                If _dayp.RbsFilms.Count > 0 Then
+                                    _dayparts.Add(_dayp)
+                                End If
+                            Next
+                            _period.RbsDayparts = _dayparts.ToArray
+                            If _period.RbsDayparts.Count > 0 Then
+                                _periods.Add(_period)
+                            End If
+                            _period.Channel = _tmpCC.ChannelName
+                        Next
+                        If _tmpCC.Bookingtype.IsCompensation Then
+                            b.Type = "Kompensation - RBS"
+                        Else
+                            b.Type = "RBS"
+                        End If
+                        b.TrinityType = _tmpComb.Name
+
+                        'Booking information which is stored and receieved when uploading booking to Spotlight.
+                        b.BookingIdSpotlight = _tmpCC.Bookingtype.BookingIdSpotlight
+                        b.BookingUrlSpotlight = _tmpCC.Bookingtype.BookingUrlSpotlight
+
+                        b.Channel = _tmpComb.Name
+                        b.AgencyBookingRefNo = _tmpCC.Bookingtype.OrderNumber
+                        b.ChannelBookingRefNo = _tmpCC.Bookingtype.ContractNumber
+                        b.Comments = _tmpCC.Bookingtype.Comments
+                        b.StartDate = Date.FromOADate(_camp.StartDate)
+                        b.EndDate = Date.FromOADate(_camp.EndDate)
+                        'b.MaxBudget = _tmpCC.Bookingtype.PlannedNetBudget
+                        b.UniverseSize = _tmpCC.Bookingtype.BuyingTarget.getUniSizeNat(_camp.StartDate)
+                        b.Target = _tmpCC.Bookingtype.BuyingTarget.TargetName.ToString.Trim.Replace(" ", "")
+                        If b.Target.Contains("W") Then
+                            b.Target = b.Target.Replace("W", "K")
+                        End If
+                        If IsNumeric(b.Target.Substring(0, 1)) Then
+                            b.Target = "A" & b.Target
+                        End If
+
+                        Try 'Add logo to list so its easier to find the specific logo
+                            imgLogo.Image = _tmpCC.Bookingtype.ParentChannel.GetImage()
+
+                            Dim pic = imgLogo.Image
+                            If pic IsNot Nothing Then
+                                pic.Tag = _tmpCC.Bookingtype.ChannelName
+                            End If
+                            If pic IsNot Nothing Then
+                                _logo.Add(pic)
+                            End If
+                        Catch ex As Exception
+
+                        End Try
+                        b.MaxBudget += Math.Round(_tmpCC.Bookingtype.PlannedNetBudget)
+                        txtBudget.Text = Format(_booking.MaxBudget, "#####0")
+                        b.RbsPeriods = _periods.ToArray
+                        b.Selected = True
+                        b.Targets = _client.GetTargetsForChannel(b.Channel, b.StartDate)
+                        Dim Tmptargets = _client.GetTargetsForChannel(b.Channel, b.StartDate)
+                    End If
+                    combinationsChannels.Add(_tmpCC.Bookingtype.ParentChannel.ChannelName)
+                Next
+                _bookings.Add(b)
+            End If
+        Next
         For Each _chan In _camp.Channels
-            If _availableChannels.Contains(_chan.ChannelName) Then
+            If _availableChannels.Contains(_chan.ChannelName) And Not combinationsChannels.Contains(_chan.ChannelName) Then
                 For Each _bt In _chan.BookingTypes
-
                     Dim b As New TV4Online.SpotlightApiV23.xsd.Booking
+
                     If _bt.BookIt Then
                         'Dim booking As New TV4Bookings
                         Dim _periods As New List(Of TV4Online.SpotlightApiV23.xsd.RbsPeriod)

@@ -36,6 +36,9 @@ Public Class CExportUnicornFileNewNorway
     Dim BundleMTG As Boolean = False
     Dim BundleMatkanalen As Boolean = False
     Dim BundleTNT As Boolean = False
+    Dim BundleP4Plus As Boolean = False
+    Dim BundleBauer As Boolean = False
+    Dim BundleMetro As Boolean = False
 
     Dim tmpPrintExportAsCampaign As Boolean = False
     Dim ExportedAsCampaignCombination As Boolean = False
@@ -46,10 +49,12 @@ Public Class CExportUnicornFileNewNorway
     Dim tmpBundleFOX As Boolean = False
     Dim tmpBundleCMORE As Boolean = False
     Dim tmpBundleTNT As Boolean = False
+    Dim tmpBundleP4Plus As Boolean = False
+    Dim tmpBundleBauer As Boolean = False
     Dim tmpBundleDisney As Boolean = False
     Dim tmpBundleCartoon As Boolean = False
     Dim _campaignType As String = ""
-    Dim _campaignType2 As  String = ""
+    Dim _campaignType2 As String = ""
 
     Dim _campaign As Trinity.cKampanj
 
@@ -72,7 +77,7 @@ Public Class CExportUnicornFileNewNorway
     '   /JOOS
     '   2019-02-12 Chenges:
     '   Changed name on MTG to NENT in every PrinTtable and removed Comedy Central from Export
-    Public Sub printUnicornFile(Optional ByVal bundleTV2 As Boolean = False, Optional ByVal bundleMTG As Boolean = False, Optional ByVal bundleDNN As Boolean = False, Optional ByVal useOwnCommission As Boolean = False, Optional ByVal useOwnCommissionAmount As Decimal = 0, Optional ByVal tmpPrintExportAsCampaign As Boolean = False, Optional ByVal ct As String = "", Optional ByVal ct2 As String = "")
+    Public Sub printUnicornFile(Optional ByVal bundleTV2 As Boolean = False, Optional ByVal bundleMTG As Boolean = False, Optional ByVal bundleDNN As Boolean = False, Optional ByVal bundleP4PlusTemp As Boolean = False, Optional ByVal bundleBauerTemp As Boolean = False, Optional ByVal bundleMetroTemp As Boolean = False, Optional ByVal useOwnCommission As Boolean = False, Optional ByVal useOwnCommissionAmount As Decimal = 0, Optional ByVal tmpPrintExportAsCampaign As Boolean = False, Optional ByVal ct As String = "", Optional ByVal ct2 As String = "")
 
         If useOwnCommission Then
             ownCommission = True
@@ -82,7 +87,8 @@ Public Class CExportUnicornFileNewNorway
         _campaignType = ct
         _campaignType2 = ct2
         checkAmountOfBookedChannels()
-        checkBundling(bundleTV2, bundleMTG, bundleDNN, tmpPrintExportAsCampaign)
+        'checkBundling(bundleTV2, bundleMTG, bundleDNN, bundleP4PlusTemp, bundleBauerTemp, tmpPrintExportAsCampaign)
+        checkBundling(bundleTV2, bundleMTG, bundleDNN, BundleFOX, bundleP4PlusTemp, bundleBauerTemp, bundleMetroTemp, tmpPrintExportAsCampaign)
         _wb = _excel.AddWorkbook
         _sheet = _wb.Sheets(1)
         getFilms()
@@ -163,11 +169,14 @@ Public Class CExportUnicornFileNewNorway
         End If
         Return targetValue
     End Function
-    Sub checkBundling(Optional ByVal tmpBundleTV2 As Boolean = False, Optional ByVal tmpBundleMTG As Boolean = False, Optional ByVal tmpBundleDNN As Boolean = False, Optional ByVal tmpBundleFOX As Boolean = False, Optional ByVal tmpPrintAsCampaign As Boolean = False)
+    Sub checkBundling(Optional ByVal tmpBundleTV2 As Boolean = False, Optional ByVal tmpBundleMTG As Boolean = False, Optional ByVal tmpBundleDNN As Boolean = False, Optional ByVal tmpBundleFOX As Boolean = False, Optional ByVal tmpBundleP4Plus As Boolean = False, Optional ByVal tmpBundleBauer As Boolean = False, Optional ByVal tmpBundleMetro As Boolean = False, Optional ByVal tmpPrintAsCampaign As Boolean = False)
         BundleTV2 = tmpBundleTV2
         BundleMTG = tmpBundleMTG
         BundleDNN = tmpBundleDNN
         BundleFOX = tmpBundleFOX
+        BundleP4Plus = tmpBundleP4Plus
+        BundleBauer = tmpBundleBauer
+        BundleMetro = tmpBundleMetro
         _printExportAsCampaign = tmpPrintAsCampaign
     End Sub
 
@@ -207,6 +216,24 @@ Public Class CExportUnicornFileNewNorway
     'End Function
     Public Function checkNameTNT(ByVal tmpChannelName As String)
         If tmpChannelName.Contains("TNT") Then
+            Return True
+        End If
+        Return False
+    End Function
+    Public Function checkNameP4(ByVal tmpChannelName As String)
+        If tmpChannelName.Contains("P4 Lyden av Norge") Or tmpChannelName.Contains("NRJ") Or tmpChannelName.Contains("P10 Country") Or tmpChannelName.Contains("P7 Klem") Or tmpChannelName.Contains("P6 Rock") Or tmpChannelName.Contains("P5 Hits") Or tmpChannelName.Contains("P9 Retro") Or tmpChannelName.Contains("P8 Pop") Then
+            Return True
+        End If
+        Return False
+    End Function
+    Public Function checkNameBauer(ByVal tmpChannelName As String)
+        If tmpChannelName.Contains("Radio Norge") Or tmpChannelName.Contains("Radio Rock") Or tmpChannelName.Contains("Kiss") Or tmpChannelName.Contains("Radio Topp 40") Or tmpChannelName.Contains("Bauer Pop Up") Or tmpChannelName.Contains("Radio Vinyl") Or tmpChannelName.Contains("Norsk Pop") Or tmpChannelName.Contains("P24-7 Mix") Or tmpChannelName.Contains("P24-7 KOS") Or tmpChannelName.Contains("Radio 1") Then
+            Return True
+        End If
+        Return False
+    End Function
+    Public Function checkNameMetro(ByVal tmpChannelName As String)
+        If tmpChannelName.Contains("Radio Metro") Then
             Return True
         End If
         Return False
@@ -438,9 +465,7 @@ Public Class CExportUnicornFileNewNorway
             .Range("B" & row & ":C" & row).Interior.Color = RGB(0, 137, 178)
             .Range("B" & row & ":C" & row).Font.Color = RGB(255, 255, 255)
             Dim chValue = .Cells(row, 3).Value
-            'If TrinitySettings.Developer Then
-            '    .Cells(row, 13).Value += tmpChan.ChannelName + " " + tmpBook.Name + " "
-            'End If
+
             If Not printExportAsCampaign Then
                 If groupName = "DNN" Then
                     If tmpBundle Then
@@ -462,16 +487,6 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
                         End If
                     End If
-                    'ElseIf groupName = "FOXold" Then
-                    '    If tmpBundle Then
-                    '        .Cells(row, 2).Value = "FOXold"
-                    '    Else
-                    '        If .Cells(row, 2).Value Is Nothing Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
-                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
-                    '        End If
-                    '    End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "NENT"
@@ -485,6 +500,16 @@ Public Class CExportUnicornFileNewNorway
                 ElseIf groupName = "TNT" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "TNT"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
+                        End If
+                    End If
+                ElseIf groupName = "P4+" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "P4+"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -508,8 +533,10 @@ Public Class CExportUnicornFileNewNorway
                     '    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
-                ElseIf groupName = "¨TNT" Then
+                ElseIf groupName = "TNT" Then
                     .Cells(row, 2).Value = "TNT"
+                ElseIf groupName = "P4" Then
+                    .Cells(row, 2).Value = "P4+"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -518,7 +545,6 @@ Public Class CExportUnicornFileNewNorway
                     End If
                 End If
             End If
-            'Eurosport NO changed to Eurosport 1 Norge
             If Not .Cells(row, 3) Is Nothing Then
                 If tmpBundle Or printExportAsCampaign Then
                     If groupName = "TV2" Then
@@ -531,6 +557,12 @@ Public Class CExportUnicornFileNewNorway
                         .Cells(row, 3).Value = "TV3; Viasat 4; TV6; National Geographic; Fox Norway; BBC Brit; Fox Crime;"
                     ElseIf groupName = "TNT" Then
                         .Cells(row, 3).Value = "TNT"
+                    ElseIf groupName = "P4+" Then
+                        .Cells(row, 3).Value = "P4 Lyden; P10 Country; NRJ; P7 Klem; P6 Rock; P5 Hits; P9 Retro; P8 Pop"
+                    ElseIf groupName = "Bauer" Then
+                        .Cells(row, 3).Value = "Radio Norge; Radio Rock; Kiss; Radio top 40; Bauer Pop Up; Radio Vinyl; Norsk Pop; P24-7 Mix; P24-7 KOS; Radio 1"
+                    ElseIf groupName = "Metro" Then
+                        .Cells(row, 3).Value = "Radio Metro"
                     End If
                 ElseIf chValue Is Nothing Then
                     If tmpChan.AdEdgeNames <> "" Then
@@ -723,6 +755,12 @@ Public Class CExportUnicornFileNewNorway
             result = "Matkanalen"
         ElseIf checkNameTNT(tmpChName) Then
             result = "TNT"
+        ElseIf checkNameP4(tmpChName) Then
+            result = "P4+"
+        ElseIf checkNameBauer(tmpChName) Then
+            result = "Bauer"
+        ElseIf checkNameMetro(tmpChName) Then
+            result = "Radio Metro"
         End If
         Return result
     End Function
@@ -742,6 +780,9 @@ Public Class CExportUnicornFileNewNorway
             Dim rowMTG = 0
             Dim rowMatkanalen = 0
             Dim rowTNT = 0
+            Dim rowP4Plus = 0
+            Dim rowBauer = 0
+            Dim rowMetro = 0
 
             Dim TV2String As String = ""
             Dim DNNString As String = ""
@@ -749,6 +790,9 @@ Public Class CExportUnicornFileNewNorway
             Dim MTGString As String = ""
             Dim Matkanalenstring As String = ""
             Dim TNTString As String = ""
+            Dim P4PLusString As String = ""
+            Dim BauerString As String = ""
+            Dim MetroString As String = ""
 
             Dim firstRow As Integer = 39
 
@@ -770,13 +814,16 @@ Public Class CExportUnicornFileNewNorway
                                 ElseIf CheckNameDNN(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowDNN = rowCombination
-                                    'ElseIf checkNameFOXold(c.ChannelName) Then
-                                    '   rowCombination = tmpRow
-                                    '  rowFOX = rowCombination
                                 ElseIf checkNameMTG(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowMTG = rowCombination
                                 ElseIf checkNameMatkanalen(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowMatkanalen = rowCombination
+                                ElseIf checkNameP4(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowMatkanalen = rowCombination
+                                ElseIf checkNameBauer(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowMatkanalen = rowCombination
                                 End If
@@ -805,7 +852,7 @@ Public Class CExportUnicornFileNewNorway
                                 Next
                             End If
                             If Not jumpBookingType Then
-                                'MTG
+                                'TV2
                                 If checkNameTV2(tmpChan.ChannelName) Then
                                     If BundleTV2 And rowTV2 <> 0 Then
                                         If rowTV2 = 0 Then
@@ -818,6 +865,7 @@ Public Class CExportUnicornFileNewNorway
                                     TV2String = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "TV2", BundleTV2, tmpRow, tmpChan.ChannelName, rowTV2)
                                 End If
+                                ' DNN
                                 If CheckNameDNN(tmpChan.ChannelName) Then
                                     If BundleDNN And rowDNN <> 0 Then
                                         If rowDNN = 0 Then
@@ -830,19 +878,7 @@ Public Class CExportUnicornFileNewNorway
                                     DNNString = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN)
                                 End If
-                                'If checkNameFOXold(tmpChan.ChannelName) Then
-                                '    If BundleFOX And rowFOX <> 0 Then
-                                '        If rowFOX = 0 Then
-                                '            rowFOX = tmpRow
-                                '        End If
-                                '    Else
-                                '        rowFOX = tmpRow
-                                '        tmpRow = tmpRow + 1
-                                '    End If
-                                '    NatGeoString = tmpChan.ChannelName
-                                '    HelperTable1(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
-                                'End If
-
+                                'MTG
                                 If checkNameMTG(tmpChan.ChannelName) Then
                                     If BundleMTG And rowMTG <> 0 Then
                                         If rowMTG = 0 Then
@@ -855,6 +891,7 @@ Public Class CExportUnicornFileNewNorway
                                     MTGString = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "MTG", BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
                                 End If
+                                'Matkanalen
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
                                         If rowMatkanalen = 0 Then
@@ -867,6 +904,7 @@ Public Class CExportUnicornFileNewNorway
                                     Matkanalenstring = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "Matkanalen", BundleMatkanalen, tmpRow, tmpChan.ChannelName, rowMatkanalen)
                                 End If
+                                'TNT
                                 If checkNameTNT(tmpChan.ChannelName) Then
                                     If BundleTNT And rowTNT <> 0 Then
                                         If rowTNT = 0 Then
@@ -878,6 +916,44 @@ Public Class CExportUnicornFileNewNorway
                                     End If
                                     TNTString = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "TNT", BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
+                                End If
+                                'P4
+                                If checkNameP4(tmpChan.ChannelName) Then
+                                    If BundleP4Plus And rowP4Plus <> 0 Then
+                                        If rowP4Plus = 0 Then
+                                            rowP4Plus = tmpRow
+                                        End If
+                                    Else
+                                        rowP4Plus = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    P4PLusString = tmpChan.ChannelName
+                                    HelperTable1(tmpChan, tmpBook, "P4+", BundleP4Plus, tmpRow, tmpChan.ChannelName, rowP4Plus)
+                                End If
+                                'Bauer
+                                If checkNameBauer(tmpChan.ChannelName) Then
+                                    If BundleBauer And rowBauer <> 0 Then
+                                        If rowBauer = 0 Then
+                                            rowBauer = tmpRow
+                                        End If
+                                    Else
+                                        rowBauer = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    BauerString = tmpChan.ChannelName
+                                    HelperTable1(tmpChan, tmpBook, "Bauer", BundleBauer, tmpRow, tmpChan.ChannelName, rowBauer)
+                                End If
+                                If checkNameMetro(tmpChan.ChannelName) Then
+                                    If BundleMetro And rowMetro <> 0 Then
+                                        If rowMetro = 0 Then
+                                            rowMetro = tmpRow
+                                        End If
+                                    Else
+                                        rowMetro = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    MetroString = tmpChan.ChannelName
+                                    HelperTable1(tmpChan, tmpBook, "Metro", BundleMetro, tmpRow, tmpChan.ChannelName, rowMetro)
                                 End If
                             End If
                         End If
@@ -906,7 +982,6 @@ Public Class CExportUnicornFileNewNorway
         Dim target As String = ""
 
         With _sheet
-            'Dim valueTest = .Cells(savedRow, 2).Value
             If tmpBundle And groupName = tmpGroupName Then
                 row = savedRow
             ElseIf tmpBundle Then
@@ -926,9 +1001,6 @@ Public Class CExportUnicornFileNewNorway
             .Range("B" & row & ":B" & row).Interior.Color = RGB(0, 137, 178)
             .Range("B" & row & ":B" & row).Font.Color = RGB(255, 255, 255)
             Dim test = .Cells(row, 2).Value
-            'If TrinitySettings.Developer Then
-            '    .Cells(row, 13).Value += tmpChan.ChannelName + " " + tmpBook.Name + " "
-            'End If
             If Not printExportAsCampaign Then
                 If groupName = "TV2" Then
                     If tmpBundle Then
@@ -950,16 +1022,6 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                    'ElseIf groupName = "FOXold" Then
-                    '    If tmpBundle Then
-                    '        .Cells(row, 2).Value = "FOXold"
-                    '    Else
-                    '        If .Cells(row, 2).Value Is Nothing Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                    '        End If
-                    '    End If
                 ElseIf groupName = "MTG" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "NENT"
@@ -990,6 +1052,36 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
+                ElseIf groupName = "P4+" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "P4+"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
+                ElseIf groupName = "Bauer" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Bauer"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
+                ElseIf groupName = "Metro" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Radio Metro"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
                 End If
             Else
                 If groupName = "MTG" Then
@@ -1000,6 +1092,12 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "FOX"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
+                ElseIf groupName = "P4+" Then
+                    .Cells(row, 2).Value = "P4+"
+                ElseIf groupName = "Bauer" Then
+                    .Cells(row, 2).Value = "Bauer"
+                ElseIf groupName = "Metro" Then
+                    .Cells(row, 2).Value = "Radio Metro"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -1055,9 +1153,15 @@ Public Class CExportUnicornFileNewNorway
             Dim rowDNN = 0
             Dim rowFOX = 0
             Dim rowTNT = 0
+            Dim rowP4 = 0
+            Dim rowBauer = 0
+            Dim rowMetro = 0
 
             Dim rowMatkanalen = 0
             Dim Matkanalenstring As String = ""
+            Dim BauerString As String = ""
+            Dim P4PString As String = ""
+            Dim MetroString As String = ""
 
             Dim rowCombination As Integer = 0
             Dim tmpChannelNameInputForCheckBundling As String = ""
@@ -1077,15 +1181,21 @@ Public Class CExportUnicornFileNewNorway
                                 ElseIf CheckNameDNN(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowDNN = rowCombination
-                                    'ElseIf checkNameFOXold(c.ChannelName) Then
-                                    '    rowCombination = tmpRow
-                                    '    rowFOX = rowCombination
                                 ElseIf checkNameMTG(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowMTG = rowCombination
                                 ElseIf checkNameMatkanalen(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowMatkanalen = rowCombination
+                                ElseIf checkNameP4(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowP4 = rowCombination
+                                ElseIf checkNameBauer(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowBauer = rowCombination
+                                ElseIf checkNameMetro(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowMetro = rowCombination
                                 End If
                                 tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
                                 HelperTable2(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
@@ -1149,18 +1259,6 @@ Public Class CExportUnicornFileNewNorway
                                     HelperTable2(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN)
                                     currentRow = tmpRow
                                 End If
-                                'If checkNameFOXold(tmpChan.ChannelName) Then
-                                '    If BundleFOX And rowFOX <> 0 Then
-                                '        If rowFOX = 0 Then
-                                '            rowFOX = tmpRow
-                                '        End If
-                                '    Else
-                                '        rowFOX = tmpRow
-                                '        tmpRow = tmpRow + 1
-                                '    End If
-                                '    HelperTable2(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
-                                '    currentRow = tmpRow
-                                'End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
                                         If rowMatkanalen = 0 Then
@@ -1183,6 +1281,42 @@ Public Class CExportUnicornFileNewNorway
                                         tmpRow = tmpRow + 1
                                     End If
                                     HelperTable2(tmpChan, tmpBook, "TNT", BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameP4(tmpChan.ChannelName) Then
+                                    If BundleP4Plus And rowP4 <> 0 Then
+                                        If rowP4 = 0 Then
+                                            rowP4 = tmpRow
+                                        End If
+                                    Else
+                                        rowP4 = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    HelperTable2(tmpChan, tmpBook, "P4+", BundleP4Plus, tmpRow, tmpChan.ChannelName, rowP4)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameBauer(tmpChan.ChannelName) Then
+                                    If BundleBauer And rowBauer <> 0 Then
+                                        If rowBauer = 0 Then
+                                            rowBauer = tmpRow
+                                        End If
+                                    Else
+                                        rowBauer = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    HelperTable2(tmpChan, tmpBook, "Bauer", BundleBauer, tmpRow, tmpChan.ChannelName, rowBauer)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameMetro(tmpChan.ChannelName) Then
+                                    If BundleMetro And rowMetro <> 0 Then
+                                        If rowMetro = 0 Then
+                                            rowMetro = tmpRow
+                                        End If
+                                    Else
+                                        rowMetro = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    HelperTable2(tmpChan, tmpBook, "Metro", BundleMetro, tmpRow, tmpChan.ChannelName, rowMetro)
                                     currentRow = tmpRow
                                 End If
                             End If
@@ -1235,9 +1369,6 @@ Public Class CExportUnicornFileNewNorway
             .Range("B" & row & ":B" & row).Interior.Color = RGB(0, 137, 178)
             .Range("B" & row & ":B" & row).Font.Color = RGB(255, 255, 255)
             Dim test = .Cells(row, 2).Value
-            'If TrinitySettings.Developer Then
-            '    .Cells(row, 13).Value += tmpChan.ChannelName + " " + tmpBook.Name + " "
-            'End If
             If Not printExportAsCampaign Then
                 If groupName = "TV4" Then
                     If .Cells(row, 2).Value Is Nothing Then
@@ -1265,16 +1396,6 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                    'ElseIf groupName = "FOXold" Then
-                    '    If tmpBundle Then
-                    '        .Cells(row, 2).Value = "FOXold"
-                    '    Else
-                    '        If .Cells(row, 2).Value Is Nothing Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                    '        End If
-                    '    End If
                 ElseIf groupName = "TV2" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "TV2 Group"
@@ -1325,6 +1446,37 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
+
+                ElseIf groupName = "P4+" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "P4+"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
+                ElseIf groupName = "Bauer" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Bauer"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
+                ElseIf groupName = "Metro" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Radio Metro"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
                 End If
             Else
                 If groupName = "MTG" Then
@@ -1335,6 +1487,12 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "FOX"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
+                ElseIf groupName = "P4+" Then
+                    .Cells(row, 2).Value = "P4+"
+                ElseIf groupName = "Bauer" Then
+                    .Cells(row, 2).Value = "Bauer"
+                ElseIf groupName = "Metro" Then
+                    .Cells(row, 2).Value = "Radio Metro"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -1390,6 +1548,9 @@ Public Class CExportUnicornFileNewNorway
             Dim rowMTG = 0
             Dim rowMatkanalen = 0
             Dim rowTNT = 0
+            Dim rowP4 = 0
+            Dim rowBauer = 0
+            Dim rowMetro = 0
 
             Dim rowCombination As Integer = 0
             Dim tmpChannelNameInputForCheckBundling As String = ""
@@ -1409,15 +1570,21 @@ Public Class CExportUnicornFileNewNorway
                                 ElseIf CheckNameDNN(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowDNN = rowCombination
-                                    'ElseIf checkNameFOXold(c.ChannelName) Then
-                                    '    rowCombination = tmpRow
-                                    '    rowFOX = rowCombination
                                 ElseIf checkNameMTG(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowMTG = rowCombination
                                 ElseIf checkNameMatkanalen(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowMatkanalen = rowCombination
+                                ElseIf checkNameP4(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowP4 = rowCombination
+                                ElseIf checkNameBauer(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowBauer = rowCombination
+                                ElseIf checkNameMetro(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowMetro = rowCombination
                                 End If
                                 tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
                                 helperTable3(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
@@ -1483,18 +1650,6 @@ Public Class CExportUnicornFileNewNorway
                                     helperTable3(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN)
                                     currentRow = tmpRow
                                 End If
-                                'If checkNameFOXold(tmpChan.ChannelName) Then
-                                '    If BundleFOX And rowFOX <> 0 Then
-                                '        If rowFOX = 0 Then
-                                '            rowFOX = tmpRow
-                                '        End If
-                                '    Else
-                                '        rowFOX = tmpRow
-                                '        tmpRow = tmpRow + 1
-                                '    End If
-                                '    helperTable3(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
-                                '    currentRow = tmpRow
-                                'End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
                                         If rowMatkanalen = 0 Then
@@ -1517,6 +1672,43 @@ Public Class CExportUnicornFileNewNorway
                                         tmpRow = tmpRow + 1
                                     End If
                                     helperTable3(tmpChan, tmpBook, "TNT", BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameP4(tmpChan.ChannelName) Then
+                                    If BundleP4Plus And rowP4 <> 0 Then
+                                        If rowP4 = 0 Then
+                                            rowP4 = tmpRow
+                                        End If
+                                    Else
+                                        rowP4 = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    helperTable3(tmpChan, tmpBook, "P4+", BundleP4Plus, tmpRow, tmpChan.ChannelName, rowP4)
+                                    currentRow = tmpRow
+                                End If
+
+                                If checkNameBauer(tmpChan.ChannelName) Then
+                                    If BundleBauer And rowBauer <> 0 Then
+                                        If rowBauer = 0 Then
+                                            rowBauer = tmpRow
+                                        End If
+                                    Else
+                                        rowBauer = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    helperTable3(tmpChan, tmpBook, "Bauer", BundleBauer, tmpRow, tmpChan.ChannelName, rowBauer)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameMetro(tmpChan.ChannelName) Then
+                                    If BundleMetro And rowMetro <> 0 Then
+                                        If rowMetro = 0 Then
+                                            rowMetro = tmpRow
+                                        End If
+                                    Else
+                                        rowMetro = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    helperTable3(tmpChan, tmpBook, "Metro", BundleMetro, tmpRow, tmpChan.ChannelName, rowMetro)
                                     currentRow = tmpRow
                                 End If
                             End If
@@ -1607,16 +1799,6 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                    'ElseIf groupName = "FOXold" Then
-                    '    If tmpBundle Then
-                    '        .Cells(row, 2).Value = "FOXold"
-                    '    Else
-                    '        If .Cells(row, 2).Value Is Nothing Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                    '        End If
-                    '    End If
                 ElseIf groupName = "Cartoon" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "Cartoon"
@@ -1667,6 +1849,36 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
+                ElseIf groupName = "P4+" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "P4+"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
+                ElseIf groupName = "Bauer" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Bauer"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
+                ElseIf groupName = "Metro" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Radio Metro"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
                 End If
             Else
                 If groupName = "MTG" Then
@@ -1677,6 +1889,12 @@ Public Class CExportUnicornFileNewNorway
                     '    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
+                ElseIf groupName = "P4+" Then
+                    .Cells(row, 2).Value = "P4+"
+                ElseIf groupName = "Bauer" Then
+                    .Cells(row, 2).Value = "Bauer"
+                ElseIf groupName = "Metro" Then
+                    .Cells(row, 2).Value = "Radio Metro"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -1684,6 +1902,7 @@ Public Class CExportUnicornFileNewNorway
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
                     End If
                 End If
+
             End If
 
             Dim column = 3
@@ -1754,6 +1973,9 @@ Public Class CExportUnicornFileNewNorway
         Dim rowFOX = 0
         Dim rowMatkanalen = 0
         Dim rowTNT = 0
+        Dim rowP4 = 0
+        Dim rowBauer = 0
+        Dim rowMetro = 0
 
         Dim rowCombination As Integer = 0
         Dim tmpChannelNameInputForCheckBundling As String = ""
@@ -1773,15 +1995,21 @@ Public Class CExportUnicornFileNewNorway
                             ElseIf CheckNameDNN(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowDNN = rowCombination
-                                'ElseIf checkNameFOXold(c.ChannelName) Then
-                                '    rowCombination = tmpRow
-                                '    rowFOX = rowCombination
                             ElseIf checkNameMTG(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowMTG = rowCombination
                             ElseIf checkNameMatkanalen(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowMatkanalen = rowCombination
+                            ElseIf checkNameP4(c.ChannelName) Then
+                                rowCombination = tmpRow
+                                rowP4 = rowCombination
+                            ElseIf checkNameBauer(c.ChannelName) Then
+                                rowCombination = tmpRow
+                                rowBauer = rowCombination
+                            ElseIf checkNameMetro(c.ChannelName) Then
+                                rowCombination = tmpRow
+                                rowMetro = rowCombination
                             End If
                             tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
                             HelperTable4(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
@@ -1845,18 +2073,6 @@ Public Class CExportUnicornFileNewNorway
                                     HelperTable4(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                'If checkNameFOXold(tmpChan.ChannelName) Then
-                                '    If BundleFOX And rowFOX <> 0 Then
-                                '        If rowFOX = 0 Then
-                                '            rowFOX = tmpRow
-                                '        End If
-                                '    Else
-                                '        rowFOX = tmpRow
-                                '        tmpRow = tmpRow + 1
-                                '    End If
-                                '    HelperTable4(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
-                                '    currentRow = tmpRow
-                                'End If
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
                                         If rowMatkanalen = 0 Then
@@ -1879,6 +2095,42 @@ Public Class CExportUnicornFileNewNorway
                                         tmpRow = tmpRow + 1
                                     End If
                                     HelperTable4(tmpChan, tmpBook, "TNT", BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT, rowHeader)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameP4(tmpChan.ChannelName) Then
+                                    If BundleP4Plus And rowP4 <> 0 Then
+                                        If rowP4 = 0 Then
+                                            rowP4 = tmpRow
+                                        End If
+                                    Else
+                                        rowP4 = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    HelperTable4(tmpChan, tmpBook, "P4+", BundleP4Plus, tmpRow, tmpChan.ChannelName, rowP4, rowHeader)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameBauer(tmpChan.ChannelName) Then
+                                    If BundleBauer And rowBauer <> 0 Then
+                                        If rowBauer = 0 Then
+                                            rowBauer = tmpRow
+                                        End If
+                                    Else
+                                        rowBauer = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    HelperTable4(tmpChan, tmpBook, "Bauer", BundleBauer, tmpRow, tmpChan.ChannelName, rowBauer, rowHeader)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameMetro(tmpChan.ChannelName) Then
+                                    If BundleMetro And rowMetro <> 0 Then
+                                        If rowMetro = 0 Then
+                                            rowMetro = tmpRow
+                                        End If
+                                    Else
+                                        rowMetro = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    HelperTable4(tmpChan, tmpBook, "Metro", BundleMetro, tmpRow, tmpChan.ChannelName, rowMetro, rowHeader)
                                     currentRow = tmpRow
                                 End If
                             End If
@@ -1928,9 +2180,6 @@ Public Class CExportUnicornFileNewNorway
             .Range("B" & row & ":B" & row).Interior.Color = RGB(0, 137, 178)
             .Range("B" & row & ":B" & row).Font.Color = RGB(255, 255, 255)
             Dim test = .Cells(row, 2).Value
-            'If TrinitySettings.Developer Then
-            '    .Cells(row, 13).Value += tmpChan.ChannelName + " " + tmpBook.Name + " "
-            'End If
             If Not printExportAsCampaign Then
                 If groupName = "TV4" Then
                     If .Cells(row, 2).Value Is Nothing Then
@@ -1968,16 +2217,6 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
-                    'ElseIf groupName = "FOXold" Then
-                    '    If tmpBundle Then
-                    '        .Cells(row, 2).Value = "FOXold"
-                    '    Else
-                    '        If .Cells(row, 2).Value Is Nothing Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                    '        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
-                    '            .Cells(row, 2).Value += tmpChan.AdEdgeNames
-                    '        End If
-                    '    End If
                 ElseIf groupName = "Cartoon" Then
                     If tmpBundle Then
                         .Cells(row, 2).Value = "Cartoon"
@@ -2028,6 +2267,36 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
                         End If
                     End If
+                ElseIf groupName = "P4+" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "P4+"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
+                ElseIf groupName = "Bauer" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Bauer"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
+                ElseIf groupName = "Metro" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Radio Metro"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames
+                        End If
+                    End If
                 End If
             Else
                 If groupName = "MTG" Then
@@ -2038,6 +2307,10 @@ Public Class CExportUnicornFileNewNorway
                     '    .Cells(row, 2).Value = "FOXold"
                 ElseIf groupName = "TV2" Then
                     .Cells(row, 2).Value = "TV2 Group"
+                ElseIf groupName = "P4+" Then
+                    .Cells(row, 2).Value = "P4+"
+                ElseIf groupName = "Bauer" Then
+                    .Cells(row, 2).Value = "Bauer"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -2125,6 +2398,9 @@ Public Class CExportUnicornFileNewNorway
         Dim rowFOX = 0
         Dim rowMatkanalen = 0
         Dim rowTNT = 0
+        Dim rowP4 = 0
+        Dim rowBauer = 0
+        Dim rowMetro = 0
 
         Dim tv4String = ""
 
@@ -2147,15 +2423,21 @@ Public Class CExportUnicornFileNewNorway
                             ElseIf CheckNameDNN(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowDNN = rowCombination
-                                'ElseIf checkNameFOXold(c.ChannelName) Then
-                                '    rowCombination = tmpRow
-                                '    rowFOX = rowCombination
                             ElseIf checkNameMTG(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowMTG = rowCombination
                             ElseIf checkNameMatkanalen(c.ChannelName) Then
                                 rowCombination = tmpRow
                                 rowMatkanalen = rowCombination
+                            ElseIf checkNameP4(c.ChannelName) Then
+                                rowCombination = tmpRow
+                                rowP4 = rowCombination
+                            ElseIf checkNameBauer(c.ChannelName) Then
+                                rowCombination = tmpRow
+                                rowBauer = rowCombination
+                            ElseIf checkNameMetro(c.ChannelName) Then
+                                rowCombination = tmpRow
+                                rowMetro = rowCombination
                             End If
                             tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
                             helperTable5(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
@@ -2208,8 +2490,8 @@ Public Class CExportUnicornFileNewNorway
                                     currentRow = tmpRow
                                 End If
                                 If CheckNameDNN(tmpChan.ChannelName) Then
-                                     If BundleDNN And rowDNN <> 0 Then
-                                        If rowDNN = 0
+                                    If BundleDNN And rowDNN <> 0 Then
+                                        If rowDNN = 0 Then
                                             rowDNN = tmpRow
                                         End If
                                     Else
@@ -2219,19 +2501,6 @@ Public Class CExportUnicornFileNewNorway
                                     helperTable5(tmpChan, tmpBook, "DNN", BundleDNN, tmpRow, tmpChan.ChannelName, rowDNN, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                'If checkNameFOXold(tmpChan.ChannelName) Then
-                                '    If BundleFOX And rowFOX <> 0 Then
-                                '        If rowFOX = 0 Then
-                                '            rowFOX = tmpRow
-                                '        End If
-                                '    Else
-                                '        rowFOX = tmpRow
-                                '        tmpRow = tmpRow + 1
-                                '    End If
-                                '    helperTable5(tmpChan, tmpBook, "FOXold", BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
-                                '    currentRow = tmpRow
-                                'End If
-
                                 If checkNameMatkanalen(tmpChan.ChannelName) Then
                                     If BundleMatkanalen And rowMatkanalen <> 0 Then
                                         If rowMatkanalen = 0
@@ -2246,7 +2515,7 @@ Public Class CExportUnicornFileNewNorway
                                 End If
                                 If checkNameTNT(tmpChan.ChannelName) Then
                                     If BundleTNT And rowTNT <> 0 Then
-                                        If rowTNT = 0
+                                        If rowTNT = 0 Then
                                             rowTNT = tmpRow
                                         End If
                                     Else
@@ -2254,6 +2523,42 @@ Public Class CExportUnicornFileNewNorway
                                         tmpRow = tmpRow + 1
                                     End If
                                     helperTable5(tmpChan, tmpBook, "TNT", BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT, rowHeader)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameP4(tmpChan.ChannelName) Then
+                                    If BundleP4Plus And rowP4 <> 0 Then
+                                        If rowP4 = 0 Then
+                                            rowP4 = tmpRow
+                                        End If
+                                    Else
+                                        rowP4 = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    helperTable5(tmpChan, tmpBook, "P4+", BundleP4Plus, tmpRow, tmpChan.ChannelName, rowP4, rowHeader)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameBauer(tmpChan.ChannelName) Then
+                                    If BundleBauer And rowBauer <> 0 Then
+                                        If rowBauer = 0 Then
+                                            rowBauer = tmpRow
+                                        End If
+                                    Else
+                                        rowBauer = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    helperTable5(tmpChan, tmpBook, "Bauer", BundleBauer, tmpRow, tmpChan.ChannelName, rowBauer, rowHeader)
+                                    currentRow = tmpRow
+                                End If
+                                If checkNameBauer(tmpChan.ChannelName) Then
+                                    If BundleMetro And rowMetro <> 0 Then
+                                        If rowMetro = 0 Then
+                                            rowMetro = tmpRow
+                                        End If
+                                    Else
+                                        rowMetro = tmpRow
+                                        tmpRow = tmpRow + 1
+                                    End If
+                                    helperTable5(tmpChan, tmpBook, "Metro", BundleMetro, tmpRow, tmpChan.ChannelName, rowMetro, rowHeader)
                                     currentRow = tmpRow
                                 End If
                             End If
@@ -2302,7 +2607,7 @@ Public Class CExportUnicornFileNewNorway
             x = x + 1
         Next
 
-        For each tmpLength As Byte In filmLengths
+        For Each tmpLength As Byte In filmLengths
             For i As Integer = 1 To listOfFilms.Count
                 With _sheet
                     For Each tmpChan As Trinity.cChannel In Campaign.Channels
@@ -2311,24 +2616,19 @@ Public Class CExportUnicornFileNewNorway
                                 .Cells(currentRow, 2).Value = amountOfFilms
                                 Dim totalTRPForWeek As Decimal = 0
                                 Dim startingColumn = 6
-                                For Each tmpWeek As Trinity.cWeek In tmpBt.Weeks                                    
-                                    If tmpWeek.Films(i).FilmLength = tmpLength                                            
+                                For Each tmpWeek As Trinity.cWeek In tmpBt.Weeks
+                                    If tmpWeek.Films(i).FilmLength = tmpLength Then
                                         totalTRPForWeek = tmpWeek.TRP * (tmpWeek.Films(i).Share / 100)
                                         If .Cells(headerRow, startingColumn).Value = "" Then
                                             Dim yearForWeek As Date = Trinity.Helper.FormatDateForBooking(tmpWeek.StartDate)
                                             .Cells(headerRow, startingColumn).Value = yearForWeek.Year.ToString() & "w" & tmpWeek.Name
                                         End If
                                         If .Cells(currentRow, 3).Value Is Nothing Then
-                                            'If tmpWeek.Films(i).Description = "" Then
-                                            '    .Cells(currentRow, 3).Value = tmpWeek.Films(i).Name
-                                            'Else
-                                            '    .Cells(currentRow, 3).Value = tmpWeek.Films(i).Description
-                                            'End If
                                             .Cells(currentRow, 3).Value = tmpLength & " Sec"
-                                        End If                                
+                                        End If
                                         If .Cells(currentRow, 4).Value Is Nothing Then
                                             .Cells(currentRow, 4).Value += tmpWeek.Films(i).Filmcode + ";"
-                                        ElseIf Not .Cells(currentRow, 4).Text.Contains(tmpWeek.Films(i).Filmcode)
+                                        ElseIf Not .Cells(currentRow, 4).Text.Contains(tmpWeek.Films(i).Filmcode) Then
                                             .Cells(currentRow, 4).Value += tmpWeek.Films(i).Filmcode + ";"
                                         End If
                                         If .Cells(currentRow, 5).Value Is Nothing Then
@@ -2349,7 +2649,6 @@ Public Class CExportUnicornFileNewNorway
             amountOfFilms += 1
             currentRow = currentRow + 1
         Next
-        '_sheet.Range("E" & lastRowComboTable1 - 1 & ":M" & currentRow).Numberformat = "0.0"
     End Sub
 
     Sub resetEnivorment()
