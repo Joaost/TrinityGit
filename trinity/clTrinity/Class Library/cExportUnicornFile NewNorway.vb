@@ -233,7 +233,7 @@ Public Class CExportUnicornFileNewNorway
         Return False
     End Function
     Public Function checkNameMetro(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("Radio Metro") Then
+        If tmpChannelName.Contains("MetroStorby") Or tmpChannelName.Contains("Metro") Then
             Return True
         End If
         Return False
@@ -311,7 +311,8 @@ Public Class CExportUnicornFileNewNorway
 
             'Print data
             .Cells(2, 3).Value = Campaign.Name
-            .Cells(3, 3).Value = "NO"
+            Dim area = TrinitySettings.DefaultArea
+            .Cells(3, 3).Value = area
 
             Dim cs As String = TrinitySettings.ConnectionString(Trinity.cSettings.SettingsLocationEnum.locNetwork)
 
@@ -323,6 +324,8 @@ Public Class CExportUnicornFileNewNorway
                 userCompany = "Maxus"
             ElseIf cs.Contains("ms") Then
                 userCompany = "Mindshare"
+            ElseIf cs.Contains("groupm") Then
+                userCompany = "GroupM"
             End If
 
             'If checkDatabasePath() Then
@@ -466,6 +469,7 @@ Public Class CExportUnicornFileNewNorway
             .Range("B" & row & ":C" & row).Font.Color = RGB(255, 255, 255)
             Dim chValue = .Cells(row, 3).Value
 
+            'Primary Target Column
             If Not printExportAsCampaign Then
                 If groupName = "DNN" Then
                     If tmpBundle Then
@@ -517,6 +521,27 @@ Public Class CExportUnicornFileNewNorway
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
                         End If
                     End If
+
+                ElseIf groupName = "Bauer" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "Bauer Media"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
+                        End If
+                    End If
+                ElseIf groupName = "Metro" Then
+                    If tmpBundle Then
+                        .Cells(row, 2).Value = "MetroStorby"
+                    Else
+                        If .Cells(row, 2).Value Is Nothing Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
+                        ElseIf Not .Cells(row, 2).Value.ToString.Contains(tmpChan.AdEdgeNames) Then
+                            .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
+                        End If
+                    End If
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -537,6 +562,10 @@ Public Class CExportUnicornFileNewNorway
                     .Cells(row, 2).Value = "TNT"
                 ElseIf groupName = "P4" Then
                     .Cells(row, 2).Value = "P4+"
+                ElseIf groupName = "Bauer" Then
+                    .Cells(row, 2).Value = "Bauer"
+                ElseIf groupName = "Metro" Then
+                    .Cells(row, 2).Value = "MetroStorby"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -562,7 +591,7 @@ Public Class CExportUnicornFileNewNorway
                     ElseIf groupName = "Bauer" Then
                         .Cells(row, 3).Value = "Radio Norge; Radio Rock; Kiss; Radio top 40; Bauer Pop Up; Radio Vinyl; Norsk Pop; P24-7 Mix; P24-7 KOS; Radio 1"
                     ElseIf groupName = "Metro" Then
-                        .Cells(row, 3).Value = "Radio Metro"
+                        .Cells(row, 3).Value = "MetroStorby"
                     End If
                 ElseIf chValue Is Nothing Then
                     If tmpChan.AdEdgeNames <> "" Then
@@ -760,7 +789,7 @@ Public Class CExportUnicornFileNewNorway
         ElseIf checkNameBauer(tmpChName) Then
             result = "Bauer"
         ElseIf checkNameMetro(tmpChName) Then
-            result = "Radio Metro"
+            result = "MetroStorby"
         End If
         Return result
     End Function
@@ -826,6 +855,9 @@ Public Class CExportUnicornFileNewNorway
                                 ElseIf checkNameBauer(c.ChannelName) Then
                                     rowCombination = tmpRow
                                     rowMatkanalen = rowCombination
+                                ElseIf checkNameMetro(c.ChannelName) Then
+                                    rowCombination = tmpRow
+                                    rowMetro = rowCombination
                                 End If
                                 tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
                                 HelperTable1(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
@@ -943,6 +975,7 @@ Public Class CExportUnicornFileNewNorway
                                     BauerString = tmpChan.ChannelName
                                     HelperTable1(tmpChan, tmpBook, "Bauer", BundleBauer, tmpRow, tmpChan.ChannelName, rowBauer)
                                 End If
+                                'MetroStorby
                                 If checkNameMetro(tmpChan.ChannelName) Then
                                     If BundleMetro And rowMetro <> 0 Then
                                         If rowMetro = 0 Then
@@ -1074,7 +1107,7 @@ Public Class CExportUnicornFileNewNorway
                     End If
                 ElseIf groupName = "Metro" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "Radio Metro"
+                        .Cells(row, 2).Value = "MetroStorby"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -1097,7 +1130,7 @@ Public Class CExportUnicornFileNewNorway
                 ElseIf groupName = "Bauer" Then
                     .Cells(row, 2).Value = "Bauer"
                 ElseIf groupName = "Metro" Then
-                    .Cells(row, 2).Value = "Radio Metro"
+                    .Cells(row, 2).Value = "MetroStorby"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -1469,7 +1502,7 @@ Public Class CExportUnicornFileNewNorway
                     End If
                 ElseIf groupName = "Metro" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "Radio Metro"
+                        .Cells(row, 2).Value = "MetroStorby"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -1492,7 +1525,7 @@ Public Class CExportUnicornFileNewNorway
                 ElseIf groupName = "Bauer" Then
                     .Cells(row, 2).Value = "Bauer"
                 ElseIf groupName = "Metro" Then
-                    .Cells(row, 2).Value = "Radio Metro"
+                    .Cells(row, 2).Value = "MetroStorby"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -1871,7 +1904,7 @@ Public Class CExportUnicornFileNewNorway
                     End If
                 ElseIf groupName = "Metro" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "Radio Metro"
+                        .Cells(row, 2).Value = "MetroStorby"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
@@ -1894,7 +1927,7 @@ Public Class CExportUnicornFileNewNorway
                 ElseIf groupName = "Bauer" Then
                     .Cells(row, 2).Value = "Bauer"
                 ElseIf groupName = "Metro" Then
-                    .Cells(row, 2).Value = "Radio Metro"
+                    .Cells(row, 2).Value = "MetroStorby"
                 Else
                     If .Cells(row, 2).Value Is Nothing Then
                         .Cells(row, 2).Value += tmpChan.AdEdgeNames + " "
@@ -2289,7 +2322,7 @@ Public Class CExportUnicornFileNewNorway
                     End If
                 ElseIf groupName = "Metro" Then
                     If tmpBundle Then
-                        .Cells(row, 2).Value = "Radio Metro"
+                        .Cells(row, 2).Value = "MetroStorby"
                     Else
                         If .Cells(row, 2).Value Is Nothing Then
                             .Cells(row, 2).Value += tmpChan.AdEdgeNames
