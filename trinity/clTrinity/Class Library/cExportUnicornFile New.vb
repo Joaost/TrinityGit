@@ -53,6 +53,7 @@ Public Class CExportUnicornFileNew
     Dim targetTNT As String = ""
     Dim targetDisney As String = ""
     Dim targetCartoon As String = ""
+    Dim targetGodare As String = ""
 
     Dim groupName As String = ""
     Dim channelName As String = ""
@@ -242,6 +243,12 @@ Public Class CExportUnicornFileNew
     End Function
     Public Function checkNameDisney(ByVal tmpChannelName As String)
         If tmpChannelName.Contains("Disney") Then
+            Return True
+        End If
+        Return False
+    End Function
+    Public Function checkNameGodare(ByVal tmpChannelName As String)
+        If tmpChannelName.Contains("Godare") Then
             Return True
         End If
         Return False
@@ -1084,7 +1091,6 @@ Public Class CExportUnicornFileNew
                                         End If
                                         StationBudgetTableData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG)
                                     End If
-
                                 End If
                                 'SBS
                                 If checkNameSBS(tmpChan.ChannelName) Then
@@ -1170,6 +1176,12 @@ Public Class CExportUnicornFileNew
                                     End If
                                     StationBudgetTableData(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
                                 End If
+                                If tmpChan.ChannelName = "Godare" Then
+                                    ' Export the single channel
+                                    StationBudgetTableData(tmpChan, tmpBook, channelName, False, tmpRow, tmpChan.ChannelName, tmpRow)
+                                    tmpRow = tmpRow + 1
+                                End If
+
                             End If
                         End If
                     Next
@@ -1332,6 +1344,8 @@ Public Class CExportUnicornFileNew
                     .Cells(row, 2).Value = "TNT Combo"
                 ElseIf groupName = "CMORE" Then
                     .Cells(row, 2).Value = "C More Combo"
+                Else
+                    .Cells(row, 2).Value = channelName
                 End If
             End If
 
@@ -1622,6 +1636,13 @@ Public Class CExportUnicornFileNew
                                     PrimarytargetTRPweeklyData(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
                                     currentRow = tmpRow
                                 End If
+
+                                If tmpChan.ChannelName = "Godare" Then
+                                    ' Export the single channel
+                                    PrimarytargetTRPweeklyData(tmpChan, tmpBook, "Godare", False, tmpRow, tmpChan.ChannelName, tmpRow)
+                                    tmpRow = tmpRow + 1
+                                    currentRow = tmpRow
+                                End If
                             End If
                         End If
                     Next
@@ -1785,6 +1806,8 @@ Public Class CExportUnicornFileNew
                     .Cells(row, 2).Value = "TNT Combo"
                 ElseIf groupName = "CMORE" Then
                     .Cells(row, 2).Value = "C More Combo"
+                Else
+                    .Cells(row, 2).Value = channelName
                 End If
             End If
             Dim column = 3
@@ -2071,6 +2094,13 @@ Public Class CExportUnicornFileNew
                                     BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney)
                                     currentRow = tmpRow
                                 End If
+
+                                If tmpChan.ChannelName = "Godare" Then
+                                    ' Export the single channel
+                                    BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "Godare", False, tmpRow, tmpChan.ChannelName, tmpRow)
+                                    tmpRow = tmpRow + 1
+                                    currentRow = tmpRow
+                                End If
                             End If
                         End If
                     Next
@@ -2236,6 +2266,8 @@ Public Class CExportUnicornFileNew
                     .Cells(row, 2).Value = "TNT Combo"
                 ElseIf groupName = "CMORE" Then
                     .Cells(row, 2).Value = "C More Combo"
+                Else
+                    .Cells(row, 2).Value = channelName
                 End If
             End If
 
@@ -2542,6 +2574,11 @@ Public Class CExportUnicornFileNew
                                     PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT, rowHeader)
                                     currentRow = tmpRow
                                 End If
+                                If tmpChan.ChannelName = "Godare" Then
+                                    PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "Godare", False, tmpRow, tmpChan.ChannelName, tmpRow, rowHeader)
+                                    tmpRow = tmpRow + 1
+                                    currentRow = tmpRow
+                                End If
                             End If
                         End If
                     Next
@@ -2701,6 +2738,8 @@ Public Class CExportUnicornFileNew
                     .Cells(row, 2).Value = "TNT Combo"
                 ElseIf groupName = "CMORE" Then
                     .Cells(row, 2).Value = "C More Combo"
+                Else
+                    .Cells(row, 2).Value = channelName
                 End If
             End If
 
@@ -3011,6 +3050,11 @@ Public Class CExportUnicornFileNew
                                         tmpRow = tmpRow + 1
                                     End If
                                     BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT, rowHeader)
+                                    currentRow = tmpRow
+                                End If
+                                If tmpChan.ChannelName = "Godare" Then
+                                    BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "Godare", False, tmpRow, tmpChan.ChannelName, tmpRow, rowHeader)
+                                    tmpRow = tmpRow + 1
                                     currentRow = tmpRow
                                 End If
                             End If

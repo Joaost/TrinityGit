@@ -221,13 +221,13 @@ Public Class CExportUnicornFileNewNorway
         Return False
     End Function
     Public Function checkNameP4(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("P4 Lyden av Norge") Or tmpChannelName.Contains("NRJ") Or tmpChannelName.Contains("P10 Country") Or tmpChannelName.Contains("P7 Klem") Or tmpChannelName.Contains("P6 Rock") Or tmpChannelName.Contains("P5 Hits") Or tmpChannelName.Contains("P9 Retro") Or tmpChannelName.Contains("P8 Pop") Then
+        If tmpChannelName.Contains("P4 Lyden av Norge") Or tmpChannelName.Contains("NRJ") Or tmpChannelName.Contains("P10 Country") Or tmpChannelName.Contains("P7 Klem") Or tmpChannelName.Contains("P6 Rock") Or tmpChannelName.Contains("P5 Hits") Or tmpChannelName.Contains("P9 Retro") Or tmpChannelName.Contains("P8 Pop") Or tmpChannelName.Contains("P5") Then
             Return True
         End If
         Return False
     End Function
     Public Function checkNameBauer(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("Radio Norge") Or tmpChannelName.Contains("Radio Rock") Or tmpChannelName.Contains("Kiss") Or tmpChannelName.Contains("Radio Topp 40") Or tmpChannelName.Contains("Bauer Pop Up") Or tmpChannelName.Contains("Radio Vinyl") Or tmpChannelName.Contains("Norsk Pop") Or tmpChannelName.Contains("P24-7 Mix") Or tmpChannelName.Contains("P24-7 KOS") Or tmpChannelName.Contains("Radio 1") Then
+        If tmpChannelName.Contains("Radio Norge") Or tmpChannelName.Contains("Radio Rock") Or tmpChannelName.Contains("Radio Soft") Or tmpChannelName.Contains("Kiss") Or tmpChannelName.Contains("Radio Topp 40") Or tmpChannelName.Contains("Bauer Pop Up") Or tmpChannelName.Contains("Radio Vinyl") Or tmpChannelName.Contains("Norsk Pop") Or tmpChannelName.Contains("P24-7 Mix") Or tmpChannelName.Contains("P24-7 KOS") Or tmpChannelName.Contains("Radio 1") Then
             Return True
         End If
         Return False
@@ -587,9 +587,9 @@ Public Class CExportUnicornFileNewNorway
                     ElseIf groupName = "TNT" Then
                         .Cells(row, 3).Value = "TNT"
                     ElseIf groupName = "P4+" Then
-                        .Cells(row, 3).Value = "P4 Lyden; P10 Country; NRJ; P7 Klem; P6 Rock; P5 Hits; P9 Retro; P8 Pop"
+                        .Cells(row, 3).Value = "P4 Lyden; P10 Country; NRJ; P7 Klem; P6 Rock; P5 Hits; P9 Retro; P8 Pop; P5"
                     ElseIf groupName = "Bauer" Then
-                        .Cells(row, 3).Value = "Radio Norge; Radio Rock; Kiss; Radio top 40; Bauer Pop Up; Radio Vinyl; Norsk Pop; P24-7 Mix; P24-7 KOS; Radio 1"
+                        .Cells(row, 3).Value = "Radio Norge; Radio Rock; Radio Soft; Kiss; Radio top 40; Bauer Pop Up; Radio Vinyl; Norsk Pop; P24-7 Mix; P24-7 KOS; Radio 1"
                     ElseIf groupName = "Metro" Then
                         .Cells(row, 3).Value = "MetroStorby"
                     End If

@@ -3942,6 +3942,8 @@ Public Class frmSetup
             optTRP.Checked = True
         End If
         grpCombo.Visible = True
+
+        'Combobox for appending marathon ID for combination.
         txtMarathonIDCombo.Text = TmpCombo.MarathonIDCombination
         If TmpCombo.sendAsOneUnitTOMarathon Then
             chkSendAsUnitMarathon.Checked = TmpCombo.sendAsOneUnitTOMarathon

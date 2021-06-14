@@ -7,8 +7,8 @@ Public Class frmRBS
         Public _releases as Object
         Public _release as TV4Online.SpotlightApiV23.xsd.ReleasePeriod
         Public _rbsPeriods As IEnumerable(Of TV4Online.SpotlightApiV23.xsd.RbsPeriod)
-    Private _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(New WSHttpBinding(SecurityMode.Transport), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint")))
-
+    'Private _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(New WSHttpBinding(SecurityMode.Transport), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_beta", "Endpoint")))
+    Private _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_V5", "Endpoint").StartsWith("https"), New WSHttpBinding(SecurityMode.Transport), New BasicHttpBinding), System.ServiceModel.Channels.Binding), New EndpointAddress(TV4OnlinePlugin.InternalApplication.GetSharedNetworkPreference("TV4Spotlight_V5", "Endpoint")))
     Private Class Entry
         Public StartDate As Date
         Public EndDate As Date

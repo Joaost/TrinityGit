@@ -54,15 +54,15 @@ Namespace SpotlightApiV23.xsd
         Private InvoiceContactField As String
         
         Private NameField As String
-
+        
         Private ProductField As String
-
+        
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProductTypeField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private SystemField As String
-
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -303,90 +303,67 @@ Namespace SpotlightApiV23.xsd
         Private StartDateField As Date
         
         Private TargetField As String
-        
+
         Private TypeField As String
 
-        Private mvarBookingIdSpotlight As String
-        Public Property BookingIdSpotlight() As String
-            Get
-                Return mvarBookingIdSpotlight
-            End Get
-            Set(ByVal value As String)
-                mvarBookingIdSpotlight = value
-            End Set
-        End Property
 
-        Private mvarBookingUrlSpotlight As String
-        Public Property BookingUrlSpotlight() As String
-            Get
-                Return mvarBookingUrlSpotlight
-            End Get
-            Set(ByVal value As String)
-                mvarBookingUrlSpotlight = value
-            End Set
-        End Property
-
-        Private mvarBookingConfirmationVersion As String
+        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        Private UniverseSizeField As Long
+        Private _BookingConfirmationVersion As String
         Public Property BookingConfirmationVersion() As String
             Get
-                Return mvarBookingConfirmationVersion
+                Return _BookingConfirmationVersion
             End Get
             Set(ByVal value As String)
-                mvarBookingConfirmationVersion = value
+                _BookingConfirmationVersion = value
             End Set
         End Property
-
-        Private mvarCampaignRefNo As Integer
-        Public Property CampaignRefNo() As Integer
+        Private _CampaignRefNo As String
+        Public Property CampaignRefNo() As String
             Get
-                Return mvarCampaignRefNo
-            End Get
-            Set(ByVal value As Integer)
-                mvarCampaignRefNo = value
-            End Set
-        End Property
-        Private mvarTrinityType As String
-        Public Property TrinityType() As String
-            Get
-                Return mvarTrinityType
+                Return _CampaignRefNo
             End Get
             Set(ByVal value As String)
-                mvarTrinityType = value
+                _CampaignRefNo = value
             End Set
         End Property
-
-        Private mvarSelected As Boolean
-        Public Property Selected() As Boolean
+        Private _BookingAvailConfirmation As String
+        Public Property BookingAvailConfirmation() As String
             Get
-                Return mvarSelected
+                Return _BookingAvailConfirmation
             End Get
-            Set(ByVal value As Boolean)
-                mvarSelected = value
+            Set(ByVal value As String)
+                _BookingAvailConfirmation = value
             End Set
         End Property
-
-        Private mvarTargets As String()
+        Private _Targets As String()
         Public Property Targets() As String()
             Get
-                Return mvarTargets
+                Return _Targets
             End Get
-            Set(ByVal value() As String)
-                mvarTargets = value
+            Set(ByVal value As String())
+                _Targets = value
+            End Set
+        End Property
+        Private _Selected As Boolean
+        Public Property Selected() As Boolean
+            Get
+                Return _Selected
+            End Get
+            Set(ByVal value As Boolean)
+                _Selected = value
+            End Set
+        End Property
+        Private _BookingUrlSpotlight As String
+        Public Property BookingUrlSpotlight() As String
+            Get
+                Return _BookingUrlSpotlight
+            End Get
+            Set(ByVal value As String)
+                _BookingUrlSpotlight = value
             End Set
         End Property
 
-        Private mvarBookingAvailConfirmation As Boolean
-        Public Property BookingAvailConfirmation() As Boolean
-            Get
-                Return mvarBookingAvailConfirmation
-            End Get
-            Set(ByVal value As Boolean)
-                mvarBookingAvailConfirmation = value
-            End Set
-        End Property
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private UniverseSizeField As Long
-        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -396,20 +373,37 @@ Namespace SpotlightApiV23.xsd
                 Me.extensionDataField = value
             End Set
         End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
+
+        <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property AgencyBookingRefNo() As String
             Get
                 Return Me.AgencyBookingRefNoField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.AgencyBookingRefNoField, value) <> true) Then
+                If (Object.ReferenceEquals(Me.AgencyBookingRefNoField, value) <> True) Then
                     Me.AgencyBookingRefNoField = value
                     Me.RaisePropertyChanged("AgencyBookingRefNo")
                 End If
             End Set
         End Property
-        
+        Private _BookingIdSpotlight As String
+        Public Property BookingIdSpotlight() As String
+            Get
+                Return _BookingIdSpotlight
+            End Get
+            Set(ByVal value As String)
+                _BookingIdSpotlight = value
+            End Set
+        End Property
+        Private _TrinityType As String
+        Public Property TrinityType() As String
+            Get
+                Return _TrinityType
+            End Get
+            Set(ByVal value As String)
+                _TrinityType = value
+            End Set
+        End Property
         <System.Runtime.Serialization.DataMemberAttribute(IsRequired:=true)>  _
         Public Property Channel() As String
             Get
@@ -580,13 +574,13 @@ Namespace SpotlightApiV23.xsd
 
         Private StartDateField As Date
 
-        Private mvarChannel As String
-        Public Property Channel As String
+        Private _Channl As Object
+        Public Property Channel() As Object
             Get
-                Return mvarChannel
+                Return _Channl
             End Get
-            Set(ByVal value As String)
-                mvarChannel = value
+            Set(ByVal value As Object)
+                _Channl = value
             End Set
         End Property
 
@@ -1504,20 +1498,19 @@ Namespace SpotlightApiV23.xsd
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ConfirmationsField() As SpotlightApiV23.xsd.Confirmation
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property Confirmations() As SpotlightApiV23.xsd.Confirmation()
             Get
                 Return Me.ConfirmationsField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ConfirmationsField, value) <> True) Then
+                If (Object.ReferenceEquals(Me.ConfirmationsField, value) <> true) Then
                     Me.ConfirmationsField = value
                     Me.RaisePropertyChanged("Confirmations")
                 End If
             End Set
         End Property
-
     End Class
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
@@ -1657,10 +1650,10 @@ Namespace SpotlightApiV23.xsd
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private TypeDescriptionField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private VersionsField() As SpotlightApiV23.xsd.ConfirmationVersion
-
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -1892,16 +1885,7 @@ Namespace SpotlightApiV23.xsd
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private VersionNoField As Integer
-
-        Private mvarbtType As String
-        Public Property btType() As String
-            Get
-                Return mvarbtType
-            End Get
-            Set(ByVal value As String)
-                mvarbtType = value
-            End Set
-        End Property
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -3426,10 +3410,10 @@ Namespace SpotlightApiV23.xsd
         
         <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetDaypartNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetDaypartNamesResponse")>  _
         Function GetDaypartNames() As String()
-
-        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetSurchargeNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetSurchargeNamesResponse")>
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetSurchargeNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetSurchargeNamesResponse")>  _
         Function GetSurchargeNames() As String()
-
+        
         <System.ServiceModel.OperationContractAttribute(Action:="urn:se.tv4.online/ISpotlightApiV5/GetIndexNames", ReplyAction:="urn:se.tv4.online/ISpotlightApiV5/GetIndexNamesResponse")>  _
         Function GetIndexNames() As String()
         

@@ -133,6 +133,13 @@ Public Class frmAllocate
         styleCompensationD.Format = "N1"
         styleCompensationD.BackColor = Color.LightGray
 
+
+        styleSpons.Format = "N0"
+        styleSpons.BackColor = Color.LightBlue
+
+        styleSponsD.Format = "N1"
+        styleSponsD.BackColor = Color.LightBlue
+
         lblExplain.ForeColor = Color.Maroon
 
         ' Fill the work on types in the budget window
@@ -1639,6 +1646,8 @@ Public Class frmAllocate
 
                 If Not TmpBT Is Nothing AndAlso TmpBT.IsCompensation Then
                     grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleCompensation
+                ElseIf Not TmpBT Is Nothing AndAlso TmpBT.IsSponsorship Then
+                    grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleSpons
                 ElseIf cmbDisplay.SelectedIndex < DisplayModeEnum.PercentOfWeek AndAlso (TmpBT Is Nothing OrElse Not (TmpBT.IsPremium AndAlso TmpBT.IsSpecific)) Then
                     grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleNormal
                 Else
@@ -1671,6 +1680,7 @@ Public Class frmAllocate
 
                     Dim sum As Double = 0
                     For r As Integer = 0 To grdBudget.Rows.Count - 2
+
                         If grdBudget.Rows(r).Tag.GetType.FullName = "clTrinity.Trinity.cCombination" OrElse Not DirectCast(grdBudget.Rows(r).Tag, Trinity.cBookingType).IsCompensation Then
                             sum += grdBudget.Rows(r).Cells(e.ColumnIndex).Value
                         End If
@@ -1718,6 +1728,8 @@ Public Class frmAllocate
                             If TmpWeek.TRPControl Then
                                 If TmpBT.IsCompensation Then
                                     grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleCompensation
+                                ElseIf TmpBT.IsSponsorship Then
+                                    grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleSpons
                                 ElseIf TmpWeek.IsLocked OrElse TmpBT.IsLocked Then
                                     grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleNoSetLocked
                                 Else
@@ -1726,6 +1738,8 @@ Public Class frmAllocate
                             Else
                                 If TmpBT.IsCompensation Then
                                     grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleCompensation
+                                ElseIf TmpBT.IsSponsorship Then
+                                    grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleSpons
                                 ElseIf TmpWeek.IsLocked OrElse TmpBT.IsLocked Then
                                     grdBudget.Rows(e.RowIndex).Cells(e.ColumnIndex).Style = styleNormalLocked
                                 Else
@@ -3593,6 +3607,8 @@ Public Class frmAllocate
                     grdSumChannels.Rows(e.RowIndex).Cells(e.ColumnIndex).ReadOnly = True
                 ElseIf TmpBT.IsCompensation Then
                     e.CellStyle = styleCompensationD
+                ElseIf TmpBT.IsSponsorship Then
+                    e.CellStyle = styleSponsD
                 Else
                     e.CellStyle = styleNormalD
                 End If
@@ -5906,6 +5922,8 @@ Loop_Row2:
                 If TmpWeek.TRPControl Then
                     If TmpBT.IsCompensation Then
                         e.CellStyle = styleCompensationD
+                    ElseIf TmpBT.IsCompensation Then
+                        e.CellStyle = styleSponsD
                     ElseIf grdTRP.Rows(e.RowIndex).Tag.Islocked OrElse TmpWeek.IsLocked Then
                         e.CellStyle = styleNormalDLocked
                     Else
@@ -5914,6 +5932,8 @@ Loop_Row2:
                 Else
                     If TmpBT.IsCompensation Then
                         e.CellStyle = styleCompensationD
+                    ElseIf TmpBT.IsSponsorship Then
+                        e.CellStyle = styleSponsD
                     ElseIf grdTRP.Rows(e.RowIndex).Tag.Islocked OrElse TmpWeek.IsLocked Then
                         e.CellStyle = styleNoSetDLocked
                     Else

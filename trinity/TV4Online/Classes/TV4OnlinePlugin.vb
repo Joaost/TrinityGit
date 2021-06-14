@@ -235,7 +235,7 @@ Public Class TV4OnlinePlugin
     End Function
     Function preferenceSuccess()
         Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
-        Dim res = _client.GetUserOrganizations(Preferences.Username, Preferences.GetPlainTextPassword)
+        Dim res = _client.GetUserOrganizations(Preferences.Username, Preferences.Token)
         If res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Error Then
             Dim message = res.ErrorMessages.Values(0).ToString()
             Windows.Forms.MessageBox.Show(String.Format(message), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
@@ -261,7 +261,7 @@ Public Class TV4OnlinePlugin
 
     Public Function GetOrg()
         Dim tmpClient As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
-        Dim test = tmpClient.GetUserOrganizations(Preferences.Username, Preferences.GetPlainTextPassword)
+        Dim test = tmpClient.GetUserOrganizations(Preferences.Username, Preferences.Token)
         If test.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
             Return True
         Else
@@ -308,14 +308,14 @@ Public Class TV4OnlinePlugin
 
         Try
             If otherOrganizations Then
-                Dim _res = _client.CreateBookingForOrganization(Preferences.Username, Preferences.GetPlainTextPassword, orgID, _campaign, False)
+                Dim _res = _client.CreateBookingForOrganization(Preferences.Username, Preferences.Token, orgID, _campaign, False)
                 If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
                     Windows.Forms.MessageBox.Show("Booking was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
                     receieveBookingInfoFromSpotlight(_res, tmpBook)
                 ElseIf _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Warning Then
                     Dim _r As Windows.Forms.DialogResult = Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with a warning :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "Do you want to book " + tmpBook.Channel + " " + tmpBook.Type + " anyway?", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.YesNoCancel, Windows.Forms.MessageBoxIcon.Question)
                     If _r = Windows.Forms.DialogResult.Yes Then
-                        _res = _client.CreateBookingForOrganization(Preferences.Username, Preferences.GetPlainTextPassword, orgID, _campaign, True)
+                        _res = _client.CreateBookingForOrganization(Preferences.Username, Preferences.Token, orgID, _campaign, True)
                         If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
                             Windows.Forms.MessageBox.Show("Booking " + tmpBook.Channel + " " + tmpBook.Type + " was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
                             receieveBookingInfoFromSpotlight(_res, tmpBook)
@@ -331,26 +331,26 @@ Public Class TV4OnlinePlugin
                     Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
                 End If
             Else
-                Dim _res = _client.CreateBooking(Preferences.Username, Preferences.GetPlainTextPassword, _campaign, False)
-            If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
-                Windows.Forms.MessageBox.Show("Booking was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                receieveBookingInfoFromSpotlight(_res, tmpBook)
-            ElseIf _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Warning Then
-                Dim _r As Windows.Forms.DialogResult = Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with a warning :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "Do you want to book " + tmpBook.Channel + " " + tmpBook.Type + " anyway?", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.YesNoCancel, Windows.Forms.MessageBoxIcon.Question)
-                If _r = Windows.Forms.DialogResult.Yes Then
-                    _res = _client.CreateBooking(Preferences.Username, Preferences.GetPlainTextPassword, _campaign, True)
-                    If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
-                        Windows.Forms.MessageBox.Show("Booking " + tmpBook.Channel + " " + tmpBook.Type + " was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                        receieveBookingInfoFromSpotlight(_res, tmpBook)
-                        Return True
-                    Else
-                        Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with an error :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "For " + tmpBook.Channel + " " + tmpBook.Type + ".", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+                Dim _res = _client.CreateBooking(Preferences.Username, Preferences.Token, _campaign, False)
+                If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
+                    Windows.Forms.MessageBox.Show("Booking was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                    receieveBookingInfoFromSpotlight(_res, tmpBook)
+                ElseIf _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Warning Then
+                    Dim _r As Windows.Forms.DialogResult = Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with a warning :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "Do you want to book " + tmpBook.Channel + " " + tmpBook.Type + " anyway?", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.YesNoCancel, Windows.Forms.MessageBoxIcon.Question)
+                    If _r = Windows.Forms.DialogResult.Yes Then
+                        _res = _client.CreateBooking(Preferences.Username, Preferences.Token, _campaign, True)
+                        If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
+                            Windows.Forms.MessageBox.Show("Booking " + tmpBook.Channel + " " + tmpBook.Type + " was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                            receieveBookingInfoFromSpotlight(_res, tmpBook)
+                            Return True
+                        Else
+                            Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with an error :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "For " + tmpBook.Channel + " " + tmpBook.Type + ".", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+                        End If
+                    ElseIf _r = Windows.Forms.DialogResult.Cancel Or _r = Windows.Forms.DialogResult.No Then
+                        Return False
                     End If
-                ElseIf _r = Windows.Forms.DialogResult.Cancel Or _r = Windows.Forms.DialogResult.No Then
-                    Return False
-                End If
-            Else
-                _ro = _res.Status
+                Else
+                    _ro = _res.Status
                     Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
                 End If
             End If
@@ -367,7 +367,7 @@ Public Class TV4OnlinePlugin
         Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
         If b IsNot Nothing Then
-            Dim res As TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse = _client.GetConfirmationForBooking(Preferences.Username, Preferences.GetPlainTextPassword, guidParseRes, False)
+            Dim res As TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse = _client.GetConfirmationForBooking(Preferences.Username, Preferences.Token, guidParseRes, False)
             If res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
 
                 If res.Confirmations.Count > 0 Then
@@ -398,7 +398,7 @@ Public Class TV4OnlinePlugin
 
         Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
         Try
-            Dim ret = _client.GetSpotPrices(Preferences.Username, Preferences.GetPlainTextPassword, fromDate, toDate, channel)
+            Dim ret = _client.GetSpotPrices(Preferences.Username, Preferences.Token, fromDate, toDate, channel)
 
             If ret.ErrorMessages.Count < 1 Then
                 Return ret
@@ -434,7 +434,7 @@ Public Class TV4OnlinePlugin
         Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
         If b IsNot Nothing Then
-            Dim res As TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse = _client.GetConfirmationsForAgencyRefNo(Preferences.Username, Preferences.GetPlainTextPassword, b.AgencyBookingRefNo, False)
+            Dim res As TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse = _client.GetConfirmationsForAgencyRefNo(Preferences.Username, Preferences.Token, b.AgencyBookingRefNo, False)
             If res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
 
                 If res.Confirmations.Count > 0 Then
@@ -462,292 +462,292 @@ Public Class TV4OnlinePlugin
     End Function
 
     Public Sub ConfirmImport(ByRef tv4BookingChannel As TV4Online.SpotlightApiV23.xsd.Booking)
-        Dim totNet As Integer = 0
-        Dim res As New TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse
-        If tv4BookingChannel.AgencyBookingRefNo <> "" Then
-            res = checkConfirmationForBookingByRef(tv4BookingChannel, False, True)
-        Else
-            res = checkConfirmationForBookingByGUID(tv4BookingChannel, False)
-        End If
-        DateOutOfPeriod.Clear()
-        For Each tmpConf As TV4Online.SpotlightApiV23.xsd.Confirmation In res.Confirmations
-            Dim count As Integer = 0
+        'Dim totNet As Integer = 0
+        'Dim res As New TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse
+        'If tv4BookingChannel.AgencyBookingRefNo <> "" Then
+        '    res = checkConfirmationForBookingByRef(tv4BookingChannel, False, True)
+        'Else
+        '    res = checkConfirmationForBookingByGUID(tv4BookingChannel, False)
+        'End If
+        'DateOutOfPeriod.Clear()
+        'For Each tmpConf As TV4Online.SpotlightApiV23.xsd.Confirmation In res.Confirmations
+        '    Dim count As Integer = 0
 
-            If tmpConf.Versions.Max().RbsSpots.Length > 1 And tmpConf.Versions.Max().SpecificSpots.Length < 1 Then
-                tmpConf.Versions.Max().btType = "RBS"
-            Else
-                tmpConf.Versions.Max().btType = "Specific"
-            End If
-            If tmpConf.Channel = tv4BookingChannel.Channel Then
-                'This statemeant should filter out the ConfirmationsVersions which are not as the same type as the Trinity bookingtype. 
-                'If tmpConf.Versions.Max().btType.Contains(tv4BookingChannel.Type)
-                Try
-                    Dim tmpChan As Object = Application.ActiveCampaign.Channels(tv4BookingChannel.Channel)
+        '    If tmpConf.Versions.Max().RbsSpots.Length > 1 And tmpConf.Versions.Max().SpecificSpots.Length < 1 Then
+        '        tmpConf.Versions.Max().btType = "RBS"
+        '    Else
+        '        tmpConf.Versions.Max().btType = "Specific"
+        '    End If
+        '    If tmpConf.Channel = tv4BookingChannel.Channel Then
+        '        'This statemeant should filter out the ConfirmationsVersions which are not as the same type as the Trinity bookingtype. 
+        '        'If tmpConf.Versions.Max().btType.Contains(tv4BookingChannel.Type)
+        '        Try
+        '            Dim tmpChan As Object = Application.ActiveCampaign.Channels(tv4BookingChannel.Channel)
 
-                    If tmpChan IsNot Nothing Then
-                        Dim deletedList As New List(Of Object)
-                        Dim frmImport As New frmImport(tv4BookingChannel, tmpConf, tmpChan, _camp)
-                        Dim _btTV4Name = tmpConf.Versions().Max().Name
-                        Dim tmpBt As Object
-                        For Each bt As Object In tmpChan.BookingTypes
-                            If bt.BookIt Then
-                                Dim _btTrinName = tmpChan.ChannelName & " " & bt.Name
-                                If _btTrinName = _btTV4Name Then
-                                    tmpBt = tmpChan.BookingTypes(bt)
-                                End If
-                            End If
-                        Next
-                        frmImport.lblChannelName.Text = _btTV4Name.ToString()
-                        Dim tmpNetBudget As Integer = tmpConf.Versions.Max().SpecificSpots.Sum(Function(e) e.NetPrice)
-                        If tmpNetBudget = 0 Then
-                            tmpNetBudget = tmpConf.BookedBudget
-                        End If
-                        frmImport.lblConfirmationBudget.Text = Format(tmpNetBudget, "#,###") & " " & "kr"
-                        frmImport.Text = _btTV4Name.ToString()
+        '            If tmpChan IsNot Nothing Then
+        '                Dim deletedList As New List(Of Object)
+        '                Dim frmImport As New frmImport(tv4BookingChannel, tmpConf, tmpChan, _camp)
+        '                Dim _btTV4Name = tmpConf.Versions().Max().Name
+        '                Dim tmpBt As Object
+        '                For Each bt As Object In tmpChan.BookingTypes
+        '                    If bt.BookIt Then
+        '                        Dim _btTrinName = tmpChan.ChannelName & " " & bt.Name
+        '                        If _btTrinName = _btTV4Name Then
+        '                            tmpBt = tmpChan.BookingTypes(bt)
+        '                        End If
+        '                    End If
+        '                Next
+        '                frmImport.lblChannelName.Text = _btTV4Name.ToString()
+        '                Dim tmpNetBudget As Integer = tmpConf.Versions.Max().SpecificSpots.Sum(Function(e) e.NetPrice)
+        '                If tmpNetBudget = 0 Then
+        '                    tmpNetBudget = tmpConf.BookedBudget
+        '                End If
+        '                frmImport.lblConfirmationBudget.Text = Format(tmpNetBudget, "#,###") & " " & "kr"
+        '                frmImport.Text = _btTV4Name.ToString()
 
-                        frmImport.DateTimePickerFrom.Value = Format(getStartDate(tmpConf.Versions.Max()), "yyyy-MM-dd")
-                        frmImport.DateTimePickerEnd.Value = Format(getEndDate(tmpConf.Versions.Max()), "yyyy-MM-dd")
+        '                frmImport.DateTimePickerFrom.Value = Format(getStartDate(tmpConf.Versions.Max()), "yyyy-MM-dd")
+        '                frmImport.DateTimePickerEnd.Value = Format(getEndDate(tmpConf.Versions.Max()), "yyyy-MM-dd")
 
-                        If tmpBt IsNot Nothing Then
-                            frmImport.cmbBookingType.SelectedItem = tmpBt.Name
-                        Else
-                            If frmImport.cmbBookingType.Items.Count > 1 Then
-                                frmImport.cmbBookingType.SelectedIndex = 0
-                            End If
-                        End If
-                        frmImport.ShowDialog()
-                        If frmImport.DialogResult = DialogResult.Cancel Then
-                            Exit For
-                        ElseIf frmImport.DialogResult = DialogResult.Ignore Then
-                            Exit Try
-                        End If
-                        If _btTV4Name <> "TV4 " & frmImport.cmbBookingType.SelectedItem.ToString() Then
+        '                If tmpBt IsNot Nothing Then
+        '                    frmImport.cmbBookingType.SelectedItem = tmpBt.Name
+        '                Else
+        '                    If frmImport.cmbBookingType.Items.Count > 1 Then
+        '                        frmImport.cmbBookingType.SelectedIndex = 0
+        '                    End If
+        '                End If
+        '                frmImport.ShowDialog()
+        '                If frmImport.DialogResult = DialogResult.Cancel Then
+        '                    Exit For
+        '                ElseIf frmImport.DialogResult = DialogResult.Ignore Then
+        '                    Exit Try
+        '                End If
+        '                If _btTV4Name <> "TV4 " & frmImport.cmbBookingType.SelectedItem.ToString() Then
 
-                            If DialogResult.No = Windows.Forms.MessageBox.Show("Are you sure you want to add " & _btTV4Name & " spots on following bookingtypes " & tmpChan.channelName & " " & frmImport.cmbBookingType.SelectedItem.ToString(), "T R I N I T Y", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) Then
-                                Exit Try
-                            End If
-                        End If
-                        tmpBt = tmpChan.BookingTypes(frmImport.cmbBookingType.Text)
+        '                    If DialogResult.No = Windows.Forms.MessageBox.Show("Are you sure you want to add " & _btTV4Name & " spots on following bookingtypes " & tmpChan.channelName & " " & frmImport.cmbBookingType.SelectedItem.ToString(), "T R I N I T Y", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) Then
+        '                        Exit Try
+        '                    End If
+        '                End If
+        '                tmpBt = tmpChan.BookingTypes(frmImport.cmbBookingType.Text)
 
-                        If frmImport.chkReplace.Checked Then
-                            Dim spots As New List(Of Object)
-                            For Each tmpS In _camp.PlannedSpots
-                                If tmpS.BookingType Is tmpBt AndAlso tmpS.AirDate >= frmImport.DateTimePickerFrom.Value.ToOADate AndAlso tmpS.AirDate >= frmImport.DateTimePickerFrom.Value.ToOADate AndAlso tmpS.AirDate <= frmImport.DateTimePickerEnd.Value.ToOADate Then
-                                    spots.Add(tmpS)
-                                End If
-                            Next
-                            For Each rS In spots
-                                'Adding spots to a another list so we can bring back the TRP estimation
-                                deletedList.Add(rS)
-                                _camp.PlannedSpots.Remove(rS)
-                            Next
-                        End If
+        '                If frmImport.chkReplace.Checked Then
+        '                    Dim spots As New List(Of Object)
+        '                    For Each tmpS In _camp.PlannedSpots
+        '                        If tmpS.BookingType Is tmpBt AndAlso tmpS.AirDate >= frmImport.DateTimePickerFrom.Value.ToOADate AndAlso tmpS.AirDate >= frmImport.DateTimePickerFrom.Value.ToOADate AndAlso tmpS.AirDate <= frmImport.DateTimePickerEnd.Value.ToOADate Then
+        '                            spots.Add(tmpS)
+        '                        End If
+        '                    Next
+        '                    For Each rS In spots
+        '                        'Adding spots to a another list so we can bring back the TRP estimation
+        '                        deletedList.Add(rS)
+        '                        _camp.PlannedSpots.Remove(rS)
+        '                    Next
+        '                End If
 
 
-                        'Import the confirmation starts here
+        '                'Import the confirmation starts here
 
-                        'If any of the spots have any surchages                            
+        '                'If any of the spots have any surchages                            
 
-                        Dim _values As New List(Of String)
-                        If tmpConf.Type.Contains("Spec") Then
+        '                Dim _values As New List(Of String)
+        '                If tmpConf.Type.Contains("Spec") Then
 
-                            getTrinitySurcharges()
-                            Dim noMatch As Boolean = False
-                            For Each _sc In tmpConf.Versions.Max().SpecificSpots
-                                If Not _TrinitySurchages.Select(Function(_s) _s.ToLower).Contains(_sc.Placement.Replace(" ", "").ToLower) AndAlso _sc.Placement <> "" AndAlso Not _values.Contains(_sc.Placement) Then
+        '                    getTrinitySurcharges()
+        '                    Dim noMatch As Boolean = False
+        '                    For Each _sc In tmpConf.Versions.Max().SpecificSpots
+        '                        If Not _TrinitySurchages.Select(Function(_s) _s.ToLower).Contains(_sc.Placement.Replace(" ", "").ToLower) AndAlso _sc.Placement <> "" AndAlso Not _values.Contains(_sc.Placement) Then
 
-                                    Dim _avName = _sc.Placement
-                                    Dim _tmpSC = _TrinitySurchages.FirstOrDefault(Function(s) s.ToLower = _avName.ToLower.Replace(" ", ""))
-                                    If String.IsNullOrEmpty(_tmpSC) Then
-                                        If TV4OnlinePlugin.InternalApplication.GetUserPreference("SpotlightTrinity", _sc.Placement) <> "" Then
-                                            _sc.Placement = TV4OnlinePlugin.InternalApplication.GetUserPreference("SpotlightTrinity", _sc.Placement)
-                                        Else
-                                            noMatch = True
-                                        End If
-                                    Else
-                                        noMatch = True
-                                    End If
-                                    If noMatch Then
-                                        _values.Add(_sc.Placement)
-                                    End If
-                                End If
-                            Next
-                            If _values.Count > 0 Then
-                                Dim _frm = New frmTranslateFromSpotlight(_values, _TrinitySurchages)
-                                _frm.ShowDialog()
-                                For Each _spec In tmpConf.Versions.Max().SpecificSpots
-                                    If Not _surcharges.Select(Function(_s) _s.ToLower).Contains(_spec.Placement.Replace(" ", "").ToLower) Then
-                                        If TV4OnlinePlugin.InternalApplication.GetUserPreference("SpotlightTrinity", _spec.Placement) <> "" Then
-                                            _spec.Placement = TV4OnlinePlugin.InternalApplication.GetUserPreference("SpotlightTrinity", _spec.Placement)
-                                        End If
-                                    End If
-                                Next
-                            End If
-                        End If
+        '                            Dim _avName = _sc.Placement
+        '                            Dim _tmpSC = _TrinitySurchages.FirstOrDefault(Function(s) s.ToLower = _avName.ToLower.Replace(" ", ""))
+        '                            If String.IsNullOrEmpty(_tmpSC) Then
+        '                                If TV4OnlinePlugin.InternalApplication.GetUserPreference("SpotlightTrinity", _sc.Placement) <> "" Then
+        '                                    _sc.Placement = TV4OnlinePlugin.InternalApplication.GetUserPreference("SpotlightTrinity", _sc.Placement)
+        '                                Else
+        '                                    noMatch = True
+        '                                End If
+        '                            Else
+        '                                noMatch = True
+        '                            End If
+        '                            If noMatch Then
+        '                                _values.Add(_sc.Placement)
+        '                            End If
+        '                        End If
+        '                    Next
+        '                    If _values.Count > 0 Then
+        '                        Dim _frm = New frmTranslateFromSpotlight(_values, _TrinitySurchages)
+        '                        _frm.ShowDialog()
+        '                        For Each _spec In tmpConf.Versions.Max().SpecificSpots
+        '                            If Not _surcharges.Select(Function(_s) _s.ToLower).Contains(_spec.Placement.Replace(" ", "").ToLower) Then
+        '                                If TV4OnlinePlugin.InternalApplication.GetUserPreference("SpotlightTrinity", _spec.Placement) <> "" Then
+        '                                    _spec.Placement = TV4OnlinePlugin.InternalApplication.GetUserPreference("SpotlightTrinity", _spec.Placement)
+        '                                End If
+        '                            End If
+        '                        Next
+        '                    End If
+        '                End If
 
-                        If frmImport.optReplaceBudget.Checked Then
+        '                If frmImport.optReplaceBudget.Checked Then
 
-                            If tmpNetBudget > 0 Then
-                                tmpBt.ConfirmedNetBudget = tmpNetBudget
-                            Else
-                                tmpBt.ConfirmedNetBudget = tmpConf.Versions.Max().NetPrice
-                                'tmpBt.ConfirmedGrossbudget = tmpConf.Versions.Max().GrossPrice
-                            End If
-                        Else
-                            tmpBt.ConfirmedNetBudget = tmpConf.Versions.Max().NetPrice + tmpBt.ConfirmedNetBudget
-                            'tmpBt.ConfirmedGrossbudget += tmpConf.Versions.Max().GrossPrice
-                        End If
+        '                    If tmpNetBudget > 0 Then
+        '                        tmpBt.ConfirmedNetBudget = tmpNetBudget
+        '                    Else
+        '                        tmpBt.ConfirmedNetBudget = tmpConf.Versions.Max().NetPrice
+        '                        'tmpBt.ConfirmedGrossbudget = tmpConf.Versions.Max().GrossPrice
+        '                    End If
+        '                Else
+        '                    tmpBt.ConfirmedNetBudget = tmpConf.Versions.Max().NetPrice + tmpBt.ConfirmedNetBudget
+        '                    'tmpBt.ConfirmedGrossbudget += tmpConf.Versions.Max().GrossPrice
+        '                End If
 
-                        Dim _skippedSpot As Boolean = False
+        '                Dim _skippedSpot As Boolean = False
 
-                        If tmpBt.IsRBS Then
+        '                If tmpBt.IsRBS Then
 
-                            For Each tv4Spot As TV4Online.SpotlightApiV23.xsd.ConfirmationRbsSpot In tmpConf.Versions.Max().RbsSpots
-                                If tv4Spot.BroadcastDate >= Date.FromOADate(_camp.StartDate) AndAlso tv4Spot.BroadcastDate <= Date.FromOADate(_camp.EndDate) Then
+        '                    For Each tv4Spot As TV4Online.SpotlightApiV23.xsd.ConfirmationRbsSpot In tmpConf.Versions.Max().RbsSpots
+        '                        If tv4Spot.BroadcastDate >= Date.FromOADate(_camp.StartDate) AndAlso tv4Spot.BroadcastDate <= Date.FromOADate(_camp.EndDate) Then
 
-                                    Dim newSpot As New TrinityExtended.cPlannedSpot
+        '                            Dim newSpot As New TrinityExtended.cPlannedSpot
 
-                                    newSpot.Channel = tmpChan
-                                    newSpot.AirDate = tv4Spot.BroadcastDate.ToOADate
-                                    newSpot.Bookingtype = tmpBt
-                                    Dim week As Object = GetWeek(tv4Spot.BroadcastDate, tmpChan, tmpBt)
-                                    newSpot.Week = week
-                                    newSpot.Filmcode = tv4Spot.FilmCode
-                                    newSpot.SpotLength = tv4Spot.FilmLength
-                                    newSpot.MaM = tv4Spot.BroadcastTime
-                                    newSpot.Programme = tv4Spot.ProgramName
+        '                            newSpot.Channel = tmpChan
+        '                            newSpot.AirDate = tv4Spot.BroadcastDate.ToOADate
+        '                            newSpot.Bookingtype = tmpBt
+        '                            Dim week As Object = GetWeek(tv4Spot.BroadcastDate, tmpChan, tmpBt)
+        '                            newSpot.Week = week
+        '                            newSpot.Filmcode = tv4Spot.FilmCode
+        '                            newSpot.SpotLength = tv4Spot.FilmLength
+        '                            newSpot.MaM = tv4Spot.BroadcastTime
+        '                            newSpot.Programme = tv4Spot.ProgramName
 
-                                    If newSpot.Week Is Nothing Then
-                                        _skippedSpot = True
-                                        _camp.PlannedSpots.Remove(newSpot.ID)
-                                    Else
-                                        If newSpot.Week Is Nothing And Not DateOutOfPeriod.ContainsValue(newSpot.AirDate) Then
-                                            DateOutOfPeriod.Add(DateOutOfPeriod.Count, newSpot.AirDate)
-                                            _camp.PlannedSpots.Remove(newSpot.ID)
-                                        End If
-                                    End If
+        '                            If newSpot.Week Is Nothing Then
+        '                                _skippedSpot = True
+        '                                _camp.PlannedSpots.Remove(newSpot.ID)
+        '                            Else
+        '                                If newSpot.Week Is Nothing And Not DateOutOfPeriod.ContainsValue(newSpot.AirDate) Then
+        '                                    DateOutOfPeriod.Add(DateOutOfPeriod.Count, newSpot.AirDate)
+        '                                    _camp.PlannedSpots.Remove(newSpot.ID)
+        '                                End If
+        '                            End If
 
-                                    Application.ActiveCampaign.PlannedSpots.AddTV4Spot(newSpot, newSpot.Channel, newSpot.Bookingtype, tv4Spot.FilmCode, CreateGUID())
-                                Else
-                                    If Not DateOutOfPeriod.Contains(Format(tv4Spot.BroadcastDate, "yyyy-MM-dd")) Then
-                                        DateOutOfPeriod.Add(DateOutOfPeriod.Count, tv4Spot.BroadcastDate)
-                                    End If
-                                End If
-                                count = count + 1
-                            Next
-                        ElseIf tmpBt.IsSpecific Then
+        '                            Application.ActiveCampaign.PlannedSpots.AddTV4Spot(newSpot, newSpot.Channel, newSpot.Bookingtype, tv4Spot.FilmCode, CreateGUID())
+        '                        Else
+        '                            If Not DateOutOfPeriod.Contains(Format(tv4Spot.BroadcastDate, "yyyy-MM-dd")) Then
+        '                                DateOutOfPeriod.Add(DateOutOfPeriod.Count, tv4Spot.BroadcastDate)
+        '                            End If
+        '                        End If
+        '                        count = count + 1
+        '                    Next
+        '                ElseIf tmpBt.IsSpecific Then
 
-                            For Each tv4Spot As TV4Online.SpotlightApiV23.xsd.ConfirmationSpecificSpot In tmpConf.Versions.Max().SpecificSpots
-                                If tv4Spot.BroadcastDate >= Date.FromOADate(_camp.StartDate) AndAlso tv4Spot.BroadcastDate <= Date.FromOADate(_camp.EndDate) Then
+        '                    For Each tv4Spot As TV4Online.SpotlightApiV23.xsd.ConfirmationSpecificSpot In tmpConf.Versions.Max().SpecificSpots
+        '                        If tv4Spot.BroadcastDate >= Date.FromOADate(_camp.StartDate) AndAlso tv4Spot.BroadcastDate <= Date.FromOADate(_camp.EndDate) Then
 
-                                    Dim _placDict As New Dictionary(Of String, Object)
-                                    Dim newSpot As New TrinityExtended.cPlannedSpot
+        '                            Dim _placDict As New Dictionary(Of String, Object)
+        '                            Dim newSpot As New TrinityExtended.cPlannedSpot
 
-                                    newSpot.Channel = tmpChan
-                                    newSpot.AirDate = tv4Spot.BroadcastDate.ToOADate
-                                    newSpot.Bookingtype = tmpBt
-                                    Dim week As Object = GetWeek(tv4Spot.BroadcastDate, tmpChan, tmpBt)
-                                    newSpot.Week = week
-                                    newSpot.Filmcode = tv4Spot.FilmCode
-                                    newSpot.SpotLength = tv4Spot.FilmLength
-                                    newSpot.MaM = tv4Spot.BroadcastTime
-                                    newSpot.PriceNet = tv4Spot.NetPrice
+        '                            newSpot.Channel = tmpChan
+        '                            newSpot.AirDate = tv4Spot.BroadcastDate.ToOADate
+        '                            newSpot.Bookingtype = tmpBt
+        '                            Dim week As Object = GetWeek(tv4Spot.BroadcastDate, tmpChan, tmpBt)
+        '                            newSpot.Week = week
+        '                            newSpot.Filmcode = tv4Spot.FilmCode
+        '                            newSpot.SpotLength = tv4Spot.FilmLength
+        '                            newSpot.MaM = tv4Spot.BroadcastTime
+        '                            newSpot.PriceNet = tv4Spot.NetPrice
 
-                                    totNet += tv4Spot.NetPrice
+        '                            totNet += tv4Spot.NetPrice
 
-                                    newSpot.PriceGross = tv4Spot.GrossPrice
-                                    newSpot.Programme = tv4Spot.ProgramName
-                                    newSpot.Estimation = tv4Spot.EstimatedTRP
+        '                            newSpot.PriceGross = tv4Spot.GrossPrice
+        '                            newSpot.Programme = tv4Spot.ProgramName
+        '                            newSpot.Estimation = tv4Spot.EstimatedTRP
 
-                                    'For each deletedSpot As Object In deletedList
-                                    '    If deletedSpot.Programme = newSpot.Programme
-                                    '        newSpot.MyRating = deletedSpot.MyRating
-                                    '    End If
-                                    'Next
+        '                            'For each deletedSpot As Object In deletedList
+        '                            '    If deletedSpot.Programme = newSpot.Programme
+        '                            '        newSpot.MyRating = deletedSpot.MyRating
+        '                            '    End If
+        '                            'Next
 
-                                    Dim result As Integer = 9999999
-                                    Dim validSpot As Object = Nothing
-                                    For Each tmpS In Application.ActiveCampaign.BookedSpots
-                                        If tmpS.BookingType Is tmpBt AndAlso tmpS.AirDate.ToOADate = newSpot.AirDate Then
-                                            Dim interVall As Integer = 30
-                                            Dim val As Integer = 0
-                                            If (tmpS.Mam >= (newSpot.MaM - interVall) And (tmpS.Mam <= (newSpot.MaM + interVall))) Then
-                                                val = tmpS.Mam - newSpot.MaM
-                                                val = Math.Abs(val)
-                                                If val < result Then
-                                                    Dim lv = LevenshteinDistance(newSpot.Programme.ToUpper, tmpS.Programme.ToUpper)
-                                                    lv = lv / tmpS.Programme.ToString().Length
-                                                    If lv <= 0.3 Then
-                                                        result = val
-                                                        validSpot = tmpS
-                                                    End If
-                                                End If
-                                            End If
-                                        End If
-                                    Next
-                                    If result < 10 Then
-                                        newSpot.MyRating = validSpot.MyEstimate
-                                    Else
-                                        If tmpBt.IndexMainTarget <> 0 Then
-                                            newSpot.MyRating = newSpot.Estimation * (tmpBt.IndexMainTarget / 100)
-                                        End If
-                                    End If
-                                    Dim tmpSurcharges As String = ""
-                                    Dim tmpSurchargesObj As Object = Nothing
+        '                            Dim result As Integer = 9999999
+        '                            Dim validSpot As Object = Nothing
+        '                            For Each tmpS In Application.ActiveCampaign.BookedSpots
+        '                                If tmpS.BookingType Is tmpBt AndAlso tmpS.AirDate.ToOADate = newSpot.AirDate Then
+        '                                    Dim interVall As Integer = 30
+        '                                    Dim val As Integer = 0
+        '                                    If (tmpS.Mam >= (newSpot.MaM - interVall) And (tmpS.Mam <= (newSpot.MaM + interVall))) Then
+        '                                        val = tmpS.Mam - newSpot.MaM
+        '                                        val = Math.Abs(val)
+        '                                        If val < result Then
+        '                                            Dim lv = LevenshteinDistance(newSpot.Programme.ToUpper, tmpS.Programme.ToUpper)
+        '                                            lv = lv / tmpS.Programme.ToString().Length
+        '                                            If lv <= 0.3 Then
+        '                                                result = val
+        '                                                validSpot = tmpS
+        '                                            End If
+        '                                        End If
+        '                                    End If
+        '                                End If
+        '                            Next
+        '                            If result < 10 Then
+        '                                newSpot.MyRating = validSpot.MyEstimate
+        '                            Else
+        '                                If tmpBt.IndexMainTarget <> 0 Then
+        '                                    newSpot.MyRating = newSpot.Estimation * (tmpBt.IndexMainTarget / 100)
+        '                                End If
+        '                            End If
+        '                            Dim tmpSurcharges As String = ""
+        '                            Dim tmpSurchargesObj As Object = Nothing
 
-                                    If Not _TrinitySurchages.Select(Function(_s) _s.ToLower).Contains(tv4Spot.Placement) AndAlso tv4Spot.Placement <> "" Then
+        '                            If Not _TrinitySurchages.Select(Function(_s) _s.ToLower).Contains(tv4Spot.Placement) AndAlso tv4Spot.Placement <> "" Then
 
-                                        tmpSurcharges = tv4Spot.Placement
-                                        For Each matchSur As Object In newSpot.Bookingtype.AddedValues
-                                            If matchSur.Name = tmpSurcharges Then
-                                                tmpSurchargesObj = matchSur
-                                            End If
-                                        Next
-                                    End If
-                                    If tmpSurcharges <> "" Then
-                                        newSpot.AddedValue = tmpSurchargesObj
-                                    End If
-                                    If newSpot.Week Is Nothing Then
-                                        _skippedSpot = True
-                                        _camp.PlannedSpots.Remove(newSpot.ID)
-                                    Else
+        '                                tmpSurcharges = tv4Spot.Placement
+        '                                For Each matchSur As Object In newSpot.Bookingtype.AddedValues
+        '                                    If matchSur.Name = tmpSurcharges Then
+        '                                        tmpSurchargesObj = matchSur
+        '                                    End If
+        '                                Next
+        '                            End If
+        '                            If tmpSurcharges <> "" Then
+        '                                newSpot.AddedValue = tmpSurchargesObj
+        '                            End If
+        '                            If newSpot.Week Is Nothing Then
+        '                                _skippedSpot = True
+        '                                _camp.PlannedSpots.Remove(newSpot.ID)
+        '                            Else
 
-                                        If newSpot.Bookingtype.AddedValues.FindByName(tv4Spot.Placement) IsNot Nothing AndAlso Not _placDict.ContainsKey(tv4Spot.Placement) Then
-                                            _placDict.Add(tv4Spot.Placement, newSpot.Bookingtype.AddedValues.FindByName(tv4Spot.Placement))
-                                        End If
+        '                                If newSpot.Bookingtype.AddedValues.FindByName(tv4Spot.Placement) IsNot Nothing AndAlso Not _placDict.ContainsKey(tv4Spot.Placement) Then
+        '                                    _placDict.Add(tv4Spot.Placement, newSpot.Bookingtype.AddedValues.FindByName(tv4Spot.Placement))
+        '                                End If
 
-                                        If newSpot.Week Is Nothing And Not DateOutOfPeriod.ContainsValue(newSpot.AirDate) Then
-                                            DateOutOfPeriod.Add(DateOutOfPeriod.Count, newSpot.AirDate)
-                                            _camp.PlannedSpots.Remove(newSpot.ID)
-                                        End If
-                                    End If
+        '                                If newSpot.Week Is Nothing And Not DateOutOfPeriod.ContainsValue(newSpot.AirDate) Then
+        '                                    DateOutOfPeriod.Add(DateOutOfPeriod.Count, newSpot.AirDate)
+        '                                    _camp.PlannedSpots.Remove(newSpot.ID)
+        '                                End If
+        '                            End If
 
-                                    Application.ActiveCampaign.PlannedSpots.AddTV4Spot(newSpot, newSpot.Channel, newSpot.Bookingtype, tv4Spot.FilmCode, CreateGUID())
-                                Else
-                                    If Not DateOutOfPeriod.Contains(Format(tv4Spot.BroadcastDate, "yyyy-MM-dd")) Then
-                                        DateOutOfPeriod.Add(DateOutOfPeriod.Count, tv4Spot.BroadcastDate)
-                                    End If
-                                End If
-                                count = count + 1
-                            Next
-                        End If
-                        Windows.Forms.MessageBox.Show("Succes! " & count & " spots were loaded for " & tmpChan.Channelname & " " & tmpBt.Name & ".", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Else
-                        Dim _message As String = String.Format("The channel '{0}' was found in the schedule, but not the campaign." & vbCrLf & "Please choose a channel to import spots to:", tv4BookingChannel.Channel)
-                    End If
-                    If DateOutOfPeriod.Count > 0 Then
-                        Dim Msg As String = "There were spots on the following dates (that does not belong to the campaign):" & vbCrLf
-                        For i As Integer = 0 To DateOutOfPeriod.Count
-                            Msg += Format(DateOutOfPeriod(i), "Short date") & vbCrLf
-                        Next
-                        Windows.Forms.MessageBox.Show(Msg, "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    End If
-                Catch e As Exception
-                    Windows.Forms.MessageBox.Show("An error occured when reading the spotlist, no spots were loaded!" & vbNewLine & vbNewLine & e.Message, "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End Try
-                'End If                
-            End If
-        Next
+        '                            Application.ActiveCampaign.PlannedSpots.AddTV4Spot(newSpot, newSpot.Channel, newSpot.Bookingtype, tv4Spot.FilmCode, CreateGUID())
+        '                        Else
+        '                            If Not DateOutOfPeriod.Contains(Format(tv4Spot.BroadcastDate, "yyyy-MM-dd")) Then
+        '                                DateOutOfPeriod.Add(DateOutOfPeriod.Count, tv4Spot.BroadcastDate)
+        '                            End If
+        '                        End If
+        '                        count = count + 1
+        '                    Next
+        '                End If
+        '                Windows.Forms.MessageBox.Show("Succes! " & count & " spots were loaded for " & tmpChan.Channelname & " " & tmpBt.Name & ".", "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '            Else
+        '                Dim _message As String = String.Format("The channel '{0}' was found in the schedule, but not the campaign." & vbCrLf & "Please choose a channel to import spots to:", tv4BookingChannel.Channel)
+        '            End If
+        '            If DateOutOfPeriod.Count > 0 Then
+        '                Dim Msg As String = "There were spots on the following dates (that does not belong to the campaign):" & vbCrLf
+        '                For i As Integer = 0 To DateOutOfPeriod.Count
+        '                    Msg += Format(DateOutOfPeriod(i), "Short date") & vbCrLf
+        '                Next
+        '                Windows.Forms.MessageBox.Show(Msg, "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '            End If
+        '        Catch e As Exception
+        '            Windows.Forms.MessageBox.Show("An error occured when reading the spotlist, no spots were loaded!" & vbNewLine & vbNewLine & e.Message, "T R I N I T Y", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '        End Try
+        '        'End If                
+        '    End If
+        'Next
     End Sub
     Public Function LevenshteinDistance(ByVal s As String,
                     ByVal t As String) As Integer
@@ -961,7 +961,7 @@ Public Class TV4OnlinePlugin
                             _bookings.Add(frm.Booking)
                             _campaign.Bookings = _bookings.ToArray
                             Try
-                                Dim _res = _client.CreateBooking(Preferences.Username, Preferences.GetPlainTextPassword, _campaign, False)
+                                Dim _res = _client.CreateBooking(Preferences.Username, Preferences.Token, _campaign, False)
                                 If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
                                     Windows.Forms.MessageBox.Show("Booking was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
                                 ElseIf _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Warning Then
@@ -969,7 +969,7 @@ Public Class TV4OnlinePlugin
                                     If _r = Windows.Forms.DialogResult.Cancel Then
                                         Exit Sub
                                     ElseIf _r = Windows.Forms.DialogResult.Yes Then
-                                        _res = _client.CreateBooking(Preferences.Username, Preferences.GetPlainTextPassword, _campaign, True)
+                                        _res = _client.CreateBooking(Preferences.Username, Preferences.Token, _campaign, True)
                                     End If
                                 Else
                                     Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
@@ -1011,7 +1011,8 @@ Public Class TV4OnlinePlugin
     Public ReadOnly Property PreferencesTab As TrinityPlugin.pluginPreferencesTab Implements TrinityPlugin.IPlugin.PreferencesTab
         Get
             _preferences.Username = Preferences.Username
-            _preferences.Password = Preferences.GetPlainTextPassword
+            '_preferences.Password = Preferences.Token
+            _preferences.Token = Preferences.Token
             Return _preferences
         End Get
     End Property

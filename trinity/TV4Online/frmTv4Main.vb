@@ -125,8 +125,10 @@ Public Class frmTv4Main
         For Each _tmpComb In _camp.combinations
             If _tmpComb.ShowAsOne And _tmpComb.Relations.Count > 0 Then
                 Dim b As New TV4Online.SpotlightApiV23.xsd.Booking
+                Dim foundIt = False
                 For Each _tmpCC In _tmpComb.Relations
                     If _availableChannels.Contains(_tmpCC.ChannelName) Then
+                        foundIt = True
                         For Each _week In _tmpCC.Bookingtype.Weeks
                             Dim _period As New TV4Online.SpotlightApiV23.xsd.RbsPeriod
                             Dim _dayparts As New List(Of TV4Online.SpotlightApiV23.xsd.RbsDaypart)
@@ -190,6 +192,8 @@ Public Class frmTv4Main
                         Next
                         If _tmpCC.Bookingtype.IsCompensation Then
                             b.Type = "Kompensation - RBS"
+                        ElseIf _tmpCC.BookingType.Name = "RBS-Paket" Then
+                            b.Type = _tmpCC.ChannelName
                         Else
                             b.Type = "RBS"
                         End If
@@ -198,21 +202,30 @@ Public Class frmTv4Main
                         'Booking information which is stored and receieved when uploading booking to Spotlight.
                         b.BookingIdSpotlight = _tmpCC.Bookingtype.BookingIdSpotlight
                         b.BookingUrlSpotlight = _tmpCC.Bookingtype.BookingUrlSpotlight
-
-                        b.Channel = _tmpComb.Name
-                        b.AgencyBookingRefNo = _tmpCC.Bookingtype.OrderNumber
-                        b.ChannelBookingRefNo = _tmpCC.Bookingtype.ContractNumber
-                        b.Comments = _tmpCC.Bookingtype.Comments
+                        If (b.Channel Is Nothing) Then
+                            b.Channel = _tmpComb.Name
+                        End If
+                        If (b.AgencyBookingRefNo Is Nothing) Then
+                            b.AgencyBookingRefNo = _tmpCC.Bookingtype.OrderNumber
+                        End If
+                        If (b.ChannelBookingRefNo Is Nothing) Then
+                            b.ChannelBookingRefNo = _tmpCC.Bookingtype.ContractNumber
+                        End If
+                        b.Comments += _tmpCC.Bookingtype.Comments
                         b.StartDate = Date.FromOADate(_camp.StartDate)
                         b.EndDate = Date.FromOADate(_camp.EndDate)
                         'b.MaxBudget = _tmpCC.Bookingtype.PlannedNetBudget
-                        b.UniverseSize = _tmpCC.Bookingtype.BuyingTarget.getUniSizeNat(_camp.StartDate)
-                        b.Target = _tmpCC.Bookingtype.BuyingTarget.TargetName.ToString.Trim.Replace(" ", "")
-                        If b.Target.Contains("W") Then
-                            b.Target = b.Target.Replace("W", "K")
+                        If (b.UniverseSize = 0) Then
+                            b.UniverseSize = _tmpCC.Bookingtype.BuyingTarget.getUniSizeNat(_camp.StartDate)
                         End If
-                        If IsNumeric(b.Target.Substring(0, 1)) Then
-                            b.Target = "A" & b.Target
+                        If (b.Target Is Nothing) Then
+                            b.Target = _tmpCC.Bookingtype.BuyingTarget.TargetName.ToString.Trim.Replace(" ", "")
+                            If b.Target.Contains("W") Then
+                                b.Target = b.Target.Replace("W", "K")
+                            End If
+                            If IsNumeric(b.Target.Substring(0, 1)) Then
+                                b.Target = "A" & b.Target
+                            End If
                         End If
 
                         Try 'Add logo to list so its easier to find the specific logo
@@ -232,12 +245,13 @@ Public Class frmTv4Main
                         txtBudget.Text = Format(_booking.MaxBudget, "#####0")
                         b.RbsPeriods = _periods.ToArray
                         b.Selected = True
-                        b.Targets = _client.GetTargetsForChannel(b.Channel, b.StartDate)
-                        Dim Tmptargets = _client.GetTargetsForChannel(b.Channel, b.StartDate)
+                        b.Targets = _client.GetTargetsForChannel(_tmpCC.ChannelName, b.StartDate)
                     End If
                     combinationsChannels.Add(_tmpCC.Bookingtype.ParentChannel.ChannelName)
                 Next
-                _bookings.Add(b)
+                If foundIt = True Then
+                    _bookings.Add(b)
+                End If
             End If
         Next
         For Each _chan In _camp.Channels

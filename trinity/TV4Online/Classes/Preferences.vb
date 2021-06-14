@@ -9,6 +9,7 @@ Public Class Preferences
     Public Property TV4Contact As String
 
     Private _password As String
+    Private _token As String
     <DataMember()>
     Public Property Password As String
         Get
@@ -16,6 +17,15 @@ Public Class Preferences
         End Get
         Set(value As String)
             _password = value
+        End Set
+    End Property
+
+    Public Property Token As String
+        Get
+            Return _token
+        End Get
+        Set(value As String)
+            _token = value
         End Set
     End Property
 
