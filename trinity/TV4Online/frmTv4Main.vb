@@ -192,10 +192,8 @@ Public Class frmTv4Main
                         Next
                         If _tmpCC.Bookingtype.IsCompensation Then
                             b.Type = "Kompensation - RBS"
-                        ElseIf _tmpCC.BookingType.Name = "RBS-Paket" Then
-                            b.Type = _tmpCC.ChannelName
                         Else
-                            b.Type = "RBS"
+                            b.Type = _tmpCC.BookingType.Name
                         End If
                         b.TrinityType = _tmpComb.Name
 
@@ -247,7 +245,7 @@ Public Class frmTv4Main
                         b.Selected = True
                         b.Targets = _client.GetTargetsForChannel(_tmpCC.ChannelName, b.StartDate)
                     End If
-                    combinationsChannels.Add(_tmpCC.Bookingtype.ParentChannel.ChannelName)
+                    combinationsChannels.Add(_tmpCC.Bookingtype.ParentChannel.ChannelName + " " + _tmpCC.Bookingtype.name)
                 Next
                 If foundIt = True Then
                     _bookings.Add(b)
@@ -255,11 +253,11 @@ Public Class frmTv4Main
             End If
         Next
         For Each _chan In _camp.Channels
-            If _availableChannels.Contains(_chan.ChannelName) And Not combinationsChannels.Contains(_chan.ChannelName) Then
+            If _availableChannels.Contains(_chan.ChannelName) Then
                 For Each _bt In _chan.BookingTypes
-                    Dim b As New TV4Online.SpotlightApiV23.xsd.Booking
 
-                    If _bt.BookIt Then
+                    If _bt.BookIt And Not combinationsChannels.Contains(_chan.ChannelName + " " + _bt.name) Then
+                        Dim b As New TV4Online.SpotlightApiV23.xsd.Booking
                         'Dim booking As New TV4Bookings
                         Dim _periods As New List(Of TV4Online.SpotlightApiV23.xsd.RbsPeriod)
                         If _bt.IsRBS Then
@@ -378,6 +376,7 @@ Public Class frmTv4Main
 
                                 If _spot.Bookingtype Is _bt Then
                                     Dim _s As New TV4Online.SpotlightApiV23.xsd.SpecificSpot
+                                    _s.BreakID = _spot.breakID
                                     _s.BroadcastDate = _spot.AirDate
                                     _s.BroadcastTime = _spot.MaM
                                     _s.EstimatedTRP = _spot.ChannelEstimate
@@ -813,7 +812,7 @@ Public Class frmTv4Main
             'Check if the specific bookingtype matches the spotlight bookingtype
             For Each _bt As String In _client.GetBookingTypes
                 Dim _idx = cmbBookingType.Items.Add(_bt)
-                If _bt = _bookings.Item(0).Type Then
+                If _bt.ToUpper() = _bookings.Item(0).Type.ToUpper() Then
                     cmbBookingType.SelectedIndex = _idx
                 End If
             Next
@@ -835,8 +834,20 @@ Public Class frmTv4Main
                     _errors.AppendLine("Please specify what target to use.")
                 End If
             Next
+            'Dim localOrgID = res.GetOrg()
 
+            Dim _tempclients = res.getClientList()
+            ' Booking response object
+            Dim _clientList As New List(Of Object)
+            For Each client In _tempclients.returnValues
+                _clientList.Add(client)
+            Next
+            Dim _ClientBinding As New Windows.Forms.BindingSource
+            _ClientBinding.DataSource = _clientList
 
+            cmbClient.DataSource = _ClientBinding
+
+            cmbClient.DisplayMember = "value"
             For Each _tmpBook In _bookings
                 Dim _res As Boolean = False
                 Dim _bookName = _tmpBook.Channel
@@ -864,11 +875,21 @@ Public Class frmTv4Main
 
     Private Sub cmdOk_Click(sender As System.Object, e As System.EventArgs) Handles cmdOk.Click
         Dim choosenOrg As String = ""
+        Dim tempClientID As String = 0
+        Dim tempClientName As String = ""
+
         If String.IsNullOrEmpty(_booking.AgencyBookingRefNo) AndAlso Windows.Forms.MessageBox.Show("You have not created a Marathon Order for this Booking type." & vbNewLine & vbNewLine & "Are you sure you want to proceed?", "T R I N I T Y", Windows.Forms.MessageBoxButtons.YesNo, Windows.Forms.MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
             Exit Sub
         End If
         If multipleOrganizations Then
             choosenOrg = getOrgID(cmbOrganizations.SelectedItem)
+        End If
+        If cmbClient.SelectedIndex = 0 Then
+            Windows.Forms.MessageBox.Show("No client has been selected. Select a client for the booking before you can proceed.", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Question)
+        Else
+            Dim selectedItem = cmbClient.SelectedItem
+            tempClientID = selectedItem.Key.ToString()
+            tempClientName = selectedItem.value.ToString()
         End If
         For Each _book As TV4Online.SpotlightApiV23.xsd.Booking In _bookings
             Dim _tmpRo As Integer
@@ -888,7 +909,7 @@ Public Class frmTv4Main
                         End If
                     Else
                         _book.SpecificsSpots = _book.SpecificsSpots.Where(Function(s) Not _skipSpecifics.Contains(s)).ToArray
-                        If res.UploadBooking(_book, _tmpRo, multipleOrganizations, choosenOrg) Then
+                        If res.UploadBooking(_book, _tmpRo, multipleOrganizations, choosenOrg, tempClientID, tempClientName) Then
                             For Each row In grdBookings.Rows
                                 Dim TmpTag = row.Tag
                                 If TmpTag Is _book Then
@@ -913,7 +934,7 @@ Public Class frmTv4Main
                         _period.RbsDayparts = _period.RbsDayparts.Where(Function(d) d.RbsFilms.Count > 0).ToArray
                     Next
                     _book.RbsPeriods = _rbsPeriods.Where(Function(p) p.RbsDayparts.Count > 0).ToArray
-                    If res.UploadBooking(_book, _tmpRo, multipleOrganizations, choosenOrg) = True Then
+                    If res.UploadBooking(_book, _tmpRo, multipleOrganizations, choosenOrg, tempClientID, tempClientName) = True Then
                         For Each row In grdBookings.Rows
                             Dim TmpTag = row.Tag
                             If TmpTag Is _book Then
@@ -993,6 +1014,29 @@ Public Class frmTv4Main
         System.Diagnostics.Process.Start(lblBookingUrlSpotlight.Text)
     End Sub
 
+    Private Sub cmbClient_Enter(sender As Object, e As EventArgs) Handles cmbClient.Enter
+
+    End Sub
+
+    Private Sub cmbOrganizations_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbOrganizations.SelectedIndexChanged
+        Dim selectedItem = cmbOrganizations.SelectedItem.value
+        Dim _tempclients = res.getClientList()
+        ' Booking response object
+        Dim _clientList As New List(Of Object)
+        If cmbClient.Items.Count > 0 Then
+            cmbClient.Items.Clear()
+        Else
+            For Each client In _tempclients.returnValues
+                _clientList.Add(client)
+            Next
+        End If
+        Dim _ClientBinding As New Windows.Forms.BindingSource
+        _ClientBinding.DataSource = _clientList
+
+        cmbClient.DataSource = _ClientBinding
+
+        cmbClient.DisplayMember = "value"
+    End Sub
 End Class
 
 

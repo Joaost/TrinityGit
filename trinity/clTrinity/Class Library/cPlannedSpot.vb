@@ -110,6 +110,7 @@ Namespace Trinity
             colXml.SetAttribute("PriceGross", Me.PriceGross) ' as Currency
             colXml.SetAttribute("Remark", Me.Remark)
             colXml.SetAttribute("Placement", Me.Placement)
+            colXml.SetAttribute("BreakID", Me.breakID)
             If Not Me.AddedValue Is Nothing Then
                 colXml.SetAttribute("AddedValue", Me.AddedValue.ID)
             End If
@@ -884,6 +885,25 @@ Remark_Error:
         End Property
 
         Public Property Placement()
+            Set(ByVal value)
+                'used when assigning an Object to the property, on the left side of a Set statement.
+                'Syntax: Set x.Placement = Form1
+                mvarPlacement = value
+            End Set
+            Get
+                Placement = mvarPlacement
+            End Get
+        End Property
+        Private _breakID As String
+        Public Property breakID() As String
+            Get
+                Return _breakID
+            End Get
+            Set(ByVal value As String)
+                _breakID = value
+            End Set
+        End Property
+        Public Property Breadi()
             Set(ByVal value)
                 'used when assigning an Object to the property, on the left side of a Set statement.
                 'Syntax: Set x.Placement = Form1

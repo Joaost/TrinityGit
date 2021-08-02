@@ -34,6 +34,7 @@ Namespace Trinity
         Public Addition As Integer
         Public IsAvail As Boolean
         Public Chronological As Long
+        Public breakID As String
         Private Main As Trinity.cKampanj
 
         Public Property GrossPrice30(ByVal IncludeIndex As Boolean, Optional ByVal Bid As Single = 0) As Decimal
@@ -271,6 +272,11 @@ Namespace Trinity
                     Exit For
                 End If
             Next
+            If dr.Item("breakID").ToString() IsNot "" Then
+                Me.breakID = dr.Item("breakID")
+            Else
+                Me.breakID = ""
+            End If
         End Sub
 
         Protected Overrides Sub Finalize()

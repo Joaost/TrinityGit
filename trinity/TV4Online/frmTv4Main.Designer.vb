@@ -74,37 +74,39 @@ Partial Class frmTv4Main
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.grdBookings,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.imgLogo,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.wrnTarg,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.wrnBt,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.imgSpecWarning,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.imgRBSWarning,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.cmbClient = New System.Windows.Forms.ComboBox()
+        Me.lblClient = New System.Windows.Forms.Label()
+        CType(Me.grdBookings, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.wrnTarg, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.wrnBt, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgSpecWarning, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgRBSWarning, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'grdBookings
         '
-        Me.grdBookings.AllowUserToAddRows = false
-        Me.grdBookings.AllowUserToDeleteRows = false
-        Me.grdBookings.AllowUserToResizeColumns = false
-        Me.grdBookings.AllowUserToResizeRows = false
-        Me.grdBookings.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.grdBookings.AllowUserToAddRows = False
+        Me.grdBookings.AllowUserToDeleteRows = False
+        Me.grdBookings.AllowUserToResizeColumns = False
+        Me.grdBookings.AllowUserToResizeRows = False
+        Me.grdBookings.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdBookings.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colSelected, Me.colStart, Me.colEnd, Me.colTarget, Me.colBudget, Me.colName, Me.colType, Me.colTv4BT, Me.colError})
         Me.grdBookings.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
         Me.grdBookings.Location = New System.Drawing.Point(0, 27)
         Me.grdBookings.Name = "grdBookings"
-        Me.grdBookings.RowHeadersVisible = false
+        Me.grdBookings.RowHeadersVisible = False
         Me.grdBookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdBookings.Size = New System.Drawing.Size(730, 341)
         Me.grdBookings.TabIndex = 28
-        Me.grdBookings.VirtualMode = true
+        Me.grdBookings.VirtualMode = True
         '
         'colSelected
         '
         Me.colSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colSelected.FillWeight = 15!
+        Me.colSelected.FillWeight = 15.0!
         Me.colSelected.HeaderText = ""
         Me.colSelected.Name = "colSelected"
         Me.colSelected.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -113,71 +115,71 @@ Partial Class frmTv4Main
         'colStart
         '
         Me.colStart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colStart.FillWeight = 40!
+        Me.colStart.FillWeight = 40.0!
         Me.colStart.HeaderText = "Start"
         Me.colStart.Name = "colStart"
-        Me.colStart.ReadOnly = true
+        Me.colStart.ReadOnly = True
         Me.colStart.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'colEnd
         '
         Me.colEnd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colEnd.FillWeight = 40!
+        Me.colEnd.FillWeight = 40.0!
         Me.colEnd.HeaderText = "End"
         Me.colEnd.Name = "colEnd"
-        Me.colEnd.ReadOnly = true
+        Me.colEnd.ReadOnly = True
         Me.colEnd.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'colTarget
         '
         Me.colTarget.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colTarget.FillWeight = 30!
+        Me.colTarget.FillWeight = 30.0!
         Me.colTarget.HeaderText = "Target"
         Me.colTarget.Name = "colTarget"
-        Me.colTarget.ReadOnly = true
+        Me.colTarget.ReadOnly = True
         Me.colTarget.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'colBudget
         '
         Me.colBudget.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colBudget.FillWeight = 45!
+        Me.colBudget.FillWeight = 45.0!
         Me.colBudget.HeaderText = "Budget"
         Me.colBudget.Name = "colBudget"
-        Me.colBudget.ReadOnly = true
+        Me.colBudget.ReadOnly = True
         '
         'colName
         '
         Me.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colName.FillWeight = 60!
+        Me.colName.FillWeight = 60.0!
         Me.colName.HeaderText = "Channel Name"
         Me.colName.Name = "colName"
-        Me.colName.ReadOnly = true
+        Me.colName.ReadOnly = True
         Me.colName.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'colType
         '
         Me.colType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colType.FillWeight = 50!
+        Me.colType.FillWeight = 50.0!
         Me.colType.HeaderText = "Trinity"
         Me.colType.Name = "colType"
-        Me.colType.ReadOnly = true
+        Me.colType.ReadOnly = True
         '
         'colTv4BT
         '
         Me.colTv4BT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colTv4BT.FillWeight = 50!
+        Me.colTv4BT.FillWeight = 50.0!
         Me.colTv4BT.HeaderText = "TV4"
         Me.colTv4BT.Name = "colTv4BT"
-        Me.colTv4BT.ReadOnly = true
+        Me.colTv4BT.ReadOnly = True
         Me.colTv4BT.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'colError
         '
         Me.colError.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.colError.FillWeight = 11!
+        Me.colError.FillWeight = 11.0!
         Me.colError.HeaderText = ""
         Me.colError.Name = "colError"
-        Me.colError.ReadOnly = true
+        Me.colError.ReadOnly = True
         Me.colError.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'cmdCancel
@@ -186,17 +188,17 @@ Partial Class frmTv4Main
         Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancel.FlatAppearance.BorderSize = 0
         Me.cmdCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdCancel.Location = New System.Drawing.Point(508, 499)
+        Me.cmdCancel.Location = New System.Drawing.Point(508, 559)
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(65, 33)
         Me.cmdCancel.TabIndex = 26
         Me.cmdCancel.Text = "Cancel"
-        Me.cmdCancel.UseVisualStyleBackColor = true
+        Me.cmdCancel.UseVisualStyleBackColor = True
         '
         'txtContact
         '
-        Me.txtContact.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.txtContact.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtContact.Location = New System.Drawing.Point(109, 402)
         Me.txtContact.Name = "txtContact"
         Me.txtContact.Size = New System.Drawing.Size(155, 22)
@@ -204,9 +206,9 @@ Partial Class frmTv4Main
         '
         'Label4
         '
-        Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.Label4.AutoSize = true
+        Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(106, 385)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(130, 13)
@@ -215,9 +217,9 @@ Partial Class frmTv4Main
         '
         'lblBookingType
         '
-        Me.lblBookingType.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.lblBookingType.AutoSize = true
+        Me.lblBookingType.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblBookingType.AutoSize = True
         Me.lblBookingType.Location = New System.Drawing.Point(12, 385)
         Me.lblBookingType.MaximumSize = New System.Drawing.Size(80, 0)
         Me.lblBookingType.Name = "lblBookingType"
@@ -227,56 +229,56 @@ Partial Class frmTv4Main
         '
         'chkSpecifics
         '
-        Me.chkSpecifics.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.chkSpecifics.AutoSize = true
+        Me.chkSpecifics.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.chkSpecifics.AutoSize = True
         Me.chkSpecifics.Location = New System.Drawing.Point(508, 456)
         Me.chkSpecifics.Name = "chkSpecifics"
         Me.chkSpecifics.Size = New System.Drawing.Size(15, 14)
         Me.chkSpecifics.TabIndex = 32
-        Me.chkSpecifics.UseVisualStyleBackColor = true
+        Me.chkSpecifics.UseVisualStyleBackColor = True
         '
         'lnkSpecifics
         '
-        Me.lnkSpecifics.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.lnkSpecifics.AutoSize = true
+        Me.lnkSpecifics.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lnkSpecifics.AutoSize = True
         Me.lnkSpecifics.Location = New System.Drawing.Point(526, 455)
         Me.lnkSpecifics.Name = "lnkSpecifics"
         Me.lnkSpecifics.Size = New System.Drawing.Size(51, 13)
         Me.lnkSpecifics.TabIndex = 31
-        Me.lnkSpecifics.TabStop = true
+        Me.lnkSpecifics.TabStop = True
         Me.lnkSpecifics.Text = "Specifics"
         '
         'chkRBS
         '
-        Me.chkRBS.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.chkRBS.AutoSize = true
+        Me.chkRBS.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.chkRBS.AutoSize = True
         Me.chkRBS.Location = New System.Drawing.Point(508, 436)
         Me.chkRBS.Name = "chkRBS"
         Me.chkRBS.Size = New System.Drawing.Size(15, 14)
         Me.chkRBS.TabIndex = 30
-        Me.chkRBS.UseVisualStyleBackColor = true
+        Me.chkRBS.UseVisualStyleBackColor = True
         '
         'lnkRBS
         '
-        Me.lnkRBS.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.lnkRBS.AutoSize = true
+        Me.lnkRBS.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lnkRBS.AutoSize = True
         Me.lnkRBS.Location = New System.Drawing.Point(526, 435)
         Me.lnkRBS.Name = "lnkRBS"
         Me.lnkRBS.Size = New System.Drawing.Size(27, 13)
         Me.lnkRBS.TabIndex = 29
-        Me.lnkRBS.TabStop = true
+        Me.lnkRBS.TabStop = True
         Me.lnkRBS.Text = "RBS"
         '
         'cmbBookingType
         '
-        Me.cmbBookingType.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.cmbBookingType.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.cmbBookingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbBookingType.FormattingEnabled = true
+        Me.cmbBookingType.FormattingEnabled = True
         Me.cmbBookingType.Location = New System.Drawing.Point(109, 446)
         Me.cmbBookingType.Name = "cmbBookingType"
         Me.cmbBookingType.Size = New System.Drawing.Size(155, 21)
@@ -284,9 +286,9 @@ Partial Class frmTv4Main
         '
         'Label6
         '
-        Me.Label6.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.Label6.AutoSize = true
+        Me.Label6.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(106, 429)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(94, 13)
@@ -295,9 +297,9 @@ Partial Class frmTv4Main
         '
         'Label3
         '
-        Me.Label3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.Label3.AutoSize = true
+        Me.Label3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(451, 406)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(17, 13)
@@ -306,9 +308,9 @@ Partial Class frmTv4Main
         '
         'Label2
         '
-        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.Label2.AutoSize = true
+        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(292, 386)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(69, 13)
@@ -317,10 +319,10 @@ Partial Class frmTv4Main
         '
         'cmbTarget
         '
-        Me.cmbTarget.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.cmbTarget.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.cmbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTarget.FormattingEnabled = true
+        Me.cmbTarget.FormattingEnabled = True
         Me.cmbTarget.Location = New System.Drawing.Point(295, 447)
         Me.cmbTarget.Name = "cmbTarget"
         Me.cmbTarget.Size = New System.Drawing.Size(179, 21)
@@ -328,9 +330,9 @@ Partial Class frmTv4Main
         '
         'Label1
         '
-        Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.Label1.AutoSize = true
+        Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(292, 429)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(38, 13)
@@ -346,37 +348,37 @@ Partial Class frmTv4Main
         '
         'lnkSelectDeselect
         '
-        Me.lnkSelectDeselect.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.lnkSelectDeselect.AutoSize = true
+        Me.lnkSelectDeselect.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lnkSelectDeselect.AutoSize = True
         Me.lnkSelectDeselect.Location = New System.Drawing.Point(12, 7)
         Me.lnkSelectDeselect.Name = "lnkSelectDeselect"
         Me.lnkSelectDeselect.Size = New System.Drawing.Size(99, 13)
         Me.lnkSelectDeselect.TabIndex = 53
-        Me.lnkSelectDeselect.TabStop = true
+        Me.lnkSelectDeselect.TabStop = True
         Me.lnkSelectDeselect.Text = "Select/Deselect all"
         '
         'lblRbsWrn
         '
-        Me.lblRbsWrn.AutoSize = true
+        Me.lblRbsWrn.AutoSize = True
         Me.lblRbsWrn.ForeColor = System.Drawing.Color.Red
         Me.lblRbsWrn.Location = New System.Drawing.Point(596, 436)
         Me.lblRbsWrn.Name = "lblRbsWrn"
         Me.lblRbsWrn.Size = New System.Drawing.Size(72, 13)
         Me.lblRbsWrn.TabIndex = 54
         Me.lblRbsWrn.Text = "RBS is empty"
-        Me.lblRbsWrn.Visible = false
+        Me.lblRbsWrn.Visible = False
         '
         'lblSpecWrn
         '
-        Me.lblSpecWrn.AutoSize = true
+        Me.lblSpecWrn.AutoSize = True
         Me.lblSpecWrn.ForeColor = System.Drawing.Color.Red
         Me.lblSpecWrn.Location = New System.Drawing.Point(596, 455)
         Me.lblSpecWrn.Name = "lblSpecWrn"
         Me.lblSpecWrn.Size = New System.Drawing.Size(96, 13)
         Me.lblSpecWrn.TabIndex = 55
         Me.lblSpecWrn.Text = "Specifics is empty"
-        Me.lblSpecWrn.Visible = false
+        Me.lblSpecWrn.Visible = False
         '
         'cmbOrganizations
         '
@@ -384,11 +386,11 @@ Partial Class frmTv4Main
         Me.cmbOrganizations.Name = "cmbOrganizations"
         Me.cmbOrganizations.Size = New System.Drawing.Size(193, 21)
         Me.cmbOrganizations.TabIndex = 56
-        Me.cmbOrganizations.Visible = false
+        Me.cmbOrganizations.Visible = False
         '
         'lblLoginName
         '
-        Me.lblLoginName.AutoSize = true
+        Me.lblLoginName.AutoSize = True
         Me.lblLoginName.Location = New System.Drawing.Point(543, 385)
         Me.lblLoginName.Name = "lblLoginName"
         Me.lblLoginName.Size = New System.Drawing.Size(0, 13)
@@ -396,20 +398,20 @@ Partial Class frmTv4Main
         '
         'lblBookingUrlSpotlight
         '
-        Me.lblBookingUrlSpotlight.AutoSize = true
-        Me.lblBookingUrlSpotlight.Location = New System.Drawing.Point(106, 499)
+        Me.lblBookingUrlSpotlight.AutoSize = True
+        Me.lblBookingUrlSpotlight.Location = New System.Drawing.Point(106, 546)
         Me.lblBookingUrlSpotlight.MaximumSize = New System.Drawing.Size(400, 0)
         Me.lblBookingUrlSpotlight.Name = "lblBookingUrlSpotlight"
         Me.lblBookingUrlSpotlight.Size = New System.Drawing.Size(49, 13)
         Me.lblBookingUrlSpotlight.TabIndex = 58
-        Me.lblBookingUrlSpotlight.TabStop = true
+        Me.lblBookingUrlSpotlight.TabStop = True
         Me.lblBookingUrlSpotlight.Text = "UrlLabel"
-        Me.lblBookingUrlSpotlight.Visible = false
+        Me.lblBookingUrlSpotlight.Visible = False
         '
         'Label5
         '
-        Me.Label5.AutoSize = true
-        Me.Label5.Location = New System.Drawing.Point(106, 483)
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(106, 530)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(140, 13)
         Me.Label5.TabIndex = 59
@@ -417,7 +419,7 @@ Partial Class frmTv4Main
         '
         'Label7
         '
-        Me.Label7.AutoSize = true
+        Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.SystemColors.Control
         Me.Label7.Location = New System.Drawing.Point(505, 385)
         Me.Label7.Name = "Label7"
@@ -448,29 +450,29 @@ Partial Class frmTv4Main
         Me.imgLogo.Size = New System.Drawing.Size(62, 57)
         Me.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.imgLogo.TabIndex = 52
-        Me.imgLogo.TabStop = false
+        Me.imgLogo.TabStop = False
         '
         'wrnTarg
         '
-        Me.wrnTarg.Image = CType(resources.GetObject("wrnTarg.Image"),System.Drawing.Image)
+        Me.wrnTarg.Image = CType(resources.GetObject("wrnTarg.Image"), System.Drawing.Image)
         Me.wrnTarg.Location = New System.Drawing.Point(480, 448)
         Me.wrnTarg.Name = "wrnTarg"
         Me.wrnTarg.Size = New System.Drawing.Size(16, 16)
         Me.wrnTarg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.wrnTarg.TabIndex = 51
-        Me.wrnTarg.TabStop = false
-        Me.wrnTarg.Visible = false
+        Me.wrnTarg.TabStop = False
+        Me.wrnTarg.Visible = False
         '
         'wrnBt
         '
-        Me.wrnBt.Image = CType(resources.GetObject("wrnBt.Image"),System.Drawing.Image)
+        Me.wrnBt.Image = CType(resources.GetObject("wrnBt.Image"), System.Drawing.Image)
         Me.wrnBt.Location = New System.Drawing.Point(270, 446)
         Me.wrnBt.Name = "wrnBt"
         Me.wrnBt.Size = New System.Drawing.Size(16, 16)
         Me.wrnBt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.wrnBt.TabIndex = 50
-        Me.wrnBt.TabStop = false
-        Me.wrnBt.Visible = false
+        Me.wrnBt.TabStop = False
+        Me.wrnBt.Visible = False
         '
         'cmdRefreshBudget
         '
@@ -479,30 +481,30 @@ Partial Class frmTv4Main
         Me.cmdRefreshBudget.Name = "cmdRefreshBudget"
         Me.cmdRefreshBudget.Size = New System.Drawing.Size(23, 23)
         Me.cmdRefreshBudget.TabIndex = 48
-        Me.cmdRefreshBudget.UseVisualStyleBackColor = true
-        Me.cmdRefreshBudget.Visible = false
+        Me.cmdRefreshBudget.UseVisualStyleBackColor = True
+        Me.cmdRefreshBudget.Visible = False
         '
         'imgSpecWarning
         '
-        Me.imgSpecWarning.Image = CType(resources.GetObject("imgSpecWarning.Image"),System.Drawing.Image)
+        Me.imgSpecWarning.Image = CType(resources.GetObject("imgSpecWarning.Image"), System.Drawing.Image)
         Me.imgSpecWarning.Location = New System.Drawing.Point(579, 453)
         Me.imgSpecWarning.Name = "imgSpecWarning"
         Me.imgSpecWarning.Size = New System.Drawing.Size(16, 16)
         Me.imgSpecWarning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.imgSpecWarning.TabIndex = 36
-        Me.imgSpecWarning.TabStop = false
-        Me.imgSpecWarning.Visible = false
+        Me.imgSpecWarning.TabStop = False
+        Me.imgSpecWarning.Visible = False
         '
         'imgRBSWarning
         '
-        Me.imgRBSWarning.Image = CType(resources.GetObject("imgRBSWarning.Image"),System.Drawing.Image)
+        Me.imgRBSWarning.Image = CType(resources.GetObject("imgRBSWarning.Image"), System.Drawing.Image)
         Me.imgRBSWarning.Location = New System.Drawing.Point(579, 436)
         Me.imgRBSWarning.Name = "imgRBSWarning"
         Me.imgRBSWarning.Size = New System.Drawing.Size(16, 16)
         Me.imgRBSWarning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.imgRBSWarning.TabIndex = 35
-        Me.imgRBSWarning.TabStop = false
-        Me.imgRBSWarning.Visible = false
+        Me.imgRBSWarning.TabStop = False
+        Me.imgRBSWarning.Visible = False
         '
         'cmdOk
         '
@@ -511,102 +513,126 @@ Partial Class frmTv4Main
         Me.cmdOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdOk.Image = Global.TV4Online.My.Resources.Resources.upload_2_32x32
         Me.cmdOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdOk.Location = New System.Drawing.Point(579, 499)
+        Me.cmdOk.Location = New System.Drawing.Point(579, 559)
         Me.cmdOk.Name = "cmdOk"
         Me.cmdOk.Size = New System.Drawing.Size(139, 33)
         Me.cmdOk.TabIndex = 25
         Me.cmdOk.Text = "Upload bookings"
         Me.cmdOk.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdOk.UseVisualStyleBackColor = true
+        Me.cmdOk.UseVisualStyleBackColor = True
         '
         'DataGridViewImageColumn1
         '
         Me.DataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewImageColumn1.FillWeight = 10!
+        Me.DataGridViewImageColumn1.FillWeight = 10.0!
         Me.DataGridViewImageColumn1.HeaderText = ""
         Me.DataGridViewImageColumn1.Image = Global.TV4Online.My.Resources.Resources.check
         Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
-        Me.DataGridViewImageColumn1.ReadOnly = true
+        Me.DataGridViewImageColumn1.ReadOnly = True
         Me.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewImageColumn1.Visible = false
+        Me.DataGridViewImageColumn1.Visible = False
         '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn1.FillWeight = 50!
+        Me.DataGridViewTextBoxColumn1.FillWeight = 50.0!
         Me.DataGridViewTextBoxColumn1.HeaderText = "Start"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = true
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn2.FillWeight = 50!
+        Me.DataGridViewTextBoxColumn2.FillWeight = 50.0!
         Me.DataGridViewTextBoxColumn2.HeaderText = "End"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = true
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
         Me.DataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn3.FillWeight = 45!
+        Me.DataGridViewTextBoxColumn3.FillWeight = 45.0!
         Me.DataGridViewTextBoxColumn3.HeaderText = "Name"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = true
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
         Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn4.FillWeight = 60!
+        Me.DataGridViewTextBoxColumn4.FillWeight = 60.0!
         Me.DataGridViewTextBoxColumn4.HeaderText = "Budget"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = true
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.FillWeight = 60!
+        Me.DataGridViewTextBoxColumn5.FillWeight = 60.0!
         Me.DataGridViewTextBoxColumn5.HeaderText = "Type"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = true
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn6.FillWeight = 60!
+        Me.DataGridViewTextBoxColumn6.FillWeight = 60.0!
         Me.DataGridViewTextBoxColumn6.HeaderText = "Trinity Type"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = true
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
         '
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.FillWeight = 70!
+        Me.DataGridViewTextBoxColumn7.FillWeight = 70.0!
         Me.DataGridViewTextBoxColumn7.HeaderText = "TV4 Type"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = true
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
         Me.DataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.FillWeight = 11!
+        Me.DataGridViewTextBoxColumn8.FillWeight = 11.0!
         Me.DataGridViewTextBoxColumn8.HeaderText = ""
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = true
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
         Me.DataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'cmbClient
+        '
+        Me.cmbClient.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.cmbClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbClient.FormattingEnabled = True
+        Me.cmbClient.Location = New System.Drawing.Point(109, 490)
+        Me.cmbClient.Name = "cmbClient"
+        Me.cmbClient.Size = New System.Drawing.Size(155, 21)
+        Me.cmbClient.TabIndex = 64
+        '
+        'lblClient
+        '
+        Me.lblClient.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblClient.AutoSize = True
+        Me.lblClient.Location = New System.Drawing.Point(106, 473)
+        Me.lblClient.Name = "lblClient"
+        Me.lblClient.Size = New System.Drawing.Size(37, 13)
+        Me.lblClient.TabIndex = 63
+        Me.lblClient.Text = "Client"
         '
         'frmTv4Main
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(730, 544)
+        Me.ClientSize = New System.Drawing.Size(730, 604)
+        Me.Controls.Add(Me.cmbClient)
+        Me.Controls.Add(Me.lblClient)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.lblBookingUrlSpotlight)
@@ -710,4 +736,6 @@ End Sub
     Friend WithEvents Label7 As Windows.Forms.Label
     Friend WithEvents ToolStrip1 As Windows.Forms.ToolStrip
     Friend WithEvents MenuStrip1 As Windows.Forms.MenuStrip
+    Friend WithEvents cmbClient As Windows.Forms.ComboBox
+    Friend WithEvents lblClient As Windows.Forms.Label
 End Class

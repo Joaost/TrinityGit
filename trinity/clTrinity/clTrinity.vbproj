@@ -490,6 +490,12 @@
     <Compile Include="Class Library\Screenshot\Screenshot.vb" />
     <Compile Include="Class Library\cOutlook.vb" />
     <Compile Include="Class Library\WebFileDownloader.vb" />
+    <Compile Include="frmAddChannelUniocorn.Designer.vb">
+      <DependentUpon>frmAddChannelUniocorn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddChannelUniocorn.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAddChannelWizard.Designer.vb">
       <DependentUpon>frmAddChannelWizard.vb</DependentUpon>
     </Compile>
@@ -632,6 +638,12 @@
       <DependentUpon>frmLockedCampaign.vb</DependentUpon>
     </Compile>
     <Compile Include="frmLockedCampaign.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageChannelsUnicorn.Designer.vb">
+      <DependentUpon>frmManageChannelsUnicorn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageChannelsUnicorn.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmManualImport.Designer.vb">
@@ -1209,6 +1221,9 @@
       <DependentUpon>frmPerformance.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddChannelUniocorn.resx">
+      <DependentUpon>frmAddChannelUniocorn.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddChannelWizard.resx">
       <DependentUpon>frmAddChannelWizard.vb</DependentUpon>
     </EmbeddedResource>
@@ -1293,6 +1308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLockedCampaign.resx">
       <DependentUpon>frmLockedCampaign.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageChannelsUnicorn.resx">
+      <DependentUpon>frmManageChannelsUnicorn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManualImport.resx">
       <DependentUpon>frmManualImport.vb</DependentUpon>

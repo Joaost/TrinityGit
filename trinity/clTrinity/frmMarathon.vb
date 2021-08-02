@@ -147,40 +147,47 @@ Public Class frmMarathon
             End If
         ElseIf e.ColumnIndex = 1 Then
             If TmpCT.Cost Is Nothing Then
-                If TmpCT.BookingType.Combination Is Nothing Then
-                    e.Value = Format(TmpCT.BookingType.PlannedNetBudget, "N0")
-                Else
-                    Dim plannedNetBudget As Integer = 0
-                    For Each TmpCC As Trinity.cCombinationChannel In TmpCT.BookingType.Combination.Relations
-                        plannedNetBudget += TmpCC.Bookingtype.PlannedNetBudget
-                    Next
-                    e.Value = Format(plannedNetBudget, "N0")
+                If TmpCT.BookingType IsNot Nothing Then
+                    If TmpCT.BookingType.Combination Is Nothing Then
+                        e.Value = Format(TmpCT.BookingType.PlannedNetBudget, "N0")
+                    Else
+                        Dim plannedNetBudget As Integer = 0
+                        For Each TmpCC As Trinity.cCombinationChannel In TmpCT.BookingType.Combination.Relations
+                            plannedNetBudget += TmpCC.Bookingtype.PlannedNetBudget
+                        Next
+                        e.Value = Format(plannedNetBudget, "N0")
+                    End If
                 End If
             ElseIf TmpCT.Cost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnSpots Then
                 e.Value = Format(TmpCT.BookingType.EstimatedSpotCount * TmpCT.Cost.Amount, "N0")
             End If
         ElseIf e.ColumnIndex = 2 Then
             If TmpCT.Cost Is Nothing Then
-                e.Value = Format(TmpCT.BookingType.ConfirmedNetBudget, "N0")
+                If TmpCT.BookingType IsNot Nothing Then
+                    e.Value = Format(TmpCT.BookingType.ConfirmedNetBudget, "N0")
+                End If
+
             ElseIf TmpCT.Cost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnSpots Then
                 e.Value = Format(TmpCT.BookingType.ConfirmedSpotCount * TmpCT.Cost.Amount, "N0")
             End If
         ElseIf e.ColumnIndex = 3 Then
             If TmpCT.Cost Is Nothing Then
-                If TmpCT.BookingType.Combination Is Nothing Then
-                    If TmpCT.BookingType.MarathonNetBudget > 0 Then
-                        e.Value = TmpCT.BookingType.MarathonNetBudget
-                    ElseIf TmpCT.BookingType.ConfirmedNetBudget > 0 Then
-                        e.Value = TmpCT.BookingType.ConfirmedNetBudget
+                If TmpCT.BookingType IsNot Nothing Then
+                    If TmpCT.BookingType.Combination Is Nothing Then
+                        If TmpCT.BookingType.MarathonNetBudget > 0 Then
+                            e.Value = TmpCT.BookingType.MarathonNetBudget
+                        ElseIf TmpCT.BookingType.ConfirmedNetBudget > 0 Then
+                            e.Value = TmpCT.BookingType.ConfirmedNetBudget
+                        Else
+                            e.Value = TmpCT.BookingType.PlannedNetBudget
+                        End If
                     Else
-                        e.Value = TmpCT.BookingType.PlannedNetBudget
+                        Dim plannedNetBudget As Integer = 0
+                        For Each TmpCC As Trinity.cCombinationChannel In TmpCT.BookingType.Combination.Relations
+                            plannedNetBudget += TmpCC.Bookingtype.PlannedNetBudget
+                        Next
+                        e.Value = plannedNetBudget
                     End If
-                Else
-                    Dim plannedNetBudget As Integer = 0
-                    For Each TmpCC As Trinity.cCombinationChannel In TmpCT.BookingType.Combination.Relations
-                        plannedNetBudget += TmpCC.Bookingtype.PlannedNetBudget
-                    Next
-                    e.Value = plannedNetBudget
                 End If
             ElseIf TmpCT.Cost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnSpots Then
                 e.Value = Val(grdMarathon.Rows(e.RowIndex).Cells(e.ColumnIndex).Tag)

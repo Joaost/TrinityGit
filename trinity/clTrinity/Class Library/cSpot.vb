@@ -13,5 +13,6 @@ Namespace Trinity
         Public SpotIndex As Long
         Public TRP As Single
         Public Programme As String
+        Public breakID As String
     End Class
 End Namespace

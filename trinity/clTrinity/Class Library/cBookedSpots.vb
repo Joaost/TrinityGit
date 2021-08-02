@@ -80,49 +80,50 @@ Found:
 
         End Function
 
-        Public Function Add(ByVal ID As String, ByVal DatabaseID As String, ByVal Channel As String, ByVal AirDate As Date, ByVal MaM As Integer, ByVal Programme As String, ByVal ProgAfter As String, ByVal ProgBefore As String, ByVal GrossPrice As Decimal, ByVal NetPrice As Decimal, ByVal ChannelEstimate As Single, ByVal MyEstimate As Single, ByVal MyEstimateChannelTarget As Single, ByVal Filmcode As String, ByVal Bookingtype As String, ByVal IsLocal As Boolean, ByVal IsRB As Boolean, ByVal Bid As Single) As cBookedSpot
+        Public Function Add(ByVal ID As String, ByVal DatabaseID As String, ByVal Channel As String, ByVal AirDate As Date, ByVal MaM As Integer, ByVal Programme As String, ByVal ProgAfter As String, ByVal ProgBefore As String, ByVal GrossPrice As Decimal, ByVal NetPrice As Decimal, ByVal ChannelEstimate As Single, ByVal MyEstimate As Single, ByVal MyEstimateChannelTarget As Single, ByVal Filmcode As String, ByVal Bookingtype As String, ByVal IsLocal As Boolean, ByVal IsRB As Boolean, ByVal Bid As Single, Optional ByVal breakID As String = "") As cBookedSpot
 
             Try
 
-           
-            'create a new object
-            Dim objNewMember As cBookedSpot
-            objNewMember = New cBookedSpot(Main)
+
+                'create a new object
+                Dim objNewMember As cBookedSpot
+                objNewMember = New cBookedSpot(Main)
 
 
-            'set the properties passed into the method
-            objNewMember.ID = ID
-            objNewMember.DatabaseID = DatabaseID
-            objNewMember.AirDate = AirDate
-            objNewMember.MaM = MaM
-            objNewMember.Programme = Programme
-            objNewMember.ProgAfter = ProgAfter
-            objNewMember.ProgBefore = ProgBefore
-            objNewMember.Filmcode = Filmcode
-            objNewMember.Channel = Main.Channels(Channel)
-            objNewMember.Bookingtype = objNewMember.Channel.BookingTypes(Bookingtype)
-            objNewMember.week = objNewMember.Bookingtype.GetWeek(AirDate)
-            objNewMember.GrossPrice = GrossPrice
-            objNewMember.NetPrice = NetPrice
-            objNewMember.ChannelEstimate = ChannelEstimate
-            objNewMember.MyEstimate = MyEstimate
-            objNewMember.IsLocal = IsLocal
-            objNewMember.IsRB = IsRB
-            objNewMember.Bid = Bid
-            objNewMember.AddedValues = New Dictionary(Of String, Trinity.cAddedValue)
-            'Main.ExtendedInfos(DatabaseID).IsBooked = True
-            Main.RFEstimation.Spots.Add(AirDate, MaM, Channel, ID)
+                'set the properties passed into the method
+                objNewMember.ID = ID
+                objNewMember.DatabaseID = DatabaseID
+                objNewMember.AirDate = AirDate
+                objNewMember.MaM = MaM
+                objNewMember.Programme = Programme
+                objNewMember.ProgAfter = ProgAfter
+                objNewMember.ProgBefore = ProgBefore
+                objNewMember.Filmcode = Filmcode
+                objNewMember.Channel = Main.Channels(Channel)
+                objNewMember.Bookingtype = objNewMember.Channel.BookingTypes(Bookingtype)
+                objNewMember.week = objNewMember.Bookingtype.GetWeek(AirDate)
+                objNewMember.GrossPrice = GrossPrice
+                objNewMember.NetPrice = NetPrice
+                objNewMember.ChannelEstimate = ChannelEstimate
+                objNewMember.MyEstimate = MyEstimate
+                objNewMember.IsLocal = IsLocal
+                objNewMember.IsRB = IsRB
+                objNewMember.Bid = Bid
+                objNewMember.AddedValues = New Dictionary(Of String, Trinity.cAddedValue)
+                'Main.ExtendedInfos(DatabaseID).IsBooked = True
+                Main.RFEstimation.Spots.Add(AirDate, MaM, Channel, ID)
+                objNewMember.breakID = breakID
 
 
-            'If Not objNewMember.Bookingtype.Weeks(1).Films(Filmcode) Is Nothing Then
-            '    objNewMember.GrossPrice30 = GrossPrice / (objNewMember.Bookingtype.Weeks(1).Films(Filmcode).Index / 100)
-            'End If
-            objNewMember.MyEstimateBuyTarget = MyEstimateChannelTarget
-            mCol.Add(objNewMember, ID)
+                'If Not objNewMember.Bookingtype.Weeks(1).Films(Filmcode) Is Nothing Then
+                '    objNewMember.GrossPrice30 = GrossPrice / (objNewMember.Bookingtype.Weeks(1).Films(Filmcode).Index / 100)
+                'End If
+                objNewMember.MyEstimateBuyTarget = MyEstimateChannelTarget
+                mCol.Add(objNewMember, ID)
 
 
-            'return the object created
-            Add = objNewMember
+                'return the object created
+                Add = objNewMember
                 objNewMember = Nothing
 
             Catch ex As Exception

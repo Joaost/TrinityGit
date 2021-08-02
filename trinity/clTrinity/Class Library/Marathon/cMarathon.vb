@@ -218,7 +218,7 @@ Public Class Marathon
         Dim HTTP As System.Net.WebClient
         Dim _receiveXML As New System.Xml.Linq.XDocument
 
-        System.Net.ServicePointManager.SecurityProtocol = Net.SecurityProtocolType.Ssl3
+        System.Net.ServicePointManager.SecurityProtocol = Net.SecurityProtocolType.Tls
         System.Net.ServicePointManager.ServerCertificateValidationCallback = New System.Net.Security.RemoteCertificateValidationCallback(AddressOf AcceptAll)
 
         HTTP = New System.Net.WebClient

@@ -38,6 +38,7 @@
     Property EstimationTarget As String
     Property UseCPP As Boolean = False
     Property Area As String = "SE"
+    Property BreakID As String
 
     Function MaM() As Integer
         Dim hours As Integer = 0

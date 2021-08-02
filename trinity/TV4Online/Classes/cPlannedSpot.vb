@@ -273,7 +273,15 @@ AirDate_Error:
                 Err.Raise(Err.Number, "cPlannedSpot: AirDate", Err.Description)
             End Set
         End Property
-
+        Private mvarBreakID As String
+        Public Property BreakID() As String
+            Get
+                Return mvarBreakID
+            End Get
+            Set(ByVal value As String)
+                mvarBreakID = value
+            End Set
+        End Property
         Public Property Bookingtype() As Object
 
             Get

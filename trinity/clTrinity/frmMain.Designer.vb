@@ -233,6 +233,7 @@ Partial Class frmMain
         Me.lblUserCompany = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ManageUnicornChannelSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msMain.SuspendLayout()
         Me.tstMain.SuspendLayout()
         Me.pnlMenu.SuspendLayout()
@@ -593,7 +594,7 @@ Partial Class frmMain
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DefineChannelsToolStripMenuItem, Me.LoToolStripMenuItem, Me.EditPricelistToolStripMenuItem, Me.ChannelPackagesToolStripMenuItem, Me.DefineDaypartsToolStripMenuItem, Me.EditClietsToolStripMenuItem, Me.mnuEditPeople, Me.ToolStripMenuItem1, Me.PreferencesToolStripMenuItem, Me.ToolStripMenuItem3, Me.DownloadLatestVersionToolStripMenuItem, Me.mnuDownloadDevVersion, Me.InstalledPluginsToolStripMenuItem, Me.ToolStripMenuItem8, Me.ReadScheduleFileToolStripMenuItem, Me.mnuReadSpotcontrol, Me.UploadChannelSchedulesToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DefineChannelsToolStripMenuItem, Me.LoToolStripMenuItem, Me.EditPricelistToolStripMenuItem, Me.ChannelPackagesToolStripMenuItem, Me.DefineDaypartsToolStripMenuItem, Me.EditClietsToolStripMenuItem, Me.mnuEditPeople, Me.ManageUnicornChannelSettingsToolStripMenuItem, Me.ToolStripMenuItem1, Me.PreferencesToolStripMenuItem, Me.ToolStripMenuItem3, Me.DownloadLatestVersionToolStripMenuItem, Me.mnuDownloadDevVersion, Me.InstalledPluginsToolStripMenuItem, Me.ToolStripMenuItem8, Me.ReadScheduleFileToolStripMenuItem, Me.mnuReadSpotcontrol, Me.UploadChannelSchedulesToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
@@ -601,14 +602,14 @@ Partial Class frmMain
         'DefineChannelsToolStripMenuItem
         '
         Me.DefineChannelsToolStripMenuItem.Name = "DefineChannelsToolStripMenuItem"
-        Me.DefineChannelsToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.DefineChannelsToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.DefineChannelsToolStripMenuItem.Text = "Define channels"
         '
         'LoToolStripMenuItem
         '
         Me.LoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteUnusedChannelsToolStripMenuItem, Me.ToolStripSeparator8, Me.DefaultToolStripMenuItem, Me.channelset1, Me.channelset2, Me.channelset3, Me.channelset4})
         Me.LoToolStripMenuItem.Name = "LoToolStripMenuItem"
-        Me.LoToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.LoToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.LoToolStripMenuItem.Text = "Channel Options"
         '
         'DeleteUnusedChannelsToolStripMenuItem
@@ -659,88 +660,88 @@ Partial Class frmMain
         'EditPricelistToolStripMenuItem
         '
         Me.EditPricelistToolStripMenuItem.Name = "EditPricelistToolStripMenuItem"
-        Me.EditPricelistToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.EditPricelistToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.EditPricelistToolStripMenuItem.Text = "Edit pricelist"
         '
         'ChannelPackagesToolStripMenuItem
         '
         Me.ChannelPackagesToolStripMenuItem.Name = "ChannelPackagesToolStripMenuItem"
-        Me.ChannelPackagesToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.ChannelPackagesToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.ChannelPackagesToolStripMenuItem.Text = "Channel packages"
         '
         'DefineDaypartsToolStripMenuItem
         '
         Me.DefineDaypartsToolStripMenuItem.Name = "DefineDaypartsToolStripMenuItem"
-        Me.DefineDaypartsToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.DefineDaypartsToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.DefineDaypartsToolStripMenuItem.Text = "Define dayparts"
         '
         'EditClietsToolStripMenuItem
         '
         Me.EditClietsToolStripMenuItem.Name = "EditClietsToolStripMenuItem"
-        Me.EditClietsToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.EditClietsToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.EditClietsToolStripMenuItem.Text = "Edit clients"
         '
         'mnuEditPeople
         '
         Me.mnuEditPeople.Name = "mnuEditPeople"
-        Me.mnuEditPeople.Size = New System.Drawing.Size(242, 22)
+        Me.mnuEditPeople.Size = New System.Drawing.Size(251, 22)
         Me.mnuEditPeople.Text = "Edit planners and buyers"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(239, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(248, 6)
         '
         'PreferencesToolStripMenuItem
         '
         Me.PreferencesToolStripMenuItem.Name = "PreferencesToolStripMenuItem"
-        Me.PreferencesToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.PreferencesToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.PreferencesToolStripMenuItem.Text = "Preferences"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(239, 6)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(248, 6)
         '
         'DownloadLatestVersionToolStripMenuItem
         '
         Me.DownloadLatestVersionToolStripMenuItem.Name = "DownloadLatestVersionToolStripMenuItem"
-        Me.DownloadLatestVersionToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.DownloadLatestVersionToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.DownloadLatestVersionToolStripMenuItem.Text = "Download latest version"
         '
         'mnuDownloadDevVersion
         '
         Me.mnuDownloadDevVersion.Name = "mnuDownloadDevVersion"
-        Me.mnuDownloadDevVersion.Size = New System.Drawing.Size(242, 22)
+        Me.mnuDownloadDevVersion.Size = New System.Drawing.Size(251, 22)
         Me.mnuDownloadDevVersion.Text = "Download development version"
         '
         'InstalledPluginsToolStripMenuItem
         '
         Me.InstalledPluginsToolStripMenuItem.Name = "InstalledPluginsToolStripMenuItem"
-        Me.InstalledPluginsToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.InstalledPluginsToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.InstalledPluginsToolStripMenuItem.Text = "Installed plugins"
         '
         'ToolStripMenuItem8
         '
         Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(239, 6)
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(248, 6)
         '
         'ReadScheduleFileToolStripMenuItem
         '
         Me.ReadScheduleFileToolStripMenuItem.Name = "ReadScheduleFileToolStripMenuItem"
-        Me.ReadScheduleFileToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.ReadScheduleFileToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.ReadScheduleFileToolStripMenuItem.Text = "Read metafile"
         '
         'mnuReadSpotcontrol
         '
         Me.mnuReadSpotcontrol.Name = "mnuReadSpotcontrol"
-        Me.mnuReadSpotcontrol.Size = New System.Drawing.Size(242, 22)
+        Me.mnuReadSpotcontrol.Size = New System.Drawing.Size(251, 22)
         Me.mnuReadSpotcontrol.Text = "Read spotcontrol file"
         '
         'UploadChannelSchedulesToolStripMenuItem
         '
         Me.UploadChannelSchedulesToolStripMenuItem.Name = "UploadChannelSchedulesToolStripMenuItem"
-        Me.UploadChannelSchedulesToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.UploadChannelSchedulesToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.UploadChannelSchedulesToolStripMenuItem.Text = "Upload channel schedules"
         '
         'mnuWindow
@@ -2049,6 +2050,12 @@ Partial Class frmMain
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
         '
+        'ManageUnicornChannelSettingsToolStripMenuItem
+        '
+        Me.ManageUnicornChannelSettingsToolStripMenuItem.Name = "ManageUnicornChannelSettingsToolStripMenuItem"
+        Me.ManageUnicornChannelSettingsToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.ManageUnicornChannelSettingsToolStripMenuItem.Text = "Manage Unicorn channel settings"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2304,4 +2311,5 @@ Partial Class frmMain
     Friend WithEvents ReloadAllPricelistsToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents DoBothToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditClietsToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ManageUnicornChannelSettingsToolStripMenuItem As Windows.Forms.ToolStripMenuItem
 End Class

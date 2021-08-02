@@ -1200,8 +1200,8 @@ CreateRows:
             Dim DataGridViewRow1 As System.Windows.Forms.DataGridViewRow = CType(x, System.Windows.Forms.DataGridViewRow)
             Dim DataGridViewRow2 As System.Windows.Forms.DataGridViewRow = CType(y, System.Windows.Forms.DataGridViewRow)
 
-            Dim CompareResult As Integer = System.String.Compare( _
-                DataGridViewRow1.Cells("colSpotlistDateTimeSerial").Value, _
+            Dim CompareResult As Integer = System.String.Compare(
+                DataGridViewRow1.Cells("colSpotlistDateTimeSerial").Value,
                 DataGridViewRow2.Cells("colSpotlistDateTimeSerial").Value)
 
             Return CompareResult
@@ -3758,7 +3758,7 @@ grdSchedule_DblClick_Error:
         If Campaign.Channels(Chan).BookingTypes(BT).Weeks(Campaign.Channels(Chan).BookingTypes(BT).GetWeek(TmpEI.AirDate).Name).Films(TmpFilm.Name).Share = 0 Then
             If MsgBox("This film are not scheduled for this week, do you still want to book the spot?", MsgBoxStyle.YesNo, "Continue?") = MsgBoxResult.No Then Exit Sub
         End If
-        Campaign.BookedSpots.Add(SpotID, ID, TmpEI.Channel, TmpEI.AirDate, TmpEI.MaM, TmpEI.ProgAfter, TmpEI.ProgAfter, "", Gross, TmpEI.NetPrice(TmpFilm, Campaign.Channels(Chan).BookingTypes(BT), Bid), TmpEI.ChannelEstimate, TmpEI.EstimatedRating, TmpEI.EstimatedRatingBuyingTarget, cmbFilm.Text, BT, InStr(TmpEI.Remark, "L") > 0, InStr(TmpEI.Remark, "R") > 0, Bid)
+        Campaign.BookedSpots.Add(SpotID, ID, TmpEI.Channel, TmpEI.AirDate, TmpEI.MaM, TmpEI.ProgAfter, TmpEI.ProgAfter, "", Gross, TmpEI.NetPrice(TmpFilm, Campaign.Channels(Chan).BookingTypes(BT), Bid), TmpEI.ChannelEstimate, TmpEI.EstimatedRating, TmpEI.EstimatedRatingBuyingTarget, cmbFilm.Text, BT, InStr(TmpEI.Remark, "L") > 0, InStr(TmpEI.Remark, "R") > 0, Bid, TmpEI.breakID)
 
         'AddToPivot(Campaign.BookedSpots(SpotID))
         For Each TmpWeek In Campaign.Channels(TmpEI.Channel).BookingTypes(BT).Weeks
@@ -4163,11 +4163,11 @@ grdSchedule_DblClick_Error:
 
 
         mnuFilter.Show(stpSchedule, cmdScheduleFilter.Bounds.Left, cmdScheduleFilter.Bounds.Height)
-        If dropDownMenuParent = "WeekdaysDropDown"
+        If dropDownMenuParent = "WeekdaysDropDown" Then
             mnuWeekdays.DropDown.Show()
-        ElseIf dropDownMenuParent = "WeeksDropDown"
+        ElseIf dropDownMenuParent = "WeeksDropDown" Then
             mnuWeeks.DropDown.Show()
-        ElseIf dropDownMenuParent = "DaypartsDropDown"
+        ElseIf dropDownMenuParent = "DaypartsDropDown" Then
             mnuDayparts.DropDown.Show()
 
         End If
@@ -4473,13 +4473,13 @@ grdSchedule_DblClick_Error:
         'Next
 
         mnuFilter.Show(stpSpotlist, cmdSpotlistFilter.Bounds.Left, cmdSpotlistFilter.Bounds.Height)
-        If dropDownMenuParent = "WeekdaysDropDown"
+        If dropDownMenuParent = "WeekdaysDropDown" Then
             mnuWeekdays.DropDown.Show()
-        ElseIf dropDownMenuParent = "WeeksDropDown"
+        ElseIf dropDownMenuParent = "WeeksDropDown" Then
             mnuWeeks.DropDown.Show()
-        ElseIf dropDownMenuParent = "DaypartsDropDown"
+        ElseIf dropDownMenuParent = "DaypartsDropDown" Then
             mnuDayparts.DropDown.Show()
-        ElseIf dropDownMenuParent = "ChannelDropDown"
+        ElseIf dropDownMenuParent = "ChannelDropDown" Then
             mnuChannel.DropDown.Show()
         End If
 
@@ -5155,7 +5155,7 @@ grdSchedule_DblClick_Error:
 
         Public Channel As String
         Public [Date] As DateTime
-        Public MaM As Integer 
+        Public MaM As Integer
         Public Duration As Byte
         Public ProgBefore As String
         Public ProgAfter As String
@@ -5167,18 +5167,18 @@ grdSchedule_DblClick_Error:
             ElseIf Me.Date = other.Date Then
                 If Me.MaM < other.MaM Then
                     Return -1
-                ElseIf Me.MaM > other.MaM then
+                ElseIf Me.MaM > other.MaM Then
                     Return 1
                 Else
                     Return 0
                 End If
-            else
+            Else
                 Return 1
             End If
         End Function
     End Class
 
-    Private Sub ReadK2Spotlist() 
+    Private Sub ReadK2Spotlist()
         Dim SpotList As New List(Of K2Spot)
         Dim Excel As CultureSafeExcel.Application
         Dim WB As CultureSafeExcel.Workbook
@@ -5193,12 +5193,12 @@ grdSchedule_DblClick_Error:
         Excel = New CultureSafeExcel.Application(False)
 
         Excel.DisplayAlerts = False
-        Excel.ScreenUpdating = false
+        Excel.ScreenUpdating = False
 
         If dlgOpen.ShowDialog = Windows.Forms.DialogResult.Cancel Then
             System.Threading.Thread.CurrentThread.CurrentCulture = oldCI
             cmbDatabase.SelectedIndex = 0
-            Return 
+            Return
         End If
         WB = Excel.OpenWorkbook(Filename:=dlgOpen.FileName, CorruptLoad:=2)
 
@@ -5213,8 +5213,8 @@ grdSchedule_DblClick_Error:
             End While
             If row = 20 Then
                 MessageBox.Show("Could not find headline row. Aborting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                WB.Close
-                Excel.Quit
+                WB.Close()
+                Excel.Quit()
                 Return
             End If
 
@@ -5252,39 +5252,39 @@ grdSchedule_DblClick_Error:
 
             If ChannelColumn = -1 Then
                 MessageBox.Show("Could not find column 'Channel'. Aborting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                WB.Close
-                Excel.Quit
-                Return 
+                WB.Close()
+                Excel.Quit()
+                Return
             End If
             If DateColumn = -1 Then
                 MessageBox.Show("Could not find column 'Date'. Aborting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                WB.Close
-                Excel.Quit
-                Return 
+                WB.Close()
+                Excel.Quit()
+                Return
             End If
             If TimeColumn = -1 Then
                 MessageBox.Show("Could not find column 'Time'. Aborting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                WB.Close
-                Excel.Quit
-                Return 
+                WB.Close()
+                Excel.Quit()
+                Return
             End If
             If DurColumn = -1 Then
                 MessageBox.Show("Could not find column 'Dur sec'. Aborting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                WB.Close
-                Excel.Quit
-                Return 
+                WB.Close()
+                Excel.Quit()
+                Return
             End If
             If ProgBeforeColumn = -1 Then
                 MessageBox.Show("Could not find column 'Prog Before'. Aborting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                WB.Close
-                Excel.Quit
-                Return 
+                WB.Close()
+                Excel.Quit()
+                Return
             End If
             If ProgAfterColumn = -1 Then
                 MessageBox.Show("Could not find column 'Prog After'. Aborting.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                WB.Close
-                Excel.Quit
-                Return 
+                WB.Close()
+                Excel.Quit()
+                Return
             End If
             If TRPColumn = -1 Then
                 MessageBox.Show("Could not find column 'TRP " & Campaign.MainTarget.TargetNameNice & "'." & vbCrLf & vbCrLf & "Spot estimates will be 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -5293,8 +5293,8 @@ grdSchedule_DblClick_Error:
             Dim firstDate As DateTime = DateTime.Parse(.Cells(row, DateColumn).Value.ToString())
 
             If DatePart(DateInterval.Weekday, firstDate, FirstDayOfWeek.Monday, FirstWeekOfYear.FirstFourDays) <> DatePart(DateInterval.Weekday, DateTime.FromOADate(Campaign.StartDate), FirstDayOfWeek.Monday, FirstWeekOfYear.FirstFourDays) Then
-                For Each TmpChan As cChannel In Campaign.Channels 
-                    For each TmpBT As cBookingType In TmpChan.BookingTypes 
+                For Each TmpChan As cChannel In Campaign.Channels
+                    For Each TmpBT As cBookingType In TmpChan.BookingTypes
                         TmpBT.Weeks(1).StartDate -= 1
                     Next
                 Next
@@ -5302,7 +5302,7 @@ grdSchedule_DblClick_Error:
 
             While DatePart(DateInterval.Weekday, firstDate, FirstDayOfWeek.Monday, FirstWeekOfYear.FirstFourDays) <> DatePart(DateInterval.Weekday, DateTime.FromOADate(Campaign.StartDate), FirstDayOfWeek.Monday, FirstWeekOfYear.FirstFourDays)
                 firstDate = firstDate.AddDays(-1)
-            End While 
+            End While
 
             Dim MaxRow As Long = .UsedRange.Rows.Count
 
@@ -5314,8 +5314,8 @@ grdSchedule_DblClick_Error:
             While .Cells(row, ChannelColumn).Value <> ""
                 Dim spot As New K2Spot
                 spot.Channel = .Cells(row, ChannelColumn).Value.ToString()
-                spot.Date = DateTime.FromOADate(Campaign.StartDate) + (DateTime.Parse(.Cells(row, DateColumn).Value.ToString()) - firstDate )
-                spot.MaM = Int(.Cells(row, TimeColumn ).Value.ToString.Substring(0, 2)) * 60 + Int(.Cells(row, TimeColumn).Value.ToString.Substring(3, 2))
+                spot.Date = DateTime.FromOADate(Campaign.StartDate) + (DateTime.Parse(.Cells(row, DateColumn).Value.ToString()) - firstDate)
+                spot.MaM = Int(.Cells(row, TimeColumn).Value.ToString.Substring(0, 2)) * 60 + Int(.Cells(row, TimeColumn).Value.ToString.Substring(3, 2))
                 spot.Duration = .Cells(row, DurColumn).Value
                 spot.ProgBefore = .Cells(row, ProgBeforeColumn).Value.ToString()
                 spot.ProgAfter = .Cells(row, ProgAfterColumn).Value.ToString()
@@ -5326,13 +5326,13 @@ grdSchedule_DblClick_Error:
                 SpotList.Add(spot)
 
                 pb.Progress = row
-                row+=1
+                row += 1
             End While
         End With
-        WB.Close
-        Excel.Quit
+        WB.Close()
+        Excel.Quit()
 
-        For each TmpBT As cBookingType In cmbChannel.Items
+        For Each TmpBT As cBookingType In cmbChannel.Items
 
             Dim Spots As IEnumerable(Of K2Spot) = SpotList.Where(Function(s) TmpBT.ParentChannel Is Trinity.Helper.Adedge2Channel(s.Channel))
             pb.Status = "Finding spots for " & TmpBT.ToString() & " 0 / " & Spots.Count
@@ -5342,65 +5342,65 @@ grdSchedule_DblClick_Error:
             Dim events As DataTable = GetEventsTable(TmpBT)
 
             Dim GetExtendedInfo As Func(Of Integer, cExtendedInfo) = Function(evt As Integer) As cExtendedInfo
-                                    If evt >= events.Rows.Count Then
-                                        Return Nothing
-                                    End If
-                                    Dim row As DataRow = events.Rows(evt)
-                                    Dim TmpEI As cExtendedInfo
-                                    Dim ID As String = row.Item("Channel") & row.Item("Date") & row.Item("StartMam")
+                                                                         If evt >= events.Rows.Count Then
+                                                                             Return Nothing
+                                                                         End If
+                                                                         Dim row As DataRow = events.Rows(evt)
+                                                                         Dim TmpEI As cExtendedInfo
+                                                                         Dim ID As String = row.Item("Channel") & row.Item("Date") & row.Item("StartMam")
 
-                                    If Not Campaign.ExtendedInfos.Exists(ID) Then
-                                    TmpEI = New cExtendedInfo(Campaign, row, TmpBT, NoEstimationTargetColumn)
+                                                                         If Not Campaign.ExtendedInfos.Exists(ID) Then
+                                                                             TmpEI = New cExtendedInfo(Campaign, row, TmpBT, NoEstimationTargetColumn)
 
-                                    Campaign.ExtendedInfos.Add(TmpEI, ID)
-                                    End If
-                                    TmpEI = DirectCast(Campaign.ExtendedInfos.Item(ID), Trinity.cExtendedInfo)
+                                                                             Campaign.ExtendedInfos.Add(TmpEI, ID)
+                                                                         End If
+                                                                         TmpEI = DirectCast(Campaign.ExtendedInfos.Item(ID), Trinity.cExtendedInfo)
 
-                                    Return TmpEI
-                                End function
+                                                                         Return TmpEI
+                                                                     End Function
 
             Spots = Spots.OrderBy(Of K2Spot)(Function(s) s)
-            
+
             Dim e As Long = 0
             Dim lastDateChangeIndex As Long = 0
             For Each Spot As K2Spot In Spots
 
                 pb.Status = "Finding spots for " & TmpBT.ToString() & pb.Progress & " / " & Spots.Count
 
-                e=lastDateChangeIndex 
+                e = lastDateChangeIndex
 
-                Dim FirstBreakIndexForDate As Func(Of DateTime, cExtendedInfo)=Function(d As DateTime) As cExtendedInfo
-                                               e = lastDateChangeIndex
-                                               Dim tmpEI As cExtendedInfo = GetExtendedInfo(e)  
-                                            
-                                               While Not IsNothing(tmpEI) AndAlso tmpEI.AirDate < d.AddDays(-1)
-                                                  e+=1
-                                                  tmpEI = GetExtendedInfo(e)
-                                               End While
-                                               lastDateChangeIndex = e
-                                               Return tmpEI
-                                           End Function
-                
+                Dim FirstBreakIndexForDate As Func(Of DateTime, cExtendedInfo) = Function(d As DateTime) As cExtendedInfo
+                                                                                     e = lastDateChangeIndex
+                                                                                     Dim tmpEI As cExtendedInfo = GetExtendedInfo(e)
+
+                                                                                     While Not IsNothing(tmpEI) AndAlso tmpEI.AirDate < d.AddDays(-1)
+                                                                                         e += 1
+                                                                                         tmpEI = GetExtendedInfo(e)
+                                                                                     End While
+                                                                                     lastDateChangeIndex = e
+                                                                                     Return tmpEI
+                                                                                 End Function
+
                 Dim ei As cExtendedInfo = FirstBreakIndexForDate(Spot.Date)
                 Dim closestBreakDistance As Integer = Integer.MaxValue
-                Dim closestBreakIndex As Long  = e
-                Dim closestBreakHasSameProgAfter As Boolean = false
+                Dim closestBreakIndex As Long = e
+                Dim closestBreakHasSameProgAfter As Boolean = False
                 Dim bestFound = False
 
                 While Not IsNothing(ei) AndAlso ei.AirDate <= Spot.Date.AddDays(1) AndAlso Not bestFound
-                    Dim MaM = ei.MaM 
+                    Dim MaM = ei.MaM
                     'The closest break could belong to the date before or after so go through them but change start time accordingly
                     If ei.AirDate < Spot.Date Then
-                        MaM-=24*60
-                    ElseIf ei.AirDate > Spot.Date then
-                        MaM+=24*60
+                        MaM -= 24 * 60
+                    ElseIf ei.AirDate > Spot.Date Then
+                        MaM += 24 * 60
                     End If
 
                     Dim sameProg = Trinity.Helper.ProgramHit(Spot.ProgAfter, ei.ProgAfter)
                     Dim distance As Integer = Math.Abs(MaM - Spot.MaM)
                     If distance < closestBreakDistance Then
-                        If closestBreakHasSameProgAfter then
-                            If closestBreakDistance > 30 AndAlso distance <10 Then
+                        If closestBreakHasSameProgAfter Then
+                            If closestBreakDistance > 30 AndAlso distance < 10 Then
                                 closestBreakDistance = distance
                                 closestBreakHasSameProgAfter = sameProg
                                 closestBreakIndex = e
@@ -5410,8 +5410,8 @@ grdSchedule_DblClick_Error:
                             closestBreakHasSameProgAfter = sameProg
                             closestBreakIndex = e
                         End If
-                    ElseIf sameProg AndAlso Not closestBreakHasSameProgAfter then
-                        If distance <=30 Then
+                    ElseIf sameProg AndAlso Not closestBreakHasSameProgAfter Then
+                        If distance <= 30 Then
                             closestBreakDistance = distance
                             closestBreakHasSameProgAfter = sameProg
                             closestBreakIndex = e
@@ -5421,12 +5421,12 @@ grdSchedule_DblClick_Error:
                     If closestBreakDistance < distance AndAlso distance > 30 Then
                         bestFound = True
                     Else
-                        e+=1
+                        e += 1
                         ei = GetExtendedInfo(e)
-                    End  If
+                    End If
 
                 End While
-                If bestFound then
+                If bestFound Then
                     Dim BestBreak As cExtendedInfo = GetExtendedInfo(closestBreakIndex)
                     Dim TmpFilm As cFilm = Nothing
                     For Each TmpFilm In TmpBT.Weeks(1).Films
@@ -5435,13 +5435,13 @@ grdSchedule_DblClick_Error:
                         End If
                     Next
                     If Not IsNothing(TmpFilm) Then
-                        Campaign.BookedSpots.Add(CreateGUID(), BestBreak.ID, BestBreak.Channel, BestBreak.AirDate, BestBreak.MaM, BestBreak.ProgAfter, BestBreak.ProgAfter, "", BestBreak.GrossPrice(TmpFilm), BestBreak.NetPrice(TmpFilm,TmpBT), BestBreak.ChannelEstimate, Spot.Estimate, BestBreak.EstimatedRatingBuyingTarget, cmbFilm.Text, TmpBT.Name, InStr(BestBreak.Remark, "L") > 0, InStr(BestBreak.Remark, "R") > 0, 0)
-                    End if
-                End if
+                        Campaign.BookedSpots.Add(CreateGUID(), BestBreak.ID, BestBreak.Channel, BestBreak.AirDate, BestBreak.MaM, BestBreak.ProgAfter, BestBreak.ProgAfter, "", BestBreak.GrossPrice(TmpFilm), BestBreak.NetPrice(TmpFilm, TmpBT), BestBreak.ChannelEstimate, Spot.Estimate, BestBreak.EstimatedRatingBuyingTarget, cmbFilm.Text, TmpBT.Name, InStr(BestBreak.Remark, "L") > 0, InStr(BestBreak.Remark, "R") > 0, 0)
+                    End If
+                End If
                 pb.Progress += 1
             Next
         Next
-        pb.Close 
+        pb.Close()
         Campaign.ExtendedInfos = New cWrapper()
     End Sub
 
@@ -6805,13 +6805,13 @@ grdSchedule_DblClick_Error:
     End Class
 
     Private Sub cmdExportToAllocate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExportToAllocate.Click
-        If Windows.Forms.MessageBox.Show( _
-                                    "Are you sure you want to replace the current allocation" & vbCrLf & _
-                                    "with the budget and TRPs from this Booking?" & vbCrLf & _
-                                    vbCrLf & _
-                                    "This will also modify the pricelist for this channel.", _
-                                    "T R I N I T Y", _
-                                    Windows.Forms.MessageBoxButtons.YesNoCancel, _
+        If Windows.Forms.MessageBox.Show(
+                                    "Are you sure you want to replace the current allocation" & vbCrLf &
+                                    "with the budget and TRPs from this Booking?" & vbCrLf &
+                                    vbCrLf &
+                                    "This will also modify the pricelist for this channel.",
+                                    "T R I N I T Y",
+                                    Windows.Forms.MessageBoxButtons.YesNoCancel,
                                     Windows.Forms.MessageBoxIcon.Question) _
                         <> Windows.Forms.DialogResult.Yes Then Exit Sub
 

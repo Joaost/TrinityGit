@@ -190,67 +190,255 @@ Public Class CExportUnicornFileNew
         _printExportAsCampaign = tmpPrintAsCampaign
 
     End Sub
-    Public Function checkNameTV4(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("TV4") Or tmpChannelName = "Sjuan" Or tmpChannelName = "TV12" Or tmpChannelName = "Sportkanalen" Then
-            Return True
-        End If
-        Return False
-    End Function
-    Public Function checkNameMTG(ByVal tmpChannelName As String)
-        If before2016 Then
-            If tmpChannelName = "TV3" Or tmpChannelName = "TV6" Or tmpChannelName = "MTV" Or tmpChannelName = "TV8" Or tmpChannelName = "TV10" Or tmpChannelName = "Comedy central" Or tmpChannelName.Contains("Comedy") Or tmpChannelName = "Nickelodeon" Then
+    Public Function CheckChannelNameTV4(ByVal tmpChannelName As String)
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-TV4.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
                 Return True
             End If
-        Else
-            If tmpChannelName = "TV3" Or tmpChannelName = "TV6" Or tmpChannelName = "MTV" Or tmpChannelName = "TV8" Or tmpChannelName = "TV10" Or tmpChannelName = "Comedy central" Or tmpChannelName.Contains("Comedy") Or tmpChannelName = "Nickelodeon" Or tmpChannelName.Contains("FOX") Or tmpChannelName.Contains("National") Or tmpChannelName.Contains("History") Or tmpChannelName.Contains("Paramount") Then
-                Return True
-            End If
-        End If
+        Next
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If tmpChannelName.Contains("TV4") Or tmpChannelName = "Sjuan" Or tmpChannelName = "TV12" Or tmpChannelName = "Sportkanalen" Then
+        '    Return True
+        'End If
         Return False
     End Function
-    Public Function checkNameSBS(ByVal tmpChannelName As String)
-        If tmpChannelName = "Kanal 5" Or tmpChannelName = "Kanal 9" Or tmpChannelName = "Kanal 11" Or tmpChannelName = "Kanal11" Or tmpChannelName = "TV11" Or tmpChannelName = "Eurosport" Or tmpChannelName = "Eurosport 2" Or tmpChannelName = "Discovery" Or tmpChannelName = "TLC" Or tmpChannelName = "ID" Or tmpChannelName = "Investigation Discovery" Then
-            Return True
-        End If
+    Public Function CheckChannelNameNENT(ByVal tmpChannelName As String)
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-NENT.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
+                Return True
+            End If
+        Next
+
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If before2016 Then
+        '    If tmpChannelName = "TV3" Or tmpChannelName = "TV6" Or tmpChannelName = "MTV" Or tmpChannelName = "TV8" Or tmpChannelName = "TV10" Or tmpChannelName = "Comedy central" Or tmpChannelName.Contains("Comedy") Or tmpChannelName = "Nickelodeon" Then
+        '        Return True
+        '    End If
+        'Else
+        '    If tmpChannelName = "TV3" Or tmpChannelName = "TV6" Or tmpChannelName = "MTV" Or tmpChannelName = "TV8" Or tmpChannelName = "TV10" Or tmpChannelName = "Comedy central" Or tmpChannelName.Contains("Comedy") Or tmpChannelName = "Nickelodeon" Or tmpChannelName.Contains("FOX") Or tmpChannelName.Contains("National") Or tmpChannelName.Contains("History") Or tmpChannelName.Contains("Paramount") Then
+        '        Return True
+        '    End If
+        'End If
+        Return False
+    End Function
+    Public Function CheckChannelNameSBS(ByVal tmpChannelName As String)
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-DNS.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
+                Return True
+            End If
+        Next
+
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If tmpChannelName = "Kanal 5" Or tmpChannelName = "Kanal 9" Or tmpChannelName = "Kanal 11" Or tmpChannelName = "Kanal11" Or tmpChannelName = "TV11" Or tmpChannelName = "Eurosport" Or tmpChannelName = "Eurosport 2" Or tmpChannelName = "Discovery" Or tmpChannelName = "TLC" Or tmpChannelName = "ID" Or tmpChannelName = "Investigation Discovery" Then
+        '    Return True
+        'End If
         Return False
     End Function
 
-    Public Function checkNameFOX(ByVal tmpChannelName As String)
-        If before2016 Then
-            If tmpChannelName.Contains("FOX") Or tmpChannelName.Contains("National") Then
+    Public Function CheckChannelNameFOX(ByVal tmpChannelName As String)
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-FOX.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
                 Return True
             End If
-        End If
+        Next
+
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If before2016 Then
+        '    If tmpChannelName.Contains("FOX") Or tmpChannelName.Contains("National") Then
+        '        Return True
+        '    End If
+        'End If
         Return False
     End Function
-    Public Function checkNameCMORE(ByVal tmpChannelName As String)
-        If tmpChannelName = "CMore" Or tmpChannelName = "C More" Then
-            Return True
-        End If
+    Public Function checkChannelNameCMORE(ByVal tmpChannelName As String)
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-CMORE.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
+                Return True
+            End If
+        Next
+
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If tmpChannelName = "CMore" Or tmpChannelName = "C More" Then
+        '    Return True
+        'End If
         Return False
     End Function
-    Public Function checkNameTNT(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("TNT") Then
-            Return True
-        End If
+    Public Function checkChannelNameTNT(ByVal tmpChannelName As String)
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-TNT.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
+                Return True
+            End If
+        Next
+
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If tmpChannelName.Contains("TNT") Then
+        '    Return True
+        'End If
         Return False
     End Function
-    Public Function checkNameCartoon(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("Cartoon") Then
-            Return True
-        End If
+    Public Function CheckChannelNameCartoon(ByVal tmpChannelName As String)
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-Cartoon.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
+                Return True
+            End If
+        Next
+
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If tmpChannelName.Contains("Cartoon") Then
+        '    Return True
+        'End If
         Return False
     End Function
-    Public Function checkNameDisney(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("Disney") Then
-            Return True
-        End If
-        Return False
+    Public Function CheckChannelDisney(ByVal tmpChannelName As String)
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-Disney.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
+                Return True
+            End If
+        Next
+
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If tmpChannelName.Contains("Disney") Then
+        '    Return True
+        'End If
+        'Return False
     End Function
     Public Function checkNameGodare(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("Godare") Then
-            Return True
-        End If
+        ' New way to check channel bundling etc
+        '------------------------------------------------
+        ' Initiate TV4 xml nodelist
+        Dim datapath As String = TrinitySettings.DataPath + "Unicorn-Godare.xml"
+        ' Create a xml document reader
+        Dim doc As New XmlDocument
+        ' Load document
+        doc.Load(datapath)
+        ' Create a nodelist to iterate through
+        Dim nodelist As XmlNodeList = doc.SelectNodes("Channels")
+        ' Select Channel as a nodelist object
+        nodelist = doc.GetElementsByTagName("Channel")
+        ' Iterate through nodelist Channel object
+        For Each node As XmlElement In nodelist
+            If node.GetAttribute("Name").Contains(tmpChannelName) Then
+                Return True
+            End If
+        Next
+
+        ' Old and manual way to check TV4 channel name
+        '------------------------------------------------
+        'If tmpChannelName.Contains("Godare") Then
+        '    Return True
+        'End If
         Return False
     End Function
 
@@ -904,23 +1092,23 @@ Public Class CExportUnicornFileNew
             .Cells(row, 12).Value = targets
         End With
     End Sub
-    Function CheckChannel(ByVal tmpChName As String)
+    Function CheckChannelHouse(ByVal tmpChName As String)
         Dim result As String = ""
-        If checkNameTV4(tmpChName) Then
+        If CheckChannelNameTV4(tmpChName) Then
             result = "TV4"
-        ElseIf checkNameMTG(tmpChName) Then
+        ElseIf CheckChannelNameNENT(tmpChName) Then
             result = "MTG"
-        ElseIf checkNameSBS(tmpChName) Then
+        ElseIf CheckChannelNameSBS(tmpChName) Then
             result = "SBS"
-        ElseIf checkNameFOX(tmpChName) Then
+        ElseIf CheckChannelNameFOX(tmpChName) Then
             result = "FOX"
-        ElseIf checkNameCartoon(tmpChName) Then
+        ElseIf CheckChannelNameCartoon(tmpChName) Then
             result = "Cartoon"
-        ElseIf checkNameDisney(tmpChName) Then
+        ElseIf CheckChannelDisney(tmpChName) Then
             result = "Disney"
-        ElseIf checkNameTNT(tmpChName) Then
+        ElseIf checkChannelNameTNT(tmpChName) Then
             result = "TNT"
-        ElseIf checkNameCMORE(tmpChName) Then
+        ElseIf checkChannelNameCMORE(tmpChName) Then
             result = "C MORE"
         End If
         Return result
@@ -964,34 +1152,34 @@ Public Class CExportUnicornFileNew
                                 From tmpB1 As cBookingType In c.BookingTypes Where tmpB1 Is tmpCC.Bookingtype
                                 tmpChan = c
                                 tmpBook = tmpB
-                                If CheckChannel(c.ChannelName) = "TV4" Then
+                                If CheckChannelHouse(c.ChannelName) = "TV4" Then
                                     If rowCombination = 0 Then
                                         rowCombination = tmpRow
                                         rowTV4 = rowCombination
                                     End If
-                                ElseIf CheckChannel(c.ChannelName) = "MTG" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "MTG" Then
                                     rowCombination = tmpRow
                                     rowMTG = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "SBS" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "SBS" Then
                                     rowCombination = tmpRow
                                     rowSBS = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "FOX" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "FOX" Then
                                     rowCombination = tmpRow
                                     rowSBS = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "C MORE" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "C MORE" Then
                                     rowCombination = tmpRow
                                     rowCMORE = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "Cartoon" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "Cartoon" Then
                                     rowCombination = tmpRow
                                     rowCartoon = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "TNT" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "TNT" Then
                                     rowCombination = tmpRow
                                     rowTNT = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "Disney" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "Disney" Then
                                     rowCombination = tmpRow
                                     rowDisney = rowCombination
                                 End If
-                                tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
+                                tmpChannelNameInputForCheckBundling = CheckChannelHouse(c.ChannelName)
                                 StationBudgetTableData(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                              c.ChannelName, rowCombination, True)
                                 Exit For
@@ -1018,7 +1206,7 @@ Public Class CExportUnicornFileNew
                             End If
                             'TV4
                             If Not jumpBookingType Then
-                                If checkNameTV4(tmpChan.ChannelName) Then
+                                If CheckChannelNameTV4(tmpChan.ChannelName) Then
                                     If _BundleTV4 And rowTV4 <> 0 And rowOnlyTV4 <> 0 Then
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
@@ -1055,7 +1243,7 @@ Public Class CExportUnicornFileNew
                                     End If
                                 End If
                                 'MTG
-                                If checkNameMTG(tmpChan.ChannelName) Then
+                                If CheckChannelNameNENT(tmpChan.ChannelName) Then
                                     If _bundleMTGSpecial Then
                                         If tmpChan.ChannelName.Contains("TV3") Or tmpChan.ChannelName.Contains("TV6") Then
                                             If rowMTGSpecial <> 0 Then
@@ -1093,7 +1281,7 @@ Public Class CExportUnicornFileNew
                                     End If
                                 End If
                                 'SBS
-                                If checkNameSBS(tmpChan.ChannelName) Then
+                                If CheckChannelNameSBS(tmpChan.ChannelName) Then
                                     If _BundleSBS And rowSBS <> 0 Then
                                         If rowSBS = 0 Then
                                             rowSBS = tmpRow
@@ -1107,7 +1295,7 @@ Public Class CExportUnicornFileNew
                                     StationBudgetTableData(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
                                 End If
                                 'Fox
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If CheckChannelNameFOX(tmpChan.ChannelName) Then
                                     If _BundleFOX And rowFOX <> 0 Then
                                         If rowFOX = 0 Then
                                             rowFOX = tmpRow
@@ -1121,7 +1309,7 @@ Public Class CExportUnicornFileNew
                                     StationBudgetTableData(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                 End If
                                 'Cmore
-                                If checkNameCMORE(tmpChan.ChannelName) Then
+                                If checkChannelNameCMORE(tmpChan.ChannelName) Then
                                     If _BundleCMORE And rowCMORE <> 0 Then
                                         If rowCMORE = 0 Then
                                             rowCMORE = tmpRow
@@ -1135,7 +1323,7 @@ Public Class CExportUnicornFileNew
                                     StationBudgetTableData(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
                                 End If
                                 'TNT
-                                If checkNameTNT(tmpChan.ChannelName) Then
+                                If checkChannelNameTNT(tmpChan.ChannelName) Then
                                     If _BundleTNT And rowTNT <> 0 Then
                                         If rowTNT = 0 Then
                                             rowTNT = tmpRow
@@ -1149,7 +1337,7 @@ Public Class CExportUnicornFileNew
                                     StationBudgetTableData(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
                                 End If
                                 'Cartoon
-                                If checkNameCartoon(tmpChan.ChannelName) Then
+                                If CheckChannelNameCartoon(tmpChan.ChannelName) Then
                                     If _BundleCartoon And rowCartoon <> 0 Then
                                         If rowCartoon = 0 Then
                                             rowCartoon = tmpRow
@@ -1163,7 +1351,7 @@ Public Class CExportUnicornFileNew
                                     StationBudgetTableData(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
                                 End If
                                 'Disney
-                                If checkNameDisney(tmpChan.ChannelName) Then
+                                If CheckChannelDisney(tmpChan.ChannelName) Then
                                     If _BundleDisney Then
                                         If rowDisney = 0 Then
                                             rowDisney = tmpRow
@@ -1423,34 +1611,34 @@ Public Class CExportUnicornFileNew
                                 From tmpB1 As cBookingType In c.BookingTypes Where tmpB1 Is tmpCC.Bookingtype
                                 tmpChan = c
                                 tmpBook = tmpB
-                                If CheckChannel(c.ChannelName) = "TV4" Then
+                                If CheckChannelHouse(c.ChannelName) = "TV4" Then
                                     If rowCombination = 0 Then
                                         rowCombination = tmpRow
                                         rowTV4 = rowCombination
                                     End If
-                                ElseIf CheckChannel(c.ChannelName) = "MTG" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "MTG" Then
                                     rowCombination = tmpRow
                                     rowMTG = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "SBS" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "SBS" Then
                                     rowCombination = tmpRow
                                     rowSBS = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "FOX" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "FOX" Then
                                     rowCombination = tmpRow
                                     rowSBS = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "C MORE" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "C MORE" Then
                                     rowCombination = tmpRow
                                     rowCMORE = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "Cartoon" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "Cartoon" Then
                                     rowCombination = tmpRow
                                     rowCartoon = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "TNT" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "TNT" Then
                                     rowCombination = tmpRow
                                     rowTNT = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "Disney" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "Disney" Then
                                     rowCombination = tmpRow
                                     rowDisney = rowCombination
                                 End If
-                                tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
+                                tmpChannelNameInputForCheckBundling = CheckChannelHouse(c.ChannelName)
                                 PrimarytargetTRPweeklyData(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                              c.ChannelName, rowCombination, True)
                                 Exit For
@@ -1477,7 +1665,7 @@ Public Class CExportUnicornFileNew
                             End If
                             If Not jumpBookingType Then
                                 'TV4
-                                If checkNameTV4(tmpChan.ChannelName) Then
+                                If CheckChannelNameTV4(tmpChan.ChannelName) Then
                                     If _BundleTV4 And rowTV4 <> 0 And rowOnlyTV4 <> 0 Then
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
@@ -1514,7 +1702,7 @@ Public Class CExportUnicornFileNew
                                     currentRow = tmpRow
                                 End If
 
-                                If checkNameMTG(tmpChan.ChannelName) Then
+                                If CheckChannelNameNENT(tmpChan.ChannelName) Then
                                     If _bundleMTGSpecial Then
                                         If tmpChan.ChannelName.Contains("TV3") Or tmpChan.ChannelName.Contains("TV6") Then
                                             If rowMTGSpecial <> 0 Then
@@ -1552,7 +1740,7 @@ Public Class CExportUnicornFileNew
                                     End If
                                     currentRow = tmpRow
                                 End If
-                                If checkNameSBS(tmpChan.ChannelName) Then
+                                If CheckChannelNameSBS(tmpChan.ChannelName) Then
                                     If _BundleSBS And rowSBS <> 0 Then
                                         If rowSBS = 0 Then
                                             rowSBS = tmpRow
@@ -1566,7 +1754,7 @@ Public Class CExportUnicornFileNew
                                     PrimarytargetTRPweeklyData(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If CheckChannelNameFOX(tmpChan.ChannelName) Then
                                     If _BundleFOX And rowFOX <> 0 Then
                                         If rowFOX = 0 Then
                                             rowFOX = tmpRow
@@ -1580,7 +1768,7 @@ Public Class CExportUnicornFileNew
                                     PrimarytargetTRPweeklyData(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameCMORE(tmpChan.ChannelName) Then
+                                If checkChannelNameCMORE(tmpChan.ChannelName) Then
                                     If _BundleCMORE And rowCMORE <> 0 Then
                                         If rowCMORE = 0 Then
                                             rowCMORE = tmpRow
@@ -1594,7 +1782,7 @@ Public Class CExportUnicornFileNew
                                     PrimarytargetTRPweeklyData(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameTNT(tmpChan.ChannelName) Then
+                                If checkChannelNameTNT(tmpChan.ChannelName) Then
                                     If _BundleTNT And rowTNT <> 0 Then
                                         If rowTNT = 0 Then
                                             rowTNT = tmpRow
@@ -1608,7 +1796,7 @@ Public Class CExportUnicornFileNew
                                     PrimarytargetTRPweeklyData(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameCartoon(tmpChan.ChannelName) Then
+                                If CheckChannelNameCartoon(tmpChan.ChannelName) Then
                                     If _BundleCartoon And rowCartoon <> 0 Then
                                         If rowCartoon = 0 Then
                                             rowCartoon = tmpRow
@@ -1622,7 +1810,7 @@ Public Class CExportUnicornFileNew
                                     PrimarytargetTRPweeklyData(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameDisney(tmpChan.ChannelName) Then
+                                If CheckChannelDisney(tmpChan.ChannelName) Then
                                     If _BundleDisney And rowDisney <> 0 Then
                                         If rowDisney = 0 Then
                                             rowDisney = tmpRow
@@ -1881,34 +2069,34 @@ Public Class CExportUnicornFileNew
                                 From tmpB1 As cBookingType In c.BookingTypes Where tmpB1 Is tmpCC.Bookingtype
                                 tmpChan = c
                                 tmpBook = tmpB
-                                If CheckChannel(c.ChannelName) = "TV4" Then
+                                If CheckChannelHouse(c.ChannelName) = "TV4" Then
                                     If rowCombination = 0 Then
                                         rowCombination = tmpRow
                                         rowTV4 = rowCombination
                                     End If
-                                ElseIf CheckChannel(c.ChannelName) = "MTG" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "MTG" Then
                                     rowCombination = tmpRow
                                     rowMTG = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "SBS" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "SBS" Then
                                     rowCombination = tmpRow
                                     rowSBS = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "FOX" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "FOX" Then
                                     rowCombination = tmpRow
                                     rowSBS = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "C MORE" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "C MORE" Then
                                     rowCombination = tmpRow
                                     rowCMORE = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "Cartoon" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "Cartoon" Then
                                     rowCombination = tmpRow
                                     rowCartoon = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "TNT" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "TNT" Then
                                     rowCombination = tmpRow
                                     rowTNT = rowCombination
-                                ElseIf CheckChannel(c.ChannelName) = "Disney" Then
+                                ElseIf CheckChannelHouse(c.ChannelName) = "Disney" Then
                                     rowCombination = tmpRow
                                     rowDisney = rowCombination
                                 End If
-                                tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
+                                tmpChannelNameInputForCheckBundling = CheckChannelHouse(c.ChannelName)
                                 BuyingtargetTRPWeeklyDATA(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                              c.ChannelName, rowCombination, True)
                                 Exit For
@@ -1935,7 +2123,7 @@ Public Class CExportUnicornFileNew
                             End If
                             If Not jumpBookingType Then
                                 'TV4
-                                If checkNameTV4(tmpChan.ChannelName) Then
+                                If CheckChannelNameTV4(tmpChan.ChannelName) Then
                                     If _BundleTV4 And rowTV4 <> 0 And rowOnlyTV4 <> 0 Then
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
@@ -1972,7 +2160,7 @@ Public Class CExportUnicornFileNew
                                     End If
                                     currentRow = tmpRow
                                 End If
-                                If checkNameMTG(tmpChan.ChannelName) Then
+                                If CheckChannelNameNENT(tmpChan.ChannelName) Then
                                     If _bundleMTGSpecial Then
                                         If tmpChan.ChannelName.Contains("TV3") Or tmpChan.ChannelName.Contains("TV6") Then
                                             If rowMTGSpecial <> 0 Then
@@ -2010,7 +2198,7 @@ Public Class CExportUnicornFileNew
                                     End If
                                     currentRow = tmpRow
                                 End If
-                                If checkNameSBS(tmpChan.ChannelName) Then
+                                If CheckChannelNameSBS(tmpChan.ChannelName) Then
                                     If _BundleSBS And rowSBS <> 0 Then
                                         If rowSBS = 0 Then
                                             rowSBS = tmpRow
@@ -2024,7 +2212,7 @@ Public Class CExportUnicornFileNew
                                     BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If CheckChannelNameFOX(tmpChan.ChannelName) Then
                                     If _BundleFOX And rowFOX <> 0 Then
                                         If rowFOX = 0 Then
                                             rowFOX = tmpRow
@@ -2038,7 +2226,7 @@ Public Class CExportUnicornFileNew
                                     BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameCMORE(tmpChan.ChannelName) Then
+                                If checkChannelNameCMORE(tmpChan.ChannelName) Then
                                     If _BundleCMORE And rowCMORE <> 0 Then
                                         If rowCMORE = 0 Then
                                             rowCMORE = tmpRow
@@ -2052,7 +2240,7 @@ Public Class CExportUnicornFileNew
                                     BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameTNT(tmpChan.ChannelName) Then
+                                If checkChannelNameTNT(tmpChan.ChannelName) Then
                                     If _BundleTNT And rowTNT <> 0 Then
                                         If rowTNT = 0 Then
                                             rowTNT = tmpRow
@@ -2066,7 +2254,7 @@ Public Class CExportUnicornFileNew
                                     BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "TNT", _BundleTNT, tmpRow, tmpChan.ChannelName, rowTNT)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameCartoon(tmpChan.ChannelName) Then
+                                If CheckChannelNameCartoon(tmpChan.ChannelName) Then
                                     If _BundleCartoon And rowCartoon <> 0 Then
                                         If rowCartoon = 0 Then
                                             rowCartoon = tmpRow
@@ -2080,7 +2268,7 @@ Public Class CExportUnicornFileNew
                                     BuyingtargetTRPWeeklyDATA(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameDisney(tmpChan.ChannelName) Then
+                                If CheckChannelDisney(tmpChan.ChannelName) Then
                                     If _BundleDisney And rowDisney <> 0 Then
                                         If rowDisney = 0 Then
                                             rowDisney = tmpRow
@@ -2363,34 +2551,34 @@ Public Class CExportUnicornFileNew
                             From tmpB1 As cBookingType In c.BookingTypes Where tmpB1 Is tmpCC.Bookingtype
                             tmpChan = c
                             tmpBook = tmpB
-                            If CheckChannel(c.ChannelName) = "TV4" Then
+                            If CheckChannelHouse(c.ChannelName) = "TV4" Then
                                 If rowCombination = 0 Then
                                     rowCombination = tmpRow
                                     rowTV4 = rowCombination
                                 End If
-                            ElseIf CheckChannel(c.ChannelName) = "MTG" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "MTG" Then
                                 rowCombination = tmpRow
                                 rowMTG = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "SBS" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "SBS" Then
                                 rowCombination = tmpRow
                                 rowSBS = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "FOX" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "FOX" Then
                                 rowCombination = tmpRow
                                 rowSBS = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "C MORE" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "C MORE" Then
                                 rowCombination = tmpRow
                                 rowCMORE = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "Cartoon" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "Cartoon" Then
                                 rowCombination = tmpRow
                                 rowCartoon = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "TNT" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "TNT" Then
                                 rowCombination = tmpRow
                                 rowTNT = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "Disney" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "Disney" Then
                                 rowCombination = tmpRow
                                 rowDisney = rowCombination
                             End If
-                            tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
+                            tmpChannelNameInputForCheckBundling = CheckChannelHouse(c.ChannelName)
                             PrimTargetTRPSpotlengthData(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                          c.ChannelName, rowCombination, rowHeader, True)
                             Exit For
@@ -2417,7 +2605,7 @@ Public Class CExportUnicornFileNew
                                 Next
                             End If
                             If (Not jumpBookingType) Then
-                                If checkNameTV4(tmpChan.ChannelName) Then
+                                If CheckChannelNameTV4(tmpChan.ChannelName) Then
                                     If _BundleTV4 And rowTV4 <> 0 And rowOnlyTV4 <> 0 Then
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
@@ -2453,7 +2641,7 @@ Public Class CExportUnicornFileNew
                                     End If
                                     currentRow = tmpRow
                                 End If
-                                If checkNameMTG(tmpChan.ChannelName) Then
+                                If CheckChannelNameNENT(tmpChan.ChannelName) Then
                                     If _bundleMTGSpecial Then
                                         If tmpChan.ChannelName.Contains("TV3") Or tmpChan.ChannelName.Contains("TV6") Then
                                             If rowMTGSpecial <> 0 Then
@@ -2490,7 +2678,7 @@ Public Class CExportUnicornFileNew
                                         PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "MTG", _BundleMTG, tmpRow, tmpChan.ChannelName, rowMTG, rowHeader)
                                     End If
                                 End If
-                                If checkNameSBS(tmpChan.ChannelName) Then
+                                If CheckChannelNameSBS(tmpChan.ChannelName) Then
                                     If _BundleSBS And rowSBS <> 0 Then
                                         If rowSBS = 0 Then
                                             rowSBS = tmpRow
@@ -2504,7 +2692,7 @@ Public Class CExportUnicornFileNew
                                     PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If CheckChannelNameFOX(tmpChan.ChannelName) Then
                                     If _BundleFOX And rowFOX <> 0 Then
                                         If rowFOX = 0 Then
                                             rowFOX = tmpRow
@@ -2518,7 +2706,7 @@ Public Class CExportUnicornFileNew
                                     PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameCMORE(tmpChan.ChannelName) Then
+                                If checkChannelNameCMORE(tmpChan.ChannelName) Then
                                     If _BundleCMORE And rowCMORE <> 0 Then
                                         If rowCMORE = 0 Then
                                             rowCMORE = tmpRow
@@ -2532,7 +2720,7 @@ Public Class CExportUnicornFileNew
                                     PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameCartoon(tmpChan.ChannelName) Then
+                                If CheckChannelNameCartoon(tmpChan.ChannelName) Then
                                     If _BundleCartoon And rowCartoon <> 0 Then
                                         If rowCartoon = 0 Then
                                             rowCartoon = tmpRow
@@ -2546,7 +2734,7 @@ Public Class CExportUnicornFileNew
                                     PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameDisney(tmpChan.ChannelName) Then
+                                If CheckChannelDisney(tmpChan.ChannelName) Then
                                     If _BundleDisney And rowDisney <> 0 Then
                                         If rowDisney = 0 Then
                                             rowDisney = tmpRow
@@ -2560,7 +2748,7 @@ Public Class CExportUnicornFileNew
                                     PrimTargetTRPSpotlengthData(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameTNT(tmpChan.ChannelName) Then
+                                If checkChannelNameTNT(tmpChan.ChannelName) Then
                                     If _BundleTNT And rowTNT <> 0 Then
                                         If rowTNT = 0 Then
                                             rowTNT = tmpRow
@@ -2842,34 +3030,34 @@ Public Class CExportUnicornFileNew
                             From tmpB1 As cBookingType In c.BookingTypes Where tmpB1 Is tmpCC.Bookingtype
                             tmpChan = c
                             tmpBook = tmpB
-                            If CheckChannel(c.ChannelName) = "TV4" Then
+                            If CheckChannelHouse(c.ChannelName) = "TV4" Then
                                 If rowCombination = 0 Then
                                     rowCombination = tmpRow
                                     rowTV4 = rowCombination
                                 End If
-                            ElseIf CheckChannel(c.ChannelName) = "MTG" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "MTG" Then
                                 rowCombination = tmpRow
                                 rowMTG = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "SBS" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "SBS" Then
                                 rowCombination = tmpRow
                                 rowSBS = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "FOX" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "FOX" Then
                                 rowCombination = tmpRow
                                 rowSBS = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "C MORE" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "C MORE" Then
                                 rowCombination = tmpRow
                                 rowCMORE = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "Cartoon" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "Cartoon" Then
                                 rowCombination = tmpRow
                                 rowCartoon = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "TNT" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "TNT" Then
                                 rowCombination = tmpRow
                                 rowTNT = rowCombination
-                            ElseIf CheckChannel(c.ChannelName) = "Disney" Then
+                            ElseIf CheckChannelHouse(c.ChannelName) = "Disney" Then
                                 rowCombination = tmpRow
                                 rowDisney = rowCombination
                             End If
-                            tmpChannelNameInputForCheckBundling = CheckChannel(c.ChannelName)
+                            tmpChannelNameInputForCheckBundling = CheckChannelHouse(c.ChannelName)
                             BuyTargetTRPSpotlengthData(tmpChan, tmpB, tmpChannelNameInputForCheckBundling, False, tmpRow,
                                          c.ChannelName, rowCombination, rowHeader, True)
                             Exit For
@@ -2894,7 +3082,7 @@ Public Class CExportUnicornFileNew
                                 Next
                             End If
                             If (Not jumpBookingType) Then
-                                If checkNameTV4(tmpChan.ChannelName) Then
+                                If CheckChannelNameTV4(tmpChan.ChannelName) Then
                                     If _BundleTV4 And rowTV4 <> 0 And rowOnlyTV4 <> 0 Then
                                         If rowTV4 = 0 Then
                                             rowTV4 = tmpRow
@@ -2930,7 +3118,7 @@ Public Class CExportUnicornFileNew
                                     End If
                                     currentRow = tmpRow
                                 End If
-                                If checkNameMTG(tmpChan.ChannelName) Then
+                                If CheckChannelNameNENT(tmpChan.ChannelName) Then
                                     If _bundleMTGSpecial Then
                                         If tmpChan.ChannelName.Contains("TV3") Or tmpChan.ChannelName.Contains("TV6") Then
                                             If rowMTGSpecial <> 0 Then
@@ -2968,7 +3156,7 @@ Public Class CExportUnicornFileNew
                                     End If
                                     currentRow = tmpRow
                                 End If
-                                If checkNameSBS(tmpChan.ChannelName) Then
+                                If CheckChannelNameSBS(tmpChan.ChannelName) Then
                                     If _BundleSBS And rowSBS <> 0 Then
                                         If rowSBS = 0 Then
                                             rowSBS = tmpRow
@@ -2982,7 +3170,7 @@ Public Class CExportUnicornFileNew
                                     BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "SBS", _BundleSBS, tmpRow, tmpChan.ChannelName, rowSBS, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameFOX(tmpChan.ChannelName) Then
+                                If CheckChannelNameFOX(tmpChan.ChannelName) Then
                                     If _BundleFOX And rowFOX <> 0 Then
                                         If rowFOX = 0 Then
                                             rowFOX = tmpRow
@@ -2996,7 +3184,7 @@ Public Class CExportUnicornFileNew
                                     BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "FOX", _BundleFOX, tmpRow, tmpChan.ChannelName, rowFOX, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameCMORE(tmpChan.ChannelName) Then
+                                If checkChannelNameCMORE(tmpChan.ChannelName) Then
                                     If _BundleCMORE And rowCMORE <> 0 Then
                                         If rowCMORE = 0 Then
                                             rowCMORE = tmpRow
@@ -3010,7 +3198,7 @@ Public Class CExportUnicornFileNew
                                     BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "CMORE", _BundleCMORE, tmpRow, tmpChan.ChannelName, rowCMORE, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameCartoon(tmpChan.ChannelName) Then
+                                If CheckChannelNameCartoon(tmpChan.ChannelName) Then
                                     If _BundleCartoon And rowCartoon <> 0 Then
                                         If rowCartoon = 0 Then
                                             rowCartoon = tmpRow
@@ -3024,7 +3212,7 @@ Public Class CExportUnicornFileNew
                                     BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "Cartoon", _BundleCartoon, tmpRow, tmpChan.ChannelName, rowCartoon, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameDisney(tmpChan.ChannelName) Then
+                                If CheckChannelDisney(tmpChan.ChannelName) Then
                                     If _BundleDisney And rowDisney <> 0 Then
                                         If rowDisney = 0 Then
                                             rowDisney = tmpRow
@@ -3038,7 +3226,7 @@ Public Class CExportUnicornFileNew
                                     BuyTargetTRPSpotlengthData(tmpChan, tmpBook, "Disney", _BundleDisney, tmpRow, tmpChan.ChannelName, rowDisney, rowHeader)
                                     currentRow = tmpRow
                                 End If
-                                If checkNameTNT(tmpChan.ChannelName) Then
+                                If checkChannelNameTNT(tmpChan.ChannelName) Then
                                     If _BundleTNT And rowTNT <> 0 Then
                                         If rowTNT = 0 Then
                                             rowTNT = tmpRow

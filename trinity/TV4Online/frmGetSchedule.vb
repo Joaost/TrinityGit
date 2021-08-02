@@ -147,6 +147,7 @@ Public Class frmGetSchedule
                     'newBreak.UseCPP = True
                     newBreak.ChanEst = tmpScheduleSpot.EstimatedTRP
                     newBreak.IsLocal = tmpScheduleSpot.LocalTvAvailable
+                    newBreak.BreakID = tmpScheduleSpot.BreakId
 
                     _prevBreak = newBreak
                     importList.Add(newBreak)
@@ -182,7 +183,7 @@ Public Class frmGetSchedule
                     Next
                     Dim _b As Long = 0
                     For Each _break In Breaks
-                        Using _com As New SqlClient.SqlCommand("INSERT INTO events ([ID],[Channel],[Date],[Time],[StartMam],[Duration],[Name],[ChanEst],[Price],[IsLocal],[EstimationPeriod],[Area],[Comment],[Type],[UseCPP],[EstimationTarget],[Addition]) VALUES (@ID,@Channel,@Date,@Time,@StartMam,@Duration,@Name," & _break.ChanEst.ToString.Replace(",", ".") & ",@Price,@IsLocal,@EstimationPeriod,@Area,@Comment,0,@UseCPP,@EstTarget,@Addition)", _conn)
+                        Using _com As New SqlClient.SqlCommand("INSERT INTO events ([ID],[Channel],[Date],[Time],[StartMam],[Duration],[Name],[ChanEst],[Price],[IsLocal],[EstimationPeriod],[Area],[Comment],[Type],[UseCPP],[EstimationTarget],[Addition],[breakID]) VALUES (@ID,@Channel,@Date,@Time,@StartMam,@Duration,@Name," & _break.ChanEst.ToString.Replace(",", ".") & ",@Price,@IsLocal,@EstimationPeriod,@Area,@Comment,0,@UseCPP,@EstTarget,@Addition,@breakID)", _conn)
                             _com.Transaction = _tran
                             _com.Parameters.AddWithValue("ID", _break.ID)
                             _com.Parameters.AddWithValue("Channel", _break.Channel)
@@ -199,10 +200,11 @@ Public Class frmGetSchedule
                             _com.Parameters.AddWithValue("EstTarget", IIf(String.IsNullOrEmpty(_break.EstimationTarget), "", _break.EstimationTarget))
                             _com.Parameters.AddWithValue("Addition", _break.Addition)
                             _com.Parameters.AddWithValue("Comment", "")
+                            _com.Parameters.AddWithValue("breakID", _break.BreakID)
                             _com.ExecuteNonQuery()
                             _b += 1
                             amountOfbreaksImported = _b
-                            Progress((_b / listOfScheduleBreaks.Count) * 100, "Writing spots to " & _db)
+                            Progress((_b / listOfScheduleBreaks.Count) * 100, "Writing spots to " & _DB)
                         End Using
                     Next
                     _tran.Commit()

@@ -92,6 +92,7 @@ Namespace Trinity
             colXml.SetAttribute("IsLocal", Me.IsLocal)
             colXml.SetAttribute("IsRB", Me.IsRB)
             colXml.SetAttribute("Comments", Me.Comments)
+            colXml.SetAttribute("BreakID", Me.breakID)
 
             Dim XMLAVs As XmlElement = xmlDoc.CreateElement("AddedValues")
             Dim XMLAV As XmlElement
@@ -111,6 +112,15 @@ On_Error:
             errorMessege.Add("Error saving the Booked spot " & Me.ID)
             Return False
         End Function
+        Private _breakID As String
+        Public Property breakID() As String
+            Get
+                Return _breakID
+            End Get
+            Set(ByVal value As String)
+                _breakID = value
+            End Set
+        End Property
 
         Public Sub setIndexOnFilm(ByVal index As Single)
             Dim NetPrice = mvarNetPrice / (mvarBookingtype.Weeks(1).Films(mvarFilmcode).Index / 100)

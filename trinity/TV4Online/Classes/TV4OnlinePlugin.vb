@@ -32,6 +32,7 @@ Public Class TV4OnlinePlugin
     Private _TrinitySurchages As New List(Of String)
 
     Private Shared _internalApplication As ITrinityApplication
+
     Friend Shared Function InternalApplication() As ITrinityApplication
         Return _internalApplication
     End Function
@@ -138,8 +139,6 @@ Public Class TV4OnlinePlugin
             Next
 
         End If
-
-
 
 
 
@@ -260,13 +259,35 @@ Public Class TV4OnlinePlugin
 
 
     Public Function GetOrg()
+        'Dim tmpClient As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
+        'Dim test = tmpClient.GetUserOrganizations(Preferences.Username, Preferences.Token)
+        'If test.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
+        '    Return True
+        'Else
+        '    Return False
+        'End If
+    End Function
+    Public Function getClientList(Optional ByVal tempOrgIDSelected As String = "")
+        ' Object to initiate connection to Spotlight
         Dim tmpClient As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
-        Dim test = tmpClient.GetUserOrganizations(Preferences.Username, Preferences.Token)
-        If test.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
-            Return True
+        ' Fetch available organizations for user
+        Dim resultGetOrg = tmpClient.GetUserOrganizations(Preferences.Username, Preferences.Token)
+        ' Local variable for organizations
+        Dim res = resultGetOrg.ReturnValues
+        ' New list of organizations
+        Dim tempOrganizationIDs As New List(Of String)
+        ' Iterate through organizations
+        For Each myPair As KeyValuePair(Of String, String) In res
+            tempOrganizationIDs.Add(myPair.Key)
+        Next
+        Dim orgID As String = ""
+        If tempOrgIDSelected = "" Then
+            orgID = tempOrganizationIDs(0)
         Else
-            Return False
+            orgID = tempOrgIDSelected
         End If
+        Dim clientList = tmpClient.GetClientsForOrganization(Preferences.Username, Preferences.Token, OrgID)
+        Return clientList
     End Function
 
     Sub confirmationStatus()
@@ -289,7 +310,7 @@ Public Class TV4OnlinePlugin
         End Try
     End Sub
 
-    Public Function UploadBooking(tmpBook As TV4Online.SpotlightApiV23.xsd.Booking, ByRef _ro As Integer, Optional ByVal otherOrganizations As Boolean = False, Optional ByVal orgID As String = "")
+    Public Function UploadBooking(tmpBook As TV4Online.SpotlightApiV23.xsd.Booking, ByRef _ro As Integer, Optional ByVal otherOrganizations As Boolean = False, Optional ByVal orgID As String = "", Optional ByVal tempClientID As String = "", Optional ByVal tempClientName As String = "")
 
         Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
 
@@ -299,7 +320,8 @@ Public Class TV4OnlinePlugin
         _bookings.Add(tmpBook)
 
         _campaign.AgencyContactName = _camp.Buyer
-        _campaign.Client = _camp.Client
+        _campaign.Client = tempClientName
+        _campaign.ClientId = tempClientID
         _campaign.Product = _camp.Product
         _campaign.System = "Trinity 4.0"
         _campaign.Country = "SE"

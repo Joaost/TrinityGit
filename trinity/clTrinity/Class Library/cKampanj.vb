@@ -3971,8 +3971,12 @@ On_Error:
                         If Not TmpPlannedSpot.AddedValue Is Nothing Then
                             XMLSpot.SetAttribute("AddedValue", TmpPlannedSpot.AddedValue.ID)
                         End If
+                        If Not TmpPlannedSpot.breakID Is Nothing Then
+                            XMLSpot.SetAttribute("BreakID", TmpPlannedSpot.breakID)
+                        End If
+
                         XMLSpots.AppendChild(XMLSpot)
-                    End If
+                        End If
                 Next TmpPlannedSpot
                 XMLCamp.AppendChild(XMLSpots)
 
@@ -4073,6 +4077,7 @@ On_Error:
                     XMLSpot.SetAttribute("IsLocal", mvarBookedSpots(i).IsLocal)
                     XMLSpot.SetAttribute("IsRB", mvarBookedSpots(i).IsRB)
                     XMLSpot.SetAttribute("Comments", mvarBookedSpots(i).Comments)
+                    XMLSpot.SetAttribute("breakID", mvarBookedSpots(i).breakID)
                     XMLIndexes = XMLDoc.CreateElement("AddedValues")
                     If Not mvarBookedSpots(i).AddedValues Is Nothing Then
                         For Each kv As KeyValuePair(Of String, Trinity.cAddedValue) In mvarBookedSpots(i).AddedValues
@@ -6005,6 +6010,7 @@ ActualSpots:
             Dim TmpIsLocal As Boolean
             Dim TmpIsRB As Boolean
             Dim TmpBid As Decimal
+            Dim tmpBreakID As String = ""
 
             mvarBookedSpots = New cBookedSpots(Me)
             mvarBookedSpots.MainObject = Me
@@ -6041,8 +6047,12 @@ ActualSpots:
                         TmpIsLocal = XMLSpot.GetAttribute("IsLocal")
                         TmpIsRB = XMLSpot.GetAttribute("IsRB")
                     End If
+                    If Not IsDBNull(XMLSpot.GetAttribute("breakID")) Then
+                        tmpBreakID = XMLSpot.GetAttribute("breakID")
+                    End If
 
-                    mvarBookedSpots.Add(TmpID, TmpDBID, TmpString, TmpDate, TmpMaM, TmpProg, TmpProgAfter, TmpProgBefore, TmpGrossPrice, TmpNetPrice, TmpChannelEstimate, tmpMyEstimate, TmpMyEstChanTarget, TmpFilmcode, TmpBT, TmpIsLocal, TmpIsRB, TmpBid)
+
+                    mvarBookedSpots.Add(TmpID, TmpDBID, TmpString, TmpDate, TmpMaM, TmpProg, TmpProgAfter, TmpProgBefore, TmpGrossPrice, TmpNetPrice, TmpChannelEstimate, tmpMyEstimate, TmpMyEstChanTarget, TmpFilmcode, TmpBT, TmpIsLocal, TmpIsRB, TmpBid, tmpBreakID)
                     If Not mvarBookedSpots(TmpID) Is Nothing Then
                         If Not IsDBNull(XMLSpot.GetAttribute("Comments")) Then
                             mvarBookedSpots(TmpID).Comments = XMLSpot.GetAttribute("Comments")
@@ -6207,9 +6217,9 @@ ActualSpots:
                 Next
 
                 If priceErrors.Count > 1 Then
-                    MsgBox("The following medias does not have a pricelist covering the entire campaign period in the booked target:" & vbCrLf & strPriceErrors & vbCrLf & "To correct these errors make sure your price lists are updated and correct", MsgBoxStyle.Critical, "E R R O R")
+                    MsgBox("The following medias does Not have a pricelist covering the entire campaign period in the booked target" & vbCrLf & strPriceErrors & vbCrLf & "To correct these errors make sure your price lists are updated And correct", MsgBoxStyle.Critical, "E R R O R")
                 Else
-                    MsgBox("This media does not have a pricelist covering the entire campaign period in the booked target:" & vbCrLf & strPriceErrors & vbCrLf & "To correct this error make sure your price list are updated and correct", MsgBoxStyle.Critical, "E R R O R")
+                    MsgBox("This media does Not have a pricelist covering the entire campaign period in the booked target" & vbCrLf & strPriceErrors & vbCrLf & "To correct this error make sure your price list are updated And correct", MsgBoxStyle.Critical, "E R R O R")
                 End If
             End If
 

@@ -4671,6 +4671,11 @@ CreatePlan:
 
         'Dim test = Campaign.checkIfCampaignHasRescritions(TrinitySettings.UserName)
     End Sub
+
+    Private Sub ManageUnicornChannelSettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageUnicornChannelSettingsToolStripMenuItem.Click
+        Dim unicornManageChannels = New frmManageChannelsUnicorn
+        unicornManageChannels.show()
+    End Sub
 End Class
 
 'Public Class clsExcelReport
