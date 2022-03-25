@@ -83,7 +83,7 @@ Public Class cExportFileToMediatool
         Dim value = Trinity.Helper.FormatDateForBooking(Campaign.StartDate)                
         With _sheet1
             printHeader()
-            filterData1()
+            fetchData()
             For i As Integer = 1 To 40
                 .Columns(i).AutoFit()
             Next
@@ -162,7 +162,7 @@ Public Class cExportFileToMediatool
         _BundleTNT = tempBundleTNT
         _BundleDisney = tempBundleDisney
         _printExportAsCampaign = tmpPrintAsCampaign
-        
+
     End Sub
     Public Function checkNameTV4(ByVal tmpChannelName As String)
         If tmpChannelName.Contains("TV4") Or tmpChannelName = "Sjuan" Or tmpChannelName = "TV12" Then
@@ -176,7 +176,7 @@ Public Class cExportFileToMediatool
         End If
         Return False
     End Function
-    
+
     Public Function checkNameCMORE(ByVal tmpChannelName As String)
         If tmpChannelName = "CMore" Or tmpChannelName = "C More" Then
             Return True
@@ -202,7 +202,7 @@ Public Class cExportFileToMediatool
         Return False
     End Function
 
-    Public Function GetWeeks
+    Public Function GetWeeks()
         For Each tmpC As Trinity.cChannel In Campaign.Channels
             For Each tmpBT As Trinity.cBookingType In tmpC.BookingTypes
                 If tmpBT.BookIt Then
@@ -221,26 +221,29 @@ Public Class cExportFileToMediatool
         _sheet1.Range("B" & 2 & ":M" & 999).Font.Size = 10
         With _sheet1
             'Create textfields
-            .Cells(1, 1).Value = "Media vehicle"
-            .Cells(1, 2).Value = "Brand"
-            .Cells(1, 3).Value = "Start date"
-            .Cells(1, 4).Value = "End date"
-            .Cells(1, 5).Value = "Material date"
-            .Cells(1, 6).Value = "Movie code"
-            .Cells(1, 7).Value = "Target"
-            .Cells(1, 8).Value = "Objective"
-            .Cells(1, 9).Value = "TRP"
-            .Cells(1, 10).Value = "CPP"
-            .Cells(1, 11).Value = "Gross cost"
-            .Cells(1, 12).Value = "Discount in %"
-            .Cells(1, 13).Value = "Net cost"
-            .Cells(1, 14).Value = "Commission"
-            .Cells(1, 15).Value = "Net Net cost"     
-            .Cells(1, 16).Value = "Service fee"
-            .Cells(1, 17).Value = "CTC"
-            .Cells(1, 18).Value = "Comments"
-            .Cells(1, 19).Value = "Events"
-            
+            .Cells(1, 1).Value = "Brand"
+            .Cells(1, 2).Value = "Segment"
+            .Cells(1, 3).Value = "Objective"
+            .Cells(1, 4).Value = "Category"
+            .Cells(1, 5).Value = "Product"
+            .Cells(1, 6).Value = "Media House"
+            .Cells(1, 7).Value = "Media Vehicle"
+            .Cells(1, 8).Value = "Start Date"
+            .Cells(1, 9).Value = "End Date"
+            .Cells(1, 10).Value = "Material Date"
+            .Cells(1, 11).Value = "Format Details"
+            .Cells(1, 12).Value = "Spot Length"
+            .Cells(1, 13).Value = "Planned TRP"
+            .Cells(1, 14).Value = "GrossCost"
+            .Cells(1, 15).Value = "Discount in %"
+            .Cells(1, 16).Value = "Net Cost"
+            .Cells(1, 17).Value = "Commission"
+            .Cells(1, 18).Value = "Net Net Cost"
+            .Cells(1, 19).Value = "Other fee"
+            .Cells(1, 20).Value = "CTC"
+            .Cells(1, 21).Value = "Comments"
+            .Cells(1, 22).Value = "Campaign Name"
+
             ''Print data
             '.Cells(2, 1).Value = Campaign.Name
             '.Cells(2, 2).Value = "NO"
@@ -269,7 +272,7 @@ Public Class cExportFileToMediatool
             '.Cells(2, 10).Value = Campaign.ClientID.ToString()
             '.Cells(2, 11).Value = Campaign.ContractID.ToString()
             '.Cells(2, 12).Value = Campaign.Product
-            
+
             'Dim tmpMainTarget As String = translateTargetName(Campaign.MainTarget.TargetName)
             ''Dim tmpSecondTarget As String = translateTargetName(Campaign.SecondaryTarget.TargetName)
             'Dim tmpSecondTarget As String = translateTargetName(Campaign.MainTarget.TargetName)
@@ -279,38 +282,38 @@ Public Class cExportFileToMediatool
 
             '.Cells(2, 16).Value = Trinity.Helper.FormatDateForBooking(Campaign.StartDate)
             '.Cells(2, 17).Value = Trinity.Helper.FormatDateForBooking(Campaign.EndDate)
-            
+
         End With
     End Sub
 
-    Sub printHeader2(byval tmpCol As Integer)
+    Sub printHeader2(ByVal tmpCol As Integer)
         _sheet2.Range("B" & 2 & ":M" & 999).Font.Name = "Calibri"
         _sheet2.Range("B" & 2 & ":M" & 999).Font.Size = 10
         With _sheet2
             'Create textfields
-            .Cells(1, tmpcol + 1).Value = "Campaign title"
-            .Cells(1, tmpcol + 2).Value = "Area"
-            .Cells(1, tmpcol +  3).Value = "Agency"
-            .Cells(1, tmpcol +  4).Value = "Planner"
-            .Cells(1, tmpcol + 5).Value = "Campaign type"
-            .Cells(1, tmpcol + 6).Value = "Campaign type 2"
-            .Cells(1, tmpcol + 7).Value = "Concern"
-            .Cells(1, tmpcol + 8).Value = "Advertiser"
-            .Cells(1, tmpcol + 9).Value = "Planned Budget incl. Fee"
-            .Cells(1, tmpcol + 10).Value = "Marathonclient ID"
-            .Cells(1, tmpcol + 11).Value = "Marathon client agreement"
-            .Cells(1, tmpcol + 12).Value = "Product/Brand"
+            .Cells(1, tmpCol + 1).Value = "Campaign title"
+            .Cells(1, tmpCol + 2).Value = "Area"
+            .Cells(1, tmpCol + 3).Value = "Agency"
+            .Cells(1, tmpCol + 4).Value = "Planner"
+            .Cells(1, tmpCol + 5).Value = "Campaign type"
+            .Cells(1, tmpCol + 6).Value = "Campaign type 2"
+            .Cells(1, tmpCol + 7).Value = "Concern"
+            .Cells(1, tmpCol + 8).Value = "Advertiser"
+            .Cells(1, tmpCol + 9).Value = "Planned Budget incl. Fee"
+            .Cells(1, tmpCol + 10).Value = "Marathonclient ID"
+            .Cells(1, tmpCol + 11).Value = "Marathon client agreement"
+            .Cells(1, tmpCol + 12).Value = "Product/Brand"
 
-            .Cells(1, tmpcol + 13).Value = "Primary target"
-            .Cells(1, tmpcol + 14).Value = "Secondary target"
-            .Cells(1, tmpcol + 15).Value = "Eff. Frequency"            
+            .Cells(1, tmpCol + 13).Value = "Primary target"
+            .Cells(1, tmpCol + 14).Value = "Secondary target"
+            .Cells(1, tmpCol + 15).Value = "Eff. Frequency"
 
-            .Cells(1, tmpcol + 16).Value = "Start date"
-            .Cells(1, tmpcol + 17).Value = "End date"
-            
+            .Cells(1, tmpCol + 16).Value = "Start date"
+            .Cells(1, tmpCol + 17).Value = "End date"
+
             'Print data
-            .Cells(2, tmpcol + 1).Value = Campaign.Name
-            .Cells(2, tmpcol + 2).Value = "NO"
+            .Cells(2, tmpCol + 1).Value = Campaign.Name
+            .Cells(2, tmpCol + 2).Value = "NO"
             Dim userCompany As String = ""
 
             Dim cs As String = TrinitySettings.ConnectionString(Trinity.cSettings.SettingsLocationEnum.locNetwork)
@@ -325,28 +328,28 @@ Public Class cExportFileToMediatool
                 userCompany = "Mindshare"
             End If
 
-            .Cells(2, tmpcol + 3).Value = userCompany
-            .Cells(2, tmpcol + 4).Value = Campaign.Planner
-            .Cells(2, tmpcol + 5).Value = "TV Campaign"
-            .Cells(2, tmpcol + 6).Value = "Adults"
-            .Cells(2, tmpcol + 7).Value = Campaign.Client
-            .Cells(2, tmpcol + 8).Value = Campaign.Client
+            .Cells(2, tmpCol + 3).Value = userCompany
+            .Cells(2, tmpCol + 4).Value = Campaign.Planner
+            .Cells(2, tmpCol + 5).Value = "TV Campaign"
+            .Cells(2, tmpCol + 6).Value = "Adults"
+            .Cells(2, tmpCol + 7).Value = Campaign.Client
+            .Cells(2, tmpCol + 8).Value = Campaign.Client
 
-            .Cells(2, tmpcol + 9).Value = Campaign.PlannedTotCTC.ToString()
-            .Cells(2, tmpcol + 10).Value = Campaign.ClientID.ToString()
-            .Cells(2, tmpcol + 11).Value = Campaign.ContractID.ToString()
-            .Cells(2, tmpcol + 12).Value = Campaign.Product
-            
+            .Cells(2, tmpCol + 9).Value = Campaign.PlannedTotCTC.ToString()
+            .Cells(2, tmpCol + 10).Value = Campaign.ClientID.ToString()
+            .Cells(2, tmpCol + 11).Value = Campaign.ContractID.ToString()
+            .Cells(2, tmpCol + 12).Value = Campaign.Product
+
             Dim tmpMainTarget As String = translateTargetName(Campaign.MainTarget.TargetName)
             'Dim tmpSecondTarget As String = translateTargetName(Campaign.SecondaryTarget.TargetName)
             Dim tmpSecondTarget As String = translateTargetName(Campaign.MainTarget.TargetName)
-            .Cells(2, tmpcol + 13).Value = tmpMainTarget
-            .Cells(2, tmpcol + 14).Value = tmpSecondTarget
-            .Cells(2, tmpcol + 15).Value = (Campaign.FrequencyFocus + 1) & "+"
+            .Cells(2, tmpCol + 13).Value = tmpMainTarget
+            .Cells(2, tmpCol + 14).Value = tmpSecondTarget
+            .Cells(2, tmpCol + 15).Value = (Campaign.FrequencyFocus + 1) & "+"
 
 
-            .Cells(2, tmpcol + 16).Value = Trinity.Helper.FormatDateForBooking(Campaign.StartDate)
-            .Cells(2, tmpcol + 17).Value = Trinity.Helper.FormatDateForBooking(Campaign.EndDate)
+            .Cells(2, tmpCol + 16).Value = Trinity.Helper.FormatDateForBooking(Campaign.StartDate)
+            .Cells(2, tmpCol + 17).Value = Trinity.Helper.FormatDateForBooking(Campaign.EndDate)
 
             .Cells(1, tmpCol + 18).Value = "Station"
             .Cells(1, tmpCol + 19).Value = "Network"
@@ -362,7 +365,7 @@ Public Class cExportFileToMediatool
                 .Cells(2, rfCol).Value = reach
                 .Cells(2, rfCol).Numberformat = "#%"
                 rfCol = rfCol + 1
-            Next            
+            Next
         End With
     End Sub
     Function checkEmailSettings()
@@ -413,8 +416,8 @@ Public Class cExportFileToMediatool
         End If
         Return True
     End Function
-    Sub HelperTable1(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False, Optional ByVal column as integer = 0)
-        
+    Sub HelperTable1(ByVal tmpChan As Trinity.cChannel, ByVal tmpB As Trinity.cBookingType, ByVal tmpGroupName As String, ByVal bundle As Boolean, ByVal row As Integer, ByVal tmpChannelName As String, Optional ByVal savedRow As Integer = 0, Optional ByVal printExportAsCampaign As Boolean = False, Optional ByVal column As Integer = 0)
+
         Dim tmpBook As Trinity.cBookingType = tmpB
         Dim tmpBundle = bundle
 
@@ -433,34 +436,35 @@ Public Class cExportFileToMediatool
         Dim lastRow As Integer = 0
 
         With _sheet1
-            
+
             If Not .Cells(row, 18) Is Nothing Then
                 .Cells(row - 1, column).Value = "Stations"
             End If
             If tmpChan.AdEdgeNames <> "" Then
-                    stationChannels += tmpChan.AdEdgeNames + "; "
+                stationChannels += tmpChan.AdEdgeNames + "; "
             Else
                 stationChannels += tmpChan.ChannelName + "; "
             End If
             .Cells(row, column).Value += stationChannels
-            If .Cells(row - 1, column  + 1).Value Is Nothing Then 
+            If .Cells(row - 1, column + 1).Value Is Nothing Then
                 .Cells(row - 1, column + 1).Value = "Spotlength"
             End If
-            If .Cells(row, column + 1).Value Is Nothing
-                For i As Integer = 0 to _amountOfFilmLength.Count - 1
+            If .Cells(row, column + 1).Value Is Nothing Then
+
+                For i As Integer = 0 To _amountOfFilmLength.Count - 1
                     .Cells(row, column + 1).Value += _amountOfFilmLength(i).ToString() + " sec;"
                 Next
             End If
 
-            If .Cells(row - 1, column + 2).value Is Nothing Then                                
+            If .Cells(row - 1, column + 2).Value Is Nothing Then
                 .Cells(row - 1, column + 2).Value = "Spot Title"
             End If
-            If .Cells(row, column + 2).Value Is Nothing 
-                For each tmpf As Trinity.cFilm in listOfFilms
+            If .Cells(row, column + 2).Value Is Nothing Then
+                For Each tmpf As Trinity.cFilm In listOfFilms
                     .Cells(row, column + 2).Value += tmpf.Filmcode + ";"
                 Next
             End If
-            
+
             Dim tmpCTC As Integer = 0
             Dim tmptotalPlannedGrossBudget = 0
             If tmpBook.ConfirmedGrossBudget = 0 Then
@@ -468,23 +472,23 @@ Public Class cExportFileToMediatool
             Else
                 tmptotalPlannedGrossBudget = tmpBook.ConfirmedGrossBudget
             End If
-            
+
             For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks
                 totalTRPForPT += tmpWeek.TRP
             Next
             For Each tmpWeek As Trinity.cWeek In tmpBook.Weeks
                 totalTRPForBT += tmpWeek.TRPBuyingTarget
             Next
-            If .Cells(row - 1, column + 3).Value Is Nothing                
-                .Cells(row -1, column + 3).Value = "Buying target: TRP pr. station, pr. spotlength"
+            If .Cells(row - 1, column + 3).Value Is Nothing Then
+                .Cells(row - 1, column + 3).Value = "Buying target: TRP pr. station, pr. spotlength"
             End If
             .Cells(row, column + 3).Value += Math.Round(totalTRPForBT, 2)
-            
-            If .Cells(row - 1, column + 4).Value Is Nothing                
+
+            If .Cells(row - 1, column + 4).Value Is Nothing Then
                 .Cells(row - 1, column + 4).Value = "Primary target: TRP pr. station, pr. spotlength"
             End If
-            .Cells(row, column + 4).Value += Math.Round(totalTRPForPT, 2)            
-            
+            .Cells(row, column + 4).Value += Math.Round(totalTRPForPT, 2)
+
         End With
     End Sub
     Function CheckChannel(ByVal tmpChName As String)
@@ -503,7 +507,7 @@ Public Class cExportFileToMediatool
         Return result
     End Function
 
-    
+
     Public Function checkNameTV2(ByVal tmpChannelName As String)
         If tmpChannelName.Contains("TV2") Or tmpChannelName = "Bliss" Or tmpChannelName = "Nyhetskanalen" Then
             Return True
@@ -522,208 +526,298 @@ Public Class cExportFileToMediatool
         End If
         Return False
     End Function
-        Public Function checkNameMatkanalen(ByVal tmpChannelName As String)
+    Public Function checkNameMatkanalen(ByVal tmpChannelName As String)
         If tmpChannelName.Contains("Matkanalen") Then
             Return True
         End If
         Return False
     End Function
     Public Function checkNameFOX(ByVal tmpChannelName As String)
-        If tmpChannelName.Contains("National Geographic") Or tmpChannelName.Contains("Fox") Or tmpChannelName.Contains("BBC Brit") Or tmpChannelName.Contains("TNT")Then
+        If tmpChannelName.Contains("National Geographic") Or tmpChannelName.Contains("Fox") Or tmpChannelName.Contains("BBC Brit") Or tmpChannelName.Contains("TNT") Then
             Return True
         End If
         Return False
     End Function
-    Sub printData1(ByVal ch As cChannel, ByVal bt As cBookingType, ByVal currentRow As Integer)
-        
+    Sub printData1(ByVal ch As cChannel, ByVal bt As cBookingType, ByVal currentRow As Integer, ByVal currentWeek As cWeek, ByVal currentFilm As cFilm)
+
         Dim totalTRPForChannel As Decimal = 0
         Dim totalNet As Decimal = 0
         Dim totalNetNet As Decimal = 0
         Dim totalGrossCost As Decimal = 0
         Dim netCPP As Decimal = 0
-        Dim filmCode As String = ""     
-        Dim effDisc As Decimal = 0 
+        Dim filmCode As String = ""
+        Dim effDisc As Decimal = 0
         Dim listofWeeks As New List(Of Trinity.cWeek)
-            
+
         With _sheet1
-            For i As Integer = 1 To bt.Weeks.Count                
-                For each tmpFIlm As cFilm In bt.Weeks(i).Films
-                    If tmpFIlm.Share <> Nothing Or tmpFIlm.Share.ToString <> ""
-                        totalTRPForChannel += bt.Weeks(i).TRP
-                        If not bt.IsCompensation                            
-                            totalNet += bt.Weeks(i).NetBudget
-                            totalNetNet = totalNet * (1 - ch.AgencyCommission)
-                            totalGrossCost += bt.Weeks(i).GrossBudget
-                            effDisc = bt.Weeks(i).Discount
-                            If netCPP = 0
-                                netCPP = bt.Weeks(i).NetCPP30
-                            End If
-                        End If
-                    End If
-                    filmCode = tmpFIlm.Filmcode
-                Next
-            Next
 
-            For each week As Trinity.cWeek in bt.Weeks
-                listofWeeks.add(week)
-            Next
+            'For i As Integer = 1 To bt.Weeks.Count
+            '    For Each tmpFIlm As cFilm In bt.Weeks(i).Films
+            '        If tmpFIlm.Share <> Nothing Or tmpFIlm.Share.ToString <> "" Then
+            '            totalTRPForChannel += bt.Weeks(i).TRP
+            '            If Not bt.IsCompensation Then
+            '                totalNet += bt.Weeks(i).NetBudget
+            '                totalNetNet = totalNet * (1 - ch.AgencyCommission)
+            '                totalGrossCost += bt.Weeks(i).GrossBudget
+            '                effDisc = bt.Weeks(i).Discount
+            '                If netCPP = 0 Then
+            '                    netCPP = bt.Weeks(i).NetCPP30
+            '                End If
+            '            End If
+            '        End If
+            '        filmCode = tmpFIlm.Filmcode
+            '    Next
+            'Next
 
-            For Each TmpCost As Trinity.cCost In Campaign.Costs
-                If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
-                    If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnRatecard Then
-                        If TmpCost.CountCostOn
+            'For Each week As Trinity.cWeek In bt.Weeks
+            '    listofWeeks.Add(week)
+            'Next
 
-                        End If
-                        totalNetNet = totalNet * (1 + TmpCost.Amount)
-                    End If
-                End If
-            Next
+            'For Each TmpCost As Trinity.cCost In Campaign.Costs
+            '    If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
+            '        If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnRatecard Then
+            '            If TmpCost.CountCostOn Then
 
-            Dim tmpCostAmount
-            Dim totalFees
-            Dim totalPlannedNetBudget = totalNet
-            Dim tmpPrintNetNet
-            Dim tmptotalPlannedNetBudget
-            Dim totalPlannedNetNetBudget
-            Dim tmpCTC
-            Dim SumUnit
+            '            End If
+            '            totalNetNet = totalNet * (1 + TmpCost.Amount)
+            '        End If
+            '    End If
+            'Next
 
-            If Campaign.Costs.Count > 0 Then
-                For Each TmpCost As Trinity.cCost In Campaign.Costs
-                    If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
-                        If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnMediaNet Then
-                            tmpCostAmount = TmpCost.Amount * totalPlannedNetBudget
-                            totalFees += tmpCostAmount
-                        End If
-                    End If
-                Next
-                If ownCommission Then
-                    tmpPrintNetNet = tmptotalPlannedNetBudget * (1 - ownCommissionAmount)
-                    totalPlannedNetBudget = tmptotalPlannedNetBudget * (1 - ownCommissionAmount) + totalFees
-                Else
-                    tmpPrintNetNet = tmptotalPlannedNetBudget * (1 - ch.AgencyCommission)
-                    totalPlannedNetBudget = tmptotalPlannedNetBudget * (1 - ch.AgencyCommission) + totalFees
-                End If
-                totalPlannedNetNetBudget = totalPlannedNetBudget
-                tmpCTC = totalPlannedNetNetBudget + totalFees
-                For Each TmpCost As Trinity.cCost In Campaign.Costs
-                    If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
-                        If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnNet Then
-                            tmpCostAmount = TmpCost.Amount * totalPlannedNetBudget
-                            totalFees += tmpCostAmount
-                            totalPlannedNetNetBudget += TmpCost.Amount * totalPlannedNetBudget
-                        End If
-                    ElseIf TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypeFixed Then
-                        tmpCostAmount = (TmpCost.Amount / amountOfChannels)
-                        totalFees += tmpCostAmount
-                        totalPlannedNetNetBudget += tmpCostAmount
-                    ElseIf TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypeOnDiscount Then
-                        SumUnit = 0
-                        If TmpCost.CountCostOn Is Nothing Then
-                            For Each TmpWeek As Trinity.cWeek In bt.Weeks                                
-                                For each _w As cWeek In listOfWeeks
-                                    If _w.Name = tmpWeek.Name
-                                        Dim Discount As Single = TmpWeek.GrossBudget - TmpWeek.NetBudget
-                                        SumUnit += (Discount * TmpCost.Amount)
-                                    End if
-                                Next
-                            Next
-                        Else
-                            For Each bt In DirectCast(TmpCost.CountCostOn, Trinity.cChannel).BookingTypes
-                                For Each TmpWeek As Trinity.cWeek In bt.Weeks
-                                    For each _w As cWeek In listOfWeeks
-                                         If _w.Name = tmpWeek.Name
-                                            Dim Discount As Single = TmpWeek.GrossBudget - TmpWeek.NetBudget
-                                            SumUnit += (Discount * TmpCost.Amount)
-                                         End If
-                                    next
-                                Next
-                            Next
-                        End If
-                        tmpCTC = tmpCTC + SumUnit
-                    ElseIf TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePerUnit Then
-                        SumUnit = 0
-                        If TmpCost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnSpots Then
-                            SumUnit = SumUnit + bt.EstimatedSpotCount * TmpCost.Amount
-                        ElseIf TmpCost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnBuyingTRP Then
-                            SumUnit = SumUnit + bt.TotalTRPBuyingTarget * TmpCost.Amount
-                        ElseIf TmpCost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnBuyingTRP Then
-                            SumUnit = SumUnit + bt.TotalTRP * TmpCost.Amount
-                        ElseIf TmpCost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnWeeks Then
-                            SumUnit = Campaign.Channels(1).BookingTypes(1).Weeks.Count * TmpCost.Amount
-                        End If
-                        totalFees += SumUnit
-                        totalPlannedNetNetBudget = totalPlannedNetBudget + SumUnit
-                    End If
-                Next
+            'Dim tmpCostAmount
+            'Dim totalFees
+            'Dim totalPlannedNetBudget = totalNet
+            'Dim tmpPrintNetNet
+            'Dim tmptotalPlannedNetBudget
+            'Dim totalPlannedNetNetBudget
+            'Dim tmpCTC
+            'Dim SumUnit
 
-                tmpCTC = totalPlannedNetNetBudget
-                'Costs on net net
-                For Each TmpCost As Trinity.cCost In Campaign.Costs
-                    If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
-                        If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnNetNet Then
-                            totalFees += TmpCost.Amount * (totalPlannedNetNetBudget)
-                            totalPlannedNetNetBudget += TmpCost.Amount * totalPlannedNetNetBudget
-                        End If
-                    End If
-                Next
+            'If Campaign.Costs.Count > 0 Then
+            '    For Each TmpCost As Trinity.cCost In Campaign.Costs
+            '        If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
+            '            If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnMediaNet Then
+            '                tmpCostAmount = TmpCost.Amount * totalPlannedNetBudget
+            '                totalFees += tmpCostAmount
+            '            End If
+            '        End If
+            '    Next
+            '    If ownCommission Then
+            '        tmpPrintNetNet = tmptotalPlannedNetBudget * (1 - ownCommissionAmount)
+            '        totalPlannedNetBudget = tmptotalPlannedNetBudget * (1 - ownCommissionAmount) + totalFees
+            '    Else
+            '        tmpPrintNetNet = tmptotalPlannedNetBudget * (1 - ch.AgencyCommission)
+            '        totalPlannedNetBudget = tmptotalPlannedNetBudget * (1 - ch.AgencyCommission) + totalFees
+            '    End If
+            '    totalPlannedNetNetBudget = totalPlannedNetBudget
+            '    tmpCTC = totalPlannedNetNetBudget + totalFees
+            '    For Each TmpCost As Trinity.cCost In Campaign.Costs
+            '        If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
+            '            If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnNet Then
+            '                tmpCostAmount = TmpCost.Amount * totalPlannedNetBudget
+            '                totalFees += tmpCostAmount
+            '                totalPlannedNetNetBudget += TmpCost.Amount * totalPlannedNetBudget
+            '            End If
+            '        ElseIf TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypeFixed Then
+            '            tmpCostAmount = (TmpCost.Amount / amountOfChannels)
+            '            totalFees += tmpCostAmount
+            '            totalPlannedNetNetBudget += tmpCostAmount
+            '        ElseIf TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypeOnDiscount Then
+            '            SumUnit = 0
+            '            If TmpCost.CountCostOn Is Nothing Then
+            '                For Each TmpWeek As Trinity.cWeek In bt.Weeks
+            '                    For Each _w As cWeek In listofWeeks
+            '                        If _w.Name = TmpWeek.Name Then
+            '                            Dim Discount As Single = TmpWeek.GrossBudget - TmpWeek.NetBudget
+            '                            SumUnit += (Discount * TmpCost.Amount)
+            '                        End If
+            '                    Next
+            '                Next
+            '            Else
+            '                For Each bt In DirectCast(TmpCost.CountCostOn, Trinity.cChannel).BookingTypes
+            '                    For Each TmpWeek As Trinity.cWeek In bt.Weeks
+            '                        For Each _w As cWeek In listofWeeks
+            '                            If _w.Name = TmpWeek.Name Then
+            '                                Dim Discount As Single = TmpWeek.GrossBudget - TmpWeek.NetBudget
+            '                                SumUnit += (Discount * TmpCost.Amount)
+            '                            End If
+            '                        Next
+            '                    Next
+            '                Next
+            '            End If
+            '            tmpCTC = tmpCTC + SumUnit
+            '        ElseIf TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePerUnit Then
+            '            SumUnit = 0
+            '            If TmpCost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnSpots Then
+            '                SumUnit = SumUnit + bt.EstimatedSpotCount * TmpCost.Amount
+            '            ElseIf TmpCost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnBuyingTRP Then
+            '                SumUnit = SumUnit + bt.TotalTRPBuyingTarget * TmpCost.Amount
+            '            ElseIf TmpCost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnBuyingTRP Then
+            '                SumUnit = SumUnit + bt.TotalTRP * TmpCost.Amount
+            '            ElseIf TmpCost.CountCostOn = Trinity.cCost.CostOnUnitEnum.CostOnWeeks Then
+            '                SumUnit = Campaign.Channels(1).BookingTypes(1).Weeks.Count * TmpCost.Amount
+            '            End If
+            '            totalFees += SumUnit
+            '            totalPlannedNetNetBudget = totalPlannedNetBudget + SumUnit
+            '        End If
+            '    Next
+
+            '    tmpCTC = totalPlannedNetNetBudget
+            '    'Costs on net net
+            '    For Each TmpCost As Trinity.cCost In Campaign.Costs
+            '        If TmpCost.CostType = Trinity.cCost.CostTypeEnum.CostTypePercent Then
+            '            If TmpCost.CountCostOn = Trinity.cCost.CostOnPercentEnum.CostOnNetNet Then
+            '                totalFees += TmpCost.Amount * (totalPlannedNetNetBudget)
+            '                totalPlannedNetNetBudget += TmpCost.Amount * totalPlannedNetNetBudget
+            '            End If
+            '        End If
+            '    Next
+            'Else
+            '    If (ownCommission) Then
+            '        totalPlannedNetNetBudget = totalPlannedNetBudget * (1 - ownCommissionAmount)
+            '        tmpPrintNetNet = totalPlannedNetNetBudget
+            '    Else
+            '        totalPlannedNetNetBudget = totalPlannedNetBudget * (1 - ch.AgencyCommission)
+            '        tmpPrintNetNet = totalPlannedNetNetBudget
+            '    End If
+            'End If
+
+
+            'Dim averageCPP As Integer = 0
+            'If totalTRPForChannel <> 0 Then
+            '    averageCPP = totalNet / totalTRPForChannel
+            'End If
+
+
+
+            .Cells(currentRow, 6).Value = ch.ChannelGroup 'Chanel house
+            .Cells(currentRow, 7).Value = ch.ChannelName 'Chanel name
+            .Cells(currentRow, 8).Value = Helper.FormatDateForBooking(currentWeek.StartDate) 'Start date
+            .Cells(currentRow, 9).Value = Helper.FormatDateForBooking(currentWeek.EndDate) 'End date
+
+
+
+            .Cells(currentRow, 12).Value = currentFilm.FilmLength & " sec" 'Film length
+            If (currentFilm.Share > 0) Then
+                Dim amountOfShareTRP As Single = currentWeek.TRP * (currentFilm.Share / 100)
+                .Cells(currentRow, 13).Value = amountOfShareTRP 'Planned trp
             Else
-                If (ownCommission) Then
-                    totalPlannedNetNetBudget = totalPlannedNetBudget * (1 - ownCommissionAmount)
-                    tmpPrintNetNet = totalPlannedNetNetBudget
-                Else
-                    totalPlannedNetNetBudget = totalPlannedNetBudget * (1 - ch.AgencyCommission)
-                    tmpPrintNetNet = totalPlannedNetNetBudget
-                End If
+                .Cells(currentRow, 13).Value = "0" 'Planned trp
             End If
 
+            Dim grossSbudget As Decimal = currentWeek.GrossBudget * (currentFilm.Share / 100)
+            .Cells(currentRow, 14).Value = grossSbudget 'Gross budget
 
-            Dim averageCPP As Integer = 0
-            If totalTRPForChannel <> 0                
-                averageCPP = totalNet / totalTRPForChannel
-            End If
+            Dim netBudget As Decimal = currentWeek.NetBudget * (currentFilm.Share / 100)
+            .Cells(currentRow, 16).Value = netBudget 'Net budget
 
-            .Cells(currentRow, 1).Value = ch.ChannelName 'Kanal
-            .Cells(currentRow, 6).Value = filmCode
-            .Cells(currentRow, 9).Value += totalTRPForChannel
-            .Cells(currentRow, 10).Value = netCPP '"CPP act"
-            .Cells(currentRow, 11).Value += totalGrossCost
-            .Cells(currentRow, 12).Value = effDisc '"Discount in %"
-            .Cells(currentRow, 13).Value += totalNet '"Net cost"
-            .Cells(currentRow, 14).Value = ""'"Commission"
-            .Cells(currentRow, 15).Value += totalNetNet'"Net Net cost"     
-            .Cells(currentRow, 16).Value = ""'"Service fee"
-            .Cells(currentRow, 17).Value = ""'"CTC"
-            .Cells(currentRow, 18).Value = ""'"Comments"
-            .Cells(currentRow, 19).Value = ""'"Events"
+
+            Dim commission As Decimal = netBudget - (netBudget * (1 - ch.AgencyCommission))
+            Dim ctc As Decimal = netBudget - commission
+            .Cells(currentRow, 20).Value = ctc 'CTC 
+
         End With
     End Sub
-    Sub filterData1()
+    Sub fetchData()
+
+
+        Dim connectToMediaTool As New cMediaToolPost
+
         'Print data for sheet 1
         With _sheet1
-            tmpRow = 2            
-            For each ch As cChannel In Campaign.Channels
-                For each bt As cbookingtype In ch.BookingTypes
-                    If bt.BookIt
-                        
-                        .Cells(tmpRow, 2).Value = Campaign.Client
-                        .Cells(tmpRow, 3).Value = Date.FromOADate(Campaign.StartDate)
-                        .Cells(tmpRow, 4).Value = Date.FromOADate(Campaign.EndDate)
-                        .Cells(tmpRow, 5).Value = "" '"Material date" 'Struna i
-                        .Cells(tmpRow, 7).Value = "" '"Target" 'Struna i
-                        .Cells(tmpRow, 8).Value = "" '"Objective" 'Strunta i
-            
-                        printData1(ch, bt, tmpRow)
-                    End If
+            tmpRow = 2
+            Dim weekSelector As Integer = 1
+            For Each tempWeek As cWeek In _listOfWeeks
+                For Each tmpCh As cChannel In Campaign.Channels
+                    For Each tmpBt As cBookingType In tmpCh.BookingTypes
+                        If tmpBt.BookIt Then
+                            If tmpBt.Weeks.Contains(tempWeek.Name) Then
+
+                            End If
+                            Dim currentWeek As cWeek = tmpBt.Weeks(weekSelector)
+
+                            ' Since one week could contain several films we need to iterate through them.
+
+                            For i As Integer = 1 To currentWeek.Films.Count
+
+
+                                .Cells(tmpRow, 1).Value = Campaign.Client
+                                .Cells(tmpRow, 2).Value = Campaign.Product
+                                .Cells(tmpRow, 3).Value = "Brand"
+                                .Cells(tmpRow, 4).Value = "Mobilt"
+                                .Cells(tmpRow, 5).Value = "Postpaid"
+
+                                .Cells(tmpRow, 22).Value = Campaign.Name ' Campaign name 
+                                Dim currentFilm = currentWeek.Films(i)
+
+                                printData1(tmpCh, tmpBt, tmpRow, currentWeek, currentFilm)
+                                tmpRow = tmpRow + 1
+                            Next
+
+
+
+                        End If
+                    Next
                 Next
-                If .Cells(tmpRow, 9).Value IsNot nothing
-                    tmpRow = tmpRow + 1
-                End If
+
+
+                weekSelector = weekSelector + 1
             Next
+
         End With
         _sheet1.Range("B" & 39 & ":M" & 48).Numberformat = "0.0"
     End Sub
-    
+
+    Sub toMediaTool()
+        'Print data for sheet 1
+        With _sheet1
+            tmpRow = 2
+            Dim weekSelector As Integer = 1
+            For Each tempWeek As cWeek In _listOfWeeks
+                For Each tmpCh As cChannel In Campaign.Channels
+                    For Each tmpBt As cBookingType In tmpCh.BookingTypes
+                        If tmpBt.BookIt Then
+                            If tmpBt.Weeks.Contains(tempWeek.Name) Then
+
+                            End If
+                            Dim currentWeek As cWeek = tmpBt.Weeks(weekSelector)
+
+                            ' Since one week could contain several films we need to iterate through them.
+
+                            For i As Integer = 1 To currentWeek.Films.Count
+
+
+                                .Cells(tmpRow, 1).Value = Campaign.Client
+                                .Cells(tmpRow, 2).Value = Campaign.Product
+                                .Cells(tmpRow, 3).Value = "Brand"
+                                .Cells(tmpRow, 4).Value = "Mobilt"
+                                .Cells(tmpRow, 5).Value = "Postpaid"
+
+                                .Cells(tmpRow, 22).Value = Campaign.Name ' Campaign name 
+                                Dim currentFilm = currentWeek.Films(i)
+
+                                Dim connectToMediaTool As New cMediaToolPost
+
+
+
+
+                                ' printData1(tmpCh, tmpBt, tmpRow, currentWeek, currentFilm)
+                                tmpRow = tmpRow + 1
+                            Next
+
+
+
+                        End If
+                    Next
+                Next
+
+
+                weekSelector = weekSelector + 1
+            Next
+
+        End With
+        _sheet1.Range("B" & 39 & ":M" & 48).Numberformat = "0.0"
+    End Sub
 
     Sub resetEnivorment()
         _excel.ScreenUpdating = True

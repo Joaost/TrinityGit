@@ -54,6 +54,9 @@
     <Content Include="trinity_new.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <COMReference Include="Connect">
       <Guid>{B220DF47-1F54-4D7C-A042-EED01A7CE585}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -63,9 +66,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

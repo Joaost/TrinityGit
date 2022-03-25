@@ -93,6 +93,7 @@ Partial Class frmMain
         Me.DefineDaypartsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditClietsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuEditPeople = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ManageUnicornChannelSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.PreferencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
@@ -233,7 +234,6 @@ Partial Class frmMain
         Me.lblUserCompany = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ManageUnicornChannelSettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msMain.SuspendLayout()
         Me.tstMain.SuspendLayout()
         Me.pnlMenu.SuspendLayout()
@@ -687,6 +687,12 @@ Partial Class frmMain
         Me.mnuEditPeople.Size = New System.Drawing.Size(251, 22)
         Me.mnuEditPeople.Text = "Edit planners and buyers"
         '
+        'ManageUnicornChannelSettingsToolStripMenuItem
+        '
+        Me.ManageUnicornChannelSettingsToolStripMenuItem.Name = "ManageUnicornChannelSettingsToolStripMenuItem"
+        Me.ManageUnicornChannelSettingsToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.ManageUnicornChannelSettingsToolStripMenuItem.Text = "Manage Unicorn channel settings"
+        '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
@@ -926,7 +932,7 @@ Partial Class frmMain
         'ReportsToolStripMenuItem
         '
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ReportsToolStripMenuItem.Text = "Reports"
         '
         'ToolStripSeparator3
@@ -948,7 +954,7 @@ Partial Class frmMain
         'HistoryToolStripMenuItem
         '
         Me.HistoryToolStripMenuItem.Name = "HistoryToolStripMenuItem"
-        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.HistoryToolStripMenuItem.Text = "History"
         '
         'cmdLinkCampaign
@@ -2049,12 +2055,6 @@ Partial Class frmMain
         Me.DataGridViewTextBoxColumn2.HeaderText = "Actual"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'ManageUnicornChannelSettingsToolStripMenuItem
-        '
-        Me.ManageUnicornChannelSettingsToolStripMenuItem.Name = "ManageUnicornChannelSettingsToolStripMenuItem"
-        Me.ManageUnicornChannelSettingsToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
-        Me.ManageUnicornChannelSettingsToolStripMenuItem.Text = "Manage Unicorn channel settings"
         '
         'frmMain
         '

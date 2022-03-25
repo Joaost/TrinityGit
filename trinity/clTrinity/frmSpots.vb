@@ -1,3 +1,4 @@
+Imports Spire.Pdf
 Public Class frmSpots
 
     Dim SkipIt As Boolean = False
@@ -356,12 +357,12 @@ Public Class frmSpots
         Dim i As Integer
 
         cmdConfirmedFilter.DropDownItems.Clear()
-        
+
         Dim mnuFilter As New Windows.Forms.ContextMenuStrip
 
         Dim mnuChannel As Windows.Forms.ToolStripMenuItem = mnuFilter.Items.Add("Channels")
         mnuChannel.Tag = "Channels"
-        
+
         For Each TmpChan In Campaign.Channels
             IsUsed = False
             For Each TmpBT In TmpChan.BookingTypes
@@ -411,10 +412,10 @@ Public Class frmSpots
         invertItemBT.Checked = False
         AddHandler invertItemBT.Click, AddressOf ChangeFilter
         mnuBookingtype.DropDownItems.Add(invertItemBT)
-        
+
         Dim mnuFilm As Windows.Forms.ToolStripMenuItem = mnuFilter.Items.Add("Films")
         For Each TmpFilm In Campaign.Channels(1).BookingTypes(1).Weeks(1).Films
-            Dim tmpSubMenuFilm As new Windows.Forms.ToolStripMenuItem
+            Dim tmpSubMenuFilm As New Windows.Forms.ToolStripMenuItem
             tmpSubMenuFilm.Tag = "Film"
             tmpSubMenuFilm.Text = TmpFilm.Name
             tmpSubMenuFilm.Checked = GeneralFilter.Data("Film", TmpFilm.Name)
@@ -429,12 +430,12 @@ Public Class frmSpots
         invertItemFilm.Checked = False
         AddHandler invertItemFilm.Click, AddressOf ChangeFilter
         mnuFilm.DropDownItems.Add(invertItemFilm)
-        
+
         Dim mnuDayparts As Windows.Forms.ToolStripMenuItem = mnuFilter.Items.Add("Dayparts")
         For i = 0 To Campaign.Dayparts.Count - 1
             Dim tmpSubMenuDayparts As New Windows.Forms.ToolStripMenuItem
             tmpSubMenuDayparts.Tag = "Daypart"
-            tmpSubMenuDayparts.Checked = GeneralFilter.data("Daypart", Campaign.Dayparts(i).Name)
+            tmpSubMenuDayparts.Checked = GeneralFilter.Data("Daypart", Campaign.Dayparts(i).Name)
             tmpSubMenuDayparts.Text = Campaign.Dayparts(i).Name
             AddHandler tmpSubMenuDayparts.Click, AddressOf ChangeFilter
             mnuDayparts.DropDownItems.Add(tmpSubMenuDayparts)
@@ -446,7 +447,7 @@ Public Class frmSpots
         invertItemDaypart.Text = "Invert selection"
         invertItemDaypart.Checked = False
         AddHandler invertItemDaypart.Click, AddressOf ChangeFilter
-        mnuDayparts.DropDownItems.Add(invertItemDaypart)        
+        mnuDayparts.DropDownItems.Add(invertItemDaypart)
 
         'With DirectCast(cmdConfirmedFilter.DropDownItems.Add("Weeks"), Windows.Forms.ToolStripMenuItem)
         '    For Each TmpWeek In Campaign.Channels(1).BookingTypes(1).Weeks
@@ -463,10 +464,10 @@ Public Class frmSpots
         '        AddHandler .Click, AddressOf ChangeFilter
         '    End With
         'End With
-        
+
         Dim mnuWeek As Windows.Forms.ToolStripMenuItem = mnuFilter.Items.Add("Weeks")
-        For each tmpWeek In Campaign.Channels(1).BookingTypes(1).Weeks
-            Dim tmpSubMenuWeek As New Windows.Forms.ToolStripmenuitem
+        For Each TmpWeek In Campaign.Channels(1).BookingTypes(1).Weeks
+            Dim tmpSubMenuWeek As New Windows.Forms.ToolStripMenuItem
             tmpSubMenuWeek.Tag = "Week"
             tmpSubMenuWeek.Checked = GeneralFilter.Data("Week", TmpWeek.Name)
             tmpSubMenuWeek.Text = TmpWeek.Name
@@ -484,8 +485,8 @@ Public Class frmSpots
 
 
         Dim mnuWeekdays As Windows.Forms.ToolStripMenuItem = mnuFilter.Items.Add("Weekdays")
-        For i = 0 To 6            
-            Dim tmpSubMenuWeekdays As new Windows.Forms.ToolStripMenuItem
+        For i = 0 To 6
+            Dim tmpSubMenuWeekdays As New Windows.Forms.ToolStripMenuItem
             tmpSubMenuWeekdays.Tag = "Weekday"
             tmpSubMenuWeekdays.Text = WeekDays(i)
             tmpSubMenuWeekdays.Checked = GeneralFilter.Data("Weekday", WeekDays(i))
@@ -500,54 +501,54 @@ Public Class frmSpots
         invertItemWeekdays.Checked = False
         AddHandler invertItemWeekdays.Click, AddressOf ChangeFilter
         mnuWeekdays.DropDownItems.Add(invertItemWeekdays)
-        
+
         Dim mnuPIB As Windows.Forms.ToolStripMenuItem = mnuFilter.Items.Add("Position in break")
 
         Dim tmpSubMenuPIBFirst As New Windows.Forms.ToolStripMenuItem
-        tmpSubMenuPIBFirst.Tag ="PIB"
+        tmpSubMenuPIBFirst.Tag = "PIB"
         tmpSubMenuPIBFirst.Text = "First"
         tmpSubMenuPIBFirst.Checked = GeneralFilter.Data("PIB", "First")
         AddHandler tmpSubMenuPIBFirst.Click, AddressOf ChangeFilter
         mnuPIB.DropDownItems.Add(tmpSubMenuPIBFirst)
-        
+
         Dim tmpSubMenuPIBMiddle As New Windows.Forms.ToolStripMenuItem
-        tmpSubMenuPIBMiddle.Tag ="PIB"
+        tmpSubMenuPIBMiddle.Tag = "PIB"
         tmpSubMenuPIBMiddle.Text = "Middle"
         tmpSubMenuPIBMiddle.Checked = GeneralFilter.Data("PIB", "Middle")
         AddHandler tmpSubMenuPIBMiddle.Click, AddressOf ChangeFilter
         mnuPIB.DropDownItems.Add(tmpSubMenuPIBMiddle)
-        
+
         Dim tmpSubMenuPIBLast As New Windows.Forms.ToolStripMenuItem
-        tmpSubMenuPIBLast.Tag ="PIB"
+        tmpSubMenuPIBLast.Tag = "PIB"
         tmpSubMenuPIBLast.Text = "Last"
         tmpSubMenuPIBLast.Checked = GeneralFilter.Data("PIB", "Last")
         AddHandler tmpSubMenuPIBLast.Click, AddressOf ChangeFilter
         mnuPIB.DropDownItems.Add(tmpSubMenuPIBLast)
 
         Dim invertItemPIB As New Windows.Forms.ToolStripMenuItem
-        invertItemPIB.Tag ="PIB"
+        invertItemPIB.Tag = "PIB"
         invertItemPIB.Text = "Invert selection"
         invertItemPIB.Checked = False
         AddHandler invertItemPIB.Click, AddressOf ChangeFilter
         mnuPIB.DropDownItems.Add(invertItemPIB)
-        
+
         mnuFilter.Show(ToolStrip1, cmdConfirmedFilter.Bounds.Left, cmdConfirmedFilter.Bounds.Height)
-        If dropDownMenuParent = "Channels"
+        If dropDownMenuParent = "Channels" Then
             mnuChannel.DropDown.Show()
-        ElseIf dropDownMenuParent = "Bookingtype"
+        ElseIf dropDownMenuParent = "Bookingtype" Then
             mnuBookingtype.DropDown.Show()
-        ElseIf dropDownMenuParent = "Film"
+        ElseIf dropDownMenuParent = "Film" Then
             mnuFilm.DropDown.Show()
-        ElseIf dropDownMenuParent = "Week"
+        ElseIf dropDownMenuParent = "Week" Then
             mnuWeek.DropDown.Show()
-        ElseIf dropDownMenuParent = "Weekday"
+        ElseIf dropDownMenuParent = "Weekday" Then
             mnuWeekdays.DropDown.Show()
-        ElseIf dropDownMenuParent = "Daypart"
+        ElseIf dropDownMenuParent = "Daypart" Then
             mnuWeekdays.DropDown.Show()
-        ElseIf dropDownMenuParent = "PIB"
+        ElseIf dropDownMenuParent = "PIB" Then
             mnuPIB.DropDown.Show()
         End If
-        
+
         'With DirectCast(cmdConfirmedFilter.DropDownItems.Add("Channels"), Windows.Forms.ToolStripMenuItem)
         '    For Each TmpChan In Campaign.Channels
         '        IsUsed = False
@@ -1628,10 +1629,24 @@ Public Class frmSpots
 
     Private Sub cmdImportSchedule_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImportSchedule.Click
         Me.Cursor = Windows.Forms.Cursors.WaitCursor
+
+        If TrinitySettings.LocalDataPath = "C:\Users\joakim.koch\Trinity 4.0" Then
+            'parsePDF()
+        End If
         ImportSchedule()
         UpdateConfirmed(False, True)
         UpdateActual(False, True)
         Me.Cursor = Windows.Forms.Cursors.Default
+    End Sub
+
+    Private Sub parsePDF()
+        Dim tempPDF As PdfDocument = New PdfDocument()
+
+        tempPDF.LoadFromFile("C:\Users\joakim.koch\Trinity 4.0\trinity_test.pdf")
+
+        tempPDF.SaveToFile("test_pdf_to_excel", FileFormat.XLSX)
+
+
     End Sub
 
     Private Sub cmdAddAndMatch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddAndMatch.Click
@@ -2681,5 +2696,4 @@ Public Class frmSpots
             End If
         Next
     End Sub
-
 End Class

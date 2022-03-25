@@ -883,6 +883,7 @@ cmdSave_Click_Error:
         cmdReports.DropDownItems.Add("Post-campaign analysis", Nothing, AddressOf PrintPostAnalysis).Enabled = True
         cmdReports.DropDownItems.Add("Material specification", Nothing, AddressOf PrintMaterialSpecification).Enabled = True
         cmdReports.DropDownItems.Add("Invoicing details", Nothing, AddressOf PrintInvoiceDetails).Enabled = True
+        cmdReports.DropDownItems.Add("Export campaign to MediaTool", Nothing, AddressOf exportToMediaToolFile).Enabled = True
         If TrinitySettings.DefaultArea = "NO" Then
             cmdReports.DropDownItems.Add("Export campaign Unicorn-file", Nothing, AddressOf ExportCampaignToUnicornFileNorway).Enabled = True
             cmdReports.DropDownItems.Add("Export to datorama-file", Nothing, AddressOf ExportCampaignToDatorama).Enabled = True
@@ -895,6 +896,9 @@ cmdSave_Click_Error:
             If TrinitySettings.UserEmail = "joakim.koch@groupm.com" Then
                 cmdReports.DropDownItems.Add("Export campaign to MediaTool", Nothing, AddressOf exportToMediaToolFile).Enabled = True
                 'cmdReports.DropDownItems.Add("Export BSH datorama", Nothing, AddressOf getSpotlog).Enabled = True
+            ElseIf TrinitySettings.UserEmail = "joakim.koch@goupm.com" Then
+
+                cmdReports.DropDownItems.Add("Export campaign to TOLE", Nothing, AddressOf exportToMediaToolFile).Enabled = True
 
             End If
         ElseIf TrinitySettings.ActiveDataPath.Contains("Oslfpcp01102") Then
@@ -965,6 +969,10 @@ cmdSave_Click_Error:
     Sub exportToMediaToolFile(ByVal sender As Object, ByVal e As EventArgs)
         Dim export As New cExportFileToMediatool(Campaign)
         export.exportDatoramaFile()
+    End Sub
+
+    Sub exportCampaignTOLE(ByVal sender As Object, ByVal e As EventArgs)
+
     End Sub
 
     Sub PrintPostAnalysis(ByVal sender As Object, ByVal e As EventArgs)
@@ -1349,30 +1357,32 @@ cmdSave_Click_Error:
         Dim tempOrderNumber As String = ""
         'Dim combo As Trinity.cCombination
         'Create orders for each of the channels and each of the booking types in the campaign. We should get an order number from each
+        If TrinitySettings.LocalDataPath = "C:\Users\joakim.koch\Trinity 4.0" Then
 
-        For Each combo As Trinity.cCombination In Campaign.Combinations
-            If combo.sendAsOneUnitTOMarathon And combo.MarathonIDCombination <> "" Then
+            For Each combo As Trinity.cCombination In Campaign.Combinations
+                If combo.sendAsOneUnitTOMarathon And combo.MarathonIDCombination <> "" Then
 
-                Dim _order As New Marathon.Order
-                _order.PlanNumber = Campaign.MarathonPlanNr
-                _order.MediaID = combo.MarathonIDCombination
-                _order.CompanyID = info.Rows(0)!MarathonCompany
-                tempOrderNumber = _marathon.CreateOrder(_order)
-                For Each comboChan As Trinity.cCombinationChannel In combo.Relations
-                    If comboChan.Bookingtype.BookIt And comboChan.Bookingtype.OrderNumber Is "" Then
+                    Dim _order As New Marathon.Order
+                    _order.PlanNumber = Campaign.MarathonPlanNr
+                    _order.MediaID = combo.MarathonIDCombination
+                    _order.CompanyID = info.Rows(0)!MarathonCompany
+                    tempOrderNumber = _marathon.CreateOrder(_order)
+                    For Each comboChan As Trinity.cCombinationChannel In combo.Relations
+                        If comboChan.Bookingtype.BookIt And comboChan.Bookingtype.OrderNumber Is "" Then
 
-                        Try
-                            comboChan.Bookingtype.OrderNumber = tempOrderNumber
-                            comboChannelList.Add(comboChan.ChannelName)
-                        Catch ex As Exception
-                            Windows.Forms.MessageBox.Show("There was an error while creating the order for " & comboChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                        End Try
+                            Try
+                                comboChan.Bookingtype.OrderNumber = tempOrderNumber
+                                comboChannelList.Add(comboChan.ChannelName)
+                            Catch ex As Exception
+                                Windows.Forms.MessageBox.Show("There was an error while creating the order for " & comboChan.ChannelName & "." & vbCrLf & vbCrLf & "Marathon response: " & ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                            End Try
 
-                    End If
-                Next
-            End If
-            tempOrderNumber = ""
-        Next
+                        End If
+                    Next
+                End If
+                tempOrderNumber = ""
+            Next
+        End If
 
         For Each TmpChan As Trinity.cChannel In Campaign.Channels
             If Not comboChannelList.Contains(TmpChan.ChannelName) Then
@@ -4676,6 +4686,7 @@ CreatePlan:
         Dim unicornManageChannels = New frmManageChannelsUnicorn
         unicornManageChannels.show()
     End Sub
+
 End Class
 
 'Public Class clsExcelReport

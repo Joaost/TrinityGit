@@ -24,6 +24,8 @@ Public Class frmTv4Main
     Shared _indexToIndex As Dictionary(Of String, String)
 
     Dim _camp As Object
+    Dim llistOfAgencies As List(Of Object)
+    Dim selectecAgency As Object
 
     Private availChannels As String()
     Private _iTrinityApplication As ITrinityApplication
@@ -55,7 +57,7 @@ Public Class frmTv4Main
     End Property
 
     Private Sub getOrganizations()
-        Dim test = _client.GetUserOrganizations(res.Preferences.Username, res.Preferences.GetPlainTextPassword)
+        Dim test = _client.GetUserOrganizations(res.Preferences.Username, res.Preferences.Token)
 
         If test.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
             For Each tmpOrg As Object In test.ReturnValues.Values
@@ -81,7 +83,7 @@ Public Class frmTv4Main
     End Sub
 
     Private Function getOrgID(ByVal oID As Object)
-        Dim test = _client.GetUserOrganizations(res.Preferences.Username, res.Preferences.GetPlainTextPassword)
+        Dim test = _client.GetUserOrganizations(res.Preferences.Username, res.Preferences.Token)
         Dim orgList As New List(Of Object)
         If test.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
             For Each tmpOrg In test.ReturnValues
@@ -97,11 +99,11 @@ Public Class frmTv4Main
         Return Nothing
     End Function
     Sub checkBookingIdAndURL(ByVal b As TV4Online.SpotlightApiV23.xsd.Booking)
-        If b.BookingIdSpotlight IsNot Nothing
+        If b.BookingIdSpotlight IsNot Nothing Then
             lblBookingUrlSpotlight.Visible = True
             lblBookingUrlSpotlight.Text = b.BookingUrlSpotlight
         Else
-            lblBookingUrlSpotlight.Visible = false
+            lblBookingUrlSpotlight.Visible = False
         End If
     End Sub
     Sub WhoLoggingIn()
@@ -116,7 +118,7 @@ Public Class frmTv4Main
         _types = _client.GetBookingTypes.ToList
 
         getOrganizations()
-        WhoLoggingIn()
+        'WhoLoggingIn()
         _camp = Campaign
 
 
@@ -724,7 +726,7 @@ Public Class frmTv4Main
         If _book.Type IsNot Nothing Then
             If _book.Type.Contains("RBS") Then
                 Return True
-            elseif _book.Type.Contains("Guldpaket")
+            ElseIf _book.Type.Contains("Guldpaket") Then
                 Return True
             Else
                 Return False
@@ -836,18 +838,32 @@ Public Class frmTv4Main
             Next
             'Dim localOrgID = res.GetOrg()
 
-            Dim _tempclients = res.getClientList()
-            ' Booking response object
-            Dim _clientList As New List(Of Object)
-            For Each client In _tempclients.returnValues
-                _clientList.Add(client)
-            Next
-            Dim _ClientBinding As New Windows.Forms.BindingSource
-            _ClientBinding.DataSource = _clientList
+            'Object holding all Mediabyråer, e.g Mediacom, GroupM, Mindshare...
+            llistOfAgencies = res.getClientList()
 
-            cmbClient.DataSource = _ClientBinding
+
+            ' Append  all agencies to a global variable through a foreach loop
+            Dim _agencies As New List(Of Object)
+            For Each agency As Object In llistOfAgencies
+                _agencies.Add(agency)
+            Next
+            ' Create bindingsource for agency combobox.
+            Dim _agencyBinding As New Windows.Forms.BindingSource
+            ' Add agencies to data soruce
+            _agencyBinding.DataSource = llistOfAgencies
+            ' Append agency binding source to combobbox datasource.
+            cmbAgencies.DataSource = _agencyBinding
+
+            ' Display only Agency name to combobox.
+            cmbAgencies.DisplayMember = "AgencyName"
+
+            ' Select first item in the list of agencies
+            selectecAgency = llistOfAgencies(0)
+
+            populateClient()
 
             cmbClient.DisplayMember = "value"
+
             For Each _tmpBook In _bookings
                 Dim _res As Boolean = False
                 Dim _bookName = _tmpBook.Channel
@@ -873,6 +889,28 @@ Public Class frmTv4Main
         End If
     End Sub
 
+    Sub populateClient()
+        'Create binding source.
+        Dim _ClientBinding As New Windows.Forms.BindingSource
+        ' Delegating selected agency clients. 
+        _ClientBinding.DataSource = selectecAgency.listOfClients
+        ' Set datasource to first iterator in list.
+        cmbClient.DataSource = _ClientBinding
+        '  Display only the value/name of in the client list.
+    End Sub
+    Private Sub cmbAgencies_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAgencies.SelectedIndexChanged
+        If (selectecAgency IsNot Nothing) Then
+            ' Fetch selected item as an integer.
+            Dim tempSelectedAgencyIndex = cmbAgencies.SelectedIndex
+            ' Select the correct client in the list based on integer.
+            Dim tempSelectedAgency = llistOfAgencies(tempSelectedAgencyIndex)
+            ' Update selected Agency
+            selectecAgency = tempSelectedAgency
+            populateClient()
+        End If
+
+
+    End Sub
     Private Sub cmdOk_Click(sender As System.Object, e As System.EventArgs) Handles cmdOk.Click
         Dim choosenOrg As String = ""
         Dim tempClientID As String = 0
@@ -884,9 +922,10 @@ Public Class frmTv4Main
         If multipleOrganizations Then
             choosenOrg = getOrgID(cmbOrganizations.SelectedItem)
         End If
-        If cmbClient.SelectedIndex = 0 Then
+        If (Not cmbClient.SelectedIndex <> 0) Then
             Windows.Forms.MessageBox.Show("No client has been selected. Select a client for the booking before you can proceed.", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Question)
         Else
+            choosenOrg = getOrgID(cmbOrganizations.SelectedItem)
             Dim selectedItem = cmbClient.SelectedItem
             tempClientID = selectedItem.Key.ToString()
             tempClientName = selectedItem.value.ToString()
@@ -957,7 +996,6 @@ Public Class frmTv4Main
         grdBookings.Invalidate()
         Me.DialogResult = Windows.Forms.DialogResult.OK
         UpdateForm()
-        'Me.Close()
     End Sub
     Private Sub cmbBookingType_SelectedValueChanged(sender As Object, e As System.EventArgs) Handles cmbBookingType.SelectedValueChanged
         _booking.Type = cmbBookingType.SelectedItem
@@ -983,27 +1021,16 @@ Public Class frmTv4Main
         grdBookings.Invalidate()
     End Sub
     Private Sub txtBudget_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtBudget.TextChanged
-        If  txtBudget.Text <> ""
+        If txtBudget.Text <> "" Then
             _booking.MaxBudget = txtBudget.Text
             grdBookings.Invalidate()
-        End If 
+        End If
     End Sub
     Private Sub cmbTarget_TextUpdate(sender As System.Object, e As System.EventArgs) Handles cmbTarget.TextUpdate
         cmbTarget.Items.Clear()
         For Each tmpTarg In _booking.Targets
             cmbTarget.Items.Add(tmpTarg)
         Next
-    End Sub
-    Private Sub chkSpecifics_CheckStateChanged(sender As Object, e As System.EventArgs) Handles chkSpecifics.CheckStateChanged
-        'If chkSpecifics.CheckState = Windows.Forms.CheckState.Checked Then
-        '    _skipSpecifics = New List(Of TV4Online.SpecificSpot)
-        'End If
-    End Sub
-
-    Private Sub chkRBS_CheckStateChanged(sender As Object, e As System.EventArgs) Handles chkRBS.CheckStateChanged
-        'If chkRBS.CheckState = Windows.Forms.CheckState.Checked Then
-        '    _skipRBS = New List(Of TV4Online.RbsFilm)
-        'End If
     End Sub
 
     Private Sub cmdCancel_Click(sender As Object, e As EventArgs) Handles cmdCancel.Click
@@ -1012,30 +1039,6 @@ Public Class frmTv4Main
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles lblBookingUrlSpotlight.LinkClicked
         System.Diagnostics.Process.Start(lblBookingUrlSpotlight.Text)
-    End Sub
-
-    Private Sub cmbClient_Enter(sender As Object, e As EventArgs) Handles cmbClient.Enter
-
-    End Sub
-
-    Private Sub cmbOrganizations_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbOrganizations.SelectedIndexChanged
-        Dim selectedItem = cmbOrganizations.SelectedItem.value
-        Dim _tempclients = res.getClientList()
-        ' Booking response object
-        Dim _clientList As New List(Of Object)
-        If cmbClient.Items.Count > 0 Then
-            cmbClient.Items.Clear()
-        Else
-            For Each client In _tempclients.returnValues
-                _clientList.Add(client)
-            Next
-        End If
-        Dim _ClientBinding As New Windows.Forms.BindingSource
-        _ClientBinding.DataSource = _clientList
-
-        cmbClient.DataSource = _ClientBinding
-
-        cmbClient.DisplayMember = "value"
     End Sub
 End Class
 

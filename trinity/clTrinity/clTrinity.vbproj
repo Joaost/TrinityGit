@@ -152,9 +152,8 @@
       <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\BalloonToolTip.dll</HintPath>
     </Reference>
     <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
+      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.AgData.v9.2">
       <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
@@ -218,6 +217,12 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\referenser\msdatasrc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.4.0.20, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.8.3.9\lib\net20\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=8.3.9.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.8.3.9\lib\net20\Spire.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition">
@@ -295,6 +300,7 @@
     <Compile Include="Class Library\cExportUnicornFile NewNorway.vb" />
     <Compile Include="Class Library\cExportUnicornFile New.vb" />
     <Compile Include="Class Library\cExportXmlToUnicorn.vb" />
+    <Compile Include="Class Library\cMediaToolPost.vb" />
     <Compile Include="Class Library\dbUA.vb" />
     <Compile Include="Class Library\EventArgs\PriceListEventArgs.vb" />
     <Compile Include="Class Library\ExcelReadTemplates\cColumnHeadline.vb" />
@@ -490,10 +496,16 @@
     <Compile Include="Class Library\Screenshot\Screenshot.vb" />
     <Compile Include="Class Library\cOutlook.vb" />
     <Compile Include="Class Library\WebFileDownloader.vb" />
-    <Compile Include="frmAddChannelUniocorn.Designer.vb">
-      <DependentUpon>frmAddChannelUniocorn.vb</DependentUpon>
+    <Compile Include="frmAddChannelHouseUnicorn.Designer.vb">
+      <DependentUpon>frmAddChannelHouseUnicorn.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmAddChannelUniocorn.vb">
+    <Compile Include="frmAddChannelHouseUnicorn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddChannelUnicorn.Designer.vb">
+      <DependentUpon>frmAddChannelUnicorn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddChannelUnicorn.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAddChannelWizard.Designer.vb">
@@ -1221,8 +1233,11 @@
       <DependentUpon>frmPerformance.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddChannelUniocorn.resx">
-      <DependentUpon>frmAddChannelUniocorn.vb</DependentUpon>
+    <EmbeddedResource Include="frmAddChannelHouseUnicorn.resx">
+      <DependentUpon>frmAddChannelHouseUnicorn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddChannelUnicorn.resx">
+      <DependentUpon>frmAddChannelUnicorn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddChannelWizard.resx">
       <DependentUpon>frmAddChannelWizard.vb</DependentUpon>
@@ -1721,6 +1736,7 @@
     <None Include="Icons\calendar.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\add2.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -2005,7 +2021,9 @@
     <Content Include="bin\Debug\Trinity.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="bin\Debug\version.xml" />
+    <Content Include="bin\Debug\version.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="bin\Debug\versions.xml" />
     <None Include="Resources\checkmark.png" />
     <None Include="Resources\CheckMarkX.jpg" />
@@ -2035,7 +2053,9 @@
       <Name>ScheduleUploader</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

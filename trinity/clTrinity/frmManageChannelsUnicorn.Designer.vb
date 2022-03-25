@@ -82,7 +82,6 @@ Partial Class frmManageChannelsUnicorn
         'btnAddChannelHouse
         '
         Me.btnAddChannelHouse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddChannelHouse.Enabled = False
         Me.btnAddChannelHouse.FlatAppearance.BorderSize = 0
         Me.btnAddChannelHouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddChannelHouse.Image = Global.clTrinity.My.Resources.Resources.add_2_small

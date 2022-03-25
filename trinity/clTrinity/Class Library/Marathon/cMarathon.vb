@@ -217,8 +217,12 @@ Public Class Marathon
     Private Function SendMarathonRequest(ByVal request As String) As Xml.Linq.XDocument
         Dim HTTP As System.Net.WebClient
         Dim _receiveXML As New System.Xml.Linq.XDocument
-
-        System.Net.ServicePointManager.SecurityProtocol = Net.SecurityProtocolType.Tls
+        ' Only for Adam Berg and Petra Selin for testing.
+        If TrinitySettings.UserEmail = "adam.berg@groupm.com" Or TrinitySettings.UserEmail = "petra.selin@groupm.com" Then
+            System.Net.ServicePointManager.SecurityProtocol = Net.SecurityProtocolType.Ssl3
+        Else
+            System.Net.ServicePointManager.SecurityProtocol = Net.SecurityProtocolType.Tls
+        End If
         System.Net.ServicePointManager.ServerCertificateValidationCallback = New System.Net.Security.RemoteCertificateValidationCallback(AddressOf AcceptAll)
 
         HTTP = New System.Net.WebClient

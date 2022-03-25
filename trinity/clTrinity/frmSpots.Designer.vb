@@ -21,33 +21,18 @@ Partial Class frmSpots
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSpots))
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.grdConfirmed = New System.Windows.Forms.DataGridView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmbTarget = New System.Windows.Forms.ToolStripComboBox()
-        Me.lblConfirmedFiltered = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.grdActual = New System.Windows.Forms.DataGridView()
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
-        Me.lblActualFiltered = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.cmdConfirmedFilter = New System.Windows.Forms.ToolStripDropDownButton()
         Me.FiltersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdConfirmedColumns = New System.Windows.Forms.ToolStripButton()
         Me.cmdConfirmedExcel = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdImportSchedule = New System.Windows.Forms.ToolStripButton()
         Me.cmdCreateRBS = New System.Windows.Forms.ToolStripButton()
         Me.cmdAutoMatch = New System.Windows.Forms.ToolStripButton()
@@ -55,41 +40,56 @@ Partial Class frmSpots
         Me.cmdBreakMatch = New System.Windows.Forms.ToolStripButton()
         Me.cmdBreakAll = New System.Windows.Forms.ToolStripButton()
         Me.cmdConfirmedEstimate = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdBookingtype = New System.Windows.Forms.ToolStripDropDownButton()
         Me.BookingtypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdFilm = New System.Windows.Forms.ToolStripDropDownButton()
         Me.FilmsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdConfirmedDelete = New System.Windows.Forms.ToolStripButton()
         Me.cmdCheckDuplicates = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdTimeshift = New System.Windows.Forms.ToolStripDropDownButton()
         Me.DefaultToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
         Me.LiveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VOSDAL7ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmbTarget = New System.Windows.Forms.ToolStripComboBox()
+        Me.lblConfirmedFiltered = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
         Me.cmdIgnoreFaultySpots = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.grdActual = New System.Windows.Forms.DataGridView()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdActualFilter = New System.Windows.Forms.ToolStripButton()
         Me.cmdActualColumns = New System.Windows.Forms.ToolStripButton()
         Me.cmdActualExcel = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdActualAutomatch = New System.Windows.Forms.ToolStripButton()
         Me.cmdActualMatch = New System.Windows.Forms.ToolStripButton()
         Me.cmdAddAndMatch = New System.Windows.Forms.ToolStripButton()
         Me.cmdActualBreakMatch = New System.Windows.Forms.ToolStripButton()
         Me.cmdActualBreakMatches = New System.Windows.Forms.ToolStripButton()
         Me.cmdRemoveUnmatchedSpots = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.lblActualFiltered = New System.Windows.Forms.ToolStripLabel()
         Me.cmdActualBookingtype = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripButton7 = New System.Windows.Forms.ToolStripButton()
         Me.cmdDeleteActual = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.lblHelp = New System.Windows.Forms.ToolStripLabel()
         Me.cmdFilmcodeFound = New System.Windows.Forms.ToolStripButton()
-        Me.SplitContainer1.Panel1.SuspendLayout
-        Me.SplitContainer1.Panel2.SuspendLayout
-        Me.SplitContainer1.SuspendLayout
-        CType(Me.grdConfirmed,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.ToolStrip1.SuspendLayout
-        CType(Me.grdActual,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.ToolStrip2.SuspendLayout
-        Me.SuspendLayout
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.SplitContainer1.Panel1.SuspendLayout()
+        Me.SplitContainer1.Panel2.SuspendLayout()
+        Me.SplitContainer1.SuspendLayout()
+        CType(Me.grdConfirmed, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
+        CType(Me.grdActual, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip2.SuspendLayout()
+        Me.SuspendLayout()
         '
         'SplitContainer1
         '
@@ -113,10 +113,10 @@ Partial Class frmSpots
         '
         'grdConfirmed
         '
-        Me.grdConfirmed.AllowUserToAddRows = false
-        Me.grdConfirmed.AllowUserToDeleteRows = false
-        Me.grdConfirmed.AllowUserToOrderColumns = true
-        Me.grdConfirmed.AllowUserToResizeRows = false
+        Me.grdConfirmed.AllowUserToAddRows = False
+        Me.grdConfirmed.AllowUserToDeleteRows = False
+        Me.grdConfirmed.AllowUserToOrderColumns = True
+        Me.grdConfirmed.AllowUserToResizeRows = False
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -126,11 +126,11 @@ Partial Class frmSpots
         Me.grdConfirmed.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdConfirmed.Location = New System.Drawing.Point(0, 25)
         Me.grdConfirmed.Name = "grdConfirmed"
-        Me.grdConfirmed.RowHeadersVisible = false
+        Me.grdConfirmed.RowHeadersVisible = False
         Me.grdConfirmed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.grdConfirmed.Size = New System.Drawing.Size(916, 176)
         Me.grdConfirmed.TabIndex = 1
-        Me.grdConfirmed.VirtualMode = true
+        Me.grdConfirmed.VirtualMode = True
         '
         'ToolStrip1
         '
@@ -153,126 +153,11 @@ Partial Class frmSpots
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
         Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
-        'cmbTarget
-        '
-        Me.cmbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTarget.Items.AddRange(New Object() {"Main Target", "Secondary Target", "Third Target", "Buying Target", "All adults"})
-        Me.cmbTarget.Name = "cmbTarget"
-        Me.cmbTarget.Size = New System.Drawing.Size(121, 25)
-        '
-        'lblConfirmedFiltered
-        '
-        Me.lblConfirmedFiltered.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.lblConfirmedFiltered.ForeColor = System.Drawing.Color.Red
-        Me.lblConfirmedFiltered.Name = "lblConfirmedFiltered"
-        Me.lblConfirmedFiltered.Size = New System.Drawing.Size(0, 22)
-        Me.lblConfirmedFiltered.Tag = "0"
-        '
-        'ToolStripLabel3
-        '
-        Me.ToolStripLabel3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripLabel3.Name = "ToolStripLabel3"
-        Me.ToolStripLabel3.Size = New System.Drawing.Size(129, 22)
-        Me.ToolStripLabel3.Text = "Ignore faulty filmcodes"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-        '
-        'grdActual
-        '
-        Me.grdActual.AllowUserToAddRows = false
-        Me.grdActual.AllowUserToDeleteRows = false
-        Me.grdActual.AllowUserToOrderColumns = true
-        Me.grdActual.AllowUserToResizeRows = false
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLight
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        Me.grdActual.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
-        Me.grdActual.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.grdActual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdActual.Location = New System.Drawing.Point(0, 25)
-        Me.grdActual.Name = "grdActual"
-        Me.grdActual.ReadOnly = true
-        Me.grdActual.RowHeadersVisible = false
-        Me.grdActual.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdActual.Size = New System.Drawing.Size(916, 171)
-        Me.grdActual.TabIndex = 1
-        Me.grdActual.VirtualMode = true
-        '
-        'ToolStrip2
-        '
-        Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel2, Me.ToolStripSeparator6, Me.cmdActualFilter, Me.cmdActualColumns, Me.cmdActualExcel, Me.ToolStripSeparator7, Me.cmdActualAutomatch, Me.cmdActualMatch, Me.cmdAddAndMatch, Me.cmdActualBreakMatch, Me.cmdActualBreakMatches, Me.cmdRemoveUnmatchedSpots, Me.ToolStripSeparator8, Me.lblActualFiltered, Me.cmdActualBookingtype, Me.ToolStripButton7, Me.cmdDeleteActual, Me.ToolStripSeparator10, Me.lblHelp, Me.cmdFilmcodeFound})
-        Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
-        Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(916, 25)
-        Me.ToolStrip2.TabIndex = 0
-        Me.ToolStrip2.Text = "ToolStrip2"
-        '
-        'ToolStripLabel2
-        '
-        Me.ToolStripLabel2.AutoSize = false
-        Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(56, 22)
-        Me.ToolStripLabel2.Text = "Actual"
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator7
-        '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator8
-        '
-        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(6, 25)
-        '
-        'lblActualFiltered
-        '
-        Me.lblActualFiltered.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.lblActualFiltered.ForeColor = System.Drawing.Color.Red
-        Me.lblActualFiltered.Name = "lblActualFiltered"
-        Me.lblActualFiltered.Size = New System.Drawing.Size(0, 22)
-        Me.lblActualFiltered.Tag = "0"
-        '
-        'ToolStripSeparator10
-        '
-        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
-        Me.ToolStripSeparator10.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolTip
-        '
-        Me.ToolTip.ShowAlways = true
-        '
         'cmdConfirmedFilter
         '
         Me.cmdConfirmedFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.cmdConfirmedFilter.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FiltersToolStripMenuItem})
-        Me.cmdConfirmedFilter.Image = CType(resources.GetObject("cmdConfirmedFilter.Image"),System.Drawing.Image)
+        Me.cmdConfirmedFilter.Image = CType(resources.GetObject("cmdConfirmedFilter.Image"), System.Drawing.Image)
         Me.cmdConfirmedFilter.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConfirmedFilter.Name = "cmdConfirmedFilter"
         Me.cmdConfirmedFilter.Size = New System.Drawing.Size(29, 22)
@@ -282,13 +167,13 @@ Partial Class frmSpots
         'FiltersToolStripMenuItem
         '
         Me.FiltersToolStripMenuItem.Name = "FiltersToolStripMenuItem"
-        Me.FiltersToolStripMenuItem.Size = New System.Drawing.Size(105, 22)
+        Me.FiltersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.FiltersToolStripMenuItem.Text = "Filters"
         '
         'cmdConfirmedColumns
         '
         Me.cmdConfirmedColumns.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdConfirmedColumns.Image = CType(resources.GetObject("cmdConfirmedColumns.Image"),System.Drawing.Image)
+        Me.cmdConfirmedColumns.Image = CType(resources.GetObject("cmdConfirmedColumns.Image"), System.Drawing.Image)
         Me.cmdConfirmedColumns.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConfirmedColumns.Name = "cmdConfirmedColumns"
         Me.cmdConfirmedColumns.Size = New System.Drawing.Size(23, 22)
@@ -298,12 +183,17 @@ Partial Class frmSpots
         'cmdConfirmedExcel
         '
         Me.cmdConfirmedExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdConfirmedExcel.Image = CType(resources.GetObject("cmdConfirmedExcel.Image"),System.Drawing.Image)
+        Me.cmdConfirmedExcel.Image = CType(resources.GetObject("cmdConfirmedExcel.Image"), System.Drawing.Image)
         Me.cmdConfirmedExcel.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConfirmedExcel.Name = "cmdConfirmedExcel"
         Me.cmdConfirmedExcel.Size = New System.Drawing.Size(23, 22)
         Me.cmdConfirmedExcel.Text = "ToolStripButton3"
         Me.cmdConfirmedExcel.ToolTipText = "Export to Excel"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
         '
         'cmdImportSchedule
         '
@@ -327,7 +217,7 @@ Partial Class frmSpots
         'cmdAutoMatch
         '
         Me.cmdAutoMatch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAutoMatch.Image = CType(resources.GetObject("cmdAutoMatch.Image"),System.Drawing.Image)
+        Me.cmdAutoMatch.Image = CType(resources.GetObject("cmdAutoMatch.Image"), System.Drawing.Image)
         Me.cmdAutoMatch.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAutoMatch.Name = "cmdAutoMatch"
         Me.cmdAutoMatch.Size = New System.Drawing.Size(23, 22)
@@ -337,7 +227,7 @@ Partial Class frmSpots
         'cmdMatch
         '
         Me.cmdMatch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdMatch.Image = CType(resources.GetObject("cmdMatch.Image"),System.Drawing.Image)
+        Me.cmdMatch.Image = CType(resources.GetObject("cmdMatch.Image"), System.Drawing.Image)
         Me.cmdMatch.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdMatch.Name = "cmdMatch"
         Me.cmdMatch.Size = New System.Drawing.Size(23, 22)
@@ -347,7 +237,7 @@ Partial Class frmSpots
         'cmdBreakMatch
         '
         Me.cmdBreakMatch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdBreakMatch.Image = CType(resources.GetObject("cmdBreakMatch.Image"),System.Drawing.Image)
+        Me.cmdBreakMatch.Image = CType(resources.GetObject("cmdBreakMatch.Image"), System.Drawing.Image)
         Me.cmdBreakMatch.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdBreakMatch.Name = "cmdBreakMatch"
         Me.cmdBreakMatch.Size = New System.Drawing.Size(23, 22)
@@ -356,7 +246,7 @@ Partial Class frmSpots
         'cmdBreakAll
         '
         Me.cmdBreakAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdBreakAll.Image = CType(resources.GetObject("cmdBreakAll.Image"),System.Drawing.Image)
+        Me.cmdBreakAll.Image = CType(resources.GetObject("cmdBreakAll.Image"), System.Drawing.Image)
         Me.cmdBreakAll.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdBreakAll.Name = "cmdBreakAll"
         Me.cmdBreakAll.Size = New System.Drawing.Size(23, 22)
@@ -373,11 +263,16 @@ Partial Class frmSpots
         Me.cmdConfirmedEstimate.Text = "ToolStripButton6"
         Me.cmdConfirmedEstimate.ToolTipText = "Estimate confirmed spots"
         '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
         'cmdBookingtype
         '
         Me.cmdBookingtype.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.cmdBookingtype.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BookingtypeToolStripMenuItem})
-        Me.cmdBookingtype.Image = CType(resources.GetObject("cmdBookingtype.Image"),System.Drawing.Image)
+        Me.cmdBookingtype.Image = CType(resources.GetObject("cmdBookingtype.Image"), System.Drawing.Image)
         Me.cmdBookingtype.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdBookingtype.Name = "cmdBookingtype"
         Me.cmdBookingtype.Size = New System.Drawing.Size(29, 22)
@@ -387,7 +282,7 @@ Partial Class frmSpots
         'BookingtypeToolStripMenuItem
         '
         Me.BookingtypeToolStripMenuItem.Name = "BookingtypeToolStripMenuItem"
-        Me.BookingtypeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BookingtypeToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
         Me.BookingtypeToolStripMenuItem.Text = "Bookingtypes"
         '
         'cmdFilm
@@ -410,7 +305,7 @@ Partial Class frmSpots
         'cmdConfirmedDelete
         '
         Me.cmdConfirmedDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdConfirmedDelete.Image = CType(resources.GetObject("cmdConfirmedDelete.Image"),System.Drawing.Image)
+        Me.cmdConfirmedDelete.Image = CType(resources.GetObject("cmdConfirmedDelete.Image"), System.Drawing.Image)
         Me.cmdConfirmedDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConfirmedDelete.Name = "cmdConfirmedDelete"
         Me.cmdConfirmedDelete.Size = New System.Drawing.Size(23, 22)
@@ -426,6 +321,11 @@ Partial Class frmSpots
         Me.cmdCheckDuplicates.Size = New System.Drawing.Size(23, 22)
         Me.cmdCheckDuplicates.Text = "Mark spots in same break"
         Me.cmdCheckDuplicates.ToolTipText = "Click to color spots that share a break with others"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
         '
         'cmdTimeshift
         '
@@ -465,6 +365,28 @@ Partial Class frmSpots
         Me.VOSDAL7ToolStripMenuItem.Tag = "2"
         Me.VOSDAL7ToolStripMenuItem.Text = "VOSDAL+7"
         '
+        'cmbTarget
+        '
+        Me.cmbTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbTarget.Items.AddRange(New Object() {"Main Target", "Secondary Target", "Third Target", "Buying Target", "All adults"})
+        Me.cmbTarget.Name = "cmbTarget"
+        Me.cmbTarget.Size = New System.Drawing.Size(121, 25)
+        '
+        'lblConfirmedFiltered
+        '
+        Me.lblConfirmedFiltered.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblConfirmedFiltered.ForeColor = System.Drawing.Color.Red
+        Me.lblConfirmedFiltered.Name = "lblConfirmedFiltered"
+        Me.lblConfirmedFiltered.Size = New System.Drawing.Size(0, 22)
+        Me.lblConfirmedFiltered.Tag = "0"
+        '
+        'ToolStripLabel3
+        '
+        Me.ToolStripLabel3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripLabel3.Name = "ToolStripLabel3"
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(129, 22)
+        Me.ToolStripLabel3.Text = "Ignore faulty filmcodes"
+        '
         'cmdIgnoreFaultySpots
         '
         Me.cmdIgnoreFaultySpots.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
@@ -475,11 +397,62 @@ Partial Class frmSpots
         Me.cmdIgnoreFaultySpots.Size = New System.Drawing.Size(23, 22)
         Me.cmdIgnoreFaultySpots.Text = "Click to filter spots with missing film codes back in"
         '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+        '
+        'grdActual
+        '
+        Me.grdActual.AllowUserToAddRows = False
+        Me.grdActual.AllowUserToDeleteRows = False
+        Me.grdActual.AllowUserToOrderColumns = True
+        Me.grdActual.AllowUserToResizeRows = False
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLight
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        Me.grdActual.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        Me.grdActual.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grdActual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdActual.Location = New System.Drawing.Point(0, 25)
+        Me.grdActual.Name = "grdActual"
+        Me.grdActual.ReadOnly = True
+        Me.grdActual.RowHeadersVisible = False
+        Me.grdActual.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdActual.Size = New System.Drawing.Size(916, 171)
+        Me.grdActual.TabIndex = 1
+        Me.grdActual.VirtualMode = True
+        '
+        'ToolStrip2
+        '
+        Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel2, Me.ToolStripSeparator6, Me.cmdActualFilter, Me.cmdActualColumns, Me.cmdActualExcel, Me.ToolStripSeparator7, Me.cmdActualAutomatch, Me.cmdActualMatch, Me.cmdAddAndMatch, Me.cmdActualBreakMatch, Me.cmdActualBreakMatches, Me.cmdRemoveUnmatchedSpots, Me.ToolStripSeparator8, Me.lblActualFiltered, Me.cmdActualBookingtype, Me.ToolStripButton7, Me.cmdDeleteActual, Me.ToolStripSeparator10, Me.lblHelp, Me.cmdFilmcodeFound})
+        Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip2.Name = "ToolStrip2"
+        Me.ToolStrip2.Size = New System.Drawing.Size(916, 25)
+        Me.ToolStrip2.TabIndex = 0
+        Me.ToolStrip2.Text = "ToolStrip2"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.AutoSize = False
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(56, 22)
+        Me.ToolStripLabel2.Text = "Actual"
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
+        '
         'cmdActualFilter
         '
         Me.cmdActualFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdActualFilter.Enabled = false
-        Me.cmdActualFilter.Image = CType(resources.GetObject("cmdActualFilter.Image"),System.Drawing.Image)
+        Me.cmdActualFilter.Enabled = False
+        Me.cmdActualFilter.Image = CType(resources.GetObject("cmdActualFilter.Image"), System.Drawing.Image)
         Me.cmdActualFilter.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdActualFilter.Name = "cmdActualFilter"
         Me.cmdActualFilter.Size = New System.Drawing.Size(23, 22)
@@ -489,7 +462,7 @@ Partial Class frmSpots
         'cmdActualColumns
         '
         Me.cmdActualColumns.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdActualColumns.Image = CType(resources.GetObject("cmdActualColumns.Image"),System.Drawing.Image)
+        Me.cmdActualColumns.Image = CType(resources.GetObject("cmdActualColumns.Image"), System.Drawing.Image)
         Me.cmdActualColumns.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdActualColumns.Name = "cmdActualColumns"
         Me.cmdActualColumns.Size = New System.Drawing.Size(23, 22)
@@ -499,17 +472,22 @@ Partial Class frmSpots
         'cmdActualExcel
         '
         Me.cmdActualExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdActualExcel.Image = CType(resources.GetObject("cmdActualExcel.Image"),System.Drawing.Image)
+        Me.cmdActualExcel.Image = CType(resources.GetObject("cmdActualExcel.Image"), System.Drawing.Image)
         Me.cmdActualExcel.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdActualExcel.Name = "cmdActualExcel"
         Me.cmdActualExcel.Size = New System.Drawing.Size(23, 22)
         Me.cmdActualExcel.Text = "ToolStripButton3"
         Me.cmdActualExcel.ToolTipText = "Export to Excel"
         '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 25)
+        '
         'cmdActualAutomatch
         '
         Me.cmdActualAutomatch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdActualAutomatch.Image = CType(resources.GetObject("cmdActualAutomatch.Image"),System.Drawing.Image)
+        Me.cmdActualAutomatch.Image = CType(resources.GetObject("cmdActualAutomatch.Image"), System.Drawing.Image)
         Me.cmdActualAutomatch.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdActualAutomatch.Name = "cmdActualAutomatch"
         Me.cmdActualAutomatch.Size = New System.Drawing.Size(23, 22)
@@ -519,7 +497,7 @@ Partial Class frmSpots
         'cmdActualMatch
         '
         Me.cmdActualMatch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdActualMatch.Image = CType(resources.GetObject("cmdActualMatch.Image"),System.Drawing.Image)
+        Me.cmdActualMatch.Image = CType(resources.GetObject("cmdActualMatch.Image"), System.Drawing.Image)
         Me.cmdActualMatch.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdActualMatch.Name = "cmdActualMatch"
         Me.cmdActualMatch.Size = New System.Drawing.Size(23, 22)
@@ -539,7 +517,7 @@ Partial Class frmSpots
         'cmdActualBreakMatch
         '
         Me.cmdActualBreakMatch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdActualBreakMatch.Image = CType(resources.GetObject("cmdActualBreakMatch.Image"),System.Drawing.Image)
+        Me.cmdActualBreakMatch.Image = CType(resources.GetObject("cmdActualBreakMatch.Image"), System.Drawing.Image)
         Me.cmdActualBreakMatch.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdActualBreakMatch.Name = "cmdActualBreakMatch"
         Me.cmdActualBreakMatch.Size = New System.Drawing.Size(23, 22)
@@ -548,7 +526,7 @@ Partial Class frmSpots
         'cmdActualBreakMatches
         '
         Me.cmdActualBreakMatches.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdActualBreakMatches.Image = CType(resources.GetObject("cmdActualBreakMatches.Image"),System.Drawing.Image)
+        Me.cmdActualBreakMatches.Image = CType(resources.GetObject("cmdActualBreakMatches.Image"), System.Drawing.Image)
         Me.cmdActualBreakMatches.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdActualBreakMatches.Name = "cmdActualBreakMatches"
         Me.cmdActualBreakMatches.Size = New System.Drawing.Size(23, 22)
@@ -564,11 +542,24 @@ Partial Class frmSpots
         Me.cmdRemoveUnmatchedSpots.Size = New System.Drawing.Size(23, 22)
         Me.cmdRemoveUnmatchedSpots.Text = "Remove unmatched spots"
         '
+        'ToolStripSeparator8
+        '
+        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(6, 25)
+        '
+        'lblActualFiltered
+        '
+        Me.lblActualFiltered.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblActualFiltered.ForeColor = System.Drawing.Color.Red
+        Me.lblActualFiltered.Name = "lblActualFiltered"
+        Me.lblActualFiltered.Size = New System.Drawing.Size(0, 22)
+        Me.lblActualFiltered.Tag = "0"
+        '
         'cmdActualBookingtype
         '
         Me.cmdActualBookingtype.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.cmdActualBookingtype.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1})
-        Me.cmdActualBookingtype.Image = CType(resources.GetObject("cmdActualBookingtype.Image"),System.Drawing.Image)
+        Me.cmdActualBookingtype.Image = CType(resources.GetObject("cmdActualBookingtype.Image"), System.Drawing.Image)
         Me.cmdActualBookingtype.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdActualBookingtype.Name = "cmdActualBookingtype"
         Me.cmdActualBookingtype.Size = New System.Drawing.Size(29, 22)
@@ -584,7 +575,7 @@ Partial Class frmSpots
         'ToolStripButton7
         '
         Me.ToolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton7.Enabled = false
+        Me.ToolStripButton7.Enabled = False
         Me.ToolStripButton7.Image = Global.clTrinity.My.Resources.Resources.add_2_small
         Me.ToolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton7.Name = "ToolStripButton7"
@@ -594,11 +585,16 @@ Partial Class frmSpots
         'cmdDeleteActual
         '
         Me.cmdDeleteActual.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdDeleteActual.Image = CType(resources.GetObject("cmdDeleteActual.Image"),System.Drawing.Image)
+        Me.cmdDeleteActual.Image = CType(resources.GetObject("cmdDeleteActual.Image"), System.Drawing.Image)
         Me.cmdDeleteActual.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDeleteActual.Name = "cmdDeleteActual"
         Me.cmdDeleteActual.Size = New System.Drawing.Size(23, 22)
         Me.cmdDeleteActual.Text = "Delete actual spots"
+        '
+        'ToolStripSeparator10
+        '
+        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
+        Me.ToolStripSeparator10.Size = New System.Drawing.Size(6, 25)
         '
         'lblHelp
         '
@@ -612,12 +608,16 @@ Partial Class frmSpots
         '
         Me.cmdFilmcodeFound.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.cmdFilmcodeFound.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdFilmcodeFound.Enabled = false
-        Me.cmdFilmcodeFound.Image = CType(resources.GetObject("cmdFilmcodeFound.Image"),System.Drawing.Image)
+        Me.cmdFilmcodeFound.Enabled = False
+        Me.cmdFilmcodeFound.Image = CType(resources.GetObject("cmdFilmcodeFound.Image"), System.Drawing.Image)
         Me.cmdFilmcodeFound.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdFilmcodeFound.Name = "cmdFilmcodeFound"
         Me.cmdFilmcodeFound.Size = New System.Drawing.Size(23, 22)
         Me.cmdFilmcodeFound.Text = "Filmcodes not found"
+        '
+        'ToolTip
+        '
+        Me.ToolTip.ShowAlways = True
         '
         'frmSpots
         '

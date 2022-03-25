@@ -16,6 +16,9 @@ Public Class frmManageChannelsUnicorn
 
     Public Sub importAllXmls()
 
+        If listOfFiles.Count > 1 Then
+            listOfFiles.Clear()
+        End If
         Dim datapath As String = TrinitySettings.DataPath
 
         ' Make a reference to a directory.
@@ -29,7 +32,9 @@ Public Class frmManageChannelsUnicorn
                 listOfFiles.Add(fri)
             End If
         Next fri
-
+        If listOfXmls.Count > 1 Then
+            listOfXmls.Clear()
+        End If
         ' Read files as file info and add to list of xmls
         For Each xmlFile As FileInfo In listOfFiles
             ' Create xml document
@@ -93,11 +98,12 @@ Public Class frmManageChannelsUnicorn
             ' Disable controls if selected node has no value.
             btnAddChannel.Enabled = False
             btnRemoveChannel.Enabled = False
+            btnRemoveChannelHouse.Enabled = False
         Else
             ' Enable controls if node has a value.
             btnAddChannel.Enabled = True
             btnRemoveChannel.Enabled = True
-
+            btnRemoveChannelHouse.Enabled = True
         End If
     End Sub
 
@@ -293,5 +299,90 @@ Public Class frmManageChannelsUnicorn
         Else
             Windows.Forms.MessageBox.Show("If you want to remove channel you have to select with the mouse click on a specific channel.", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
         End If
+    End Sub
+
+    Private Sub btnRemoveChannelHouse_Click(sender As Object, e As EventArgs) Handles btnRemoveChannelHouse.Click
+        ' Find correct channel house
+        Dim selectedNode As TreeNode = tvwChannelHouse.SelectedNode
+        Dim xmlDoc As XmlDocument
+
+        If selectedNode.Parent Is Nothing Then
+            For Each xmls As XmlDocument In listOfXmls
+                If xmls.DocumentElement.GetAttribute("ChannelHouse") = selectedNode.Text Then
+                    ' Append correct node to xml doc
+                    xmlDoc = xmls
+                    ' Remove the unnecceassary strings in the url path.
+                    Dim datapathURL As String = xmlDoc.BaseURI
+                    datapathURL = datapathURL.Replace("file:", "")
+                    Dim newName As String = xmlDoc.DocumentElement.GetAttribute("ChannelHouse") + "_removed.xml"
+                    Try
+                        ' Rename the file using  filesystem library
+                        My.Computer.FileSystem.RenameFile(datapathURL, newName)
+                        listOfXmls.Remove(xmlDoc)
+                        updateTreeView()
+                        lblUpdateInfo.Text = "Successfully removed channel house:" + selectedNode.Text
+                    Catch ex As Exception
+                        Windows.Forms.MessageBox.Show("Something went wrong when removing channel house." + ex.Message, "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Warning)
+                    End Try
+                    Exit For
+                End If
+            Next
+        Else
+            Windows.Forms.MessageBox.Show("This function is only available for removing channel houses.", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Private Sub btnAddChannelHouse_Click(sender As Object, e As EventArgs) Handles btnAddChannelHouse.Click
+        ' Initiate new form for adding channel house 
+        Dim frm As New frmAddChannelHouseUnicorn()
+        Dim frm_AddChannel As New frmAddChannelUnicorn()
+        ' Designated channel house name
+        Dim channelHouseName As String
+        Dim channelName As String
+        frm.ShowDialog()
+
+        If frm.DialogResult = Windows.Forms.DialogResult.OK Then
+            ' Retreive the channel house name
+            channelHouseName = frm.txtInputChannelName.Text
+        Else
+            Exit Sub
+        End If
+        ' Create new xml file
+        Dim newXmlDoc As New XmlDocument
+        ' Create new element to apppend to xml document
+
+        frm_AddChannel.ShowDialog()
+
+        If frm_AddChannel.DialogResult = Windows.Forms.DialogResult.OK Then
+            ' Retrieve the new name for additional channel
+            channelName = frm_AddChannel.txtInputChannelName.Text
+        Else
+            Exit Sub
+        End If
+
+
+        Dim fileName As String = "Unicorn-" + channelHouseName + ".xml"
+
+        Dim writer As New XmlTextWriter(TrinitySettings.DataPath + "\" + "Unicorn-" + channelName + ".xml", System.Text.Encoding.UTF8)
+        writer.WriteStartDocument(True)
+        writer.Formatting = Formatting.Indented
+        writer.Indentation = 2
+        writer.WriteStartElement("Data")
+        writer.WriteAttributeString("ChannelHouse", channelHouseName)
+        createChannelsNode("Channels", writer, channelName)
+        writer.WriteEndElement()
+        writer.WriteEndDocument()
+        writer.Close()
+        importAllXmls()
+    End Sub
+    Private Sub createChannelsNode(ByVal channelsNode As String, ByVal writer As XmlTextWriter, ByVal channelName As String)
+        writer.WriteStartElement(channelsNode)
+        createChannelNode(channelName, writer)
+        writer.WriteEndElement()
+    End Sub
+    Private Sub createChannelNode(ByVal singleChannelNode As String, ByVal writer As XmlTextWriter)
+        writer.WriteStartElement("Channel")
+        writer.WriteAttributeString("Name", singleChannelNode)
+        writer.WriteEndElement()
     End Sub
 End Class

@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Break.vb" />
+    <Compile Include="Classes\cAgency.vb" />
     <Compile Include="Classes\clsIni.vb" />
     <Compile Include="Classes\cPlannedSpot.vb" />
     <Compile Include="Classes\ExtendedDateTimePicker.vb">

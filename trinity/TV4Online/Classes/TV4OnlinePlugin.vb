@@ -275,18 +275,33 @@ Public Class TV4OnlinePlugin
         ' Local variable for organizations
         Dim res = resultGetOrg.ReturnValues
         ' New list of organizations
-        Dim tempOrganizationIDs As New List(Of String)
+        Dim tempOrganizationIDs As New List(Of Object)
         ' Iterate through organizations
         For Each myPair As KeyValuePair(Of String, String) In res
-            tempOrganizationIDs.Add(myPair.Key)
+            tempOrganizationIDs.Add(myPair)
         Next
-        Dim orgID As String = ""
-        If tempOrgIDSelected = "" Then
-            orgID = tempOrganizationIDs(0)
-        Else
-            orgID = tempOrgIDSelected
-        End If
-        Dim clientList = tmpClient.GetClientsForOrganization(Preferences.Username, Preferences.Token, OrgID)
+        'Dim orgID As String = ""
+        'If tempOrgIDSelected = "" Then
+        '    orgID = tempOrganizationIDs(0)
+        'Else
+        '    orgID = tempOrgIDSelected
+        'End If
+
+
+        Dim clientList As New List(Of Object)
+        For Each tempOrg As Object In tempOrganizationIDs
+            Dim resClient = tmpClient.GetClientsForOrganization(Preferences.Username, Preferences.Token, tempOrg.Key)
+            Dim tempAgency As New cAgency
+            For Each tempClient As Object In resClient.ReturnValues
+                tempAgency.listOfClients.Add(tempClient)
+            Next
+            tempAgency.AgencyName = tempOrg.Value
+
+            tempAgency.agencyGUID = tempOrg.Key
+
+            clientList.Add(tempAgency)
+        Next
+
         Return clientList
     End Function
 
@@ -329,53 +344,55 @@ Public Class TV4OnlinePlugin
         _campaign.Bookings = _bookings.ToArray
 
         Try
-            If otherOrganizations Then
-                Dim _res = _client.CreateBookingForOrganization(Preferences.Username, Preferences.Token, orgID, _campaign, False)
-                If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
-                    Windows.Forms.MessageBox.Show("Booking was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                    receieveBookingInfoFromSpotlight(_res, tmpBook)
-                ElseIf _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Warning Then
-                    Dim _r As Windows.Forms.DialogResult = Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with a warning :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "Do you want to book " + tmpBook.Channel + " " + tmpBook.Type + " anyway?", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.YesNoCancel, Windows.Forms.MessageBoxIcon.Question)
-                    If _r = Windows.Forms.DialogResult.Yes Then
-                        _res = _client.CreateBookingForOrganization(Preferences.Username, Preferences.Token, orgID, _campaign, True)
-                        If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
-                            Windows.Forms.MessageBox.Show("Booking " + tmpBook.Channel + " " + tmpBook.Type + " was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                            receieveBookingInfoFromSpotlight(_res, tmpBook)
-                            Return True
-                        Else
-                            Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
-                        End If
-                    ElseIf _r = Windows.Forms.DialogResult.Cancel Or _r = Windows.Forms.DialogResult.No Then
-                        Return False
+            ' New setup since each user will now must uplad booking with related client and client ID
+            Dim _res = _client.CreateBookingForOrganization(Preferences.Username, Preferences.Token, orgID, _campaign, False)
+            If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
+                Windows.Forms.MessageBox.Show("Booking was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                receieveBookingInfoFromSpotlight(_res, tmpBook)
+            ElseIf _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Warning Then
+                Dim _r As Windows.Forms.DialogResult = Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with a warning :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "Do you want to book " + tmpBook.Channel + " " + tmpBook.Type + " anyway?", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.YesNoCancel, Windows.Forms.MessageBoxIcon.Question)
+                If _r = Windows.Forms.DialogResult.Yes Then
+                    _res = _client.CreateBookingForOrganization(Preferences.Username, Preferences.Token, orgID, _campaign, True)
+                    If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
+                        Windows.Forms.MessageBox.Show("Booking " + tmpBook.Channel + " " + tmpBook.Type + " was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+                        receieveBookingInfoFromSpotlight(_res, tmpBook)
+                        Return True
+                    Else
+                        Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
                     End If
-                Else
-                    _ro = _res.Status
-                    Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+                ElseIf _r = Windows.Forms.DialogResult.Cancel Or _r = Windows.Forms.DialogResult.No Then
+                    Return False
                 End If
             Else
-                Dim _res = _client.CreateBooking(Preferences.Username, Preferences.Token, _campaign, False)
-                If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
-                    Windows.Forms.MessageBox.Show("Booking was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                    receieveBookingInfoFromSpotlight(_res, tmpBook)
-                ElseIf _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Warning Then
-                    Dim _r As Windows.Forms.DialogResult = Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with a warning :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "Do you want to book " + tmpBook.Channel + " " + tmpBook.Type + " anyway?", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.YesNoCancel, Windows.Forms.MessageBoxIcon.Question)
-                    If _r = Windows.Forms.DialogResult.Yes Then
-                        _res = _client.CreateBooking(Preferences.Username, Preferences.Token, _campaign, True)
-                        If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
-                            Windows.Forms.MessageBox.Show("Booking " + tmpBook.Channel + " " + tmpBook.Type + " was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
-                            receieveBookingInfoFromSpotlight(_res, tmpBook)
-                            Return True
-                        Else
-                            Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with an error :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "For " + tmpBook.Channel + " " + tmpBook.Type + ".", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
-                        End If
-                    ElseIf _r = Windows.Forms.DialogResult.Cancel Or _r = Windows.Forms.DialogResult.No Then
-                        Return False
-                    End If
-                Else
-                    _ro = _res.Status
-                    Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
-                End If
+                _ro = _res.Status
+                Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
             End If
+            'If otherOrganizations Then
+
+            'Else
+            '    Dim _res = _client.CreateBooking(Preferences.Username, Preferences.Token, _campaign, False)
+            '    If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
+            '        Windows.Forms.MessageBox.Show("Booking was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+            '        receieveBookingInfoFromSpotlight(_res, tmpBook)
+            '    ElseIf _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Warning Then
+            '        Dim _r As Windows.Forms.DialogResult = Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with a warning :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "Do you want to book " + tmpBook.Channel + " " + tmpBook.Type + " anyway?", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.YesNoCancel, Windows.Forms.MessageBoxIcon.Question)
+            '        If _r = Windows.Forms.DialogResult.Yes Then
+            '            _res = _client.CreateBooking(Preferences.Username, Preferences.Token, _campaign, True)
+            '            If _res.Status = TV4Online.SpotlightApiV23.xsd.StatusType.Success Then
+            '                Windows.Forms.MessageBox.Show("Booking " + tmpBook.Channel + " " + tmpBook.Type + " was successfully uploaded.", "TV4 Spotlight", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+            '                receieveBookingInfoFromSpotlight(_res, tmpBook)
+            '                Return True
+            '            Else
+            '                Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with an error :" & vbNewLine & vbNewLine & "{0}" & vbNewLine & vbNewLine & "For " + tmpBook.Channel + " " + tmpBook.Type + ".", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y ", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+            '            End If
+            '        ElseIf _r = Windows.Forms.DialogResult.Cancel Or _r = Windows.Forms.DialogResult.No Then
+            '            Return False
+            '        End If
+            '    Else
+            '        _ro = _res.Status
+            '        Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, _res.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
+            '    End If
+            'End If
         Catch ex As FaultException(Of TV4Online.SpotlightApiV23.xsd.CreateBookingResponse)
             Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "{0}", String.Join(vbNewLine, ex.Detail.ErrorMessages.Select(Function(_e) _e.Key & ": " & _e.Value).ToArray)), "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error)
         End Try

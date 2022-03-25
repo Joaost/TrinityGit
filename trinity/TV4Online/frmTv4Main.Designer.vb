@@ -76,6 +76,8 @@ Partial Class frmTv4Main
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmbClient = New System.Windows.Forms.ComboBox()
         Me.lblClient = New System.Windows.Forms.Label()
+        Me.cmbAgencies = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.grdBookings, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.wrnTarg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -626,11 +628,35 @@ Partial Class frmTv4Main
         Me.lblClient.TabIndex = 63
         Me.lblClient.Text = "Client"
         '
+        'cmbAgencies
+        '
+        Me.cmbAgencies.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.cmbAgencies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbAgencies.FormattingEnabled = True
+        Me.cmbAgencies.Location = New System.Drawing.Point(295, 490)
+        Me.cmbAgencies.Name = "cmbAgencies"
+        Me.cmbAgencies.Size = New System.Drawing.Size(155, 21)
+        Me.cmbAgencies.TabIndex = 66
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(292, 473)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(44, 13)
+        Me.Label8.TabIndex = 65
+        Me.Label8.Text = "Agency"
+        '
         'frmTv4Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(730, 604)
+        Me.Controls.Add(Me.cmbAgencies)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.cmbClient)
         Me.Controls.Add(Me.lblClient)
         Me.Controls.Add(Me.Label7)
@@ -738,4 +764,6 @@ End Sub
     Friend WithEvents MenuStrip1 As Windows.Forms.MenuStrip
     Friend WithEvents cmbClient As Windows.Forms.ComboBox
     Friend WithEvents lblClient As Windows.Forms.Label
+    Friend WithEvents cmbAgencies As Windows.Forms.ComboBox
+    Friend WithEvents Label8 As Windows.Forms.Label
 End Class
