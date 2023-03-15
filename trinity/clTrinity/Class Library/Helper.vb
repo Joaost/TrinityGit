@@ -7,7 +7,6 @@ Imports System.Drawing
 Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
 Imports System.Drawing.Drawing2D
-Imports VB6 = Microsoft.VisualBasic.Compatibility.VB6.Support
 
 'To read the registry subkey.
 Imports Microsoft.Win32
@@ -1143,6 +1142,9 @@ Estimate_Error:
             Else
                 GUID = My.Computer.Registry.ClassesRoot.OpenSubKey("Connect.Brands").OpenSubKey("Clsid").GetValue("")
                 Filepath = My.Computer.Registry.ClassesRoot.OpenSubKey("CLSID").OpenSubKey(GUID).OpenSubKey("InProcServer32").GetValue("")
+                Dim t As New Connect.Brands
+                RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry64)
+
             End If
 
             Return Filepath

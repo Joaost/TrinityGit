@@ -1,4 +1,12 @@
 Public Class frmMonitor
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
 
     Private Sub cmbChart_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbChart.SelectedIndexChanged
         Dim i As Integer

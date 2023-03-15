@@ -30,7 +30,7 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetZone>LocalIntranet</TargetZone>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
@@ -93,7 +93,7 @@
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -154,6 +154,7 @@
     <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="DevExpress.AgData.v9.2">
       <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
@@ -267,9 +268,6 @@
     </Reference>
     <Reference Include="System.Xml.Linq">
       <Private>False</Private>
-    </Reference>
-    <Reference Include="TrinityPlugin">
-      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\TrinityPlugin.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1764,7 +1762,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
@@ -2051,6 +2049,10 @@
     <ProjectReference Include="..\ScheduleUploader\ScheduleUploader\ScheduleUploader.vbproj">
       <Project>{5decc64d-f37d-4123-b7b2-12102ef517be}</Project>
       <Name>ScheduleUploader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrinityPlugin\TrinityPlugin.vbproj">
+      <Project>{de60607a-5167-4afa-a64f-89bd8c4dbec1}</Project>
+      <Name>TrinityPlugin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

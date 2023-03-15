@@ -893,14 +893,7 @@ cmdSave_Click_Error:
 
         ElseIf TrinitySettings.DefaultArea = "SE" Then
             cmdReports.DropDownItems.Add("Export campaign Unicorn-file", Nothing, AddressOf ExportCampaignToUnicornFile).Enabled = True
-            If TrinitySettings.UserEmail = "joakim.koch@groupm.com" Then
-                cmdReports.DropDownItems.Add("Export campaign to MediaTool", Nothing, AddressOf exportToMediaToolFile).Enabled = True
-                'cmdReports.DropDownItems.Add("Export BSH datorama", Nothing, AddressOf getSpotlog).Enabled = True
-            ElseIf TrinitySettings.UserEmail = "joakim.koch@goupm.com" Then
 
-                cmdReports.DropDownItems.Add("Export campaign to TOLE", Nothing, AddressOf exportToMediaToolFile).Enabled = True
-
-            End If
         ElseIf TrinitySettings.ActiveDataPath.Contains("Oslfpcp01102") Then
             cmdReports.DropDownItems.Add("Export campaign Unicorn-file", Nothing, AddressOf ExportCampaignToUnicornFileNorway).Enabled = True
             cmdReports.DropDownItems.Add("Export to datorama-file", Nothing, AddressOf ExportCampaignToDatorama).Enabled = True
@@ -2858,7 +2851,7 @@ CreatePlan:
         If IO.Directory.Exists(IO.Path.Combine(My.Application.Info.DirectoryPath, "Plugins")) Then
             catalog.Catalogs.Add(New DirectoryCatalog("./Plugins/"))
         End If
-        'catalog.Catalogs.Add(New TypeCatalog(GetType(IPlugin)))
+        catalog.Catalogs.Add(New TypeCatalog(GetType(IPlugin)))
         Dim container As New CompositionContainer(catalog)
         container.SatisfyImportsOnce(Me)
 

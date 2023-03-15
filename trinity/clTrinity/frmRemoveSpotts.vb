@@ -17,8 +17,8 @@ Public Class frmRemoveSpotts
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        
-        If Campaign.BookedSpots.Count > 1 Then
+
+        If Campaign.BookedSpots.Count > 0 Then
             For Each tmpSpot As Trinity.cBookedSpot In Campaign.BookedSpots
                 If Trinity.Helper.FormatDateForBooking(tmpSpot.AirDate) < Trinity.Helper.FormatDateForBooking(Campaign.StartDate) Or Trinity.Helper.FormatDateForBooking(tmpSpot.AirDate) > Trinity.Helper.FormatDateForBooking(Campaign.EndDate) Then
                     Dim tmpDate = Trinity.Helper.FormatDateForBooking(Campaign.EndDate)
@@ -40,7 +40,7 @@ Public Class frmRemoveSpotts
                 End If
             Next
         End If
-        If Campaign.ActualSpots.Count > 1
+        If Campaign.ActualSpots.Count > 1Then
             For each tmpSpot As Trinity.cActualSpot in Campaign.ActualSpots
                 If Trinity.Helper.FormatDateForBooking(tmpSpot.AirDate) <= Trinity.Helper.FormatDateForBooking(Campaign.StartDate) Or Trinity.Helper.FormatDateForBooking(tmpSpot.AirDate) >= Trinity.Helper.FormatDateForBooking(Campaign.EndDate) Then
                     Dim tmpDate = Trinity.Helper.FormatDateForBooking(Campaign.EndDate)
@@ -77,13 +77,14 @@ Public Class frmRemoveSpotts
 
             If grdSpotts.RowCount < 1
                 grdSpotts.Rows.Clear()
-                If Campaign.BookedSpots.Count > 1
-                    For each spott As Trinity.cBookedSpot in listOfRemovableSpotts
+                If Campaign.BookedSpots.Count > 0 Then
+
+                    For Each spott As Trinity.cBookedSpot In listOfRemovableSpotts
                         Dim newRow As Integer = grdSpotts.Rows.Add
                         grdSpotts.Rows(newRow).Tag = spott
                     Next
-                End if
-                If Campaign.ActualSpots.Count > 1
+                End If
+                If Campaign.ActualSpots.Count > 1Then
                     For each spott As Trinity.cActualSpot in listOfRemovableAcualSpotts
                         Dim newRow As Integer = grdSpotts.Rows.Add
                         grdSpotts.Rows(newRow).Tag = spott
