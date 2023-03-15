@@ -2,6 +2,7 @@ Imports System.Windows.Forms
 
 Public Class frmMatrixExport
 
+#If BASE32 Then
     Private Enum TargetEnum
         eMainTarget = 1
         eBuyingTarget = 2
@@ -860,4 +861,5 @@ Public Class frmMatrixExport
             TmpPnl.PopulateContractCombo(TmpClient)
         Next
     End Sub
+#End If
 End Class

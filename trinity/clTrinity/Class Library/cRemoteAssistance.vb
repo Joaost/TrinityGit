@@ -80,7 +80,9 @@ Public Class cRemoteAssistance
             Return False
         Else
             Try
+#If NOTES Then
                 SendMailNotes(Password, TrinitySettings.NotesMailServer, TrinitySettings.NotesMailFile, TrinitySettings.UserName, TrinitySettings.UserEmail, "Remote Assistance Request", "", "johan.hogfeldt@mecglobal.com,hannes.falth@mecglobal.com", strTicketLocation)
+#End If
             Catch ex As COMException
                 Threading.Thread.Sleep(5000)
                 '//End the running thread for progress bar
@@ -188,6 +190,7 @@ Public Class cRemoteAssistance
         Return formattedDate
     End Function
 
+#If NOTES Then
     Private Sub SendMailNotes(ByVal Password As String, ByVal Server As String, ByVal Mailfile As String, ByVal FromName As String, ByVal FromEmail As String, ByVal Subject As String, ByVal Body As String, ByVal ToEmail As String, Optional ByVal AttachFile As String = "", Optional ByVal Filename As String = "", Optional ByVal Debug As Boolean = False)
         If Not (My.Application.CommandLineArgs.Contains("nomail") AndAlso Not My.Application.CommandLineArgs.Contains(ToEmail)) Then
             Dim ns As New Domino.NotesSession
@@ -231,6 +234,7 @@ Public Class cRemoteAssistance
             End If
         End If
     End Sub
+#End If
 End Class
 
 '/* VB.net Port of DotNetHelpServices
@@ -274,15 +278,18 @@ Public Class HelpServicesClasses
     End Function
 
     Public Function GenerateTicket(ByVal MachineName As String, ByVal UserName As String, ByVal DomainName As String, ByVal SessionID As Integer, ByVal UserHelpBlob As String) As String
+#If NOTES Then
         Dim type1 As Type = Type.GetTypeFromProgID("PCH.HelpService", MachineName, True)
         Dim obj1 As Object = Activator.CreateInstance(type1)
         Dim service1 As IPCHService = CType(obj1, IPCHService)
         Dim text1 As String = service1.RemoteConnectionParms(UserName, DomainName, SessionID, UserHelpBlob)
         Marshal.ReleaseComObject(obj1)
         Return text1
+#End If
     End Function
 
     Public Function GetSessions(ByVal MachineName As String) As Session()
+#If NOTES Then
         Dim type1 As Type = Type.GetTypeFromProgID("PCH.HelpService", MachineName, True)
         Dim obj1 As Object = Activator.CreateInstance(type1)
         Dim service1 As IPCHService = CType(obj1, IPCHService)
@@ -314,6 +321,7 @@ Public Class HelpServicesClasses
         Loop
         Marshal.ReleaseComObject(obj1)
         Return CType(list1.ToArray(GetType(Session)), Session())
+#End If
     End Function
 
 End Class

@@ -93,8 +93,9 @@
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
+    <DefineConstants>BUILD32</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -140,6 +141,27 @@
   <PropertyGroup>
     <OptionCompare>Text</OptionCompare>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>Trinity.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>BUILD64</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>Trinity.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.OWC11">
       <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\AxInterop.OWC11.dll</HintPath>
@@ -150,11 +172,6 @@
     <Reference Include="BalloonToolTip, Version=2005.4.17.4617, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\BalloonToolTip.dll</HintPath>
-    </Reference>
-    <Reference Include="ConnectWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ConnectWrapper\bin\Debug\ConnectWrapper.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="DevExpress.AgData.v9.2">
       <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\DevExpress 2009.2\Components\Bin\Silverlight\DevExpress.AgData.v9.2.dll</HintPath>
@@ -195,6 +212,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\Matrix40.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ComponentModel.Composition.Diagnostics">
+      <HintPath>..\..\..\..\..\..\..\Downloads\mef-master\Composition.Diagnostics\ClassLibrary1\bin\Debug\Microsoft.ComponentModel.Composition.Diagnostics.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -226,11 +246,12 @@
       <HintPath>..\packages\Spire.PDF.8.3.9\lib\net20\Spire.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition">
-      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\System.ComponentModel.Composition.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations">
       <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Composition.Initialization">
+      <HintPath>..\..\..\..\..\..\..\Downloads\System.Composition.Initialization.dll</HintPath>
     </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -298,6 +319,7 @@
     <Compile Include="Class Library\cExportUnicornFile NewNorway.vb" />
     <Compile Include="Class Library\cExportUnicornFile New.vb" />
     <Compile Include="Class Library\cExportXmlToUnicorn.vb" />
+    <Compile Include="Class Library\cIni.vb" />
     <Compile Include="Class Library\cMediaToolPost.vb" />
     <Compile Include="Class Library\dbUA.vb" />
     <Compile Include="Class Library\EventArgs\PriceListEventArgs.vb" />
@@ -462,11 +484,6 @@
     <Compile Include="Class Library\Marathon\cMarathonProject.vb" />
     <Compile Include="Class Library\Marathon\cMarathonClient.vb" />
     <Compile Include="Class Library\Marathon\cMarathonTimeEntry.vb" />
-    <Compile Include="Class Library\Notes\cIni.vb" />
-    <Compile Include="Class Library\Notes\cNotes.vb" />
-    <Compile Include="Class Library\Notes\cNotesDocument.vb" />
-    <Compile Include="Class Library\Notes\cNotesInbox.vb" />
-    <Compile Include="Class Library\Notes\cNotesView.vb" />
     <Compile Include="Class Library\Extensions\ExtendedComboboxColumnWrite\ExtendedComboboxColumnWrite.vb" />
     <Compile Include="Class Library\Extensions\ExtendedComboboxColumnWrite\ExtendedComboBoxCellWrite.vb" />
     <Compile Include="Class Library\Extensions\ExtendedComboboxColumnWrite\ComboboxEditingControlWrite.vb">
@@ -618,12 +635,6 @@
       <DependentUpon>frmExtranet.vb</DependentUpon>
     </Compile>
     <Compile Include="frmExtranet.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmFlashPlayer.Designer.vb">
-      <DependentUpon>frmFlashPlayer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmFlashPlayer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmHelp.Designer.vb">
@@ -1302,10 +1313,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmExtranet.resx">
       <DependentUpon>frmExtranet.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmFlashPlayer.resx">
-      <DependentUpon>frmFlashPlayer.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHelp.resx">
@@ -2046,6 +2053,10 @@
     <Content Include="Trinity.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConnectWrapper\ConnectWrapper.csproj">
+      <Project>{a0228581-7c2a-4127-bb42-ac5e673c477d}</Project>
+      <Name>ConnectWrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ScheduleUploader\ScheduleUploader\ScheduleUploader.vbproj">
       <Project>{5decc64d-f37d-4123-b7b2-12102ef517be}</Project>
       <Name>ScheduleUploader</Name>

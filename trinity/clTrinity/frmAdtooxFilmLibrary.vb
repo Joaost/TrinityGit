@@ -135,9 +135,11 @@
             Dim type As Integer = 1
             Dim copycode As String = func.Substring(func.IndexOf(",")).Trim.TrimStart(",").Trim.Trim("""")
             Dim flashvars As String = "type=flv&file=" & flvMovie & "&image=" & previewPicture
+#If BASE32 Then
             Dim frmFlash As New frmFlashPlayer("https://ecexpress.adtoox.com/ec/flvplayer.swf", flashvars, 519, 312)
             frmFlash.Text = grdAdtooxFilms.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
             frmFlash.Show()
+#End If
             '<embed id="single" height="312" width="519" flashvars="type=flv&file=fileextractor/61285529_clean_proxy.flv%3Fforceattach%3Dtrue%26id%3D61285540%26ccpd%3D8JosF4SW029%26ccid%3D61285528%26name%3D61285529_clean_proxy.flv&image=fileextractor/61285529_picture.jpg%3Fforceattach%3Dtrue%26id%3D61285543%26ccpd%3D8JosF4SW029%26ccid%3D61285528%26name%3D61285529_picture.jpg&width=519&height=312" allowfullscreen="true" quality="high" name="single" style="" src="https://ecexpress.adtoox.com/ec/flvplayer.swf" type="application/x-shockwave-flash"/>
 
             'Dim frmAdtoox As New frmAdtooxWindow(CStr(grdAdtooxFilms.Rows(e.RowIndex).Cells(e.ColumnIndex).Value))

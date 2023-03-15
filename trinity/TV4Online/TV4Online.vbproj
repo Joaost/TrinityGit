@@ -13,7 +13,7 @@
     <AssemblyName>TV4Online</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,11 +50,30 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>TV4Online.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>TV4Online.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition">
-      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\System.ComponentModel.Composition.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -64,9 +83,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="TrinityPlugin">
-      <HintPath>\\stofpcp01102\GroupM Finance\Shared\Business Development\Software Developer\Referenser\TrinityPlugin.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -328,11 +344,15 @@
       <Project>{71eaf926-f2d5-467a-a8bc-5dc512352b94}</Project>
       <Name>clTrinity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrinityPlugin\TrinityPlugin.vbproj">
+      <Project>{de60607a-5167-4afa-a64f-89bd8c4dbec1}</Project>
+      <Name>TrinityPlugin</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)TV4Online.dll" "C:\Users\joakim.koch\OneDrive - insidemedia.net\Documents\Visual Studio 2017\Projects\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"
-copy "$(TargetDir)TV4Online.pdb" "C:\Users\joakim.koch\OneDrive - insidemedia.net\Documents\Visual Studio 2017\Projects\TrinityGit\trinity\clTrinity\bin\Debug\Plugins"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)TV4Online.dll" "C:\Users\joakim.koch\OneDrive - insidemedia.net\Documents\Visual Studio 2017\Projects\TrinityGit\trinity\clTrinity\bin\x64\Debug\Plugins\"
+copy "$(TargetDir)TV4Online.pdb" "C:\Users\joakim.koch\OneDrive - insidemedia.net\Documents\Visual Studio 2017\Projects\TrinityGit\trinity\clTrinity\bin\x64\Debug\Plugins\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

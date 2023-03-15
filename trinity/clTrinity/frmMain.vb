@@ -9,6 +9,7 @@ Imports System.ComponentModel.Composition
 Imports System.ComponentModel.Composition.Hosting
 Imports System.Reflection
 Imports TrinityPlugin
+Imports Microsoft.ComponentModel.Composition.Diagnostics
 
 Public Class frmMain
 
@@ -2851,8 +2852,10 @@ CreatePlan:
         If IO.Directory.Exists(IO.Path.Combine(My.Application.Info.DirectoryPath, "Plugins")) Then
             catalog.Catalogs.Add(New DirectoryCatalog("./Plugins/"))
         End If
-        catalog.Catalogs.Add(New TypeCatalog(GetType(IPlugin)))
+        'catalog.Catalogs.Add(New TypeCatalog(GetType(IPlugin)))
         Dim container As New CompositionContainer(catalog)
+        'Dim ci = New CompositionInfo(catalog, container)
+        'CompositionInfoTextFormatter.Write(ci, Console.Out)
         container.SatisfyImportsOnce(Me)
 
         If IO.Directory.Exists(IO.Path.Combine(My.Application.Info.DirectoryPath, "Plugins")) AndAlso Plugins.Count <> My.Computer.FileSystem.GetDirectoryInfo(IO.Path.Combine(My.Application.Info.DirectoryPath, "Plugins")).GetFiles("*.dll").Count Then
@@ -3143,7 +3146,11 @@ CreatePlan:
         End If
         MyVersion = Format(Trinity.Helper.CompileTime, "yyyy-MM-dd HH:mm:ss")
 
-        Windows.Forms.MessageBox.Show("T R I N I T Y" & vbCrLf & "Version: " & My.Application.Info.Version.ToString & vbCrLf & "Build: " & MyVersion & vbCrLf & "Connect version: " & Trinity.Helper.GetRegisteredDLLVersion & vbCrLf & vbCrLf & "IP: " & System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName)(0).ToString & vbCrLf & vbCrLf & "For support, mail to:" & vbCrLf & "trinity.support@groupm.com", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
+        Dim title As String = "T R I N I T Y"
+#If BUILD64 Then
+        title = "T R I N I T Y (64 bit)"
+#End If
+        Windows.Forms.MessageBox.Show(title & vbCrLf & "Version: " & My.Application.Info.Version.ToString & vbCrLf & "Build: " & MyVersion & vbCrLf & "Connect version: " & Trinity.Helper.GetRegisteredDLLVersion & vbCrLf & vbCrLf & "IP: " & System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName)(0).ToString & vbCrLf & vbCrLf & "For support, mail to:" & vbCrLf & "trinity.support@groupm.com", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Information)
 
     End Sub
 
@@ -3481,7 +3488,9 @@ CreatePlan:
         'asm = System.Reflection.Assembly.LoadFile(Path.Combine(My.Application.Info.DirectoryPath, "Matrix40.dll"))
         Dim t As Type = asm.GetType("Matrix40.cMatrix")
         Matrix = Activator.CreateInstance(t)
+#If BASE32 Then
         Matrix.SetConnectionType(Matrix40.cMatrix.ConnectionTypeEnum.ctSQL)
+#End If
         Matrix.SetConnectionString("Data Source=" & TrinitySettings.MatrixDatabaseServer & ";Initial Catalog=" & TrinitySettings.MatrixDatabase & ";UID=matrix_user;PWD=benchmark;")
         Matrix.Initialize()
     End Sub

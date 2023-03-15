@@ -4476,9 +4476,11 @@ Public Class frmSetup
             Dim type As Integer = 1
             Dim copycode As String = func.Substring(func.IndexOf(",")).Trim.TrimStart(",").Trim.Trim("""")
             Dim flashvars As String = "type=flv&file=" & flvMovie & "&image=" & previewPicture
+#If BASE32 Then
             Dim frmFlash As New frmFlashPlayer("https://ecexpress.adtoox.com/ec/flvplayer.swf", flashvars, 519, 312)
             frmFlash.Text = Filmcode
             frmFlash.Show()
+#End If
             Cursor = Cursors.Default
         End If
     End Sub

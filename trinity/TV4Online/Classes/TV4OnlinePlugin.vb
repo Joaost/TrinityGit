@@ -411,7 +411,7 @@ Public Class TV4OnlinePlugin
 
                 If res.Confirmations.Count > 0 Then
                     getAgencyRefNo(res)
-                    Return New Tuple(Of TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse, Boolean)(res, True)
+                    Return New MyTuple(Of TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse, Boolean)(res, True)
                 Else
                     If startUp = False Then
                         Windows.Forms.MessageBox.Show(String.Format("TV4 Spotlight responded with one or more errors:" & vbNewLine & "No confirmations were found for " & b.Channel & " " & b.TrinityType & ".", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Error))
@@ -468,6 +468,17 @@ Public Class TV4OnlinePlugin
 
         Next
     End Sub
+
+    Public Class MyTuple(Of T1, T2)
+        Public Item1 As T1
+        Public Item2 As T2
+
+        Public Sub New(ByVal item1 As T1, ByVal item2 As T2)
+            Me.Item1 = item1
+            Me.Item2 = item2
+        End Sub
+    End Class
+
     Function checkConfirmationForBookingByRef(ByRef b As TV4Online.SpotlightApiV23.xsd.Booking, ByVal startUp As Boolean, Optional ByRef onlyConfirmations As Boolean = False)
 
         Dim _client As New TV4Online.SpotlightApiV23.xsd.SpotlightApiV5Client(DirectCast(IIf(_endpoint.Uri.ToString.StartsWith("https"), _binding, New BasicHttpBinding), System.ServiceModel.Channels.Binding), _endpoint.ToEndpointAddress)
@@ -481,7 +492,7 @@ Public Class TV4OnlinePlugin
                     If onlyConfirmations Then
                         Return res
                     Else
-                        Return New Tuple(Of TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse, Boolean)(res, True)
+                        Return New MyTuple(Of TV4Online.SpotlightApiV23.xsd.GetConfirmationsResponse, Boolean)(res, True)
                     End If
                 Else
                     If startUp = False Then

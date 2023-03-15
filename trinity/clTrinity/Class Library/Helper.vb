@@ -1114,7 +1114,11 @@ Estimate_Error:
             Dim Path As String = ""
             Dim countDLLs As Integer = 0
 
+#If BUILD32 Then
             For Each TmpFile As String In My.Computer.FileSystem.GetFiles(DLLPath, FileIO.SearchOption.SearchTopLevelOnly, "Connect.4.0.1*.dll")
+#Else
+            For Each TmpFile As String In My.Computer.FileSystem.GetFiles(DLLPath, FileIO.SearchOption.SearchTopLevelOnly, "Connect64.4.0.1*.dll")
+#End If
                 If System.Diagnostics.FileVersionInfo.GetVersionInfo(TmpFile).FileVersion IsNot Nothing Then
                     Dim Version As Integer = System.Diagnostics.FileVersionInfo.GetVersionInfo(TmpFile).FileVersion.Substring(System.Diagnostics.FileVersionInfo.GetVersionInfo(TmpFile).FileVersion.LastIndexOf(".") + 1)
                     If Version > HighestVersion Then
