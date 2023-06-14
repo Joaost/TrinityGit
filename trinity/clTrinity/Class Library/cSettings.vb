@@ -425,7 +425,7 @@ Namespace Trinity
 
         Public Property CheckForNewDLL() As Boolean
             Get
-                Return TrinityIni.Data("General", "CheckForNewDLL")
+                Return TrinityIni.Data("General", "CheckForNewDLL", 0)
             End Get
             Set(ByVal value As Boolean)
                 TrinityIni.Data("General", "CheckForNewDLL") = value

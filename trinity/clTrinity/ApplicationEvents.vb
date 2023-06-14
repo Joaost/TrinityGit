@@ -168,7 +168,7 @@ get_new_launcher:
 
 
                 checkDeveloper()
-                If Not CommandLineArgs.Contains("nodll") AndAlso TrinitySettings.CheckForNewDLL Then
+                If (Not CommandLineArgs.Contains("nodll") AndAlso TrinitySettings.CheckForNewDLL) OrElse CommandLineArgs.Contains("checkdll") Then
 
                     frmSplashscreen.Status = "Checking DLL..."
                     If Trinity.Helper.GetRegisteredDLLVersion() < Trinity.Helper.GetLatestDLLVersion() Then

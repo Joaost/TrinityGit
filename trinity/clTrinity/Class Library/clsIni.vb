@@ -355,9 +355,9 @@ Namespace Trinity
             End Set
         End Property
 
-        Public Property Data(ByVal sSection As String, ByVal sKey As String) As Integer
+        Public Property Data(ByVal sSection As String, ByVal sKey As String, Optional defaultValue As Integer = -1) As Integer
             Get
-                Return ReadInteger(sSection, sKey, -1)
+                Return ReadInteger(sSection, sKey, defaultValue)
             End Get
             Set(ByVal value As Integer)
                 Write(sSection, sKey, value)

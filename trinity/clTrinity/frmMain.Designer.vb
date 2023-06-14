@@ -954,7 +954,7 @@ Partial Class frmMain
         'HistoryToolStripMenuItem
         '
         Me.HistoryToolStripMenuItem.Name = "HistoryToolStripMenuItem"
-        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.HistoryToolStripMenuItem.Text = "History"
         '
         'cmdLinkCampaign

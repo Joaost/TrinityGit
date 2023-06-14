@@ -1137,7 +1137,6 @@ Estimate_Error:
         Private Shared Function GetDLLPath() As String
             Dim GUID As String
             Dim Filepath As String
-
             If My.Computer.Registry.ClassesRoot.OpenSubKey("Connect.Brands") Is Nothing Then
                 'If we have no previous registered DLL we return the ini-file directory
                 Dim Ini As New Trinity.clsIni
@@ -1150,7 +1149,6 @@ Estimate_Error:
                 RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry64)
 
             End If
-
             Return Filepath
         End Function
 

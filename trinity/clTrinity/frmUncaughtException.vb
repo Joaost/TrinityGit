@@ -3,6 +3,7 @@
     Private _exception As Exception
 
     Private Sub cmdContinue_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdContinue.Click
+        My.Computer.Clipboard.SetText(_exception.StackTrace)
         Me.DialogResult = vbCancel
     End Sub
 
@@ -11,6 +12,7 @@
     End Sub
 
     Private Sub cmdSendErrorReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSendErrorReport.Click
+        My.Computer.Clipboard.SetText(_exception.StackTrace)
         frmErrorReport.Show(_exception)
     End Sub
 

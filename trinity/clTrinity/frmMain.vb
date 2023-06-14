@@ -4689,6 +4689,9 @@ CreatePlan:
         unicornManageChannels.show()
     End Sub
 
+    Private Sub cmdReports_Click(sender As Object, e As EventArgs) Handles cmdReports.Click
+
+    End Sub
 End Class
 
 'Public Class clsExcelReport
