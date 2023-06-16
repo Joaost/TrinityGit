@@ -656,7 +656,7 @@ ErrHandler:
                     Case Else : TmpSex = ""
                 End Select
                 CompAdedge.setTargetMnemonic(Campaign.MainTarget.TargetName, False)
-                CompAdedge.setTargetMnemonic(TmpSex & "3-11," & TmpSex & "12-14," & TmpSex & "15-19," & TmpSex & "20-24," & TmpSex & "25-29," & TmpSex & "30-34," & TmpSex & "35-39," & TmpSex & "40-44," & TmpSex & "45-49," & TmpSex & "50-54," & TmpSex & "55-59," & TmpSex & "60-64," & TmpSex & "65-69," & TmpSex & "70-99,", False)
+                CompAdedge.setTargetMnemonic(TmpSex & "3-11," & TmpSex & "12-14," & TmpSex & "15-19," & TmpSex & "20-24," & TmpSex & "25-29," & TmpSex & "30-34," & TmpSex & "35-39," & TmpSex & "40-44," & TmpSex & "45-49," & TmpSex & "50-54," & TmpSex & "55-59," & TmpSex & "60-64," & TmpSex & "65-69," & TmpSex & "70-99", False)
                 CompAdedge.clearList()
                 CompAdedge.clearBrandFilter()
                 CompAdedge.setBrandType("COMMERCIAL")
@@ -706,7 +706,7 @@ ErrHandler:
                 CompAdedge.clearBrandFilter()
                 CompAdedge.setPeriod(Format(Date.FromOADate(Campaign.StartDate), "ddMMyy") & "-" & Format(Date.FromOADate(Campaign.EndDate), "ddMMyy"))
                 CompAdedge.setArea(Campaign.Area)
-                CompAdedge.setTargetMnemonic(TmpSex & "3-11," & TmpSex & "12-14," & TmpSex & "15-19," & TmpSex & "20-24," & TmpSex & "25-29," & TmpSex & "30-34," & TmpSex & "35-39," & TmpSex & "40-44," & TmpSex & "45-49," & TmpSex & "50-54," & TmpSex & "55-59," & TmpSex & "60-64," & TmpSex & "60-69," & TmpSex & "70-99,", False)
+                CompAdedge.setTargetMnemonic(TmpSex & "3-11," & TmpSex & "12-14," & TmpSex & "15-19," & TmpSex & "20-24," & TmpSex & "25-29," & TmpSex & "30-34," & TmpSex & "35-39," & TmpSex & "40-44," & TmpSex & "45-49," & TmpSex & "50-54," & TmpSex & "55-59," & TmpSex & "60-64," & TmpSex & "60-69," & TmpSex & "70-99", False)
                 Trinity.Helper.AddTarget(CompAdedge, Campaign.MainTarget)
                 Trinity.Helper.AddTarget(CompAdedge, Campaign.SecondaryTarget)
                 Trinity.Helper.AddTarget(CompAdedge, Campaign.ThirdTarget)

@@ -64,7 +64,7 @@ Namespace Trinity
             Trinity.Helper.AddTarget(_compAdedge, _campaign.MainTarget)
             Trinity.Helper.AddTarget(_compAdedge, _campaign.SecondaryTarget)
             Trinity.Helper.AddTarget(_compAdedge, _campaign.ThirdTarget)
-            _compAdedge.setTargetMnemonic(_sex & "3-11," & _sex & "12-14," & _sex & "15-19," & _sex & "20-24," & _sex & "25-29," & _sex & "30-34," & _sex & "35-39," & _sex & "40-44," & _sex & "45-49," & _sex & "50-54," & _sex & "55-59," & _sex & "60-64," & _sex & "65-69," & _sex & "70-99,", False)
+            _compAdedge.setTargetMnemonic(_sex & "3-11," & _sex & "12-14," & _sex & "15-19," & _sex & "20-24," & _sex & "25-29," & _sex & "30-34," & _sex & "35-39," & _sex & "40-44," & _sex & "45-49," & _sex & "50-54," & _sex & "55-59," & _sex & "60-64," & _sex & "65-69," & _sex & "70-99", False)
             _compAdedge.clearList()
             _compAdedge.clearBrandFilter()
             _compAdedge.setBrandType("COMMERCIAL")
