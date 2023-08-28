@@ -607,6 +607,13 @@ Public Class frmTv4Main
                     chkLblSpec()
                 ElseIf _booking.Type.Contains("Minute") Then
                     chkLblSpec()
+                Else
+                    lnkRBS.Enabled = True
+                    chkRBS.Enabled = True
+                    chkRBS.Checked = False
+                    lnkSpecifics.Enabled = True
+                    chkSpecifics.Enabled = True
+                    chkSpecifics.Checked = False
                 End If
             Else
                 lnkRBS.Enabled = False
@@ -922,7 +929,7 @@ Public Class frmTv4Main
         If multipleOrganizations Then
             choosenOrg = getOrgID(cmbOrganizations.SelectedItem)
         End If
-        If (Not cmbClient.SelectedIndex <> 0) Then
+        If cmbClient.SelectedIndex = -1 Then
             Windows.Forms.MessageBox.Show("No client has been selected. Select a client for the booking before you can proceed.", "T R I N I T Y", Windows.Forms.MessageBoxButtons.OK, Windows.Forms.MessageBoxIcon.Question)
         Else
             choosenOrg = getOrgID(cmbOrganizations.SelectedItem)
@@ -935,7 +942,7 @@ Public Class frmTv4Main
             If _book.Selected = True Then
                 'Empty targets because something wrong happens if a booking has an array which is not empty
                 _book.Targets = Nothing
-                If Not IsRBS(_book) Then
+                If chkSpecifics.Checked Then
                     If _book.SpecificsSpots.Length < 1 Then
                         If Windows.Forms.MessageBox.Show("This Booking type " + _book.Channel + " " + " has no spots included in the booking" & vbNewLine & vbNewLine & "Are you sure you want to proceed?", "T R I N I T Y", Windows.Forms.MessageBoxButtons.YesNoCancel, Windows.Forms.MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
                             For Each row In grdBookings.Rows
@@ -964,7 +971,7 @@ Public Class frmTv4Main
                             Next
                         End If
                     End If
-                Else
+                ElseIf chkRBS.Checked Then
                     Dim _rbsPeriods As List(Of TV4Online.SpotlightApiV23.xsd.RbsPeriod) = _book.RbsPeriods.ToList
                     For Each _period In _book.RbsPeriods
                         For Each _dp In _period.RbsDayparts
