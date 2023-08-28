@@ -610,10 +610,8 @@ Public Class frmTv4Main
                 Else
                     lnkRBS.Enabled = True
                     chkRBS.Enabled = True
-                    chkRBS.Checked = False
                     lnkSpecifics.Enabled = True
                     chkSpecifics.Enabled = True
-                    chkSpecifics.Checked = False
                 End If
             Else
                 lnkRBS.Enabled = False
